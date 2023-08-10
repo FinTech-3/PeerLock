@@ -16,6 +16,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
 
+# OAuth 테스트
 oauth:
   kakao:
     client-id: a8c9c3771d617ed6e616d879d2e3af75
