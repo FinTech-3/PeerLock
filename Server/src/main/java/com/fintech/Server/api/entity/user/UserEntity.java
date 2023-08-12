@@ -21,26 +21,26 @@ public class UserEntity extends BaseEntity {
     @Column(name = "user_id")
     private Long userId;
 
-    @Column(name = "user_name", length = 20)
+    @Column(name = "user_name", length = 20, nullable = false)
     private String userName;
 
-    @Column(name = "user_password", length = 200)
+    @Column(name = "user_password", length = 200, nullable = false)
     private String userPassword;
 
     @Column(name = "user_sex")
     private int userSex; // 0: MAN, 1: WOMAN
 
-    @Column(name = "user_email", length = 50)
+    @Column(name = "user_email", length = 50, nullable = false)
     private String userEmail;
 
     @Column(name = "user_birth")
     private Date userBirth;
 
-    @Column(name = "user_phone_number")
+    @Column(name = "user_phone_number", nullable = false)
     private String userPhoneNumber;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "status", length = 20)
+    @Column(name = "status", length = 20, nullable = false)
     private UserStatus status; // host, user, withdrawal, admin
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)

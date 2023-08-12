@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface StorageService {
     // C : 새로운 창고 등록
-    void registerStorage(StorageRegisterRequestDto request);
+    StorageEntity registerStorage(StorageRegisterRequestDto request);
 
     // R : 서비스 내 모든 창고 List 출력
     List<StorageListResponseDto> getAllStorages();
