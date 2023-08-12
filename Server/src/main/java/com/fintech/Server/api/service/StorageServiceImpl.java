@@ -31,27 +31,33 @@ public class StorageServiceImpl implements StorageService {
 
 
     @Override
-    public void registerStorage(StorageRegisterRequestDto request) {
+    public StorageEntity registerStorage(StorageRegisterRequestDto request) {
         Optional<UserEntity> user = userRepository.findById(request.getUserId());
+        // todo: user.Status = HOST 일 때 수행하도록
+        if (user.get().getStatus().name().equals("HOST")) {
+            StorageEntity storageEntity = StorageEntity.builder()
+                    .user(user.get())
+                    .storageName(request.getStorageName())
+                    .storageAddress(request.getStorageAddress())
+                    .storageLatitude(request.getStorageLatitude())
+                    .storageLongitude(request.getStorageLongitude())
+                    .storageTotalCapacity(request.getStorageTotalCapacity())
+                    .storageAvailableCapacity(request.getStorageAvailableCapacity())
+                    .storageUsage(request.getStorageUsage())
+                    .storagePrice(request.getStoragePrice())
+                    .serviceCommission(request.getServiceCommission())
+                    .storageDescription(request.getStorageDescription())
+                    .availableFrom(request.getAvailableFrom())
+                    .availableUntil(request.getAvailableUntil())
+                    .returnPolicy(request.getReturnPolicy())
+                    .build();
 
-        StorageEntity storageEntity = StorageEntity.builder()
-                .user(user.get())
-                .storageName(request.getStorageName())
-                .storageAddress(request.getStorageAddress())
-                .storageLatitude(request.getStorageLatitude())
-                .storageLongitude(request.getStorageLongitude())
-                .storageTotalCapacity(request.getStorageTotalCapacity())
-                .storageAvailableCapacity(request.getStorageAvailableCapacity())
-                .storageUsage(request.getStorageUsage())
-                .storagePrice(request.getStoragePrice())
-                .serviceCommission(request.getServiceCommission())
-                .storageDescription(request.getStorageDescription())
-                .availableFrom(request.getAvailableFrom())
-                .availableUntil(request.getAvailableUntil())
-                .returnPolicy(request.getReturnPolicy())
-                .build();
+            StorageEntity savedStorage = storageRepository.save(storageEntity);
 
-        StorageEntity savedStorage = storageRepository.save(storageEntity);
+            return savedStorage;
+        } else {
+            return null;
+        }
     }
 
     public List<StorageListResponseDto> getAllStorages() {
