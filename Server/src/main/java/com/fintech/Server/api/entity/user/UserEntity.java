@@ -1,13 +1,15 @@
 package com.fintech.Server.api.entity.user;
 
 import com.fintech.Server.api.entity.BaseEntity;
+import com.fintech.Server.api.entity.StorageEntity;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "User")
+@Table(name = "Users")
 @NoArgsConstructor(access = AccessLevel.PROTECTED) // 파라미터가 없는 기본 생성자를 생성
 @AllArgsConstructor // 모든 필드 값을 파라미터로 받는 생성자를 만듬
 @Data
@@ -41,10 +43,11 @@ public class UserEntity extends BaseEntity {
     @Column(name = "status", length = 20)
     private UserStatus status; // host, user, withdrawal, admin
 
-
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private UserProfileEntity userProfile;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<StorageEntity> storages;
 
     // created_at과 updated_at 필드는 BaseEntity에서 정의되어 있음
 
