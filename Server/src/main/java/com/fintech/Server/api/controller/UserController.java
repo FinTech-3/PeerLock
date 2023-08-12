@@ -27,6 +27,7 @@ public class UserController {
         this.userService = userService;
     }
 
+    // 로그인
     @GetMapping("/login")
     public String login() {
         logger.trace("trace");
@@ -37,6 +38,8 @@ public class UserController {
 
         return "로그인 성공";
     }
+
+    // 회원가입
     @PostMapping("/register")
     public ResponseEntity<UserResponseDto> register(@RequestBody UserRegistrationDto request) {
         UserResponseDto userResponseDto = userService.register(request);
@@ -44,11 +47,26 @@ public class UserController {
         return ResponseEntity.ok(userResponseDto);
     }
 
-    @PostMapping("/kakao/callback")
-    public String kakaoCallback(@RequestParam("code") String code) {
 
-        return "ss";
+    // todo: 이거 호스트나 유저를 인증할 수 있는 요소를 만들어야 할 것 같은데? 누가 악의적으로 api 요청하면 어떠카징
+    // 게스트 -> 호스트로 전환
+    @PatchMapping("/guest/{userId}")
+    public ResponseEntity<UserResponseDto> switchHost(@PathVariable("userId") Long userId) {
+        UserResponseDto userResponseDto = userService.switchStatus(userId);
+        return ResponseEntity.ok(userResponseDto);
     }
+
+    // 호스트 -> 게스트로 전환
+    @PatchMapping("/host/{userId}")
+    public ResponseEntity<UserResponseDto> switchUser(@PathVariable("userId") Long userId) {
+        UserResponseDto userResponseDto = userService.switchStatus(userId);
+        return ResponseEntity.ok(userResponseDto);
+    }
+
+//    @PostMapping("/kakao/callback")
+//    public String kakaoCallback(@RequestParam("code") String code) {
+//        return "ss";
+//    }
 
 
 }
