@@ -1,5 +1,7 @@
 package com.fintech.Server.api.controller;
 
+import com.fintech.Server.api.dto.UserInfoResponseDto;
+import com.fintech.Server.api.dto.UserLoginRequestDto;
 import com.fintech.Server.api.dto.UserRegistrationDto;
 import com.fintech.Server.api.dto.UserResponseDto;
 import com.fintech.Server.api.service.UserService;
@@ -28,9 +30,14 @@ public class UserController {
     }
 
     // 로그인
-    @GetMapping("/login")
-    public String login() {
-        return "로그인 성공";
+    @PostMapping("/login")
+    public ResponseEntity<UserInfoResponseDto> login(@RequestBody UserLoginRequestDto request) {
+        UserInfoResponseDto response = userService.login(request);
+        if (response != null) {
+            return ResponseEntity.ok(response);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     // 회원가입
