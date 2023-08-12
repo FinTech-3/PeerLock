@@ -21,26 +21,26 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDto register(UserRegistrationDto request) {
-        UserRole userRole = UserRole.valueOf(request.getRole().toUpperCase());
+        UserRole userRole = UserRole.valueOf(request.getStatus().toUpperCase());
+
+        logger.debug("service " +  request);
 
         UserEntity userEntity = UserEntity.builder()
-                .username(request.getUsername())
-                .password(request.getPassword())
-                .email(request.getEmail())
-                .phoneNumber(request.getPhoneNumber())
-                .address(request.getAddress())
-                .role(userRole)
+                .userName(request.getUsername())
+                .userPassword(request.getPassword())
+                .userSex(request.getSex())
+                .userEmail(request.getEmail())
+                .userBirth(request.getBirth())
+                .userPhoneNumber(request.getPhoneNumber())
+                .status(userRole)
                 .build();
 
         UserEntity savedUser = userRepository.save(userEntity);
 
         return new UserResponseDto(
                 savedUser.getUserId(),
-                savedUser.getUsername(),
-                savedUser.getEmail(),
-                savedUser.getPhoneNumber(),
-                savedUser.getAddress(),
-                savedUser.getRole().name()
+                savedUser.getUserName(),
+                savedUser.getStatus().name()
         );
     }
 

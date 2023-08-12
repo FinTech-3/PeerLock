@@ -4,6 +4,7 @@ import com.fintech.Server.api.entity.BaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "User")
@@ -14,32 +15,40 @@ import javax.persistence.*;
 public class UserEntity extends BaseEntity {
 
     @Id
-    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Long userId;
 
-    @Column(name = "username", length = 20)
-    private String username;
+    @Column(name = "user_name", length = 20)
+    private String userName;
 
-    @Column(name = "password", length = 255)
-    private String password;
+    @Column(name = "user_password", length = 200)
+    private String userPassword;
 
-    @Column(name = "email", length = 45)
-    private String email;
+    @Column(name = "user_sex")
+    private int userSex; // 0: MAN, 1: WOMAN
 
-    @Column(name = "phone_number", length = 20)
-    private String phoneNumber;
+    @Column(name = "user_email", length = 50)
+    private String userEmail;
 
-    @Column(name = "address", length = 255)
-    private String address;
+    @Column(name = "user_birth")
+    private Date userBirth;
+
+    @Column(name = "user_phone_number")
+    private String userPhoneNumber;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "role", length = 20)
-    private UserRole role;
+    @Column(name = "status", length = 20)
+    private UserRole status; // host, user, withdrawal, admin
+
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private UserProfileEntity userProfile;
+
+
+    // created_at과 updated_at 필드는 BaseEntity에서 정의되어 있음
 
 //    @Enumerated(EnumType.STRING)
 //    @Column(name = "oauth_provider", length = 10)
 //    private OAuthProvider oAuthProvider;
-
-    // created_at과 updated_at 필드는 BaseEntity에서 정의되어 있음
 }

@@ -8,14 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api/test")
 public class TestController {
 
     private static final Logger logger = LoggerFactory.getLogger(TestController.class);
-    @GetMapping("/")
+    @GetMapping("/user/host/{user_id}")
     public String test() {
-        logger.trace("Testing");
+        logger.info("Testing");
         return "hello";
     }
 
