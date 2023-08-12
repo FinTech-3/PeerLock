@@ -30,12 +30,6 @@ public class UserController {
     // 로그인
     @GetMapping("/login")
     public String login() {
-        logger.trace("trace");
-        logger.debug("debug");
-        logger.info("info");
-        logger.warn("warn");
-        logger.error("error");
-
         return "로그인 성공";
     }
 

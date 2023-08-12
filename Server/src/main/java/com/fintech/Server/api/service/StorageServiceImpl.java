@@ -12,10 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -59,16 +56,36 @@ public class StorageServiceImpl implements StorageService {
 
     public List<StorageListResponseDto> getAllStorages() {
         List<StorageEntity> storageEntities = storageRepository.findAll();
-        return storageEntities.stream()
-                .map(this::convertToDto)
-                .collect(Collectors.toList());
+        List<StorageListResponseDto> storageDtos = new ArrayList<>();
+
+        for (StorageEntity storageEntity : storageEntities) {
+            StorageListResponseDto dto = convertToDto(storageEntity);
+            storageDtos.add(dto);
+        }
+
+        return storageDtos;
     }
 
     private StorageListResponseDto convertToDto(StorageEntity storageEntity) {
         StorageListResponseDto dto = new StorageListResponseDto();
+
+        // dto 에 값 입력
         dto.setStorageId(storageEntity.getStorageId());
         dto.setStorageName(storageEntity.getStorageName());
-        // ... 나머지 필드들도 설정
+        dto.setStorageAddress(storageEntity.getStorageAddress());
+        // todo: 주소를 통해 위도, 경도 찾기 -> 프론트에서? 백에서? naver 지도 api에 따라 다를듯
+        dto.setStorageLatitude(storageEntity.getStorageLatitude());
+        dto.setStorageLongitude(storageEntity.getStorageLongitude());
+        dto.setStorageTotalCapacity(storageEntity.getStorageTotalCapacity());
+        dto.setStorageAvailableCapacity(storageEntity.getStorageAvailableCapacity());
+        dto.setStorageUsage(storageEntity.getStorageUsage());
+        dto.setStoragePrice(storageEntity.getStoragePrice());
+        dto.setServiceCommission(storageEntity.getServiceCommission());
+        dto.setStorageDescription(storageEntity.getStorageDescription());
+        dto.setAvailableFrom(storageEntity.getAvailableFrom());
+        dto.setAvailableUntil(storageEntity.getAvailableUntil());
+        dto.setReturnPolicy(storageEntity.getReturnPolicy());
+
         return dto;
     }
 
