@@ -1,5 +1,7 @@
 package com.fintech.Server.api.service;
 
+import com.fintech.Server.api.dto.UserInfoResponseDto;
+import com.fintech.Server.api.dto.UserLoginRequestDto;
 import com.fintech.Server.api.entity.user.UserEntity;
 import com.fintech.Server.api.entity.user.UserStatus;
 import com.fintech.Server.api.dto.UserRegistrationDto;
@@ -23,6 +25,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDto register(UserRegistrationDto request) {
+        // todo: 회원가입 중복처리하기
         UserStatus userRole = UserStatus.valueOf(request.getStatus().toUpperCase());
 
         UserEntity userEntity = UserEntity.builder()
@@ -42,6 +45,25 @@ public class UserServiceImpl implements UserService {
                 savedUser.getUserName(),
                 savedUser.getStatus().name()
         );
+    }
+
+    @Override
+    public UserInfoResponseDto login(UserLoginRequestDto request) {
+        UserEntity user = userRepository.findUserEntityByUserEmail(request.getEmail());
+        logger.debug("User: " + user);
+        if (user.getUserEmail().equals(request.getEmail()) && user.getUserPassword().equals(request.getPassword())) {
+            logger.debug("회원가입 된 유저");
+            return new UserInfoResponseDto(
+                    user.getUserId(),
+                    user.getUserName(),
+                    user.getUserSex(),
+                    user.getUserEmail(),
+                    user.getUserBirth(),
+                    user.getUserPhoneNumber(),
+                    user.getStatus().name()
+            );
+        }
+        return null;
     }
 
     @Override
@@ -65,8 +87,8 @@ public class UserServiceImpl implements UserService {
             );
         }
 
-        logger.debug("UserService SwitchStatus : 유저 없음");
         // 해당 userId를 가진 UserEntity가 없을 경우 null 반환
+        logger.debug("UserService SwitchStatus : 유저 없음");
         return null;
     }
 
