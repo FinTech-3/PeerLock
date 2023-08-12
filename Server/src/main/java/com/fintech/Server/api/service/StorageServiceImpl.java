@@ -91,7 +91,8 @@ public class StorageServiceImpl implements StorageService {
         dto.setAvailableFrom(storageEntity.getAvailableFrom());
         dto.setAvailableUntil(storageEntity.getAvailableUntil());
         dto.setReturnPolicy(storageEntity.getReturnPolicy());
-
+        dto.setCreatedAt(storageEntity.getCreatedAt());
+        dto.setUpdatedAt(storageEntity.getUpdatedAt());
         return dto;
     }
 
