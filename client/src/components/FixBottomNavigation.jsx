@@ -34,9 +34,9 @@ export default function FixedBottomNavigation() {
 					/>
 					<BottomNavigationAction
 						component={Link}
-						to="/chat"
-						label="Chat"
-						icon={<ChatBubbleOutlineOutlinedIcon />}
+						to="/wish"
+						label="Wish"
+						icon={<FavoriteIcon />}
 					/>
 					<BottomNavigationAction
 						component={Link}
@@ -46,9 +46,9 @@ export default function FixedBottomNavigation() {
 					/>
 					<BottomNavigationAction
 						component={Link}
-						to="/wish"
-						label="Wish"
-						icon={<FavoriteIcon />}
+						to="/chat"
+						label="Chat"
+						icon={<ChatBubbleOutlineOutlinedIcon />}
 					/>
 					<BottomNavigationAction
 						component={Link}
