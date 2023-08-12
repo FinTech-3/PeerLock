@@ -1,6 +1,6 @@
 package com.fintech.Server.api.entity.user;
 
-public enum UserRole {
+public enum UserStatus {
     ADMIN,
     USER,
     HOST,

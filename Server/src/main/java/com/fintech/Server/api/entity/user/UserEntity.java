@@ -39,7 +39,7 @@ public class UserEntity extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", length = 20)
-    private UserRole status; // host, user, withdrawal, admin
+    private UserStatus status; // host, user, withdrawal, admin
 
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
