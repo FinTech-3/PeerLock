@@ -9,11 +9,30 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import Paper from '@mui/material/Paper';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function FixedBottomNavigation() {
-	const [value, setValue] = React.useState(0);
+	const location = useLocation();
+	const initialValue = getInitialValue(location.pathname);
+	const [value, setValue] = React.useState(initialValue);
 	const ref = React.useRef(null);
+
+	function getInitialValue(path) {
+		switch (path) {
+			case '/home':
+				return 0;
+			case '/wish':
+				return 1;
+			case '/map':
+				return 2;
+			case '/chat':
+				return 3;
+			case '/my':
+				return 4;
+			default:
+				return 0; // 기본값
+		}
+	}
 
 	return (
 		<Box sx={{ pb: 7 }} ref={ref}>
@@ -34,8 +53,8 @@ export default function FixedBottomNavigation() {
 					/>
 					<BottomNavigationAction
 						component={Link}
-						to="/wish"
 						label="Wish"
+						to="/wish"
 						icon={<FavoriteIcon />}
 					/>
 					<BottomNavigationAction
