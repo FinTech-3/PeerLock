@@ -16,7 +16,7 @@ export const Routes = () => {
 	return (
 		<Router>
 			<ReactRouterRoutes>
-				<Route exact path="/" element={<Home />} />
+				<Route exact path="/" element={<Storage />} />
 				<Route exact path="/chat" element={<Chat />} />
 				<Route exact path="/map" element={<MapScreen />} />
 				<Route exact path="/wish" element={<Wish />} />

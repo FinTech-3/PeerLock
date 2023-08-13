@@ -2,32 +2,19 @@ import React, { useState, useEffect } from 'react';
 import AppHeader from '../../components/common/AppHeader';
 import StorageList from '../../components/storage/StorageList';
 import { Grid } from '@mui/material';
-import axios from 'axios';
 import FixedBottomNavigation from '../../components/FixBottomNavigation';
+import { getStorageList } from '../../api/getStorageList';
 
 const Storage = () => {
 	const [storageList, setStorageList] = useState([]);
 
 	useEffect(() => {
-		getStorageList();
-	}, []);
-
-	const getStorageList = async () => {
-		const option = {
-			method: 'GET',
-			url: `/api/storage`,
-		};
-
-		try {
-			const { data } = await axios(option);
-			console.log(data);
-			console.log(data[0].storageDescription);
-			console.log(data[0].storageId);
+		const fetch = async () => {
+			const data = await getStorageList();
 			setStorageList(data);
-		} catch (error) {
-			console.error('Failed to fetch storage list:', error);
-		}
-	};
+		};
+		fetch();
+	}, []);
 
 	return (
 		<div style={{ maxHeight: '100vh', overflowY: 'auto' }}>
