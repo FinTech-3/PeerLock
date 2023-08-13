@@ -8,11 +8,12 @@ function Layout({ children }) {
 		<div
 			css={css`
 				max-width: 1200px;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
+				width: 100%;
 				height: auto;
+				// display: flex;
+				// flex-direction: column;
+				// justify-content: flex-start;
+				// align-items: flex-start;
 			`}
 		>
 			{children}
@@ -22,10 +23,10 @@ function Layout({ children }) {
 function App() {
 	return (
 		<>
+			<GlobalStyles />
 			<Layout>
 				<Routes />
 			</Layout>
-			<GlobalStyles />
 		</>
 	);
 }

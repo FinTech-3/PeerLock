@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import reset from 'styled-reset';
+import reset from 'styled-reset'; // 기기마다 정해진 틀을 없애고 우리 서비스에 맞는 CSS로 변환
 import './styles/colors.scss';
 import common from './constants/commonStyle';
 const GlobalStyles = createGlobalStyle`
@@ -38,7 +38,8 @@ const GlobalStyles = createGlobalStyle`
             overflow: hidden;
             width: 100%;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
+            align-items: flex-start;
             height: 100%;
     }
   `;
