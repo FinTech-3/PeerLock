@@ -44,9 +44,8 @@ public class StorageController {
 
     // R : 창고 Detail
     @GetMapping("/{storageId}")
-    public void storageDetail(@PathVariable("storageId") Long storageId) {
-
-
+    public ResponseEntity<StorageListResponseDto> storageDetail(@PathVariable("storageId") Long storageId) {
+        return storageService.getStorageDetail(storageId);
     }
     // U : 창고 정보 수정
     // D : 창고 삭제

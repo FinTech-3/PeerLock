@@ -1,5 +1,6 @@
 package com.fintech.Server.api.entity.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fintech.Server.api.entity.BaseEntity;
 import com.fintech.Server.api.entity.StorageEntity;
 import lombok.*;

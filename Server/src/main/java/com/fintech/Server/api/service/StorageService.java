@@ -3,6 +3,7 @@ package com.fintech.Server.api.service;
 import com.fintech.Server.api.dto.StorageListResponseDto;
 import com.fintech.Server.api.dto.StorageRegisterRequestDto;
 import com.fintech.Server.api.entity.StorageEntity;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ public interface StorageService {
     List<StorageListResponseDto> getAllStorages();
 
     // R : 창고 Detail
+    ResponseEntity<StorageListResponseDto> getStorageDetail(Long storageId);
     // U : 창고 정보 수정
     // D : 창고 삭제
 }
