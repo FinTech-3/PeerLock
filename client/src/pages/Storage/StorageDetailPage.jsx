@@ -2,34 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import AppHeader from '../../components/common/AppHeader';
 import StorageDetail from '../../components/storage/StorageDetail';
-import axios from 'axios';
+import { getStorageDetail } from '../../api/getStorageDetail';
 
 const StorageDetailPage = () => {
 	const [storageDetail, setStorageDetail] = useState([]);
-
 	const { storageId } = useParams();
-	console.log('id : ', storageId);
 
 	useEffect(() => {
-		getStorageDetail();
-	}, []);
-
-	const getStorageDetail = () => {
-		const option = {
-			method: 'GET',
-			url: `/api/storage/${storageId}`,
-		};
-
-		axios(option).then(({ data }) => {
-			console.log(data);
+		const fetch = async () => {
+			const data = await getStorageDetail(storageId);
 			setStorageDetail(data);
-		});
-	};
+		};
+		fetch();
+	}, []);
 
 	return (
 		<div>
 			<AppHeader title={'Storage Detail'} />
-			<StorageDetail storage={storageDetail} />
+			<StorageDetail storageDetail={storageDetail} />
 		</div>
 	);
 };

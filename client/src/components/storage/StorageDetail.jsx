@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
 	AppBar,
 	Toolbar,
@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import FixedBottomNavigation from '../FixBottomNavigation';
 
-const StorageDetail = ({ storage }) => {
+const StorageDetail = ({ storageDetail }) => {
 	return (
 		<div>
 			<Card>
@@ -23,15 +23,15 @@ const StorageDetail = ({ storage }) => {
 					alt="Placeholder Image"
 				/>
 				<CardContent>
-					<Typography variant="h6">{storage.storageName}</Typography>
+					<Typography variant="h6">{storageDetail.storageName}</Typography>
 					<Typography variant="body2" color="textSecondary">
-						{storage.storageDescription}
+						{storageDetail.storageDescription}
 					</Typography>
 				</CardContent>
 				<CardContent>
-					<Typography variant="h6">{storage.user.username}</Typography>
+					<Typography variant="h6">{storageDetail.user?.username}</Typography>
 					<Typography variant="body2" color="textSecondary">
-						{storage.storageDescription}
+						{storageDetail.storageDescription}
 					</Typography>
 				</CardContent>
 				<CardActions>
