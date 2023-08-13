@@ -3,6 +3,8 @@ package com.fintech.Server.api.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fintech.Server.api.dto.StorageListResponseDto;
 import com.fintech.Server.api.dto.StorageRegisterRequestDto;
+import com.fintech.Server.api.dto.UserInfoResponseDto;
+import com.fintech.Server.api.dto.UserResponseDto;
 import com.fintech.Server.api.entity.StorageEntity;
 import com.fintech.Server.api.entity.user.UserEntity;
 import com.fintech.Server.api.repository.StorageRepository;
@@ -10,8 +12,10 @@ import com.fintech.Server.api.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -72,7 +76,19 @@ public class StorageServiceImpl implements StorageService {
         return storageDtos;
     }
 
+    @Override
+    public ResponseEntity<StorageListResponseDto> getStorageDetail(Long storageId) {
+        Optional<StorageEntity> storageOpt = storageRepository.findById(storageId);
+        if (!storageOpt.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        StorageEntity storageEntity = storageOpt.get();
+        StorageListResponseDto storageListResponseDto = convertToDto(storageEntity);
+        return ResponseEntity.ok(storageListResponseDto);
+    }
+
     private StorageListResponseDto convertToDto(StorageEntity storageEntity) {
+        // Storage
         StorageListResponseDto dto = new StorageListResponseDto();
 
         // dto 에 값 입력
@@ -93,18 +109,15 @@ public class StorageServiceImpl implements StorageService {
         dto.setReturnPolicy(storageEntity.getReturnPolicy());
         dto.setCreatedAt(storageEntity.getCreatedAt());
         dto.setUpdatedAt(storageEntity.getUpdatedAt());
+
+        // User
+        UserResponseDto userDto = new UserResponseDto();
+        userDto.setUserId(storageEntity.getUser().getUserId());
+        userDto.setUsername(storageEntity.getUser().getUserName());
+        userDto.setStatus(storageEntity.getUser().getStatus().name());
+
+        dto.setUser(userDto);
+
         return dto;
     }
-
-//    @Override
-//    public List<StorageEntity> getAllStorages() {
-//        List<StorageEntity> storageEntityList = storageRepository.findAll();
-//        logger.debug("Service : StorageEntityList: " + storageEntityList);
-//        return null;
-//    }
 }
-//        Map<String, Object> resultMap = new HashMap<>();
-//        resultMap.put("storages", storages);
-//
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        String result = objectMapper.writeValueAsString(resultMap);
