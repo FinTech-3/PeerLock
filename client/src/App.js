@@ -10,6 +10,7 @@ function Layout({ children }) {
 				max-width: 1200px;
 				width: 100%;
 				height: auto;
+				overflow-y: auto;
 				// display: flex;
 				// flex-direction: column;
 				// justify-content: flex-start;
