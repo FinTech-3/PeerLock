@@ -4,6 +4,7 @@ import StarIcon from '@mui/icons-material/Star';
 import { Link } from 'react-router-dom';
 
 const StorageList = ({ storage }) => {
+	console.log(storage);
 	return (
 		<div>
 			<Link to={`/storage-detail/${storage.storageId}`} style={{ textDecoration: 'none' }}>
@@ -18,7 +19,7 @@ const StorageList = ({ storage }) => {
 					<CardMedia
 						component="img"
 						height="240"
-						image={storage.image || 'https://via.placeholder.com/150'}
+						image={storage.images[0]?.imagePath || 'https://via.placeholder.com/150'}
 						alt="Placeholder Image"
 					/>
 					<CardContent sx={{ padding: '10px' }}>
