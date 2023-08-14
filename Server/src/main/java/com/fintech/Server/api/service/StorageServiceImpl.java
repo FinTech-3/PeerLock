@@ -64,6 +64,7 @@ public class StorageServiceImpl implements StorageService {
         }
     }
 
+    @Override
     public List<StorageListResponseDto> getAllStorages() {
         List<StorageEntity> storageEntities = storageRepository.findAll();
         List<StorageListResponseDto> storageDtos = new ArrayList<>();

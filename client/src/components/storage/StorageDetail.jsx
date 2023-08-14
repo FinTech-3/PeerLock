@@ -15,12 +15,13 @@ import FixedBottomNavigation from '../FixBottomNavigation';
 const StorageDetail = ({ storageDetail }) => {
 	return (
 		<div>
-			<Card>
+			<Card sx={{ width: '100%' }}>
 				<CardMedia
 					component="img"
 					height="140"
-					image="https://via.placeholder.com/150"
+					image="https://via.placeholder.com/400"
 					alt="Placeholder Image"
+					sx={{ objectFit: 'cover' }}
 				/>
 				<CardContent>
 					<Typography variant="h6">{storageDetail.storageName}</Typography>
