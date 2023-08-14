@@ -1,36 +1,44 @@
 import React from 'react';
 import { Card, CardMedia, CardContent, Typography, CardActions, Button } from '@mui/material';
+import StarIcon from '@mui/icons-material/Star';
 import { Link } from 'react-router-dom';
 
 const StorageList = ({ storage }) => {
-	// 비구조화 할당을 사용
 	return (
 		<div>
-			<Card>
-				<input type="hidden" value={storage.storageId} />
-				<CardMedia
-					component="img"
-					height="140"
-					image={storage.image || 'https://via.placeholder.com/150'} // 예제로 image 속성 사용
-					alt="Placeholder Image"
-				/>
-				<CardContent>
-					<Typography variant="h6">{storage.storageName || 'Item Title'}</Typography>
-					<Typography variant="body2" color="textSecondary">
-						{storage.storageDescription || 'Item description...'}
-					</Typography>
-				</CardContent>
-				<CardActions>
-					<Button
-						size="small"
-						color="primary"
-						component={Link}
-						to={`/storage-detail/${storage.storageId}`}
-					>
-						상세 보기
-					</Button>
-				</CardActions>
-			</Card>
+			<Link to={`/storage-detail/${storage.storageId}`} style={{ textDecoration: 'none' }}>
+				<Card
+					sx={{
+						borderRadius: '20px',
+						boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.1)',
+						overflow: 'hidden',
+					}}
+				>
+					<input type="hidden" value={storage.storageId} />
+					<CardMedia
+						component="img"
+						height="240"
+						image={storage.image || 'https://via.placeholder.com/150'}
+						alt="Placeholder Image"
+					/>
+					<CardContent sx={{ padding: '10px' }}>
+						<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+							<Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+								{storage.storageName || 'Item Title'}
+							</Typography>
+							<div style={{ display: 'flex', alignItems: 'center' }}>
+								<StarIcon color="primary" />
+								<Typography variant="h6" sx={{ marginLeft: '8px' }}>
+									{storage.star || '4.54'}
+								</Typography>
+							</div>
+						</div>
+						<Typography variant="body2" color="textSecondary">
+							{storage.storageDescription || 'Item description...'}
+						</Typography>
+					</CardContent>
+				</Card>
+			</Link>
 		</div>
 	);
 };
