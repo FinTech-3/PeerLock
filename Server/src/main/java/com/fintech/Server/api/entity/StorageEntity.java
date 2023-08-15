@@ -2,6 +2,7 @@ package com.fintech.Server.api.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fintech.Server.api.entity.user.UserEntity;
+import com.fintech.Server.api.entity.user.UserStatus;
 import lombok.*;
 
 import javax.persistence.*;
@@ -64,6 +65,10 @@ public class StorageEntity extends BaseEntity{
 
     @Column(name = "return_policy", columnDefinition = "TEXT", nullable = false)
     private String returnPolicy;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", length = 20)
+    private StorageStatus status; // Available
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)

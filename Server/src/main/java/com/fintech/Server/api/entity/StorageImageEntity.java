@@ -19,7 +19,7 @@ public class StorageImageEntity {
     @Column(name = "image_name")
     private String imageName;
 
-    @Column(name = "image_path")
+    @Column(name = "image_path", length = 300)
     private String imagePath;
 
     @ManyToOne

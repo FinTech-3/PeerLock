@@ -30,6 +30,7 @@ const Storage = () => {
 		const fetch = async () => {
 			const data = await getStorageList();
 			setStorageList(data);
+			console.log(data);
 		};
 		fetch();
 	}, []);
