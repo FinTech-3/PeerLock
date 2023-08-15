@@ -3,6 +3,7 @@ package com.fintech.Server.api.service;
 import com.fintech.Server.api.dto.*;
 import com.fintech.Server.api.entity.StorageEntity;
 import com.fintech.Server.api.entity.StorageImageEntity;
+import com.fintech.Server.api.entity.StorageStatus;
 import com.fintech.Server.api.entity.user.UserEntity;
 import com.fintech.Server.api.repository.StorageImageRepository;
 import com.fintech.Server.api.repository.StorageRepository;
@@ -56,6 +57,7 @@ public class StorageServiceImpl implements StorageService {
                     .availableFrom(request.getAvailableFrom())
                     .availableUntil(request.getAvailableUntil())
                     .returnPolicy(request.getReturnPolicy())
+                    .status(StorageStatus.AVAILABLE)
                     .build();
             StorageEntity savedStorage = storageRepository.save(storageEntity);
 
@@ -84,8 +86,10 @@ public class StorageServiceImpl implements StorageService {
         List<StorageListResponseDto> storageDtos = new ArrayList<>();
 
         for (StorageEntity storageEntity : storageEntities) {
-            StorageListResponseDto dto = convertToDto(storageEntity);
-            storageDtos.add(dto);
+            if (!storageEntity.getStatus().name().equals("DELETED")) {
+                StorageListResponseDto dto = convertToDto(storageEntity);
+                storageDtos.add(dto);
+            }
         }
 
         return storageDtos;
@@ -103,6 +107,22 @@ public class StorageServiceImpl implements StorageService {
         StorageListResponseDto storageListResponseDto = convertToDto(storageEntity);
 
         return ResponseEntity.ok(storageListResponseDto);
+    }
+
+    @Override
+    public ResponseEntity deleteStorage(Long storageId) {
+        Optional<StorageEntity> storageOpt = storageRepository.findById(storageId);
+
+        if (!storageOpt.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        StorageEntity storageEntity = storageOpt.get();
+        storageEntity.setStatus(StorageStatus.DELETED);
+        storageRepository.save(storageEntity);
+
+        return ResponseEntity.ok().build();
+
     }
 
     private StorageListResponseDto convertToDto(StorageEntity storageEntity) {
@@ -127,6 +147,7 @@ public class StorageServiceImpl implements StorageService {
         dto.setReturnPolicy(storageEntity.getReturnPolicy());
         dto.setCreatedAt(storageEntity.getCreatedAt());
         dto.setUpdatedAt(storageEntity.getUpdatedAt());
+        dto.setStatus(storageEntity.getStatus().name());
 
 
         // Images

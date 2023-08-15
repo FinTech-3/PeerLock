@@ -16,6 +16,8 @@ public interface StorageService {
 
     // R : 창고 Detail
     ResponseEntity<StorageListResponseDto> getStorageDetail(Long storageId);
+
     // U : 창고 정보 수정
     // D : 창고 삭제
+    ResponseEntity deleteStorage(Long storageId);
 }
