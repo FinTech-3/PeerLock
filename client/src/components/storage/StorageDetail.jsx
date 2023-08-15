@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import FixedBottomNavigation from '../FixBottomNavigation';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -13,19 +13,21 @@ import {
 	Box,
 	Divider,
 } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ShareIcon from '@mui/icons-material/Share';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import StarIcon from '@mui/icons-material/Star';
-import SmokeFreeOutlinedIcon from '@mui/icons-material/SmokeFreeOutlined';
-import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
-import FireExtinguisherOutlinedIcon from '@mui/icons-material/FireExtinguisherOutlined';
-import CommentOutlinedIcon from '@mui/icons-material/CommentOutlined';
-import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
-import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
+import {
+	ArrowBack as ArrowBackIcon,
+	Share as ShareIcon,
+	Favorite as FavoriteIcon,
+	FavoriteBorderOutlined as FavoriteBorderOutlinedIcon,
+	LocationOn as LocationOnIcon,
+	ArrowForwardIos as ArrowForwardIosIcon,
+	Star as StarIcon,
+	SmokeFreeOutlined as SmokeFreeOutlinedIcon,
+	VideocamOutlined as VideocamOutlinedIcon,
+	FireExtinguisherOutlined as FireExtinguisherOutlinedIcon,
+	CommentOutlined as CommentOutlinedIcon,
+	CalendarMonthOutlined as CalendarMonthOutlinedIcon,
+	AccessTimeOutlined as AccessTimeOutlinedIcon,
+} from '@mui/icons-material';
 
 const StorageDetail = ({ storage }) => {
 	const settings = {
@@ -35,17 +37,12 @@ const StorageDetail = ({ storage }) => {
 		slidesToShow: 1,
 		slidesToScroll: 1,
 	};
+
 	const [isFavorited, setIsFavorited] = useState(false);
-
-	const favoriteClick = () => {
-		setIsFavorited(prevState => !prevState);
-	};
-
-	// const dummyPrice = (storage.storagePrice * 1.5).toLocaleString();
-	// const price = storage.storagePrice.toLocaleString();
+	const favoriteClick = () => setIsFavorited(!isFavorited);
 
 	return (
-		<div style={{ maxHeight: '100vh', overflowY: 'auto' }}>
+		<Box style={{ maxHeight: '100vh', overflowY: 'auto' }}>
 			<Card sx={{ width: '100%' }}>
 				<Slider {...settings}>
 					{storage.images &&
@@ -58,55 +55,42 @@ const StorageDetail = ({ storage }) => {
 									alt={`Image ${idx}`}
 									sx={{ objectFit: 'cover' }}
 								/>
-								{/* Icons */}
 								<Box
 									sx={{
+										position: 'absolute',
+										top: 2,
+										left: 2,
 										backgroundColor: 'white',
 										borderRadius: '50%',
-										display: 'inline-flex',
-										alignItems: 'center',
-										justifyContent: 'center',
 										width: '40px',
 										height: '40px',
+										display: 'flex',
+										alignItems: 'center',
+										justifyContent: 'center',
 										boxShadow: '0px 0px 5px rgba(0, 0, 0, 0.2)',
 									}}
-									position="absolute"
-									top={15}
-									left={15}
 								>
 									<ArrowBackIcon color="Neutral" />
 								</Box>
 								<Box
-									position="absolute"
-									top={15}
-									right={15}
-									display="flex"
-									alignItems="center"
-									gap={1}
+									sx={{
+										position: 'absolute',
+										top: 2,
+										right: 2,
+										display: 'flex',
+										alignItems: 'center',
+										gap: 1,
+									}}
 								>
 									<Box
 										sx={{
 											backgroundColor: 'white',
 											borderRadius: '50%',
-											display: 'inline-flex',
-											alignItems: 'center',
-											justifyContent: 'center',
 											width: '40px',
 											height: '40px',
-											boxShadow: '0px 0px 5px rgba(0, 0, 0, 0.2)',
-										}}
-									>
-										<ShareIcon color="Neutral" />
-									</Box>
-									<Box
-										sx={{
-											backgroundColor: 'white',
-											borderRadius: '50%',
-											display: 'inline-flex',
+											display: 'flex',
 											alignItems: 'center',
 											justifyContent: 'center',
-											width: '40px',
-											height: '40px',
 											boxShadow: '0px 0px 5px rgba(0, 0, 0, 0.2)',
 										}}
 										onClick={favoriteClick}
@@ -116,6 +100,20 @@ const StorageDetail = ({ storage }) => {
 										) : (
 											<FavoriteBorderOutlinedIcon color="Neutral" />
 										)}
+									</Box>
+									<Box
+										sx={{
+											backgroundColor: 'white',
+											borderRadius: '50%',
+											width: '40px',
+											height: '40px',
+											display: 'flex',
+											alignItems: 'center',
+											justifyContent: 'center',
+											boxShadow: '0px 0px 5px rgba(0, 0, 0, 0.2)',
+										}}
+									>
+										<ShareIcon color="Neutral" />
 									</Box>
 								</Box>
 							</Box>
@@ -320,7 +318,7 @@ const StorageDetail = ({ storage }) => {
 				</CardActions>
 			</Card>
 			<FixedBottomNavigation />
-		</div>
+		</Box>
 	);
 };
 

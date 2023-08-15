@@ -63,10 +63,6 @@ const StorageList = ({ storage }) => {
 								</Typography>
 							</div>
 						</div>
-
-						{/* <Typography variant="body2" color="textSecondary">
-							{storage.storageDescription || 'Item description...'}
-						</Typography> */}
 					</CardContent>
 				</Card>
 			</Link>
