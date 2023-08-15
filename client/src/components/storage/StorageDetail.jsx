@@ -58,8 +58,8 @@ const StorageDetail = ({ storage }) => {
 								<Box
 									sx={{
 										position: 'absolute',
-										top: 2,
-										left: 2,
+										top: 15,
+										left: 15,
 										backgroundColor: 'white',
 										borderRadius: '50%',
 										width: '40px',
@@ -75,8 +75,8 @@ const StorageDetail = ({ storage }) => {
 								<Box
 									sx={{
 										position: 'absolute',
-										top: 2,
-										right: 2,
+										top: 15,
+										right: 15,
 										display: 'flex',
 										alignItems: 'center',
 										gap: 1,
