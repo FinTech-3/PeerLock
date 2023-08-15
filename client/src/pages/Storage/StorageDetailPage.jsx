@@ -18,8 +18,7 @@ const StorageDetailPage = () => {
 
 	return (
 		<div>
-			<AppHeader title={'Storage Detail'} />
-			<StorageDetail storageDetail={storageDetail} />
+			<StorageDetail storage={storageDetail} />
 		</div>
 	);
 };
