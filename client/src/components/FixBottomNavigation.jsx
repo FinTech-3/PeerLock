@@ -47,7 +47,7 @@ export default function FixedBottomNavigation() {
 				>
 					<BottomNavigationAction
 						component={Link}
-						to="/storage"
+						to="/home"
 						label="Home"
 						icon={<HomeOutlinedIcon />}
 					/>

@@ -19,6 +19,7 @@ export const Routes = () => {
 		<Router>
 			<ReactRouterRoutes>
 				<Route exact path="/" element={<Login />} />
+				<Route exact path="/home" element={<Home />} />
 				<Route exact path="/chat" element={<Chat />} />
 				<Route exact path="/map" element={<MapScreen />} />
 				<Route exact path="/wish" element={<Wish />} />
