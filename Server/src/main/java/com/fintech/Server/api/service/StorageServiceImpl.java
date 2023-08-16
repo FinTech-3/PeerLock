@@ -80,9 +80,25 @@ public class StorageServiceImpl implements StorageService {
         }
     }
 
+//    @Override
+//    public List<StorageListResponseDto> getAllStorages() {
+//        List<StorageEntity> storageEntities = storageRepository.findAll();
+//        List<StorageListResponseDto> storageDtos = new ArrayList<>();
+//
+//        for (StorageEntity storageEntity : storageEntities) {
+//            if (!storageEntity.getStatus().name().equals("DELETED")) {
+//                StorageListResponseDto dto = convertToDto(storageEntity);
+//                storageDtos.add(dto);
+//            }
+//        }
+//
+//        return storageDtos;
+//    }
+
+    // 최신 순으로 목록 가져오기
     @Override
     public List<StorageListResponseDto> getAllStorages() {
-        List<StorageEntity> storageEntities = storageRepository.findAll();
+        List<StorageEntity> storageEntities = storageRepository.findAllByOrderByCreatedAtDesc();
         List<StorageListResponseDto> storageDtos = new ArrayList<>();
 
         for (StorageEntity storageEntity : storageEntities) {
@@ -94,6 +110,7 @@ public class StorageServiceImpl implements StorageService {
 
         return storageDtos;
     }
+
 
     @Override
     public ResponseEntity<StorageListResponseDto> getStorageDetail(Long storageId) {
