@@ -112,7 +112,7 @@ public class UserServiceImpl implements UserService {
         logger.debug("service : " + userId);
         Optional<UserEntity> userOpt = userRepository.findById(userId);
 
-        if(userOpt.isPresent()) {
+        if(!userOpt.isPresent()) {
             logger.debug(userOpt.toString());
             return ResponseEntity.notFound().build();
         }
@@ -154,6 +154,8 @@ public class UserServiceImpl implements UserService {
         dto.setStatus(userEntity.getStatus().name());
 
         // storage
+
+        /*
         StorageListResponseDto storageDto = new StorageListResponseDto();
 
         StorageEntity storageEntity = userEntity.getStorages().get(0);
@@ -178,6 +180,44 @@ public class UserServiceImpl implements UserService {
         storageDto.setStatus(storageEntity.getStatus().name());
 
         dto.setStorage(storageDto);
+        */
+
+        /*
+        if (!userEntity.getStorages().isEmpty()) {
+            dto.setStorageId(userEntity.getStorages().get(0).getStorageId());
+        }
+        */
+
+
+        List<StorageListResponseDto> storageDtos = new ArrayList<>();
+
+        for (StorageEntity storageEntity : userEntity.getStorages()) {
+
+            StorageListResponseDto storageDto = new StorageListResponseDto();
+
+            storageDto.setStorageId(storageEntity.getStorageId());
+            storageDto.setStorageName(storageEntity.getStorageName());
+            storageDto.setStorageAddress(storageEntity.getStorageAddress());
+
+            storageDto.setStorageLatitude(storageEntity.getStorageLatitude());
+            storageDto.setStorageLongitude(storageEntity.getStorageLongitude());
+            storageDto.setStorageTotalCapacity(storageEntity.getStorageTotalCapacity());
+            storageDto.setStorageAvailableCapacity(storageEntity.getStorageAvailableCapacity());
+            storageDto.setStorageUsage(storageEntity.getStorageUsage());
+            storageDto.setStoragePrice(storageEntity.getStoragePrice());
+            storageDto.setServiceCommission(storageEntity.getServiceCommission());
+            storageDto.setStorageDescription(storageEntity.getStorageDescription());
+            storageDto.setAvailableFrom(storageEntity.getAvailableFrom());
+            storageDto.setAvailableUntil(storageEntity.getAvailableUntil());
+            storageDto.setReturnPolicy(storageEntity.getReturnPolicy());
+            storageDto.setCreatedAt(storageEntity.getCreatedAt());
+            storageDto.setUpdatedAt(storageEntity.getUpdatedAt());
+            storageDto.setStatus(storageEntity.getStatus().name());
+
+             storageDtos.add(storageDto);
+        }
+
+
 
         return dto;
     }

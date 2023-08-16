@@ -22,6 +22,10 @@ public class UserInfoResponseDto {
     private Date userBirth;
     private String userPhoneNumber;
     private String status;
-    private StorageListResponseDto storage;
+
+    // private StorageListResponseDto storage;
+     // private Long storageId;
+
+    private List<StorageListResponseDto> storages;
 
 }

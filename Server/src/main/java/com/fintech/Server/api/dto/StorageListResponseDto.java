@@ -12,7 +12,9 @@ import java.util.List;
 @Data
 
 public class StorageListResponseDto {
-    private UserResponseDto user;
+
+    // private UserResponseDto user;
+    private Long userId;
     private Long storageId;
     private String storageName;
     private String storageAddress;
