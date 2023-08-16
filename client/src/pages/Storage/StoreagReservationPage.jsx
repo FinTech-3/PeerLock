@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import AppHeader from '../../components/common/AppHeader';
-import StorageDetail from '../../components/storage/StorageDetail';
+import StorageReservationComponent from '../../components/storage/StoreagReservationComponent';
 import { getStorageDetail } from '../../api/getStorageDetail';
 
-const StorageDetailPage = () => {
+const StoreagReservationPage = () => {
 	const [storageDetail, setStorageDetail] = useState([]);
 	const { storageId } = useParams();
 
@@ -18,9 +18,9 @@ const StorageDetailPage = () => {
 
 	return (
 		<div>
-			<StorageDetail storage={storageDetail} />
+			<StorageReservationComponent storage={storageDetail} />
 		</div>
 	);
 };
 
-export default StorageDetailPage;
+export default StoreagReservationPage;
