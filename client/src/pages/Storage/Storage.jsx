@@ -36,7 +36,7 @@ const Storage = () => {
 
 	return (
 		<div style={{ maxHeight: '100vh', overflowY: 'auto' }}>
-			<SearchComponent />
+			{/* <SearchComponent /> */}
 			<Box
 				display="flex"
 				justifyContent="space-between"
@@ -74,7 +74,7 @@ const Storage = () => {
 				))}
 			</Grid>
 
-			<FixedBottomNavigation />
+			{/* <FixedBottomNavigation /> */}
 		</div>
 	);
 };

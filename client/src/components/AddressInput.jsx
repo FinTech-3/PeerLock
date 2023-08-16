@@ -6,6 +6,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
 import axios from 'axios';
 
+// todo: js cors 에러 해결해야 함
 const AddressInput = ({ lat, lng }) => {
 	const { naver } = window;
 
