@@ -3,12 +3,16 @@ import GlobalStyles from './GlobalStyles';
 import { Routes } from './pages/Routes';
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+
 function Layout({ children }) {
 	return (
 		<div
 			css={css`
-				max-width: 1200px;
 				width: 100%;
+				max-width: 1200px;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
 				height: auto;
 				overflow-y: auto;
 				// display: flex;
