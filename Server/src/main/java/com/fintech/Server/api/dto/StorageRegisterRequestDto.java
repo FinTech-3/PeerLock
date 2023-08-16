@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,4 +25,14 @@ public class StorageRegisterRequestDto {
     private Date availableUntil;
     private String returnPolicy;
     private Long userId; // UserEntity의 ID를 참조하기 위한 필드
+
+    // 이미지 저장
+    private List<ImageInfo> images;
+
+    @Data
+    public static class ImageInfo {
+        private String imageName;
+        private String imagePath;
+    }
+
 }

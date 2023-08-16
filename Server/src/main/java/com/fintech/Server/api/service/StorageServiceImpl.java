@@ -1,12 +1,11 @@
 package com.fintech.Server.api.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fintech.Server.api.dto.StorageListResponseDto;
-import com.fintech.Server.api.dto.StorageRegisterRequestDto;
-import com.fintech.Server.api.dto.UserInfoResponseDto;
-import com.fintech.Server.api.dto.UserResponseDto;
+import com.fintech.Server.api.dto.*;
 import com.fintech.Server.api.entity.StorageEntity;
+import com.fintech.Server.api.entity.StorageImageEntity;
+import com.fintech.Server.api.entity.StorageStatus;
 import com.fintech.Server.api.entity.user.UserEntity;
+import com.fintech.Server.api.repository.StorageImageRepository;
 import com.fintech.Server.api.repository.StorageRepository;
 import com.fintech.Server.api.repository.UserRepository;
 import org.slf4j.Logger;
@@ -15,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -23,14 +21,17 @@ import java.util.stream.Collectors;
 public class StorageServiceImpl implements StorageService {
     private static final Logger logger = LoggerFactory.getLogger(StorageServiceImpl.class);
     private final StorageRepository storageRepository;
+    private final StorageImageRepository storageImageRepository;
     private final UserRepository userRepository;
 
     public StorageServiceImpl(
             @Autowired StorageRepository storageRepository,
-            @Autowired UserRepository userRepository
+            @Autowired UserRepository userRepository,
+            @Autowired StorageImageRepository storageImageRepository
     ) {
         this.storageRepository = storageRepository;
         this.userRepository = userRepository;
+        this.storageImageRepository = storageImageRepository;
     }
 
 
@@ -39,6 +40,8 @@ public class StorageServiceImpl implements StorageService {
         Optional<UserEntity> user = userRepository.findById(request.getUserId());
         // todo: user.Status = HOST 일 때 수행하도록
         if (user.get().getStatus().name().equals("HOST")) {
+
+            // 등록 창고 저장
             StorageEntity storageEntity = StorageEntity.builder()
                     .user(user.get())
                     .storageName(request.getStorageName())
@@ -54,9 +57,22 @@ public class StorageServiceImpl implements StorageService {
                     .availableFrom(request.getAvailableFrom())
                     .availableUntil(request.getAvailableUntil())
                     .returnPolicy(request.getReturnPolicy())
+                    .status(StorageStatus.AVAILABLE)
                     .build();
-
             StorageEntity savedStorage = storageRepository.save(storageEntity);
+
+            // 여러 이미지 저장
+            List<StorageRegisterRequestDto.ImageInfo> imageInfos = request.getImages();
+
+            for (StorageRegisterRequestDto.ImageInfo imageInfo : imageInfos) {
+                StorageImageEntity storageImageEntity = StorageImageEntity.builder()
+                        .storage(savedStorage) // 연관 관계 설정
+                        .imageName(imageInfo.getImageName())
+                        .imagePath(imageInfo.getImagePath())
+                        .build();
+                storageImageRepository.save(storageImageEntity);
+            }
+
 
             return savedStorage;
         } else {
@@ -70,8 +86,10 @@ public class StorageServiceImpl implements StorageService {
         List<StorageListResponseDto> storageDtos = new ArrayList<>();
 
         for (StorageEntity storageEntity : storageEntities) {
-            StorageListResponseDto dto = convertToDto(storageEntity);
-            storageDtos.add(dto);
+            if (!storageEntity.getStatus().name().equals("DELETED")) {
+                StorageListResponseDto dto = convertToDto(storageEntity);
+                storageDtos.add(dto);
+            }
         }
 
         return storageDtos;
@@ -80,12 +98,31 @@ public class StorageServiceImpl implements StorageService {
     @Override
     public ResponseEntity<StorageListResponseDto> getStorageDetail(Long storageId) {
         Optional<StorageEntity> storageOpt = storageRepository.findById(storageId);
+
         if (!storageOpt.isPresent()) {
             return ResponseEntity.notFound().build();
         }
+
         StorageEntity storageEntity = storageOpt.get();
         StorageListResponseDto storageListResponseDto = convertToDto(storageEntity);
+
         return ResponseEntity.ok(storageListResponseDto);
+    }
+
+    @Override
+    public ResponseEntity deleteStorage(Long storageId) {
+        Optional<StorageEntity> storageOpt = storageRepository.findById(storageId);
+
+        if (!storageOpt.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        StorageEntity storageEntity = storageOpt.get();
+        storageEntity.setStatus(StorageStatus.DELETED);
+        storageRepository.save(storageEntity);
+
+        return ResponseEntity.ok().build();
+
     }
 
     private StorageListResponseDto convertToDto(StorageEntity storageEntity) {
@@ -110,6 +147,17 @@ public class StorageServiceImpl implements StorageService {
         dto.setReturnPolicy(storageEntity.getReturnPolicy());
         dto.setCreatedAt(storageEntity.getCreatedAt());
         dto.setUpdatedAt(storageEntity.getUpdatedAt());
+        dto.setStatus(storageEntity.getStatus().name());
+
+
+        // Images
+        List<StorageImageResponseDto> imageDtos = storageEntity.getStorageImages()
+                .stream()
+                .map(image -> new StorageImageResponseDto(image.getImageName(), image.getImagePath()))
+                .collect(Collectors.toList());
+
+        dto.setImages(imageDtos);
+
 
         // User
         UserResponseDto userDto = new UserResponseDto();
@@ -118,6 +166,7 @@ public class StorageServiceImpl implements StorageService {
         userDto.setStatus(storageEntity.getUser().getStatus().name());
 
         dto.setUser(userDto);
+
 
         return dto;
     }

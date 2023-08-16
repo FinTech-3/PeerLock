@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 import java.util.Date;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,5 +30,7 @@ public class StorageListResponseDto {
     private String returnPolicy;
     private Instant createdAt;
     private Instant updatedAt;
+    private String status;
+    private List<StorageImageResponseDto> images;
 
 }

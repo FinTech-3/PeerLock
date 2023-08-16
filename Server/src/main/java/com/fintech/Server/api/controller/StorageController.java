@@ -49,5 +49,9 @@ public class StorageController {
     }
     // U : 창고 정보 수정
     // D : 창고 삭제
+    @DeleteMapping("/{storageId}")
+    public ResponseEntity deleteStorage(@PathVariable("storageId") Long storageId) {
+        return storageService.deleteStorage(storageId);
+    }
 }
 
