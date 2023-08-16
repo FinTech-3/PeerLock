@@ -22,7 +22,6 @@ const Storage = ({ modalOpen, handleOpenModal, handleCloseModal, storageList, se
 
 	const handleFilterChange = event => {
 		setFilter(event.target.value);
-		// You can implement further logic here, e.g., sort the storageList based on the selected filter.
 	};
 
 	useEffect(() => {

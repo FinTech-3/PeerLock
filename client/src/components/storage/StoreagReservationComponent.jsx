@@ -236,19 +236,19 @@ const StorageReservationComponent = ({ storage }) => {
 						</Typography>
 					</Box>
 					<Button
-						variant="outlined"
+						variant="contained" // "outlined"를 "contained"로 변경하여 버튼에 배경색을 추가합니다.
 						fullWidth
 						component="label"
 						sx={{
 							display: 'flex',
 							alignItems: 'center',
 							justifyContent: 'center',
-							color: 'black',
-							borderColor: 'gray',
+							color: 'white', // 텍스트 색상을 하얀색으로 설정
 							boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.15)',
 							borderRadius: '10px',
+							backgroundColor: 'primary.main', // 배경색을 primary로 설정
 							'&:hover': {
-								backgroundColor: '#1565c0',
+								backgroundColor: 'primary.dark', // hover 시에는 어두운 primary 색상으로 변경
 							},
 						}}
 					>
