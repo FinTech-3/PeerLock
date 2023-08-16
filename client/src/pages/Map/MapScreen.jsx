@@ -6,11 +6,12 @@ import { NavermapsProvider } from 'react-naver-maps';
 import SearchComponent from '../../components/common/SearchComponent';
 
 const MapScreen = () => {
-	const [lat, setLat] = useState(37.54);
-	const [lng, setLng] = useState(126.99);
+	const [lat, setLat] = useState(37.5234935);
+	const [lng, setLng] = useState(126.9284844);
 	const [zoom, setZoom] = useState(12);
 	const [roadAddress, setRoadAddress] = useState(null);
 	const [openModal, setOpenModal] = useState(false);
+	const [storageList, setStorageList] = useState([]);
 
 	const handleOpenModal = () => {
 		setOpenModal(true);
@@ -32,6 +33,7 @@ const MapScreen = () => {
 						Latitude={lat}
 						Longtitude={lng}
 						roadAddress={roadAddress}
+						storageList={storageList}
 					/>
 					<div style={{ position: 'absolute', top: '0', width: '100%' }}>
 						<SearchComponent />
@@ -52,6 +54,8 @@ const MapScreen = () => {
 							modalOpen={openModal}
 							handleOpenModal={() => handleOpenModal()}
 							handleCloseModal={() => handleCloseModal()}
+							storageList={storageList}
+							setStorageList={setStorageList}
 						/>
 					</div>
 				) : (
@@ -68,6 +72,8 @@ const MapScreen = () => {
 							modalOpen={openModal}
 							handleOpenModal={handleOpenModal}
 							handleCloseModal={handleCloseModal}
+							storageList={storageList}
+							setStorageList={setStorageList}
 						/>
 					</div>
 				)}

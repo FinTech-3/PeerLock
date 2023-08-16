@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Container as MapDiv, NaverMap, Marker, useNavermaps } from 'react-naver-maps';
 
-const NaverMapComponent = () => {
+const NaverMapComponent = ({ storageList }) => {
 	const navermaps = useNavermaps();
-	const [storage, setStorage] = useState([]);
 	return (
 		<MapDiv
 			style={{
@@ -12,8 +11,15 @@ const NaverMapComponent = () => {
 				height: '900px',
 			}}
 		>
-			<NaverMap defaultCenter={new navermaps.LatLng(37.3595704, 127.105399)} defaultZoom={15}>
-				<Marker defaultPosition={new navermaps.LatLng(37.3595704, 127.105399)} />
+			<NaverMap defaultCenter={new navermaps.LatLng(37.5234935, 126.9284844)} defaultZoom={15}>
+				{storageList.map((storage, index) => (
+					<Marker
+						key={index}
+						defaultPosition={
+							new navermaps.LatLng(storage.storageLatitude, storage.storageLongitude)
+						}
+					/>
+				))}
 			</NaverMap>
 		</MapDiv>
 	);
