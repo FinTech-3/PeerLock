@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import FixedBottomNavigation from '../FixBottomNavigation';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';

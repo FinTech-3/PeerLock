@@ -12,6 +12,7 @@ import MapScreen from './Map/MapScreen';
 import Storage from './Storage/Storage';
 import StorageDetailPage from './Storage/StorageDetailPage';
 import Login from './Home/Login';
+import StoreagReservationPage from './Storage/StoreagReservationPage';
 
 export const Routes = () => {
 	return (
@@ -24,7 +25,8 @@ export const Routes = () => {
 				<Route exact path="/my" element={<My />} />
 				<Route exact path="/storage" element={<Storage />} />
 				<Route exact path="/login" element={<Login />} />
-				<Route exact path="/storage-detail/:storageId" element={<StorageDetailPage />} />
+				<Route exact path="/storage/detail/:storageId" element={<StorageDetailPage />} />
+				<Route exact path="/storage/reservation/:storageId" element={<StoreagReservationPage />} />
 				<Route path="*" element={<Navigate replace to="/" />} />
 			</ReactRouterRoutes>
 		</Router>
