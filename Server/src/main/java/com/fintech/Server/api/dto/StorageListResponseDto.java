@@ -1,9 +1,7 @@
 package com.fintech.Server.api.dto;
 
 import com.fintech.Server.api.entity.user.UserEntity;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.Instant;
 import java.util.Date;
@@ -12,6 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+
 public class StorageListResponseDto {
     private UserResponseDto user;
     private Long storageId;
