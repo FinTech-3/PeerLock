@@ -57,7 +57,7 @@ const StorageList = ({ storage }) => {
 								<LocationOnOutlinedIcon sx={{ color: 'gray' }} />
 								<Typography
 									variant="h6"
-									sx={{ marginLeft: '0px', color: 'gray', fontSize: '14px' }} // 여기서 marginLeft 값을 조정하여 거리를 조절하세요.
+									sx={{ marginLeft: '0px', color: 'gray', fontSize: '14px' }}
 								>
 									{storage.star || '1.2km'}
 								</Typography>
