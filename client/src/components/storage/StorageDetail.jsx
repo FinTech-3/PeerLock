@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import FixedBottomNavigation from '../FixBottomNavigation';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -42,6 +43,16 @@ const StorageDetail = ({ storage }) => {
 	const [isFavorited, setIsFavorited] = useState(false);
 	const favoriteClick = () => setIsFavorited(!isFavorited);
 
+	const navigate = useNavigate(); // React Router v6의 useNavigate 훅을 사용
+
+	const handleButtonClick = () => {
+		navigate(`/storage/reservation/${storage.storageId}`); // 해당 경로로 이동
+	};
+
+	const handleBoxClick = () => {
+		navigate('/map'); // /map 경로로 이동
+	};
+
 	return (
 		<Box style={{ maxHeight: '100vh', overflowY: 'auto' }}>
 			<Card sx={{ width: '100%' }}>
@@ -57,6 +68,7 @@ const StorageDetail = ({ storage }) => {
 									sx={{ objectFit: 'cover' }}
 								/>
 								<Box
+									onClick={handleBoxClick} // Box 클릭 시 handleBoxClick 함수 호출
 									sx={{
 										position: 'absolute',
 										top: 15,
@@ -304,13 +316,14 @@ const StorageDetail = ({ storage }) => {
 					<Button
 						size="medium"
 						variant="contained"
+						onClick={handleButtonClick} // 버튼 클릭 시 handleButtonClick 함수 호출
 						sx={{
 							backgroundColor: '#1976d2',
 							color: 'white',
 							fontSize: '18px',
 							boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.15)',
 							'&:hover': {
-								backgroundColor: '#1565c0', // 이것은 버튼에 마우스를 올렸을 때의 배경색 변경을 위한 것입니다.
+								backgroundColor: '#1565c0',
 							},
 						}}
 					>
