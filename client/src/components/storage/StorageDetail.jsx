@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import FixedBottomNavigation from '../FixBottomNavigation';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -54,7 +53,7 @@ const StorageDetail = ({ storage }) => {
 	};
 
 	return (
-		<Box style={{ maxHeight: '100vh', overflowY: 'auto' }}>
+		<Box style={{ maxHeight: '100vh', overflowY: 'auto', paddingBottom: '50px' }}>
 			<Card sx={{ width: '100%' }}>
 				<Slider {...settings}>
 					{storage.images &&
@@ -318,12 +317,16 @@ const StorageDetail = ({ storage }) => {
 						variant="contained"
 						onClick={handleButtonClick} // 버튼 클릭 시 handleButtonClick 함수 호출
 						sx={{
-							backgroundColor: '#1976d2',
-							color: 'white',
-							fontSize: '18px',
+							display: 'flex',
+							alignItems: 'center',
+							justifyContent: 'center',
+							color: 'white', // 텍스트 색상을 하얀색으로 설정
+							fontSize: '20px',
 							boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.15)',
+							borderRadius: '10px',
+							backgroundColor: 'primary.light', // 배경색을 primary로 설정
 							'&:hover': {
-								backgroundColor: '#1565c0',
+								backgroundColor: 'primary.dark', // hover 시에는 어두운 primary 색상으로 변경
 							},
 						}}
 					>
@@ -331,7 +334,6 @@ const StorageDetail = ({ storage }) => {
 					</Button>
 				</CardActions>
 			</Card>
-			<FixedBottomNavigation />
 		</Box>
 	);
 };
