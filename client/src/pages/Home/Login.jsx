@@ -94,7 +94,7 @@ const Login = () => {
 						}}
 						fullWidth
 						// onClick={() => handleLogin(username, password)}
-						onClick={() => navigate('/home')}
+						onClick={() => navigate('/HomeHost')}
 					>
 						Login (바로 Storage 감)
 					</Button>

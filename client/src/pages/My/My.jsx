@@ -60,7 +60,7 @@ function My() {
 
 				<Button variant="outlined" size="small" sx={{ marginTop: -12, marginLeft: 33 }}>
 					호스트로 전환 &rarr;{' '}
-					{/* this is seriously messed up, fix if needed. formatting is very broken */}
+					{/* this is seriously messed up, fix only if needed. formatting is very broken, should work fine for iphone 12 pro */}
 				</Button>
 			</div>
 			<Paper
@@ -229,6 +229,7 @@ function My() {
 			<Paper
 				sx={{
 					padding: 1.5,
+					paddingBottom: 8,
 					marginBottom: 0,
 					width: '98%',
 					display: 'flex',

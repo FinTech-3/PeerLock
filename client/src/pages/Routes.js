@@ -4,7 +4,8 @@ import {
 	Routes as ReactRouterRoutes,
 	Navigate,
 } from 'react-router-dom';
-import Home from './Home/Home';
+import HomeHost from './Home/HomeHost';
+import HomeGuest from './Home/HomeGuest';
 import Chat from './Chat/Chat';
 import Wish from './Wish/Wish';
 import My from './My/My';
@@ -19,7 +20,8 @@ export const Routes = () => {
 		<Router>
 			<ReactRouterRoutes>
 				<Route exact path="/" element={<Login />} />
-				<Route exact path="/home" element={<Home />} />
+				<Route exact path="/homehost" element={<HomeHost />} />
+				<Route exact path="/homeuser" element={<HomeGuest />} />
 				<Route exact path="/chat" element={<Chat />} />
 				<Route exact path="/map" element={<MapScreen />} />
 				<Route exact path="/wish" element={<Wish />} />
