@@ -85,7 +85,9 @@ const Storage = ({ modalOpen, handleOpenModal, handleCloseModal, storageList, se
 
 					<Grid container spacing={3} sx={{ padding: '20px', paddingTop: '5px' }}>
 						{storageList.map(item => (
-							<Grid item xs={12} sm={6} md={3} key={item.storageId}>
+							<Grid item xs={12} key={item.storageId}>
+								{' '}
+								{/* xs={12}만 사용 */}
 								<StorageList storage={item} />
 							</Grid>
 						))}

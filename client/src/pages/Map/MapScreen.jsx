@@ -38,45 +38,47 @@ const MapScreen = () => {
 					<div style={{ position: 'absolute', top: '0', width: '100%' }}>
 						<SearchComponent />
 					</div>
+					{openModal ? (
+						<div
+							style={{
+								position: 'absolute',
+								bottom: '0',
+								width: '100%',
+								maxWidth: '1200px',
+								height: '100%',
+								backgroundColor: 'white',
+								marginTop: '10%',
+							}}
+						>
+							<Storage
+								modalOpen={openModal}
+								handleOpenModal={() => handleOpenModal()}
+								handleCloseModal={() => handleCloseModal()}
+								storageList={storageList}
+								setStorageList={setStorageList}
+							/>
+						</div>
+					) : (
+						<div
+							style={{
+								position: 'absolute',
+								bottom: '0',
+								width: '100%',
+								height: '40%',
+								backgroundColor: 'white',
+							}}
+						>
+							<Storage
+								modalOpen={openModal}
+								handleOpenModal={handleOpenModal}
+								handleCloseModal={handleCloseModal}
+								storageList={storageList}
+								setStorageList={setStorageList}
+							/>
+						</div>
+					)}
 				</div>
-				{openModal ? (
-					<div
-						style={{
-							position: 'absolute',
-							bottom: '0',
-							width: '100%',
-							height: '100%',
-							backgroundColor: 'white',
-							marginTop: '10%',
-						}}
-					>
-						<Storage
-							modalOpen={openModal}
-							handleOpenModal={() => handleOpenModal()}
-							handleCloseModal={() => handleCloseModal()}
-							storageList={storageList}
-							setStorageList={setStorageList}
-						/>
-					</div>
-				) : (
-					<div
-						style={{
-							position: 'absolute',
-							bottom: '0',
-							width: '100%',
-							height: '40%',
-							backgroundColor: 'white',
-						}}
-					>
-						<Storage
-							modalOpen={openModal}
-							handleOpenModal={handleOpenModal}
-							handleCloseModal={handleCloseModal}
-							storageList={storageList}
-							setStorageList={setStorageList}
-						/>
-					</div>
-				)}
+
 				<FixedBottomNavigation />
 			</NavermapsProvider>
 		</div>
