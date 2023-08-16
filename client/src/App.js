@@ -1,8 +1,11 @@
+import { Suspense } from 'react';
 import './styles/app.scss';
 import GlobalStyles from './GlobalStyles';
 import { Routes } from './pages/Routes';
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import CircularProgress from '@mui/material/CircularProgress';
+import { Box } from '@mui/material';
 
 function Layout({ children }) {
 	return (
@@ -30,7 +33,15 @@ function App() {
 		<>
 			<GlobalStyles />
 			<Layout>
-				<Routes />
+				<Suspense
+					fallback={
+						<Box display="flex" justifyContent="center" alignItems="center" minHeight="80vh">
+							<CircularProgress />
+						</Box>
+					}
+				>
+					<Routes />
+				</Suspense>
 			</Layout>
 		</>
 	);
