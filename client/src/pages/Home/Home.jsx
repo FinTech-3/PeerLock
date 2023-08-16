@@ -3,8 +3,6 @@ import FixedBottomNavigation from '../../components/FixBottomNavigation';
 import { ButtonBase, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-// this page will be the guest info page
-
 const Home = () => {
 	return (
 		<div>
