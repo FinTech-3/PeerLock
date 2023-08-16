@@ -16,8 +16,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
-const Storage = ({ modalOpen, handleOpenModal, handleCloseModal }) => {
-	const [storageList, setStorageList] = useState([]);
+const Storage = ({ modalOpen, handleOpenModal, handleCloseModal, storageList, setStorageList }) => {
 	const [filter, setFilter] = useState('가격순');
 	const [loading, setLoading] = useState(true);
 
@@ -86,7 +85,9 @@ const Storage = ({ modalOpen, handleOpenModal, handleCloseModal }) => {
 
 					<Grid container spacing={3} sx={{ padding: '20px', paddingTop: '5px' }}>
 						{storageList.map(item => (
-							<Grid item xs={12} sm={6} md={3} key={item.storageId}>
+							<Grid item xs={12} key={item.storageId}>
+								{' '}
+								{/* xs={12}만 사용 */}
 								<StorageList storage={item} />
 							</Grid>
 						))}

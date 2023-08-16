@@ -3,6 +3,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import AppHeader from '../../components/common/AppHeader';
 import StorageReservationComponent from '../../components/storage/StoreagReservationComponent';
 import { getStorageDetail } from '../../api/getStorageDetail';
+import FixedBottomNavigation from '../../components/FixBottomNavigation';
 
 const StoreagReservationPage = () => {
 	const [storageDetail, setStorageDetail] = useState([]);
@@ -19,6 +20,7 @@ const StoreagReservationPage = () => {
 	return (
 		<div>
 			<StorageReservationComponent storage={storageDetail} />
+			<FixedBottomNavigation />
 		</div>
 	);
 };
