@@ -22,20 +22,27 @@ const StorageReservationComponent = ({ storage }) => {
 	const [selectedDate, setSelectedDate] = useState(new Date().toISOString().slice(0, 10)); // 현재 날짜로 초기화
 	const [selectedPayment, setSelectedPayment] = useState(null);
 
+	const [uploadedImages, setUploadedImages] = useState([]);
+
+	const handleImageChange = e => {
+		const files = Array.from(e.target.files);
+		const fileURLs = files.map(file => URL.createObjectURL(file));
+		setUploadedImages(prevState => [...prevState, ...fileURLs]);
+	};
+
 	return (
 		<Box style={{ maxHeight: '100vh', overflowY: 'auto' }}>
 			<Box display="flex" alignItems="center" p={1}>
 				<Button
 					startIcon={<ArrowBackIcon />}
 					onClick={() => {
-						// 뒤로 가기 로직을 추가합니다. 예를 들면, 브라우저의 뒤로가기 기능을 호출할 수 있습니다.
 						window.history.back();
 					}}
 				>
 					뒤로가기
 				</Button>
 			</Box>
-			<Divider sx={{ margin: '0px 0px' }} />
+			<Divider sx={{ margin: '0px 0px', borderTop: '3px solid lightgray' }} />
 			<Card sx={{ width: '100%' }}>
 				<Box display="flex">
 					<Box width="40%" display="flex" alignItems="stretch" padding="15px" paddingRight="0px">
@@ -75,7 +82,7 @@ const StorageReservationComponent = ({ storage }) => {
 					</Box>
 				</Box>
 
-				<Divider sx={{ margin: '0px 0px' }} />
+				<Divider sx={{ margin: '0px 0px', borderTop: '3px solid lightgray' }} />
 
 				<CardContent>
 					{/* 예약 날짜 선택 */}
@@ -102,7 +109,7 @@ const StorageReservationComponent = ({ storage }) => {
 						<Button
 							variant="outlined"
 							fullWidth
-							component="label" // 이를 통해 버튼이 파일 입력을 위한 레이블 역할을 하게 됩니다.
+							component="label"
 							sx={{
 								marginTop: '8px',
 								display: 'flex',
@@ -118,21 +125,29 @@ const StorageReservationComponent = ({ storage }) => {
 							}}
 						>
 							사진 업로드
-							<input
-								type="file"
-								hidden
-								multiple // 여러 파일을 한번에 선택할 수 있게 합니다.
-								onChange={e => {
-									const files = e.target.files;
-									// 이곳에서 선택한 파일들을 처리할 수 있습니다.
-									console.log(files);
-								}}
-							/>
+							<input type="file" hidden multiple onChange={handleImageChange} />
 						</Button>
+
+						{/* Uploaded images preview */}
+						<Box mt={2} display="flex" flexDirection="row" gap={2} flexWrap="wrap">
+							{uploadedImages.map((image, index) => (
+								<img
+									key={index}
+									src={image}
+									alt={`uploaded-img-${index}`}
+									style={{
+										width: '100px',
+										height: '100px',
+										objectFit: 'cover',
+										boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.15)',
+									}}
+								/>
+							))}
+						</Box>
 					</Box>
 				</CardContent>
 
-				<Divider sx={{ margin: '0px 0px' }} />
+				<Divider sx={{ margin: '0px 0px', borderTop: '3px solid lightgray' }} />
 
 				<CardContent>
 					<Typography variant="h5" sx={{ paddingBottom: '10px', fontWeight: 'bold' }}>
@@ -165,7 +180,7 @@ const StorageReservationComponent = ({ storage }) => {
 					</Box>
 				</CardContent>
 
-				<Divider sx={{ margin: '0px 0px' }} />
+				<Divider sx={{ margin: '0px 0px', borderTop: '3px solid lightgray' }} />
 
 				<CardContent>
 					{/* 결제 수단 선택 */}
@@ -200,7 +215,7 @@ const StorageReservationComponent = ({ storage }) => {
 					</Box>
 				</CardContent>
 
-				<Divider sx={{ margin: '0px 0px' }} />
+				<Divider sx={{ margin: '0px 0px', borderTop: '3px solid lightgray' }} />
 
 				<CardActions
 					style={{
