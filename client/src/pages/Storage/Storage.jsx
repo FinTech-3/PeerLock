@@ -16,8 +16,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
-const Storage = ({ modalOpen, handleOpenModal, handleCloseModal }) => {
-	const [storageList, setStorageList] = useState([]);
+const Storage = ({ modalOpen, handleOpenModal, handleCloseModal, storageList, setStorageList }) => {
 	const [filter, setFilter] = useState('가격순');
 	const [loading, setLoading] = useState(true);
 
