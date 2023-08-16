@@ -11,7 +11,7 @@ const StorageList = ({ storage }) => {
 
 	return (
 		<div>
-			<Link to={`/storage-detail/${storage.storageId}`} style={{ textDecoration: 'none' }}>
+			<Link to={`/storage/detail/${storage.storageId}`} style={{ textDecoration: 'none' }}>
 				<Card
 					sx={{
 						borderRadius: '20px',
