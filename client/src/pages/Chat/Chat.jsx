@@ -53,7 +53,7 @@ const Chat = () => {
 			path: 'http://localhost:3000/chat',
 			chatImage: 'https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/chat6.png',
 		},
-		// ... 기타 채팅 목록 데이터
+		// ... 기타 채팅 목록 데이터gif
 	];
 	return (
 		<div>
