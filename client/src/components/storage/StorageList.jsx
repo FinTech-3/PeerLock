@@ -49,7 +49,8 @@ const StorageList = ({ storage }) => {
 						</div>
 						<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
 							<Typography variant="h6" sx={{ fontSize: '14px', marginBottom: '0' }}>
-								<b style={{ textDecoration: 'line-through', color: 'gray' }}>₩{dummyPrice}</b>&nbsp;
+								<b style={{ textDecoration: 'line-through', color: 'gray' }}>₩{dummyPrice}</b>
+								&nbsp;
 								{'₩' + price || '₩ 10,000'}
 								<b style={{ color: 'gray' }}>&nbsp;/월(단기)</b>
 							</Typography>
