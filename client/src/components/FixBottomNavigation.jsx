@@ -71,8 +71,8 @@ export default function FixedBottomNavigation() {
 					/>
 					<BottomNavigationAction
 						component={Link}
-						to="/my"
-						label="My"
+						to="/MyGuest"
+						label="Profile"
 						icon={<PersonOutlineOutlinedIcon />}
 					/>
 				</BottomNavigation>

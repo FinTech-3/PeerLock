@@ -143,7 +143,170 @@ function My() {
 			<Paper
 				sx={{
 					padding: 1.5,
-					marginTop: 0,
+					marginTop: 2,
+					width: '98%',
+					display: 'flex',
+					alignItems: 'flex-start',
+					flexDirection: 'column',
+					position: 'left',
+					boxShadow: 0,
+				}}
+			>
+				{/* Text content */}
+				<Typography variant="h6">호스트 뷰</Typography>
+			</Paper>
+
+			<Paper
+				sx={{
+					paddingLeft: 1.5,
+					paddingTop: 3,
+					paddingBottom: 3,
+					paddingRight: 3,
+					marginBottom: 0,
+					width: '98%',
+					display: 'flex',
+					alignItems: 'center', // Center both horizontally and vertically
+					flexDirection: 'row',
+					position: 'left',
+					boxShadow: 0,
+					borderTop: '1px solid lightgrey',
+					borderBottom: '1px solid lightgrey',
+				}}
+			>
+				{/* Emoji */}
+				<div
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						paddingRight: '20px',
+					}}
+				>
+					<span style={{ fontSize: '24px' }}>✅</span>
+				</div>
+				{/* Text content */}
+				<div>
+					<Typography variant="h6">호스트 되기</Typography>
+				</div>
+			</Paper>
+			<Paper
+				sx={{
+					padding: 1.5,
+					marginTop: 4,
+					width: '98%',
+					display: 'flex',
+					alignItems: 'flex-start',
+					flexDirection: 'column',
+					position: 'left',
+					boxShadow: 0,
+				}}
+			>
+				{/* Text content */}
+				<Typography variant="h6">계정관리</Typography>
+			</Paper>
+			<Paper
+				sx={{
+					paddingLeft: 1.5,
+					paddingTop: 3,
+					paddingBottom: 3,
+					paddingRight: 3,
+					marginBottom: 0,
+					width: '98%',
+					display: 'flex',
+					alignItems: 'center', // Center both horizontally and vertically
+					flexDirection: 'row',
+					position: 'left',
+					boxShadow: 0,
+					borderTop: '1px solid lightgrey',
+				}}
+			>
+				{/* Emoji */}
+				<div
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						paddingRight: '20px',
+					}}
+				>
+					<span style={{ fontSize: '24px' }}>ℹ️</span>
+				</div>
+				{/* Text content */}
+				<div>
+					<Typography variant="h6">계정정보</Typography>
+				</div>
+			</Paper>
+
+			<Paper
+				sx={{
+					paddingLeft: 1.5,
+					paddingTop: 3,
+					paddingBottom: 3,
+					paddingRight: 3,
+					marginBottom: 0,
+					width: '98%',
+					display: 'flex',
+					alignItems: 'center', // Center both horizontally and vertically
+					flexDirection: 'row',
+					position: 'left',
+					boxShadow: 0,
+					borderTop: '1px solid lightgrey',
+				}}
+			>
+				{/* Emoji */}
+				<div
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						paddingRight: '20px',
+					}}
+				>
+					<span style={{ fontSize: '24px' }}>＄</span>
+				</div>
+				{/* Text content */}
+				<div>
+					<Typography variant="h6">계좌정보</Typography>
+				</div>
+			</Paper>
+			<Paper
+				sx={{
+					paddingLeft: 1.5,
+					paddingTop: 3,
+					paddingBottom: 3,
+					paddingRight: 3,
+					marginBottom: 0,
+					width: '98%',
+					display: 'flex',
+					alignItems: 'center', // Center both horizontally and vertically
+					flexDirection: 'row',
+					position: 'left',
+					boxShadow: 0,
+					borderTop: '1px solid lightgrey',
+					borderBottom: '1px solid lightgrey',
+				}}
+			>
+				{/* Emoji */}
+				<div
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						paddingRight: '20px',
+					}}
+				>
+					<span style={{ fontSize: '24px' }}>🔔</span>
+				</div>
+				{/* Text content */}
+				<div>
+					<Typography variant="h6">알림설정</Typography>
+				</div>
+			</Paper>
+
+			<Paper
+				sx={{
+					padding: 1.5,
+					marginTop: 4,
 					width: '98%',
 					display: 'flex',
 					alignItems: 'flex-start',
@@ -163,7 +326,7 @@ function My() {
 					marginBottom: 0,
 					width: '98%',
 					display: 'flex',
-					alignItems: 'left',
+					alignItems: 'center', // Center both horizontally and vertically
 					flexDirection: 'row',
 					position: 'left',
 					boxShadow: 0,
@@ -171,7 +334,16 @@ function My() {
 				}}
 			>
 				{/* Emoji */}
-				<span style={{ fontSize: '24px', paddingRight: '15px' }}>😀</span>
+				<div
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						paddingRight: '20px',
+					}}
+				>
+					<span style={{ fontSize: '24px' }}>😀</span>
+				</div>
 				{/* Text content */}
 				<div>
 					<Typography variant="h6">로그인 설정</Typography>
@@ -183,11 +355,14 @@ function My() {
 			{/* FAQ help */}
 			<Paper
 				sx={{
-					padding: 1.5,
+					paddingLeft: 1.5,
+					paddingTop: 3,
+					paddingBottom: 3,
+					paddingRight: 3,
 					marginBottom: 0,
 					width: '98%',
 					display: 'flex',
-					alignItems: 'left',
+					alignItems: 'center', // Center both horizontally and vertically
 					flexDirection: 'row',
 					position: 'left',
 					boxShadow: 0,
@@ -195,7 +370,16 @@ function My() {
 				}}
 			>
 				{/* Emoji */}
-				<span style={{ fontSize: '24px', paddingRight: '15px', paddingBottom: '25px' }}>❓</span>
+				<div
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						paddingRight: '20px',
+					}}
+				>
+					<span style={{ fontSize: '24px' }}>❓</span>
+				</div>
 				{/* Text content */}
 				<div>
 					<Typography variant="h6">자주 묻는 질문</Typography>
@@ -208,7 +392,7 @@ function My() {
 					marginBottom: 0,
 					width: '98%',
 					display: 'flex',
-					alignItems: 'left',
+					alignItems: 'center', // Center both horizontally and vertically
 					flexDirection: 'row',
 					position: 'left',
 					boxShadow: 0,
@@ -216,7 +400,16 @@ function My() {
 				}}
 			>
 				{/* Emoji */}
-				<span style={{ fontSize: '24px', paddingRight: '15px' }}>📞</span>
+				<div
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						paddingRight: '20px',
+					}}
+				>
+					<span style={{ fontSize: '24px' }}>📞</span>
+				</div>
 				{/* Text content */}
 				<div>
 					<Typography variant="h6">상담원 연결</Typography>
@@ -225,15 +418,15 @@ function My() {
 					</Typography>
 				</div>
 			</Paper>
+
 			{/* chatbot help */}
 			<Paper
 				sx={{
 					padding: 1.5,
-					paddingBottom: 8,
-					marginBottom: 0,
+					marginBottom: 7.5,
 					width: '98%',
 					display: 'flex',
-					alignItems: 'left',
+					alignItems: 'center', // Center both horizontally and vertically
 					flexDirection: 'row',
 					position: 'left',
 					boxShadow: 0,
@@ -241,10 +434,19 @@ function My() {
 				}}
 			>
 				{/* Emoji */}
-				<span style={{ fontSize: '24px', paddingRight: '15px' }}>💬</span>
+				<div
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						paddingRight: '20px',
+					}}
+				>
+					<span style={{ fontSize: '24px' }}>💬</span>
+				</div>
 				{/* Text content */}
 				<div>
-					<Typography variant="h6">쳇봇 1:1 질문하기</Typography>
+					<Typography variant="h6">챗봇 1:1 질문하기</Typography>
 					<Typography variant="body2" sx={{ color: 'grey' }}>
 						24시간 운영
 					</Typography>

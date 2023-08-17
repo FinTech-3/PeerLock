@@ -8,7 +8,8 @@ import HomeHost from './Home/HomeHost';
 import HomeGuest from './Home/HomeGuest';
 import Chat from './Chat/Chat';
 import Wish from './Wish/Wish';
-import My from './My/My';
+import MyGuest from './My/MyGuest';
+import MyHost from './My/MyHost';
 import MapScreen from './Map/MapScreen';
 import Storage from './Storage/Storage';
 import StorageDetailPage from './Storage/StorageDetailPage';
@@ -25,7 +26,8 @@ export const Routes = () => {
 				<Route exact path="/chat" element={<Chat />} />
 				<Route exact path="/map" element={<MapScreen />} />
 				<Route exact path="/wish" element={<Wish />} />
-				<Route exact path="/my" element={<My />} />
+				<Route exact path="/myGuest" element={<MyGuest />} />
+				<Route exact path="/myHost" element={<MyHost />} />
 				<Route exact path="/storage" element={<Storage />} />
 				<Route exact path="/login" element={<Login />} />
 				<Route exact path="/storage/detail/:storageId" element={<StorageDetailPage />} />
