@@ -27,7 +27,7 @@ const NaverMapComponent = ({ storageList }) => {
 		<MapDiv
 			style={{
 				width: '100%',
-				height: '900px',
+				height: '800px',
 			}}
 		>
 			<NaverMap defaultCenter={new navermaps.LatLng(37.5234935, 126.9284844)} defaultZoom={15}>

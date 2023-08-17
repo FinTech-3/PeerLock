@@ -38,6 +38,8 @@ const MapScreen = () => {
 					<div style={{ position: 'absolute', top: '0', width: '100%' }}>
 						<SearchComponent />
 					</div>
+				</div>
+				<div>
 					{openModal ? (
 						<div
 							style={{
