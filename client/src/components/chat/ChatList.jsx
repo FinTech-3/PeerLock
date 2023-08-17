@@ -9,6 +9,14 @@ import Divider from '@mui/material/Divider';
 import { Link } from 'react-router-dom';
 import { Box } from '@mui/material';
 
+const SquareImage = ({ src, alt }) => {
+	return (
+		<div style={{ width: '50px', height: '50px', overflow: 'hidden' }}>
+			<img src={src} alt={alt} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+		</div>
+	);
+};
+
 const ChatList = ({ chats }) => {
 	return (
 		<List>
@@ -18,9 +26,14 @@ const ChatList = ({ chats }) => {
 						<div style={{ width: '100%', boxSizing: 'border-box' }}>
 							<ListItemButton component={Link} to={`${chat.path}`}>
 								<ListItemAvatar>
-									<Avatar src={chat.profileImage} />
+									<Avatar>
+										<img src={chat.profileImage} alt="Profile" width="40" height="40" />
+									</Avatar>
 								</ListItemAvatar>
 								<ListItemText primary={chat.username} secondary={chat.lastMessage} />
+								<div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>
+									<SquareImage src={chat.chatImage} alt="Chat" />
+								</div>
 							</ListItemButton>
 							{index !== chats.length && <Divider />}
 						</div>
