@@ -1,28 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Typography, IconButton, Button, Avatar, Paper } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import SettingsIcon from '@mui/icons-material/Settings';
 import FixedBottomNavigation from '../../components/FixBottomNavigation';
 
 async function switchView(user_id) {
+	// need to get user id first from api
 	try {
-		// Make an API call to the server to get the user's status
-		const response = await fetch(`api/user/host/${user_id}`);
+		// Make an API call to get the user's status
+		const response = await fetch(`/api/user/guest/${user_id}`);
 		const data = await response.json();
 
 		// Check if the user is a host or a guest
 		if (data && data.status === 'HOST') {
-			return 'MyHost'; // Return the view for the host
+			return 'MyHost';
 		} else {
-			return 'MyGuest'; // Return the view for the guest
+			return 'MyGuest';
 		}
 	} catch (error) {
-		alert('Error fetching user status:', error);
-		return null;
+		console.error('Error fetching user status:', error);
+		throw error;
 	}
 }
 
 function MyGuest() {
 	const navigate = useNavigate();
+	const [user_id, setUser_id] = useState('');
+	// get user_id from api
+
+	const handleButtonClick = async () => {
+		try {
+			const view = await switchView(user_id); // Replace with the actual user ID
+
+			if (view === 'MyHost') {
+				navigate('/MyHost'); // Replace with the actual guest route
+			}
+		} catch (error) {
+			alert('Error:', error);
+			// Handle the error accordingly
+		}
+	};
 
 	return (
 		<div style={{ maxHeight: '100vh', overflowX: 'hidden', overflowY: 'auto' }}>
@@ -82,7 +99,7 @@ function MyGuest() {
 					variant="outlined"
 					size="small"
 					sx={{ marginTop: -12, marginLeft: 33 }}
-					onClick={navigate(`/${switchView(1)}`)} // replace with real user id
+					onClick={handleButtonClick} // replace with real user id (TODO)
 				>
 					호스트로 전환 &rarr;{' '}
 					{/* this is seriously messed up, fix only if needed. formatting is very broken, should work fine for iphone 12 pro */}
