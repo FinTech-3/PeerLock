@@ -1,19 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Typography, TextField, Button, Avatar, Paper } from '@mui/material';
-
-const handleLogin = (username, password) => {
-	// input validation logic here
-	// connect to api
-	// console.log(username);
-	// console.log(password);
-};
+import { login } from '../../api/login';
+import Home from './HomeHost';
 
 const Login = () => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
+	const [user, setUser] = useState('');
 
 	const navigate = useNavigate();
+
+	const handleLogin = (username, password) => {
+		const fetch = async () => {
+			const data = await login(username, password);
+			setUser(data);
+			console.log(data);
+			if (data.status === 'HOST') {
+				// navigate(`/homehost/${data.userId}`);
+				navigate(`/homehost`);
+			} else if (data.status === 'USER') {
+				navigate(`/homeuser`);
+				// navigate(`/homeuser/${data.userId}`);
+			} else {
+				navigate(`/`);
+			}
+		};
+		fetch();
+	};
 
 	return (
 		<div
@@ -93,8 +107,8 @@ const Login = () => {
 							},
 						}}
 						fullWidth
-						// onClick={() => handleLogin(username, password)}
-						onClick={() => navigate('/HomeHost')}
+						onClick={() => handleLogin(username, password)}
+						// onClick={() => navigate('/HomeHost')}
 					>
 						Login (바로 Storage 감)
 					</Button>
