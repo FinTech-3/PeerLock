@@ -17,6 +17,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import FixedBottomNavigation from '../../components/FixBottomNavigation';
 import AddStorageCard from '../../components/my/AddStorageCard';
+import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 
 const MyStoragePage = ({}) => {
 	const [filter, setFilter] = useState('가격순');
@@ -32,7 +33,7 @@ const MyStoragePage = ({}) => {
 	useEffect(() => {
 		const fetch = async () => {
 			const data = await getStorageList();
-			// setStorageList(null);
+			setStorageList(data);
 			setLoading(false);
 		};
 		fetch();
@@ -54,19 +55,28 @@ const MyStoragePage = ({}) => {
 					</Box>
 				) : (
 					<>
-						<Grid container spacing={3} sx={{ padding: '20px', paddingTop: '5px' }}>
-							{storageList.length === 0 ? (
-								<Grid item xs={12}>
-									<AddStorageCard />
-								</Grid>
-							) : (
-								storageList.map(item => (
-									<Grid item xs={12} key={item.storageId}>
-										<StorageList storage={item} />
+						<div>
+							<Grid container spacing={3} sx={{ padding: '20px', paddingTop: '5px' }}>
+								{storageList.length === 0 ? (
+									<Grid item xs={12}>
+										<AddStorageCard />
 									</Grid>
-								))
-							)}
-						</Grid>
+								) : (
+									storageList.map(item => (
+										<Grid item xs={12} key={item.storageId}>
+											<StorageList storage={item} />
+										</Grid>
+									))
+								)}
+							</Grid>
+						</div>
+						<div>
+							<Box>
+								<Button>
+									<AddCircleOutlinedIcon />
+								</Button>
+							</Box>
+						</div>
 					</>
 				)}
 			</div>

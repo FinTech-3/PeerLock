@@ -41,56 +41,58 @@ const Storage = ({ modalOpen, handleOpenModal, handleCloseModal, storageList, se
 				</Box>
 			) : (
 				<>
-					<Box
-						display="flex"
-						alignItems="center"
-						justifyContent="center"
-						sx={{ paddingTop: '4px', paddingLeft: '20px', paddingRight: '20px' }}
-					>
-						{modalOpen ? (
-							<KeyboardArrowDownIcon onClick={handleCloseModal} />
-						) : (
-							<KeyboardArrowUpIcon onClick={handleOpenModal} />
-						)}
-					</Box>
-					<Box
-						display="flex"
-						justifyContent="space-between"
-						alignItems="center"
-						sx={{ paddingTop: '2px', paddingLeft: '20px', paddingRight: '20px' }}
-					>
-						<Typography variant="h6" gutterBottom sx={{ fontSize: '14px', marginBottom: '0' }}>
-							<Box component="span" fontWeight="bold">
-								{storageList?.length}
-							</Box>
-							개의 검색결과
-						</Typography>
+					<div style={{ paddingBottom: '50px' }}>
+						<Box
+							display="flex"
+							alignItems="center"
+							justifyContent="center"
+							sx={{ paddingTop: '4px', paddingLeft: '20px', paddingRight: '20px' }}
+						>
+							{modalOpen ? (
+								<KeyboardArrowDownIcon onClick={handleCloseModal} />
+							) : (
+								<KeyboardArrowUpIcon onClick={handleOpenModal} />
+							)}
+						</Box>
+						<Box
+							display="flex"
+							justifyContent="space-between"
+							alignItems="center"
+							sx={{ paddingTop: '2px', paddingLeft: '20px', paddingRight: '20px' }}
+						>
+							<Typography variant="h6" gutterBottom sx={{ fontSize: '14px', marginBottom: '0' }}>
+								<Box component="span" fontWeight="bold">
+									{storageList?.length}
+								</Box>
+								개의 검색결과
+							</Typography>
 
-						<FormControl variant="outlined" size="small" sx={{ fontSize: '14px' }}>
-							<InputLabel>필터</InputLabel>
-							<Select
-								value={filter}
-								onChange={handleFilterChange}
-								label="필터"
-								sx={{ fontSize: 'inherit' }}
-							>
-								<MenuItem value="최신순">최신순</MenuItem>
-								<MenuItem value="인기도순">인기도순</MenuItem>
-								<MenuItem value="가격순">가격순</MenuItem>
-							</Select>
-						</FormControl>
-					</Box>
-					<Divider sx={{ margin: '10px 20px' }} />
+							<FormControl variant="outlined" size="small" sx={{ fontSize: '14px' }}>
+								<InputLabel>필터</InputLabel>
+								<Select
+									value={filter}
+									onChange={handleFilterChange}
+									label="필터"
+									sx={{ fontSize: 'inherit' }}
+								>
+									<MenuItem value="최신순">최신순</MenuItem>
+									<MenuItem value="인기도순">인기도순</MenuItem>
+									<MenuItem value="가격순">가격순</MenuItem>
+								</Select>
+							</FormControl>
+						</Box>
+						<Divider sx={{ margin: '10px 20px' }} />
 
-					<Grid container spacing={3} sx={{ padding: '20px', paddingTop: '5px' }}>
-						{storageList.map(item => (
-							<Grid item xs={12} key={item.storageId}>
-								{' '}
-								{/* xs={12}만 사용 */}
-								<StorageList storage={item} />
-							</Grid>
-						))}
-					</Grid>
+						<Grid container spacing={3} sx={{ padding: '20px', paddingTop: '5px' }}>
+							{storageList.map(item => (
+								<Grid item xs={12} key={item.storageId}>
+									{' '}
+									{/* xs={12}만 사용 */}
+									<StorageList storage={item} />
+								</Grid>
+							))}
+						</Grid>
+					</div>
 				</>
 			)}
 		</div>

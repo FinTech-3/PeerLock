@@ -31,7 +31,7 @@ const StorageReservationComponent = ({ storage }) => {
 	};
 
 	return (
-		<Box style={{ maxHeight: '100vh', overflowY: 'auto' }}>
+		<Box style={{ maxHeight: '100vh', overflowY: 'auto', paddingBottom: '60px' }}>
 			<Box display="flex" alignItems="center" p={1}>
 				<Button
 					startIcon={<ArrowBackIcon />}
@@ -244,9 +244,10 @@ const StorageReservationComponent = ({ storage }) => {
 							alignItems: 'center',
 							justifyContent: 'center',
 							color: 'white', // 텍스트 색상을 하얀색으로 설정
+							fontSize: '20px',
 							boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.15)',
 							borderRadius: '10px',
-							backgroundColor: 'primary.main', // 배경색을 primary로 설정
+							backgroundColor: 'primary.light', // 배경색을 primary로 설정
 							'&:hover': {
 								backgroundColor: 'primary.dark', // hover 시에는 어두운 primary 색상으로 변경
 							},
