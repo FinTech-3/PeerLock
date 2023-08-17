@@ -19,7 +19,7 @@ export default function FixedBottomNavigation() {
 
 	function getInitialValue(path) {
 		switch (path) {
-			case '/home':
+			case '/HomeHost':
 				return 0;
 			case '/wish':
 				return 1;
@@ -27,7 +27,7 @@ export default function FixedBottomNavigation() {
 				return 2;
 			case '/chat':
 				return 3;
-			case '/my':
+			case '/MyGuest':
 				return 4;
 			default:
 				return 0; // 기본값
