@@ -34,7 +34,7 @@ const Storage = ({ modalOpen, handleOpenModal, handleCloseModal, storageList, se
 	}, []);
 
 	return (
-		<>
+		<div>
 			{loading ? (
 				<div style={{ display: 'flex', marginTop: '100px', justifyContent: 'center' }}>
 					<CircularProgress />
@@ -95,7 +95,7 @@ const Storage = ({ modalOpen, handleOpenModal, handleCloseModal, storageList, se
 					</div>
 				</div>
 			)}
-		</>
+		</div>
 	);
 };
 
