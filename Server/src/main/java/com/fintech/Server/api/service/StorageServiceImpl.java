@@ -24,6 +24,7 @@ public class StorageServiceImpl implements StorageService {
     private final StorageImageRepository storageImageRepository;
     private final UserRepository userRepository;
 
+    @Autowired
     public StorageServiceImpl(
             @Autowired StorageRepository storageRepository,
             @Autowired UserRepository userRepository,
@@ -175,7 +176,7 @@ public class StorageServiceImpl implements StorageService {
 
         dto.setImages(imageDtos);
 
-
+        /*
         // User
         UserResponseDto userDto = new UserResponseDto();
         userDto.setUserId(storageEntity.getUser().getUserId());
@@ -183,7 +184,14 @@ public class StorageServiceImpl implements StorageService {
         userDto.setStatus(storageEntity.getUser().getStatus().name());
 
         dto.setUser(userDto);
+        */
 
+
+        UserEntity userEntity = storageEntity.getUser();
+
+        if (userEntity != null && userEntity.getStorages() != null && !userEntity.getStorages().isEmpty()) {
+            dto.setUserId(userEntity.getStorages().get(0).getUser().getUserId());
+        }
 
         return dto;
     }

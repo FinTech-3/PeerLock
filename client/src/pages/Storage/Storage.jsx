@@ -34,13 +34,13 @@ const Storage = ({ modalOpen, handleOpenModal, handleCloseModal, storageList, se
 	}, []);
 
 	return (
-		<div style={{ maxHeight: '100vh', overflowY: 'auto' }}>
+		<div>
 			{loading ? (
-				<Box display="flex" justifyContent="center" alignItems="center" minHeight="80vh">
+				<div style={{ display: 'flex', marginTop: '100px', justifyContent: 'center' }}>
 					<CircularProgress />
-				</Box>
+				</div>
 			) : (
-				<>
+				<div style={{ maxHeight: '100vh', overflowY: 'auto' }}>
 					<div style={{ paddingBottom: '50px' }}>
 						<Box
 							display="flex"
@@ -93,7 +93,7 @@ const Storage = ({ modalOpen, handleOpenModal, handleCloseModal, storageList, se
 							))}
 						</Grid>
 					</div>
-				</>
+				</div>
 			)}
 		</div>
 	);

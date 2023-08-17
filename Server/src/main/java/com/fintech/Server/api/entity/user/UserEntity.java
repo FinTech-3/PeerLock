@@ -55,4 +55,6 @@ public class UserEntity extends BaseEntity {
 //    @Enumerated(EnumType.STRING)
 //    @Column(name = "oauth_provider", length = 10)
 //    private OAuthProvider oAuthProvider;
+
+
 }
