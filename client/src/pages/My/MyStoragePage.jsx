@@ -21,28 +21,24 @@ import FixedBottomNavigation from '../../components/FixBottomNavigation';
 import AddStorageCard from '../../components/my/AddStorageCard';
 import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import AppHeader from '../../components/common/AppHeader';
+import { getMyStorage } from '../../api/getMyStorage';
 
 const MyStoragePage = ({}) => {
 	const [filter, setFilter] = useState('가격순');
 	const [loading, setLoading] = useState(true);
 	const [storageList, setStorageList] = useState([]);
-	const [randStorage, setRandStorage] = useState([]);
 
-	const handleFilterChange = event => {
-		setFilter(event.target.value);
-	};
+	const userId = localStorage.getItem('userId');
 
 	// 나의 창고 목록을 가져오는 코드로 바꾸기
 	useEffect(() => {
 		const fetch = async () => {
-			const data = await getStorageList();
-			// setStorageList(data);
+			const data = await getMyStorage(userId);
+			setStorageList(data.storages);
 			setLoading(false);
 		};
 		fetch();
 	}, []);
-
-	// randStorage 가져오는 코드 짜기
 
 	return (
 		<div style={{ maxHeight: '100vh', overflowY: 'auto' }}>
@@ -75,7 +71,6 @@ const MyStoragePage = ({}) => {
 								)}
 							</Grid>
 						</div>
-						{/* 여기는 addStorage라면 출력안해야함 */}
 						{storageList.length === 0 ? (
 							<></>
 						) : (
