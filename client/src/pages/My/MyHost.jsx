@@ -1,9 +1,30 @@
 import React from 'react';
 import { Typography, IconButton, Button, Avatar, Paper } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import SettingsIcon from '@mui/icons-material/Settings';
 import FixedBottomNavigation from '../../components/FixBottomNavigation';
 
-function My() {
+async function switchView(user_id) {
+	try {
+		// Make an API call to the server to get the user's status
+		const response = await fetch(`api/user/host/${user_id}`);
+		const data = await response.json();
+
+		// Check if the user is a host or a guest
+		if (data && data.status === 'HOST') {
+			return 'MyHost'; // Return the view for the host
+		} else {
+			return 'MyGuest'; // Return the view for the guest
+		}
+	} catch (error) {
+		alert('Error fetching user status:', error);
+		return null;
+	}
+}
+
+function MyHost() {
+	const navigate = useNavigate();
+
 	return (
 		<div style={{ maxHeight: '100vh', overflowX: 'hidden', overflowY: 'auto' }}>
 			<div>
@@ -58,16 +79,20 @@ function My() {
 					{/* Replace with real name and level */}
 				</Paper>
 
-				<Button variant="outlined" size="small" sx={{ marginTop: -12, marginLeft: 33 }}>
-					호스트로 전환 &rarr;{' '}
+				<Button
+					variant="outlined"
+					size="small"
+					sx={{ marginTop: -12, marginLeft: 33 }}
+					onClick={navigate(`/${switchView(1)}`)} // replace with real user id
+				>
+					게스트로 전환 &rarr;{' '}
 					{/* this is seriously messed up, fix only if needed. formatting is very broken, should work fine for iphone 12 pro */}
 				</Button>
 			</div>
 			<Paper
 				sx={{
 					padding: 1.5,
-					marginTop: -0.5,
-					marginBottom: -0.5,
+					marginTop: 2,
 					width: '98%',
 					display: 'flex',
 					alignItems: 'flex-start',
@@ -77,73 +102,111 @@ function My() {
 				}}
 			>
 				{/* Text content */}
-				<Typography variant="h6">예악 히스토리</Typography>
+				<Typography variant="h6">계정관리</Typography>
 			</Paper>
-
-			{/* Rectangular Box */}
 			<Paper
 				sx={{
-					padding: 1.5,
-					margin: 'auto',
-					marginTop: 2,
-					border: '2px solid lightgrey',
-					borderRadius: '10px',
+					paddingLeft: 1.5,
+					paddingTop: 3,
+					paddingBottom: 3,
+					paddingRight: 3,
+					marginBottom: 0,
 					width: '98%',
 					display: 'flex',
-					alignItems: 'flex-start',
-					flexDirection: 'column',
-					position: 'relative',
+					alignItems: 'center', // Center both horizontally and vertically
+					flexDirection: 'row',
+					position: 'left',
+					boxShadow: 0,
+					borderTop: '1px solid lightgrey',
 				}}
 			>
-				{/* Small Picture */}
-				<Typography variant="h6">이용예정</Typography>
+				{/* Emoji */}
 				<div
 					style={{
-						width: '35%',
-						borderRadius: '10%', // Adjust the border radius as needed
-						overflow: 'hidden', // Ensure image stays within rounded corners
-						zIndex: 1,
-						marginBottom: '8px',
-						marginTop: '8px',
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						paddingRight: '20px',
 					}}
 				>
-					<img
-						src="/grahamroberts.jpeg" // Replace with real image path
-						alt="Small Picture"
-						style={{
-							width: '100%',
-							height: '100%',
-							objectFit: 'cover',
-						}}
-					/>
+					<span style={{ fontSize: '24px' }}>ℹ️</span>
 				</div>
-				{/* Date, time info,, replace with real date and time */}
-				<Typography variant="body1">
-					<strong>보관 시작</strong> | 2023.08.22(화), 오전 08:00
-				</Typography>
-				<Typography variant="body1">
-					<strong>보관 만료</strong> | 2023.08.22(화), 오후 12:00
-				</Typography>
+				{/* Text content */}
+				<div>
+					<Typography variant="h6">계정정보</Typography>
+				</div>
 			</Paper>
+
 			<Paper
 				sx={{
-					padding: 1.5,
-					marginTop: 2,
+					paddingLeft: 1.5,
+					paddingTop: 3,
+					paddingBottom: 3,
+					paddingRight: 3,
+					marginBottom: 0,
 					width: '98%',
 					display: 'flex',
-					alignItems: 'flex-start',
-					flexDirection: 'column',
+					alignItems: 'center', // Center both horizontally and vertically
+					flexDirection: 'row',
 					position: 'left',
 					boxShadow: 0,
+					borderTop: '1px solid lightgrey',
 				}}
 			>
+				{/* Emoji */}
+				<div
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						paddingRight: '20px',
+					}}
+				>
+					<span style={{ fontSize: '24px' }}>＄</span>
+				</div>
 				{/* Text content */}
-				<Typography variant="h6">최근 본 이력</Typography>
+				<div>
+					<Typography variant="h6">계좌정보</Typography>
+				</div>
 			</Paper>
 			<Paper
 				sx={{
+					paddingLeft: 1.5,
+					paddingTop: 3,
+					paddingBottom: 3,
+					paddingRight: 3,
+					marginBottom: 0,
+					width: '98%',
+					display: 'flex',
+					alignItems: 'center', // Center both horizontally and vertically
+					flexDirection: 'row',
+					position: 'left',
+					boxShadow: 0,
+					borderTop: '1px solid lightgrey',
+					borderBottom: '1px solid lightgrey',
+				}}
+			>
+				{/* Emoji */}
+				<div
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						paddingRight: '20px',
+					}}
+				>
+					<span style={{ fontSize: '24px' }}>🔔</span>
+				</div>
+				{/* Text content */}
+				<div>
+					<Typography variant="h6">알림설정</Typography>
+				</div>
+			</Paper>
+
+			<Paper
+				sx={{
 					padding: 1.5,
-					marginTop: 0,
+					marginTop: 4,
 					width: '98%',
 					display: 'flex',
 					alignItems: 'flex-start',
@@ -163,7 +226,7 @@ function My() {
 					marginBottom: 0,
 					width: '98%',
 					display: 'flex',
-					alignItems: 'left',
+					alignItems: 'center', // Center both horizontally and vertically
 					flexDirection: 'row',
 					position: 'left',
 					boxShadow: 0,
@@ -171,7 +234,16 @@ function My() {
 				}}
 			>
 				{/* Emoji */}
-				<span style={{ fontSize: '24px', paddingRight: '15px' }}>😀</span>
+				<div
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						paddingRight: '20px',
+					}}
+				>
+					<span style={{ fontSize: '24px' }}>😀</span>
+				</div>
 				{/* Text content */}
 				<div>
 					<Typography variant="h6">로그인 설정</Typography>
@@ -183,11 +255,14 @@ function My() {
 			{/* FAQ help */}
 			<Paper
 				sx={{
-					padding: 1.5,
+					paddingLeft: 1.5,
+					paddingTop: 3,
+					paddingBottom: 3,
+					paddingRight: 3,
 					marginBottom: 0,
 					width: '98%',
 					display: 'flex',
-					alignItems: 'left',
+					alignItems: 'center', // Center both horizontally and vertically
 					flexDirection: 'row',
 					position: 'left',
 					boxShadow: 0,
@@ -195,7 +270,16 @@ function My() {
 				}}
 			>
 				{/* Emoji */}
-				<span style={{ fontSize: '24px', paddingRight: '15px', paddingBottom: '25px' }}>❓</span>
+				<div
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						paddingRight: '20px',
+					}}
+				>
+					<span style={{ fontSize: '24px' }}>❓</span>
+				</div>
 				{/* Text content */}
 				<div>
 					<Typography variant="h6">자주 묻는 질문</Typography>
@@ -208,7 +292,7 @@ function My() {
 					marginBottom: 0,
 					width: '98%',
 					display: 'flex',
-					alignItems: 'left',
+					alignItems: 'center', // Center both horizontally and vertically
 					flexDirection: 'row',
 					position: 'left',
 					boxShadow: 0,
@@ -216,7 +300,16 @@ function My() {
 				}}
 			>
 				{/* Emoji */}
-				<span style={{ fontSize: '24px', paddingRight: '15px' }}>📞</span>
+				<div
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						paddingRight: '20px',
+					}}
+				>
+					<span style={{ fontSize: '24px' }}>📞</span>
+				</div>
 				{/* Text content */}
 				<div>
 					<Typography variant="h6">상담원 연결</Typography>
@@ -225,15 +318,15 @@ function My() {
 					</Typography>
 				</div>
 			</Paper>
+
 			{/* chatbot help */}
 			<Paper
 				sx={{
 					padding: 1.5,
-					paddingBottom: 8,
-					marginBottom: 0,
+					marginBottom: 7.5,
 					width: '98%',
 					display: 'flex',
-					alignItems: 'left',
+					alignItems: 'center', // Center both horizontally and vertically
 					flexDirection: 'row',
 					position: 'left',
 					boxShadow: 0,
@@ -241,10 +334,19 @@ function My() {
 				}}
 			>
 				{/* Emoji */}
-				<span style={{ fontSize: '24px', paddingRight: '15px' }}>💬</span>
+				<div
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						paddingRight: '20px',
+					}}
+				>
+					<span style={{ fontSize: '24px' }}>💬</span>
+				</div>
 				{/* Text content */}
 				<div>
-					<Typography variant="h6">쳇봇 1:1 질문하기</Typography>
+					<Typography variant="h6">챗봇 1:1 질문하기</Typography>
 					<Typography variant="body2" sx={{ color: 'grey' }}>
 						24시간 운영
 					</Typography>
@@ -257,4 +359,4 @@ function My() {
 	);
 }
 
-export default My;
+export default MyHost;

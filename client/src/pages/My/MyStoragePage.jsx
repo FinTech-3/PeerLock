@@ -11,7 +11,9 @@ import {
 	InputLabel,
 	Divider,
 	Button,
+	IconButton,
 } from '@mui/material';
+import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import CircularProgress from '@mui/material/CircularProgress';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -71,10 +73,15 @@ const MyStoragePage = ({}) => {
 							</Grid>
 						</div>
 						<div>
-							<Box>
-								<Button>
-									<AddCircleOutlinedIcon />
-								</Button>
+							<Box margin={2} mb={3} mt={0} display="flex" justifyContent="flex-end">
+								<IconButton
+									sx={{
+										backgroundColor: 'primary.light',
+										boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', // 여기에서 그림자의 크기, 방향, 색상 등을 조정하여 원하는 효과를 얻을 수 있습니다.
+									}}
+								>
+									<AddCircleOutlineOutlinedIcon color="white" fontSize="large" />
+								</IconButton>
 							</Box>
 						</div>
 					</>
