@@ -1,11 +1,11 @@
 import React from 'react';
-import { Card, CardMedia, CardContent, Typography, CardActions, Button } from '@mui/material';
+import { Card, CardMedia, CardContent, Typography } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import { Link } from 'react-router-dom';
 
-const StorageList = ({ storage }) => {
-	console.log(storage);
+// todo: api 변경에 따라 storage 변수 변경
+const WishList = ({ storage }) => {
 	const dummyPrice = (storage.storagePrice * 1.5).toLocaleString();
 	const price = storage.storagePrice.toLocaleString();
 
@@ -71,4 +71,4 @@ const StorageList = ({ storage }) => {
 	);
 };
 
-export default StorageList;
+export default WishList;
