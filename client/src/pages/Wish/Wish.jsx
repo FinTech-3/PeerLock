@@ -1,10 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import FixedBottomNavigation from '../../components/FixBottomNavigation';
+import { getWishList } from '../../api/getWishList';
+import { CircularProgress, Grid } from '@mui/material';
+import WishList from '../../components/wish/WishList';
+import AppHeader from '../../components/common/AppHeader';
 
 const Wish = () => {
+	const [loading, setLoading] = useState(true);
+	const [wishList, setWishList] = useState(true);
+
+	useEffect(() => {
+		const fetch = async () => {
+			const data = await getWishList();
+			setWishList(data);
+			setLoading(false);
+		};
+		fetch();
+	}, []);
+
 	return (
 		<div>
-			<span>wish화면</span>
+			<AppHeader title="Wish List" />
+			{loading ? (
+				<div
+					style={{
+						display: 'flex',
+						marginTop: '100px',
+						justifyContent: 'center',
+						alignItems: 'center',
+					}}
+				>
+					<CircularProgress />
+				</div>
+			) : (
+				<div style={{ maxHeight: '100vh', overflowY: 'auto' }}>
+					<Grid container spacing={3} style={{ padding: '20px' }}>
+						{wishList.map(item => (
+							<Grid item xs={12} sm={6} md={3} key={item.storageId}>
+								<WishList storage={item} />
+							</Grid>
+						))}
+					</Grid>
+					<FixedBottomNavigation />
+				</div>
+			)}
 			<FixedBottomNavigation />
 		</div>
 	);
