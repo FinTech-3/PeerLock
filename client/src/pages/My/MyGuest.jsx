@@ -3,7 +3,27 @@ import { Typography, IconButton, Button, Avatar, Paper } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 import FixedBottomNavigation from '../../components/FixBottomNavigation';
 
-function My() {
+async function switchView(user_id) {
+	try {
+		// Make an API call to the server to get the user's status
+		const response = await fetch(`api/user/host/${user_id}`);
+		const data = await response.json();
+
+		// Check if the user is a host or a guest
+		if (data && data.status === 'HOST') {
+			return 'MyHost'; // Return the view for the host
+		} else {
+			return 'MyGuest'; // Return the view for the guest
+		}
+	} catch (error) {
+		alert('Error fetching user status:', error);
+		return null;
+	}
+}
+
+function MyGuest() {
+	const navigate = useNavigate();
+
 	return (
 		<div style={{ maxHeight: '100vh', overflowX: 'hidden', overflowY: 'auto' }}>
 			<div>
@@ -58,7 +78,12 @@ function My() {
 					{/* Replace with real name and level */}
 				</Paper>
 
-				<Button variant="outlined" size="small" sx={{ marginTop: -12, marginLeft: 33 }}>
+				<Button
+					variant="outlined"
+					size="small"
+					sx={{ marginTop: -12, marginLeft: 33 }}
+					onClick={navigate(`/${switchView(1)}`)} // replace with real user id
+				>
 					호스트로 전환 &rarr;{' '}
 					{/* this is seriously messed up, fix only if needed. formatting is very broken, should work fine for iphone 12 pro */}
 				</Button>
@@ -459,4 +484,4 @@ function My() {
 	);
 }
 
-export default My;
+export default MyGuest;
