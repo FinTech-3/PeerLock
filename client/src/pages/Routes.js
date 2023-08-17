@@ -15,6 +15,7 @@ import Storage from './Storage/Storage';
 import StorageDetailPage from './Storage/StorageDetailPage';
 import Login from './Home/Login';
 import StoreagReservationPage from './Storage/StoreagReservationPage';
+import StoreagReservationUploadPage from './Storage/StorageReservationUploadPage';
 import MyStoragePage from './My/MyStoragePage';
 
 export const Routes = () => {
@@ -32,7 +33,16 @@ export const Routes = () => {
 				<Route exact path="/storage" element={<Storage />} />
 				<Route exact path="/login" element={<Login />} />
 				<Route exact path="/storage/detail/:storageId" element={<StorageDetailPage />} />
-				<Route exact path="/storage/reservation/:storageId" element={<StoreagReservationPage />} />
+				<Route
+					exact
+					path="/storage/reservation/upload/:storageId"
+					element={<StoreagReservationUploadPage />}
+				/>
+				<Route
+					exact
+					path="/storage/reservation/confirm/:storageId"
+					element={<StoreagReservationPage />}
+				/>
 
 				<Route exact path="/mystorage" element={<MyStoragePage />} />
 				<Route path="*" element={<Navigate replace to="/" />} />

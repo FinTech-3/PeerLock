@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import {
 	Typography,
 	Button,
@@ -21,8 +22,11 @@ import {
 const StorageReservationComponent = ({ storage }) => {
 	const [selectedDate, setSelectedDate] = useState(new Date().toISOString().slice(0, 10)); // 현재 날짜로 초기화
 	const [selectedPayment, setSelectedPayment] = useState(null);
-
 	const [uploadedImages, setUploadedImages] = useState([]);
+	const location = useLocation();
+	const reservationData = location.state?.reservationData;
+
+	console.log(reservationData); // 전달된 예약 정보 출력
 
 	const handleImageChange = e => {
 		const files = Array.from(e.target.files);
