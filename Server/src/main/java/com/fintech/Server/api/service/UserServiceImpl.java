@@ -154,41 +154,6 @@ public class UserServiceImpl implements UserService {
         dto.setStatus(userEntity.getStatus().name());
 
         // storage
-
-        /*
-        StorageListResponseDto storageDto = new StorageListResponseDto();
-
-        StorageEntity storageEntity = userEntity.getStorages().get(0);
-
-        storageDto.setStorageId(storageEntity.getStorageId());
-        storageDto.setStorageName(storageEntity.getStorageName());
-        storageDto.setStorageAddress(storageEntity.getStorageAddress());
-
-        storageDto.setStorageLatitude(storageEntity.getStorageLatitude());
-        storageDto.setStorageLongitude(storageEntity.getStorageLongitude());
-        storageDto.setStorageTotalCapacity(storageEntity.getStorageTotalCapacity());
-        storageDto.setStorageAvailableCapacity(storageEntity.getStorageAvailableCapacity());
-        storageDto.setStorageUsage(storageEntity.getStorageUsage());
-        storageDto.setStoragePrice(storageEntity.getStoragePrice());
-        storageDto.setServiceCommission(storageEntity.getServiceCommission());
-        storageDto.setStorageDescription(storageEntity.getStorageDescription());
-        storageDto.setAvailableFrom(storageEntity.getAvailableFrom());
-        storageDto.setAvailableUntil(storageEntity.getAvailableUntil());
-        storageDto.setReturnPolicy(storageEntity.getReturnPolicy());
-        storageDto.setCreatedAt(storageEntity.getCreatedAt());
-        storageDto.setUpdatedAt(storageEntity.getUpdatedAt());
-        storageDto.setStatus(storageEntity.getStatus().name());
-
-        dto.setStorage(storageDto);
-        */
-
-        /*
-        if (!userEntity.getStorages().isEmpty()) {
-            dto.setStorageId(userEntity.getStorages().get(0).getStorageId());
-        }
-        */
-
-
         List<StorageListResponseDto> storageDtos = new ArrayList<>();
 
         for (StorageEntity storageEntity : userEntity.getStorages()) {
@@ -217,7 +182,7 @@ public class UserServiceImpl implements UserService {
              storageDtos.add(storageDto);
         }
 
-
+        dto.setStorages(storageDtos);
 
         return dto;
     }
