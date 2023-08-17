@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
@@ -39,9 +39,9 @@ const StorageDetail = ({ storage }) => {
 		slidesToScroll: 1,
 	};
 
+	const [isHost, setIsHost] = useState(false);
 	const [isFavorited, setIsFavorited] = useState(false);
 	const favoriteClick = () => setIsFavorited(!isFavorited);
-
 	const navigate = useNavigate(); // React Router v6의 useNavigate 훅을 사용
 
 	const handleButtonClick = () => {
@@ -51,6 +51,14 @@ const StorageDetail = ({ storage }) => {
 	const handleBoxClick = () => {
 		navigate('/map'); // /map 경로로 이동
 	};
+
+	useEffect(() => {
+		let isHost = localStorage.getItem('userStatus');
+		let isMyStorage = localStorage.getItem('storageList');
+		if (isHost == 'HOST') {
+			setIsHost(true);
+		}
+	}, []);
 
 	return (
 		<Box style={{ maxHeight: '100vh', overflowY: 'auto', paddingBottom: '50px' }}>
@@ -308,30 +316,57 @@ const StorageDetail = ({ storage }) => {
 						padding: '20px 12px',
 					}}
 				>
-					<Typography variant="h6" sx={{ fontSize: '18px', marginBottom: '0' }}>
-						<b style={{ textDecoration: 'line-through', color: 'gray' }}>₩15,000</b>&nbsp; ₩10,000
-						<b style={{ color: 'gray' }}>&nbsp;/월(단기)</b>
-					</Typography>
-					<Button
-						size="medium"
-						variant="contained"
-						onClick={handleButtonClick} // 버튼 클릭 시 handleButtonClick 함수 호출
-						sx={{
-							display: 'flex',
-							alignItems: 'center',
-							justifyContent: 'center',
-							color: 'white', // 텍스트 색상을 하얀색으로 설정
-							fontSize: '20px',
-							boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.15)',
-							borderRadius: '10px',
-							backgroundColor: 'primary.light', // 배경색을 primary로 설정
-							'&:hover': {
-								backgroundColor: 'primary.dark', // hover 시에는 어두운 primary 색상으로 변경
-							},
-						}}
-					>
-						신청하기
-					</Button>
+					{isHost ? (
+						<Button
+							variant="contained" // "outlined"를 "contained"로 변경하여 버튼에 배경색을 추가합니다.
+							fullWidth
+							component="label"
+							sx={{
+								display: 'flex',
+								alignItems: 'center',
+								justifyContent: 'center',
+								color: 'white', // 텍스트 색상을 하얀색으로 설정
+								fontSize: '20px',
+								boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.15)',
+								borderRadius: '10px',
+								backgroundColor: 'primary.light', // 배경색을 primary로 설정
+								'&:hover': {
+									backgroundColor: 'primary.dark', // hover 시에는 어두운 primary 색상으로 변경
+								},
+							}}
+						>
+							정보 수정하기
+						</Button>
+					) : (
+						<>
+							<Typography variant="h6" sx={{ fontSize: '18px', marginBottom: '0' }}>
+								<b style={{ textDecoration: 'line-through', color: 'gray' }}>₩15,000</b>&nbsp;
+								₩10,000
+								<b style={{ color: 'gray' }}>&nbsp;/월(단기)</b>
+							</Typography>
+
+							<Button
+								size="medium"
+								variant="contained"
+								onClick={handleButtonClick} // 버튼 클릭 시 handleButtonClick 함수 호출
+								sx={{
+									display: 'flex',
+									alignItems: 'center',
+									justifyContent: 'center',
+									color: 'white', // 텍스트 색상을 하얀색으로 설정
+									fontSize: '20px',
+									boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.15)',
+									borderRadius: '10px',
+									backgroundColor: 'primary.light', // 배경색을 primary로 설정
+									'&:hover': {
+										backgroundColor: 'primary.dark', // hover 시에는 어두운 primary 색상으로 변경
+									},
+								}}
+							>
+								신청하기
+							</Button>
+						</>
+					)}
 				</CardActions>
 			</Card>
 		</Box>

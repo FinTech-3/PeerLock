@@ -16,6 +16,8 @@ const Login = () => {
 			const data = await login(username, password);
 			setUser(data);
 			console.log(data);
+			localStorage.setItem('userId', data.userId);
+			localStorage.setItem('userStatus', data.status);
 			if (data.status === 'HOST') {
 				// navigate(`/homehost/${data.userId}`);
 				navigate(`/homehost`);
