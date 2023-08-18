@@ -18,11 +18,9 @@ import Login from './Home/Login';
 import StoreagReservationPage from './Storage/StoreagReservationPage';
 import StoreagReservationUploadPage from './Storage/StorageReservationUploadPage';
 import MyStoragePage from './My/MyStoragePage';
-
 import ReviewPage from './Review/Review';
 import StorageRegist from './Storage/StorageRegist';
 import FinanceHost from './Finance/FinanceHost';
-
 
 export const Routes = () => {
 	return (
