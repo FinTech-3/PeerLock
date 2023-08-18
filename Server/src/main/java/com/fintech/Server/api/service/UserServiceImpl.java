@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -56,24 +57,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserInfoResponseDto login(UserLoginRequestDto request) {
         UserEntity user = userRepository.findUserEntityByUserEmail(request.getEmail());
-        logger.debug("User: " + user);
+
         if (user.getUserEmail().equals(request.getEmail()) && user.getUserPassword().equals(request.getPassword())) {
-            logger.debug("회원가입 된 유저");
 
-            UserInfoResponseDto dto = new UserInfoResponseDto();
-            dto.setUserId(user.getUserId());
-            dto.setUserName(user.getUserName());
-            dto.setUserSex(user.getUserSex());
-            dto.setUserEmail(user.getUserEmail());
-            dto.setUserBirth(user.getUserBirth());
-            dto.setUserPhoneNumber(user.getUserPhoneNumber());
-            dto.setStatus(user.getStatus().name());
+            UserInfoResponseDto userInfoResponseDto = convertToDto(user);
 
-
-            //dto.setStorage(user.geStorage());
-
-
-            return dto;
+            return userInfoResponseDto;
         }
 
         return null;
@@ -112,7 +101,7 @@ public class UserServiceImpl implements UserService {
         logger.debug("service : " + userId);
         Optional<UserEntity> userOpt = userRepository.findById(userId);
 
-        if(!userOpt.isPresent()) {
+        if (!userOpt.isPresent()) {
             logger.debug(userOpt.toString());
             return ResponseEntity.notFound().build();
         }
@@ -130,7 +119,7 @@ public class UserServiceImpl implements UserService {
         List<UserEntity> userEntities = userRepository.findAll();
         List<UserInfoResponseDto> userDtos = new ArrayList<>();
 
-        for(UserEntity userEntity : userEntities) {
+        for (UserEntity userEntity : userEntities) {
             UserInfoResponseDto dto = convertToDto(userEntity);
             userDtos.add(dto);
         }
@@ -179,14 +168,21 @@ public class UserServiceImpl implements UserService {
             storageDto.setUpdatedAt(storageEntity.getUpdatedAt());
             storageDto.setStatus(storageEntity.getStatus().name());
 
-             storageDtos.add(storageDto);
+            storageDtos.add(storageDto);
+
+            // Images
+            List<StorageImageResponseDto> imageDtos = storageEntity.getStorageImages()
+                    .stream()
+                    .map(image -> new StorageImageResponseDto(image.getImageName(), image.getImagePath()))
+                    .collect(Collectors.toList());
+
+            storageDto.setImages(imageDtos);
         }
 
         dto.setStorages(storageDtos);
 
         return dto;
     }
-
 
 
     @Override
@@ -197,13 +193,6 @@ public class UserServiceImpl implements UserService {
         if (byUser.isPresent()) {
             UserEntity user = byUser.get();
 
-            // User를 DB에서 완전 삭제는 진행하지 않고, Status만 WITHDRAWAL로 바꿔서 Soft 삭제를 구현하기
-            // return값으로는 삭제된 유저의 정보와 status:"WITHDRAWAL"이 출력될 수 있도록 하기
-
-//            logger.debug("status: " + user);
-//            logger.debug("삭제된 정보");
-
-            // status 정하기
             user.setStatus(UserStatus.WITHDRAWAL);
             // 저장
             UserEntity savedUser = userRepository.save(user);
@@ -219,7 +208,8 @@ public class UserServiceImpl implements UserService {
                     user.getStatus().name()
             );
 
-        } return null;
+        }
+        return null;
     }
 
 
