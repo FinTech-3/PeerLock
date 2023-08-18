@@ -4,14 +4,14 @@ import CssBaseline from '@mui/material/CssBaseline';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import LeaderboardIcon from '@mui/icons-material/Leaderboard';
+import WidgetsIcon from '@mui/icons-material/Widgets';
 import Paper from '@mui/material/Paper';
 import { Link, useLocation } from 'react-router-dom';
 
-export default function FixedBottomNavigation() {
+export default function FixedBottomNavigationHost() {
 	const location = useLocation();
 	const initialValue = getInitialValue(location.pathname);
 	const [value, setValue] = React.useState(initialValue);
@@ -19,15 +19,15 @@ export default function FixedBottomNavigation() {
 
 	function getInitialValue(path) {
 		switch (path) {
-			case '/HomeGuest':
+			case '/HomeHost':
 				return 0;
-			case '/wish':
+			case '/mystorage':
 				return 1;
-			case '/map':
+			case '/finance':
 				return 2;
-			case '/chat':
+			case '/ChatHost':
 				return 3;
-			case '/MyGuest':
+			case '/MyHost':
 				return 4;
 			default:
 				return 0; // 기본값
@@ -47,31 +47,31 @@ export default function FixedBottomNavigation() {
 				>
 					<BottomNavigationAction
 						component={Link}
-						to="/HomeGuest"
+						to="/HomeHost"
 						label="Home"
 						icon={<HomeOutlinedIcon />}
 					/>
 					<BottomNavigationAction
 						component={Link}
-						label="Wish"
-						to="/wish"
-						icon={<FavoriteIcon />}
+						label="Storage"
+						to="/mystorage"
+						icon={<WidgetsIcon />}
 					/>
 					<BottomNavigationAction
 						component={Link}
-						to="/map"
-						label="Map"
-						icon={<MapOutlinedIcon />}
+						to="/finance"
+						label="Finance"
+						icon={<LeaderboardIcon />}
 					/>
 					<BottomNavigationAction
 						component={Link}
-						to="/chat"
+						to="/ChatHost"
 						label="Chat"
 						icon={<ChatBubbleOutlineOutlinedIcon />}
 					/>
 					<BottomNavigationAction
 						component={Link}
-						to="/MyGuest"
+						to="/MyHost"
 						label="Profile"
 						icon={<PersonOutlineOutlinedIcon />}
 					/>

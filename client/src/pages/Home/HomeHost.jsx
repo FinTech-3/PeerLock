@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Typography, Button, Avatar, Paper } from '@mui/material';
-import FixedBottomNavigation from '../../components/FixBottomNavigation';
+import FixedBottomNavigationHost from '../../components/FixBottomNavigationHost';
 import { Link } from 'react-router-dom';
 
 // this page will be the host info page C-01
@@ -431,7 +431,7 @@ const Home = () => {
 				</Paper>
 			)}
 
-			<FixedBottomNavigation />
+			<FixedBottomNavigationHost />
 		</div>
 	);
 };
