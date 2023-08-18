@@ -25,7 +25,7 @@ export default function FixedBottomNavigationHost() {
 				return 1;
 			case '/finance':
 				return 2;
-			case '/chat':
+			case '/ChatHost':
 				return 3;
 			case '/MyHost':
 				return 4;
@@ -65,7 +65,7 @@ export default function FixedBottomNavigationHost() {
 					/>
 					<BottomNavigationAction
 						component={Link}
-						to="/chat"
+						to="/ChatHost"
 						label="Chat"
 						icon={<ChatBubbleOutlineOutlinedIcon />}
 					/>
