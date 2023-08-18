@@ -14,6 +14,8 @@ import {
 	Divider,
 	Grid,
 	Paper,
+	CardContent,
+	Card,
 } from '@mui/material';
 import {
 	ArrowBack as ArrowBackIcon,
@@ -24,20 +26,84 @@ import {
 	GpsFixed as GpsFixedIcon,
 	LocalAtm as LocalAtmIcon,
 } from '@mui/icons-material';
+import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
+import CleaningServicesOutlinedIcon from '@mui/icons-material/CleaningServicesOutlined';
+import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
+
 import SelectComponent from '../../components/common/SelectComponent';
+import { useNavigate } from 'react-router-dom';
+import { registStorage } from '../../api/registStorage';
 
 const StorageRegist = ({}) => {
-	const [selectedDate, setSelectedDate] = useState(new Date().toISOString().slice(0, 10)); // 현재 날짜로 초기화
+	const [selectTypeValue, setSelectTypeValue] = useState('');
+	const [selectSizeValue, setSelectSizeValue] = useState('');
+	const [uploadedImages, setUploadedImages] = useState([]);
+	const [price, setPrice] = useState('fixedPrice');
+	const [fixedPrice, setFixedPrice] = useState(null);
+	const [smartPrice, setSmartPrice] = useState(1000);
+	const [selectPrice, setSelectPrice] = useState(null);
+	const [description, setDescription] = useState('');
+	const [storageName, setStorageName] = useState('');
 
 	const storageType = ['방', '창고', '상권', '기타'];
 	const storageSize = ['소형', '중형', '대형'];
 
-	const [value, setValue] = React.useState('option1');
+	const navigate = useNavigate();
 
-	const handleChange = event => {
-		setValue(event.target.value);
+	const handlePriceChange = event => {
+		setPrice(event.target.value);
+		if (price === 'fixedPrice') {
+			setSelectPrice(fixedPrice);
+		} else {
+			setSelectPrice(smartPrice);
+		}
+	};
+	const handleFixedPriceChange = event => {
+		setFixedPrice(event.target.value);
+	};
+	const handleContentChange = event => {
+		setDescription(event.target.value);
+	};
+	const handleNameChange = event => {
+		setStorageName(event.target.value);
 	};
 
+	const handleImageChange = e => {
+		const files = Array.from(e.target.files);
+		const fileURLs = files.map(file => URL.createObjectURL(file));
+		setUploadedImages(prevState => [...prevState, ...fileURLs]);
+	};
+
+	const onSubmitHandler = async () => {
+		if (uploadedImages.length === 0) {
+			alert('사진을 등록해주세요');
+			return;
+		}
+		const body = {
+			storageName: storageName,
+			storageAddress: '',
+			storageLatitude: '',
+			storageLongitude: '',
+			storageType: selectTypeValue,
+			storageSize: selectSizeValue,
+			// storageUsage: '',
+			storagePrice: selectPrice,
+			// serviceCommission: '',
+			storageDescription: description,
+			// photos: uploadedImages,
+		};
+		try {
+			const ret = await registStorage(body);
+			if (ret.result === '등록 성공') {
+				navigate(`/mystorage/${ret.storageId}`, {
+					state: { prevRouter: `/` },
+				});
+			}
+		} catch (error) {
+			alert(error);
+			alert('다시 시도하세요.');
+		}
+	};
 	return (
 		<Box style={{ maxHeight: '100vh', overflowY: 'auto', paddingBottom: '60px' }}>
 			<Paper
@@ -60,29 +126,34 @@ const StorageRegist = ({}) => {
 					<Typography variant="h6">내 공간 등록</Typography>
 				</Box>
 			</Paper>
-			<Box
+
+			<Card
 				style={{
-					display: 'flex',
-					flexDirection: 'column',
-					alignItems: 'center',
-					minWidth: '120',
+					width: '100%',
 					paddingTop: '70px',
 				}}
+				elevation={0}
 			>
-				<Box style={{ width: 300, marginBottom: 10 }}>
-					<Typography
-						variant="h5"
-						sx={{ paddingLeft: 1, fontWeight: 'bold', alignSelf: 'flex-start' }}
-					>
+				<CardContent>
+					<Box mt={2} mb={2}>
+						<Typography variant="h6" gutterBottom>
+							공간 이름
+						</Typography>
+						<TextField fullWidth onChange={handleNameChange} />
+					</Box>
+				</CardContent>
+				<CardContent>
+					<Typography variant="h6" gutterBottom mb={1}>
 						공간 타입
 					</Typography>
-					<SelectComponent names={storageType} />
-				</Box>
-				<Box style={{ width: 300, marginBottom: 25 }}>
-					<Typography
-						variant="h5"
-						sx={{ paddingLeft: 1, fontWeight: 'bold', alignSelf: 'flex-start' }}
-					>
+					<SelectComponent
+						selectValue={selectTypeValue}
+						setSelectValue={setSelectTypeValue}
+						names={storageType}
+					/>
+				</CardContent>
+				<CardContent>
+					<Typography variant="h6" gutterBottom mb={1}>
 						공간 특징
 					</Typography>
 					<div
@@ -135,12 +206,9 @@ const StorageRegist = ({}) => {
 							<FireExtinguisherIcon sx={{ fontSize: 70 }} />
 						</Box>
 					</div>
-				</Box>
-				<Box style={{ width: 300, marginBottom: 25 }}>
-					<Typography
-						variant="h5"
-						sx={{ paddingLeft: 1, fontWeight: 'bold', alignSelf: 'flex-start' }}
-					>
+				</CardContent>
+				<CardContent>
+					<Typography variant="h6" gutterBottom mb={1}>
 						공간 위치
 					</Typography>
 					<Button
@@ -167,29 +235,27 @@ const StorageRegist = ({}) => {
 						style={{ width: '100%', marginTop: '10px' }}
 						placeholder="상세 주소를 입력하세요"
 					/> */}
-				</Box>
-				<Box style={{ width: 300, marginBottom: 25 }}>
-					<Typography
-						variant="h5"
-						sx={{ paddingLeft: 1, fontWeight: 'bold', alignSelf: 'flex-start' }}
-					>
+				</CardContent>
+				<CardContent>
+					<Typography variant="h6" gutterBottom mb={1}>
 						공간 크기
 					</Typography>
-					<SelectComponent names={storageSize} />
-				</Box>
-				<Box style={{ width: 300, marginBottom: 25 }}>
-					<Typography
-						variant="h5"
-						sx={{ paddingLeft: 1, fontWeight: 'bold', alignSelf: 'flex-start' }}
-					>
+					<SelectComponent
+						selectValue={selectSizeValue}
+						setSelectValue={setSelectSizeValue}
+						names={storageSize}
+					/>
+				</CardContent>
+				<CardContent>
+					<Typography variant="h6" gutterBottom mb={1}>
 						가격 설정
 					</Typography>
 					<Box>
 						<RadioGroup
 							aria-label="options"
 							name="controlled-radio-buttons-group"
-							value={value}
-							onChange={handleChange}
+							value={price}
+							onChange={handlePriceChange}
 						>
 							<Box
 								sx={{
@@ -212,7 +278,7 @@ const StorageRegist = ({}) => {
 										marginLeft: 3,
 									}}
 								>
-									<FormControlLabel value="option1" control={<Radio />} label="고정 가격 설정" />
+									<FormControlLabel value="fixedPrice" control={<Radio />} label="고정 가격 설정" />
 								</Box>
 								<Input
 									id="standard-adornment-amount"
@@ -222,6 +288,7 @@ const StorageRegist = ({}) => {
 										marginTop: 1,
 										marginBottom: 1,
 									}}
+									onChange={handleFixedPriceChange}
 								/>
 							</Box>
 							<Box
@@ -246,7 +313,11 @@ const StorageRegist = ({}) => {
 										marginLeft: 3,
 									}}
 								>
-									<FormControlLabel value="option2" control={<Radio />} label="스마트 가격 추천" />
+									<FormControlLabel
+										value="smartPrice"
+										control={<Radio />}
+										label="스마트 가격 추천"
+									/>
 
 									<Box sx={{ width: '100%', paddingRight: '20px' }}>
 										<Box sx={{ my: 1 }}>
@@ -281,49 +352,115 @@ const StorageRegist = ({}) => {
 							</Box>
 						</RadioGroup>
 					</Box>
-				</Box>
-				<Box style={{ width: 300, marginBottom: 25 }}>
-					<Typography
-						variant="h5"
-						sx={{ paddingLeft: 1, fontWeight: 'bold', alignSelf: 'flex-start' }}
-					>
-						공간 설명
-					</Typography>
-					<Typography
-						variant="body2"
-						sx={{ paddingLeft: 1, fontWeight: 'light', alignSelf: 'flex-start' }}
-					>
-						대여자들이 공간에 대해 알기 쉽게 설명해주세요
-					</Typography>
-					<TextField
-						multiline
-						rows={5}
-						variant="outlined"
-						fullWidth
-						sx={{ width: '100%', marginTop: '10px' }}
-					/>
-				</Box>
-				<Box style={{ width: 300, marginBottom: 25 }}>
-					<Typography
-						variant="h5"
-						sx={{ paddingLeft: 1, fontWeight: 'bold', alignSelf: 'flex-start' }}
-					>
-						공간 사진 등록
-					</Typography>
-					<Typography
-						variant="body2"
-						sx={{ paddingLeft: 1, fontWeight: 'light', alignSelf: 'flex-start' }}
-					>
-						최대 4개의 사진을 등록할 수 있어요.
-					</Typography>
-					<Button
-						sx={{ width: '100%', height: '50px', marginTop: '10px', backgroundColor: '#8DB4FF' }}
-						variant="contained"
-					>
-						사진 등록하기
-					</Button>
-				</Box>
-			</Box>
+				</CardContent>
+				<CardContent>
+					<Box mt={2} mb={2}>
+						<Typography variant="h6" gutterBottom>
+							공간 설명
+						</Typography>
+						<Typography variant="body1" gutterBottom mt={0} sx={{ color: '#5a5a5a' }}>
+							대여자들이 공간에 대해 알기 쉽게 설명해주세요
+						</Typography>
+						<TextField
+							multiline
+							rows={5}
+							variant="outlined"
+							fullWidth
+							sx={{ width: '100%', marginTop: '10px' }}
+							onChange={handleContentChange}
+						/>
+					</Box>
+				</CardContent>
+
+				<CardContent>
+					<Box mt={2} mb={2}>
+						<Box>
+							<Typography variant="h6" gutterBottom>
+								공간 사진 등록
+							</Typography>
+							<Typography variant="body1" gutterBottom mt={0} sx={{ color: '#5a5a5a' }}>
+								최대 4개의 사진을 등록해주세요.
+							</Typography>
+							<Box mt={2} mb={2} pl={1}>
+								<Box display="flex" alignItems="center" gap={1}>
+									<Typography variant="body1" gutterBottom mt={0} sx={{ color: '#5a5a5a' }}>
+										<WbSunnyOutlinedIcon
+											color="primary"
+											sx={{ verticalAlign: 'middle', marginRight: '8px' }}
+										/>
+										충분한 밝기를 유지해주세요.
+									</Typography>
+								</Box>
+								<Box display="flex" alignItems="center" gap={1}>
+									<Typography variant="body1" gutterBottom mt={0} sx={{ color: '#5a5a5a' }}>
+										<CleaningServicesOutlinedIcon
+											color="primary"
+											sx={{ verticalAlign: 'middle', marginRight: '8px' }}
+										/>
+										주변 물건들을 정리해주세요.
+									</Typography>
+								</Box>
+								<Box display="flex" alignItems="center" gap={1}>
+									<Typography variant="body1" gutterBottom mt={0} sx={{ color: '#5a5a5a' }}>
+										<Inventory2OutlinedIcon
+											color="primary"
+											sx={{ verticalAlign: 'middle', marginRight: '8px' }}
+										/>
+										실제로 물건을 보관할 장소를 찍으면 좋아요!
+									</Typography>
+								</Box>
+							</Box>
+							<Button
+								variant="contained"
+								fullWidth
+								component="label"
+								sx={{
+									marginTop: '8px',
+									display: 'flex',
+									alignItems: 'center',
+									justifyContent: 'center',
+									fontSize: '18px',
+									color: 'white',
+									backgroundColor: 'primary.light', // 배경색을 primary로 설정
+									borderColor: 'gray',
+									boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.15)',
+									borderRadius: '10px',
+									'&:hover': {
+										backgroundColor: '#1565c0',
+									},
+								}}
+							>
+								사진 등록하기
+								<input type="file" hidden multiple onChange={handleImageChange} />
+							</Button>
+							{/* Uploaded images preview */}
+							<Box
+								mt={2}
+								display="flex"
+								flexDirection="row"
+								gap={2}
+								overflowx="auto" // 슬라이드를 위한 속성
+								whiteSpace="nowrap" // 슬라이드를 위한 속성
+							>
+								{uploadedImages.map((image, index) => (
+									<img
+										key={index}
+										src={image}
+										alt={`uploaded-img-${index}`}
+										style={{
+											width: '100px',
+											height: '100px',
+											objectFit: 'cover',
+											boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.15)',
+										}}
+									/>
+								))}
+							</Box>
+						</Box>
+					</Box>
+				</CardContent>
+			</Card>
+
 			<Paper
 				sx={{
 					display: 'flex',
@@ -338,6 +475,7 @@ const StorageRegist = ({}) => {
 				<Button
 					sx={{ width: '90%', height: '50px', margin: '10px', backgroundColor: '#8DB4FF' }}
 					variant="contained"
+					onClick={onSubmitHandler}
 				>
 					완료
 				</Button>

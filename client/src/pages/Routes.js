@@ -18,12 +18,12 @@ import Login from './Home/Login';
 import StoreagReservationPage from './Storage/StoreagReservationPage';
 import StoreagReservationUploadPage from './Storage/StorageReservationUploadPage';
 import MyStoragePage from './My/MyStoragePage';
-<<<<<<< HEAD
-import ReviewPage from './Review/Review';
-=======
+<<<<<<<<< Temporary merge branch 1
 import StorageRegist from './Storage/StorageRegist';
 import FinanceHost from './Finance/FinanceHost';
->>>>>>> e579eccaa707ea4729596969c2327b86a3812a81
+=========
+import ReviewPage from './Review/Review';
+>>>>>>>>> Temporary merge branch 2
 
 export const Routes = () => {
 	return (
@@ -42,9 +42,7 @@ export const Routes = () => {
 				<Route exact path="/storage/regist" element={<StorageRegist />} />
 				<Route exact path="/login" element={<Login />} />
 				<Route exact path="/storage/detail/:storageId" element={<StorageDetailPage />} />
-<<<<<<< HEAD
-				<Route exact path="/storage/reservation/:storageId" element={<StoreagReservationPage />} />
-=======
+<<<<<<<<< Temporary merge branch 1
 
 				<Route
 					exact
@@ -56,9 +54,10 @@ export const Routes = () => {
 					path="/storage/reservation/confirm/:storageId"
 					element={<StoreagReservationPage />}
 				/>
-
 				<Route exact path="/finance" element={<FinanceHost />} />
->>>>>>> e579eccaa707ea4729596969c2327b86a3812a81
+=========
+				<Route exact path="/storage/reservation/:storageId" element={<StoreagReservationPage />} />
+>>>>>>>>> Temporary merge branch 2
 				<Route exact path="/mystorage" element={<MyStoragePage />} />
 				<Route exact path="/review" element={<ReviewPage />} />
 				<Route path="*" element={<Navigate replace to="/" />} />
