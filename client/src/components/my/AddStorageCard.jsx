@@ -43,7 +43,7 @@ const AddStorageCard = () => {
 						추가 수입을 얻어보세요!
 					</Typography>
 
-					<Link to={`/mystorage`}>
+					<Link to={`/mystorage/regist`}>
 						<Button
 							variant="contained" // "outlined"를 "contained"로 변경하여 버튼에 배경색을 추가합니다.
 							fullWidth

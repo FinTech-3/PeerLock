@@ -44,6 +44,11 @@ const StorageRegist = ({}) => {
 	const [selectPrice, setSelectPrice] = useState(null);
 	const [description, setDescription] = useState('');
 	const [storageName, setStorageName] = useState('');
+	const [storageFeature, setStorageFeature] = useState({
+		smokeFree: false,
+		cameraIndoor: false,
+		fireExtinguisher: false,
+	});
 
 	const storageType = ['방', '창고', '상권', '기타'];
 	const storageSize = ['소형', '중형', '대형'];
@@ -67,6 +72,12 @@ const StorageRegist = ({}) => {
 	const handleNameChange = event => {
 		setStorageName(event.target.value);
 	};
+	const handleFeatureClick = feature => {
+		setStorageFeature(prevFeature => ({
+			...prevFeature,
+			[feature]: !prevFeature[feature],
+		}));
+	};
 
 	const handleImageChange = e => {
 		const files = Array.from(e.target.files);
@@ -85,6 +96,7 @@ const StorageRegist = ({}) => {
 			storageLatitude: '',
 			storageLongitude: '',
 			storageType: selectTypeValue,
+			storageFeature: storageFeature,
 			storageSize: selectSizeValue,
 			// storageUsage: '',
 			storagePrice: selectPrice,
@@ -135,7 +147,7 @@ const StorageRegist = ({}) => {
 				elevation={0}
 			>
 				<CardContent>
-					<Box mt={2} mb={2}>
+					<Box>
 						<Typography variant="h6" gutterBottom>
 							공간 이름
 						</Typography>
@@ -171,11 +183,12 @@ const StorageRegist = ({}) => {
 							justifyContent="center"
 							alignItems="center"
 							border="2px solid"
-							borderColor="#1976d2"
+							borderColor={storageFeature.smokeFree ? '#1976d2' : 'lightgray'}
 							borderRadius="5px"
 							width="80px"
 							height="80px"
 							margin="0 10px"
+							onClick={() => handleFeatureClick('smokeFree')}
 						>
 							<SmokeFreeIcon sx={{ fontSize: 70 }} />
 						</Box>
@@ -184,11 +197,12 @@ const StorageRegist = ({}) => {
 							justifyContent="center"
 							alignItems="center"
 							border="2px solid"
-							borderColor="lightgray"
+							borderColor={storageFeature.cameraIndoor ? '#1976d2' : 'lightgray'}
 							borderRadius="5px"
 							width="80px"
 							height="80px"
 							margin="0 10px"
+							onClick={() => handleFeatureClick('cameraIndoor')}
 						>
 							<CameraIndoorIcon sx={{ fontSize: 70 }} />
 						</Box>
@@ -197,11 +211,12 @@ const StorageRegist = ({}) => {
 							justifyContent="center"
 							alignItems="center"
 							border="2px solid"
-							borderColor="lightgray"
+							borderColor={storageFeature.fireExtinguisher ? '#1976d2' : 'lightgray'}
 							borderRadius="5px"
 							width="80px"
 							height="80px"
 							margin="0 10px"
+							onClick={() => handleFeatureClick('fireExtinguisher')}
 						>
 							<FireExtinguisherIcon sx={{ fontSize: 70 }} />
 						</Box>
