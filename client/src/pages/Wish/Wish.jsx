@@ -34,14 +34,18 @@ const Wish = () => {
 				</div>
 			) : (
 				<div style={{ maxHeight: '100vh', overflowY: 'auto' }}>
-					<Grid container spacing={3} style={{ padding: '20px' }}>
-						{wishList.map(item => (
-							<Grid item xs={12} key={item.storageId}>
-								<WishList storage={item} />
-							</Grid>
-						))}
-					</Grid>
-					<FixedBottomNavigation />
+					<div style={{ paddingBottom: '130px' }}>
+						<Grid container spacing={3} style={{ padding: '20px' }}>
+							{wishList.map(item => (
+								<Grid item xs={12} key={item.storageId}>
+									<WishList storage={item} />
+								</Grid>
+							))}
+						</Grid>
+					</div>
+					<div>
+						<FixedBottomNavigation />
+					</div>
 				</div>
 			)}
 			<FixedBottomNavigation />
