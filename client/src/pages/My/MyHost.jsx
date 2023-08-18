@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Typography, IconButton, Button, Avatar, Paper } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import SettingsIcon from '@mui/icons-material/Settings';
-import FixedBottomNavigation from '../../components/FixBottomNavigation';
+import FixedBottomNavigationHost from '../../components/FixBottomNavigationHost';
 
 async function switchView(user_id) {
 	try {
@@ -18,7 +18,7 @@ async function switchView(user_id) {
 			return 'MyHost';
 		}
 	} catch (error) {
-		console.error('Error fetching user status:', error);
+		alert('Error fetching user status:', error);
 		throw error;
 	}
 }
@@ -66,7 +66,7 @@ function MyHost() {
 				{/* User Avatar */}
 				<Avatar
 					alt="User PFP"
-					src="/grahamroberts.jpeg" // Replace with real image path
+					src="https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/profile3.png" // Replace with real image path
 					sx={{
 						marginTop: 5,
 						width: 75,
@@ -370,7 +370,7 @@ function MyHost() {
 			</Paper>
 
 			{/* Fixed Bottom Navigation */}
-			<FixedBottomNavigation />
+			<FixedBottomNavigationHost />
 		</div>
 	);
 }

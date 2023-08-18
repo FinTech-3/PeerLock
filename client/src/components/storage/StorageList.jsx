@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardMedia, CardContent, Typography, CardActions, Button } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import { Link } from 'react-router-dom';
 
 const StorageList = ({ storage }) => {
-	console.log(storage);
-	const dummyPrice = (storage.storagePrice * 1.5).toLocaleString();
-	const price = storage.storagePrice.toLocaleString();
+	const [price, setPrice] = useState(10000);
+	const [dummyPrice, setDummyPrice] = useState(10000);
+
+	useEffect(() => {
+		if (storage?.storagePrice) {
+			const calculatedDummyPrice = (storage.storagePrice * 1.5).toLocaleString();
+			const calculatedPrice = storage.storagePrice.toLocaleString();
+			setPrice(calculatedPrice);
+			setDummyPrice(calculatedDummyPrice);
+		}
+	}, [storage]);
+
+	// const dummyPrice = (storage?.storagePrice * 1.5).toLocaleString();
+	// const price = storage?.storagePrice.toLocaleString();
 
 	return (
 		<div>
