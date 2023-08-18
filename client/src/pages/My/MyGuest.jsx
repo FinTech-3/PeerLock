@@ -89,7 +89,7 @@ function MyGuest() {
 				>
 					{/* Text content */}
 					<Typography variant="h6">배승우</Typography>
-					<Typography variant="body1" color={'lightgrey'}>
+					<Typography variant="body1" color="lightgrey">
 						Level 2
 					</Typography>
 					{/* Replace with real name and level */}

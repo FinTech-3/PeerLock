@@ -18,6 +18,7 @@ import Login from './Home/Login';
 import StoreagReservationPage from './Storage/StoreagReservationPage';
 import StoreagReservationUploadPage from './Storage/StorageReservationUploadPage';
 import MyStoragePage from './My/MyStoragePage';
+import StorageRegist from './Storage/StorageRegist';
 import FinanceHost from './Finance/FinanceHost';
 
 export const Routes = () => {
@@ -34,6 +35,7 @@ export const Routes = () => {
 				<Route exact path="/myGuest" element={<MyGuest />} />
 				<Route exact path="/myHost" element={<MyHost />} />
 				<Route exact path="/storage" element={<Storage />} />
+				<Route exact path="/storage/regist" element={<StorageRegist />} />
 				<Route exact path="/login" element={<Login />} />
 				<Route exact path="/storage/detail/:storageId" element={<StorageDetailPage />} />
 
