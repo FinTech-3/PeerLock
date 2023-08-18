@@ -23,7 +23,7 @@ export const Routes = () => {
 			<ReactRouterRoutes>
 				<Route exact path="/" element={<Login />} />
 				<Route exact path="/homehost" element={<HomeHost />} />
-				<Route exact path="/homeuser" element={<HomeGuest />} />
+				<Route exact path="/homeguest" element={<HomeGuest />} />
 				<Route exact path="/chat" element={<Chat />} />
 				<Route exact path="/map" element={<MapScreen />} />
 				<Route exact path="/wish" element={<Wish />} />
