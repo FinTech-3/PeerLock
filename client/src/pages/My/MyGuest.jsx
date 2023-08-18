@@ -2,6 +2,7 @@ import React from 'react';
 import { Typography, IconButton, Button, Avatar, Paper } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 import FixedBottomNavigation from '../../components/FixBottomNavigation';
+import { useNavigate } from 'react-router-dom';
 
 async function switchView(user_id) {
 	try {
@@ -72,7 +73,7 @@ function MyGuest() {
 				>
 					{/* Text content */}
 					<Typography variant="h6">배승우</Typography>
-					<Typography variant="body1" color={'lightgrey'}>
+					<Typography variant="body1" color="lightgrey">
 						Level 2
 					</Typography>
 					{/* Replace with real name and level */}
@@ -82,7 +83,7 @@ function MyGuest() {
 					variant="outlined"
 					size="small"
 					sx={{ marginTop: -12, marginLeft: 33 }}
-					onClick={navigate(`/${switchView(1)}`)} // replace with real user id
+					// onClick={navigate(`/${switchView(1)}`)} // replace with real user id
 				>
 					호스트로 전환 &rarr;{' '}
 					{/* this is seriously messed up, fix only if needed. formatting is very broken, should work fine for iphone 12 pro */}
