@@ -19,7 +19,7 @@ export default function FixedBottomNavigation() {
 
 	function getInitialValue(path) {
 		switch (path) {
-			case '/HomeHost':
+			case '/HomeGuest':
 				return 0;
 			case '/wish':
 				return 1;
@@ -47,7 +47,7 @@ export default function FixedBottomNavigation() {
 				>
 					<BottomNavigationAction
 						component={Link}
-						to="/HomeHost"
+						to="/HomeGuest"
 						label="Home"
 						icon={<HomeOutlinedIcon />}
 					/>

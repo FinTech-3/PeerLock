@@ -17,32 +17,28 @@ import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOu
 import CircularProgress from '@mui/material/CircularProgress';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import FixedBottomNavigation from '../../components/FixBottomNavigation';
+import FixedBottomNavigationHost from '../../components/FixBottomNavigationHost';
 import AddStorageCard from '../../components/my/AddStorageCard';
 import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import AppHeader from '../../components/common/AppHeader';
+import { getMyStorage } from '../../api/getMyStorage';
 
 const MyStoragePage = ({}) => {
 	const [filter, setFilter] = useState('가격순');
 	const [loading, setLoading] = useState(true);
 	const [storageList, setStorageList] = useState([]);
-	const [randStorage, setRandStorage] = useState([]);
 
-	const handleFilterChange = event => {
-		setFilter(event.target.value);
-	};
+	const userId = localStorage.getItem('userId');
 
 	// 나의 창고 목록을 가져오는 코드로 바꾸기
 	useEffect(() => {
 		const fetch = async () => {
-			const data = await getStorageList();
-			// setStorageList(data);
+			const data = await getMyStorage(userId);
+			setStorageList(data.storages);
 			setLoading(false);
 		};
 		fetch();
 	}, []);
-
-	// randStorage 가져오는 코드 짜기
 
 	return (
 		<div style={{ maxHeight: '100vh', overflowY: 'auto' }}>
@@ -75,7 +71,6 @@ const MyStoragePage = ({}) => {
 								)}
 							</Grid>
 						</div>
-						{/* 여기는 addStorage라면 출력안해야함 */}
 						{storageList.length === 0 ? (
 							<></>
 						) : (
@@ -97,7 +92,7 @@ const MyStoragePage = ({}) => {
 			</div>
 			<div>
 				{/* 호스트용으로 바꿔주기 */}
-				<FixedBottomNavigation />
+				<FixedBottomNavigationHost />
 			</div>
 		</div>
 	);
