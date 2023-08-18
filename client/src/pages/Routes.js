@@ -16,6 +16,7 @@ import StorageDetailPage from './Storage/StorageDetailPage';
 import Login from './Home/Login';
 import StoreagReservationPage from './Storage/StoreagReservationPage';
 import MyStoragePage from './My/MyStoragePage';
+import ReviewPage from './Review/Review';
 
 export const Routes = () => {
 	return (
@@ -33,8 +34,8 @@ export const Routes = () => {
 				<Route exact path="/login" element={<Login />} />
 				<Route exact path="/storage/detail/:storageId" element={<StorageDetailPage />} />
 				<Route exact path="/storage/reservation/:storageId" element={<StoreagReservationPage />} />
-
 				<Route exact path="/mystorage" element={<MyStoragePage />} />
+				<Route exact path="/review" element={<ReviewPage />} />
 				<Route path="*" element={<Navigate replace to="/" />} />
 			</ReactRouterRoutes>
 		</Router>
