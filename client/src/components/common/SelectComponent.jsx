@@ -12,8 +12,14 @@ const SelectComponent = ({ names }) => {
 	};
 
 	return (
-		<FormControl sx={{ m: 1, width: 300 }}>
+		<FormControl fullWidth variant="outlined">
 			<Select
+				sx={{
+					borderRadius: '10px',
+					'& fieldset': {
+						borderRadius: '10px',
+					},
+				}}
 				displayEmpty
 				labelId="demo-simple-select-label"
 				id="demo-simple-select"
