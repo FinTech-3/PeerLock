@@ -66,7 +66,7 @@ function MyGuest() {
 				{/* User Avatar */}
 				<Avatar
 					alt="User PFP"
-					src="/grahamroberts.jpeg" // Replace with real image path
+					src="https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/profile3.png" // Replace with real image path
 					sx={{
 						marginTop: 5,
 						width: 75,
@@ -128,9 +128,9 @@ function MyGuest() {
 					padding: 1.5,
 					margin: 'auto',
 					marginTop: 2,
-					border: '2px solid lightgrey',
+					border: '1px solid lightgrey',
 					borderRadius: '10px',
-					width: '98%',
+					width: '93%',
 					display: 'flex',
 					alignItems: 'flex-start',
 					flexDirection: 'column',
@@ -150,7 +150,7 @@ function MyGuest() {
 					}}
 				>
 					<img
-						src="/grahamroberts.jpeg" // Replace with real image path
+						src="https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/room1.jpg" // Replace with real image path
 						alt="Small Picture"
 						style={{
 							width: '100%',

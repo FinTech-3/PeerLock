@@ -17,7 +17,7 @@ import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOu
 import CircularProgress from '@mui/material/CircularProgress';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import FixedBottomNavigation from '../../components/FixBottomNavigation';
+import FixedBottomNavigationHost from '../../components/FixBottomNavigationHost';
 import AddStorageCard from '../../components/my/AddStorageCard';
 import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import AppHeader from '../../components/common/AppHeader';
@@ -92,7 +92,7 @@ const MyStoragePage = ({}) => {
 			</div>
 			<div>
 				{/* 호스트용으로 바꿔주기 */}
-				<FixedBottomNavigation />
+				<FixedBottomNavigationHost />
 			</div>
 		</div>
 	);
