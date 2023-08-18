@@ -3,7 +3,6 @@ import { Typography, IconButton, Button, Avatar, Paper } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import SettingsIcon from '@mui/icons-material/Settings';
 import FixedBottomNavigation from '../../components/FixBottomNavigation';
-import { useNavigate } from 'react-router-dom';
 
 async function switchView(user_id) {
 	// need to get user id first from api
