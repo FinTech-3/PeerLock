@@ -4,9 +4,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import OutlinedInput from '@mui/material/OutlinedInput';
 
-const SelectComponent = ({ names }) => {
-	const [selectValue, setSelectValue] = React.useState('');
-
+const SelectComponent = ({ names, selectValue, setSelectValue }) => {
 	const handleChange = event => {
 		setSelectValue(event.target.value);
 	};
