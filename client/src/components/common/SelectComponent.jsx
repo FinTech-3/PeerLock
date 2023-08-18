@@ -4,16 +4,20 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import OutlinedInput from '@mui/material/OutlinedInput';
 
-const SelectComponent = ({ names }) => {
-	const [selectValue, setSelectValue] = React.useState('');
-
+const SelectComponent = ({ names, selectValue, setSelectValue }) => {
 	const handleChange = event => {
 		setSelectValue(event.target.value);
 	};
 
 	return (
-		<FormControl sx={{ m: 1, width: 300 }}>
+		<FormControl fullWidth variant="outlined">
 			<Select
+				sx={{
+					borderRadius: '10px',
+					'& fieldset': {
+						borderRadius: '10px',
+					},
+				}}
 				displayEmpty
 				labelId="demo-simple-select-label"
 				id="demo-simple-select"
