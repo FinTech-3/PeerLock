@@ -79,7 +79,7 @@ const Home = () => {
 					</Typography>
 					<Avatar
 						alt="User PFP"
-						src="/grahamroberts.jpeg" // Replace with real image path
+						src="https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/profile6.png"
 						sx={{
 							width: 75,
 							marginTop: -8.6,
@@ -104,23 +104,23 @@ const Home = () => {
 				>
 					{/* replace everything here with info from API */}
 					<Typography variant="body1" sx={{ paddingLeft: 4, paddingTop: 0.3 }}>
-						<strong>배승우님의 요청</strong>
+						<strong>규빈님의 요청</strong>
 					</Typography>
 					<Typography
 						variant="body2"
 						sx={{ color: 'rgba(0, 0, 0, 0.6)', paddingLeft: 4, paddingTop: 0.3 }}
 					>
-						09.17 ~ 11.16 (2M)
+						09.17 ~ 10.16 (1M)
 					</Typography>
 					<Typography
 						variant="body2"
 						sx={{ color: 'rgba(0, 0, 0, 0.6)', paddingLeft: 4, paddingTop: 0.3 }}
 					>
-						캐리어 (소형)
+						캐리어 (중형)
 					</Typography>
 					<Avatar
 						alt="User PFP"
-						src="/grahamroberts.jpeg" // Replace with real image path
+						src="https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/profile1.png" // Replace with real image path
 						sx={{
 							width: 75,
 							marginTop: -8.6,
@@ -214,7 +214,7 @@ const Home = () => {
 					</Typography>
 					<Avatar
 						alt="User PFP"
-						src="/grahamroberts.jpeg" // Replace with real image path
+						src="https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/profile3.png" // Replace with real image path
 						sx={{
 							width: 100,
 							marginTop: -17,
@@ -298,7 +298,7 @@ const Home = () => {
 					</Typography>
 					<Avatar
 						alt="User PFP"
-						src="/grahamroberts.jpeg" // Replace with real image path
+						src="https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/profile1.png" // Replace with real image path
 						sx={{
 							width: 100,
 							marginTop: -17,
@@ -382,7 +382,7 @@ const Home = () => {
 					</Typography>
 					<Avatar
 						alt="User PFP"
-						src="/grahamroberts.jpeg" // Replace with real image path
+						src="https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/profile4.png" // Replace with real image path
 						sx={{
 							width: 100,
 							marginTop: -17,

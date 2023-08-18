@@ -18,8 +18,11 @@ import Login from './Home/Login';
 import StoreagReservationPage from './Storage/StoreagReservationPage';
 import StoreagReservationUploadPage from './Storage/StorageReservationUploadPage';
 import MyStoragePage from './My/MyStoragePage';
+
+import ReviewPage from './Review/Review';
 import StorageRegist from './Storage/StorageRegist';
 import FinanceHost from './Finance/FinanceHost';
+
 
 export const Routes = () => {
 	return (
@@ -38,7 +41,7 @@ export const Routes = () => {
 				<Route exact path="/storage/regist" element={<StorageRegist />} />
 				<Route exact path="/login" element={<Login />} />
 				<Route exact path="/storage/detail/:storageId" element={<StorageDetailPage />} />
-
+				<Route exact path="/storage/reservation/:storageId" element={<StoreagReservationPage />} />
 				<Route
 					exact
 					path="/storage/reservation/upload/:storageId"
@@ -49,9 +52,9 @@ export const Routes = () => {
 					path="/storage/reservation/confirm/:storageId"
 					element={<StoreagReservationPage />}
 				/>
-
 				<Route exact path="/finance" element={<FinanceHost />} />
 				<Route exact path="/mystorage" element={<MyStoragePage />} />
+				<Route exact path="/review" element={<ReviewPage />} />
 				<Route path="*" element={<Navigate replace to="/" />} />
 			</ReactRouterRoutes>
 		</Router>
