@@ -20,11 +20,11 @@ import {
 } from '@mui/icons-material';
 
 const StorageReservationComponent = ({ storage }) => {
-	const [selectedDate, setSelectedDate] = useState(new Date().toISOString().slice(0, 10)); // 현재 날짜로 초기화
-	const [selectedPayment, setSelectedPayment] = useState(null);
-	const [uploadedImages, setUploadedImages] = useState([]);
 	const location = useLocation();
 	const reservationData = location.state?.reservationData;
+	const [selectedDate, setSelectedDate] = useState(new Date().toISOString().slice(0, 10)); // 현재 날짜로 초기화
+	const [selectedPayment, setSelectedPayment] = useState(null);
+	const [uploadedImages, setUploadedImages] = useState(reservationData?.uploadedImages || []);
 
 	console.log(reservationData); // 전달된 예약 정보 출력
 
@@ -92,61 +92,76 @@ const StorageReservationComponent = ({ storage }) => {
 					{/* 예약 날짜 선택 */}
 					<Box mt={2}>
 						<Typography variant="h5" sx={{ paddingBottom: '10px', fontWeight: 'bold' }}>
-							{'예약 정보 입력'}
+							{'예약 정보'}
 						</Typography>
-						<Typography variant="h6" gutterBottom>
-							예약 날짜 선택
+						<Typography variant="h6" gutterBottom mb={2}>
+							예약 날짜
 						</Typography>
-						<TextField
-							variant="outlined"
-							type="date"
-							fullWidth
-							value={selectedDate}
-							onChange={e => setSelectedDate(e.target.value)}
-						/>
-					</Box>
-					{/* 보관 물품 선택 */}
-					<Box mt={2} mb={2}>
-						<Typography variant="h6" gutterBottom>
-							보관 물품 사진 업로드
-						</Typography>
-						<Button
-							variant="outlined"
-							fullWidth
-							component="label"
-							sx={{
-								marginTop: '8px',
-								display: 'flex',
-								alignItems: 'center',
-								justifyContent: 'center',
-								color: 'black',
-								borderColor: 'gray',
-								boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.15)',
-								borderRadius: '10px',
-								'&:hover': {
-									backgroundColor: '#1565c0',
-								},
-							}}
-						>
-							사진 업로드
-							<input type="file" hidden multiple onChange={handleImageChange} />
-						</Button>
-
-						{/* Uploaded images preview */}
-						<Box mt={2} display="flex" flexDirection="row" gap={2} flexWrap="wrap">
-							{uploadedImages.map((image, index) => (
-								<img
-									key={index}
-									src={image}
-									alt={`uploaded-img-${index}`}
-									style={{
-										width: '100px',
-										height: '100px',
-										objectFit: 'cover',
-										boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.15)',
+						<Grid container spacing={2}>
+							{/* 시작일 */}
+							<Grid item xs={6}>
+								<TextField
+									label="시작일"
+									variant="outlined"
+									type="date"
+									fullWidth
+									value={reservationData?.startDate || selectedDate}
+									onChange={e => setSelectedDate(e.target.value)}
+									InputLabelProps={{
+										shrink: true,
 									}}
 								/>
-							))}
+							</Grid>
+
+							{/* 종료일 */}
+							<Grid item xs={6}>
+								<TextField
+									label="종료일"
+									variant="outlined"
+									type="date"
+									fullWidth
+									value={reservationData?.endDate || selectedDate}
+									onChange={e => setSelectedDate(e.target.value)}
+									InputLabelProps={{
+										shrink: true,
+									}}
+								/>
+							</Grid>
+						</Grid>
+					</Box>
+					{/* 보관 물품 사진 */}
+					<Box mt={2} mb={2}>
+						<Typography variant="h6" gutterBottom>
+							물품 사진
+						</Typography>
+						<Box mt={2} display="flex" flexDirection="row" gap={2} overflowx="auto">
+							{uploadedImages.length === 0
+								? reservationData?.uploadedImages.map((image, index) => (
+										<img
+											key={index}
+											src={image}
+											alt={`uploaded-img-${index}`}
+											style={{
+												width: '80px',
+												height: '80px',
+												objectFit: 'cover',
+												boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.15)',
+											}}
+										/>
+								  ))
+								: uploadedImages.map((image, index) => (
+										<img
+											key={index}
+											src={image}
+											alt={`uploaded-img-${index}`}
+											style={{
+												width: '80px',
+												height: '80px',
+												objectFit: 'cover',
+												boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.15)',
+											}}
+										/>
+								  ))}
 						</Box>
 					</Box>
 				</CardContent>
@@ -175,6 +190,17 @@ const StorageReservationComponent = ({ storage }) => {
 							{'₩5,000'}
 						</Typography>
 					</Box>
+					{/* <Typography variant="h5" sx={{ paddingBottom: '10px', fontWeight: 'bold' }}>
+						{'요금 세부정보'}
+					</Typography>
+					<Box display="flex" justifyContent="space-between" alignItems="center">
+						<Typography variant="body1" style={{ color: 'gray' }}>
+							{reservationData?.paymentDetails?.monthlyPayment || '₩10,000 X 2달'}
+						</Typography>
+						<Typography variant="body1" style={{ color: 'gray' }}>
+							{reservationData?.paymentDetails?.totalPayment || '₩20,000'}
+						</Typography>
+					</Box> */}
 					<Divider sx={{ margin: '15px 0px' }} />
 					<Box display="flex" justifyContent="space-between" alignItems="center">
 						<Typography variant="h6">{'총 합계(KRW)'}</Typography>
@@ -240,20 +266,20 @@ const StorageReservationComponent = ({ storage }) => {
 						</Typography>
 					</Box>
 					<Button
-						variant="contained" // "outlined"를 "contained"로 변경하여 버튼에 배경색을 추가합니다.
+						variant="contained"
 						fullWidth
 						component="label"
 						sx={{
 							display: 'flex',
 							alignItems: 'center',
 							justifyContent: 'center',
-							color: 'white', // 텍스트 색상을 하얀색으로 설정
+							color: 'white',
 							fontSize: '20px',
 							boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.15)',
 							borderRadius: '10px',
-							backgroundColor: 'primary.light', // 배경색을 primary로 설정
+							backgroundColor: 'primary.light',
 							'&:hover': {
-								backgroundColor: 'primary.dark', // hover 시에는 어두운 primary 색상으로 변경
+								backgroundColor: 'primary.dark',
 							},
 						}}
 					>
