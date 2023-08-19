@@ -49,14 +49,17 @@ public class StorageServiceImpl implements StorageService {
                     .storageAddress(request.getStorageAddress())
                     .storageLatitude(request.getStorageLatitude())
                     .storageLongitude(request.getStorageLongitude())
-                    .storageTotalCapacity(request.getStorageTotalCapacity())
-                    .storageAvailableCapacity(request.getStorageAvailableCapacity())
-                    .storageUsage(request.getStorageUsage())
+                    .storageType(request.getStorageType())
+                    .storageSize(request.getStorageSize())
+                    .storageFeature(request.getStorageFeature())
+//                    .storageTotalCapacity(request.getStorageTotalCapacity())
+//                    .storageAvailableCapacity(request.getStorageAvailableCapacity())
+//                    .storageUsage(request.getStorageUsage())
                     .storagePrice(request.getStoragePrice())
                     .serviceCommission(request.getServiceCommission())
                     .storageDescription(request.getStorageDescription())
-                    .availableFrom(request.getAvailableFrom())
-                    .availableUntil(request.getAvailableUntil())
+//                    .availableFrom(request.getAvailableFrom())
+//                    .availableUntil(request.getAvailableUntil())
                     .returnPolicy(request.getReturnPolicy())
                     .status(StorageStatus.AVAILABLE)
                     .build();
@@ -154,14 +157,17 @@ public class StorageServiceImpl implements StorageService {
         // todo: 주소를 통해 위도, 경도 찾기 -> 프론트에서? 백에서? naver 지도 api에 따라 다를듯
         dto.setStorageLatitude(storageEntity.getStorageLatitude());
         dto.setStorageLongitude(storageEntity.getStorageLongitude());
-        dto.setStorageTotalCapacity(storageEntity.getStorageTotalCapacity());
-        dto.setStorageAvailableCapacity(storageEntity.getStorageAvailableCapacity());
-        dto.setStorageUsage(storageEntity.getStorageUsage());
+        dto.setStorageType(storageEntity.getStorageType());
+        dto.setStorageSize(storageEntity.getStorageSize());
+        dto.setStorageFeature(storageEntity.getStorageFeature());
+//        dto.setStorageTotalCapacity(storageEntity.getStorageTotalCapacity());
+//        dto.setStorageAvailableCapacity(storageEntity.getStorageAvailableCapacity());
+//        dto.setStorageUsage(storageEntity.getStorageUsage());
         dto.setStoragePrice(storageEntity.getStoragePrice());
         dto.setServiceCommission(storageEntity.getServiceCommission());
         dto.setStorageDescription(storageEntity.getStorageDescription());
-        dto.setAvailableFrom(storageEntity.getAvailableFrom());
-        dto.setAvailableUntil(storageEntity.getAvailableUntil());
+//        dto.setAvailableFrom(storageEntity.getAvailableFrom());
+//        dto.setAvailableUntil(storageEntity.getAvailableUntil());
         dto.setReturnPolicy(storageEntity.getReturnPolicy());
         dto.setCreatedAt(storageEntity.getCreatedAt());
         dto.setUpdatedAt(storageEntity.getUpdatedAt());
