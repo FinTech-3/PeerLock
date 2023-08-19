@@ -1,5 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Typography, IconButton, Button, Avatar, Paper } from '@mui/material';
+import React, { useState } from 'react';
+import {
+	Typography,
+	IconButton,
+	Button,
+	Avatar,
+	Paper,
+	makeStyles,
+	createStyles,
+} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import SettingsIcon from '@mui/icons-material/Settings';
 import FixedBottomNavigationHost from '../../components/FixBottomNavigationHost';
@@ -24,6 +32,7 @@ async function switchView(user_id) {
 }
 
 function MyHost() {
+	// const classes = useStyles();
 	const navigate = useNavigate();
 	const [user_id, setUser_id] = useState('');
 	// get user_id from api
@@ -42,7 +51,7 @@ function MyHost() {
 	};
 
 	return (
-		<div style={{ maxHeight: '100vh', overflowX: 'hidden', overflowY: 'auto' }}>
+		<div style={{ overflowX: 'hidden', overflowY: 'auto' }}>
 			<div>
 				{/* Settings Icon */}
 				<IconButton
@@ -56,6 +65,7 @@ function MyHost() {
 					<SettingsIcon sx={{ fontSize: 32 }} />
 				</IconButton>
 			</div>
+
 			{/* User Information */}
 			<div
 				sx={{
@@ -88,8 +98,22 @@ function MyHost() {
 					}}
 				>
 					{/* Text content */}
-					<Typography variant="h6">배승우</Typography>
-					<Typography variant="body1" color={'lightgrey'}>
+					<Typography
+						variant="h4"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Bold',
+						}}
+					>
+						배승우
+					</Typography>
+					<Typography
+						variant="body1"
+						color={'grey'}
+						sx={{ fontWeight: 'bold' }}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
 						Level 2
 					</Typography>
 					{/* Replace with real name and level */}
@@ -100,6 +124,9 @@ function MyHost() {
 					size="small"
 					sx={{ marginTop: -12, marginLeft: 33 }}
 					onClick={handleButtonClick} // replace with real user id (TODO)
+					style={{
+						fontFamily: 'SpoqaHanSansNeo-Medium',
+					}}
 				>
 					게스트로 전환 &rarr;{' '}
 					{/* this is seriously messed up, fix only if needed. formatting is very broken, should work fine for iphone 12 pro */}
@@ -115,16 +142,29 @@ function MyHost() {
 					flexDirection: 'column',
 					position: 'left',
 					boxShadow: 0,
+					backgroundColor: 'transparent',
+					transition: 'background-color 0.3s',
+					'&:hover': {
+						backgroundColor: 'lightblue', // 연한 파란색 배경색으로 변경
+					},
 				}}
 			>
 				{/* Text content */}
-				<Typography variant="h6">계정관리</Typography>
+				<Typography
+					variant="h5"
+					sx={{ fontWeight: 'bold' }}
+					style={{
+						fontFamily: 'SpoqaHanSansNeo-Medium',
+					}}
+				>
+					계정관리
+				</Typography>
 			</Paper>
 			<Paper
 				sx={{
 					paddingLeft: 1.5,
-					paddingTop: 3,
-					paddingBottom: 3,
+					paddingTop: 1.5,
+					paddingBottom: 1.5,
 					paddingRight: 3,
 					marginBottom: 0,
 					width: '98%',
@@ -132,8 +172,14 @@ function MyHost() {
 					alignItems: 'center', // Center both horizontally and vertically
 					flexDirection: 'row',
 					position: 'left',
+					boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.2)',
 					boxShadow: 0,
-					borderTop: '1px solid lightgrey',
+
+					backgroundColor: 'transparent',
+					transition: 'background-color 0.3s',
+					'&:hover': {
+						backgroundColor: 'lightblue', // 연한 파란색 배경색으로 변경
+					},
 				}}
 			>
 				{/* Emoji */}
@@ -149,15 +195,22 @@ function MyHost() {
 				</div>
 				{/* Text content */}
 				<div>
-					<Typography variant="h6">계정정보</Typography>
+					<Typography
+						variant="h6"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
+						계정정보
+					</Typography>
 				</div>
 			</Paper>
 
 			<Paper
 				sx={{
 					paddingLeft: 1.5,
-					paddingTop: 3,
-					paddingBottom: 3,
+					paddingTop: 1.5,
+					paddingBottom: 1.5,
 					paddingRight: 3,
 					marginBottom: 0,
 					width: '98%',
@@ -166,7 +219,12 @@ function MyHost() {
 					flexDirection: 'row',
 					position: 'left',
 					boxShadow: 0,
-					borderTop: '1px solid lightgrey',
+
+					backgroundColor: 'transparent',
+					transition: 'background-color 0.3s',
+					'&:hover': {
+						backgroundColor: 'lightblue', // 연한 파란색 배경색으로 변경
+					},
 				}}
 			>
 				{/* Emoji */}
@@ -182,14 +240,22 @@ function MyHost() {
 				</div>
 				{/* Text content */}
 				<div>
-					<Typography variant="h6">계좌정보</Typography>
+					<Typography
+						variant="h6"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+							marginLeft: '8px',
+						}}
+					>
+						계좌정보
+					</Typography>
 				</div>
 			</Paper>
 			<Paper
 				sx={{
 					paddingLeft: 1.5,
-					paddingTop: 3,
-					paddingBottom: 3,
+					paddingTop: 1.5,
+					paddingBottom: 1.5,
 					paddingRight: 3,
 					marginBottom: 0,
 					width: '98%',
@@ -198,8 +264,12 @@ function MyHost() {
 					flexDirection: 'row',
 					position: 'left',
 					boxShadow: 0,
-					borderTop: '1px solid lightgrey',
-					borderBottom: '1px solid lightgrey',
+
+					backgroundColor: 'transparent',
+					transition: 'background-color 0.3s',
+					'&:hover': {
+						backgroundColor: 'lightblue', // 연한 파란색 배경색으로 변경
+					},
 				}}
 			>
 				{/* Emoji */}
@@ -215,7 +285,14 @@ function MyHost() {
 				</div>
 				{/* Text content */}
 				<div>
-					<Typography variant="h6">알림설정</Typography>
+					<Typography
+						variant="h6"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
+						알림설정
+					</Typography>
 				</div>
 			</Paper>
 
@@ -229,10 +306,19 @@ function MyHost() {
 					flexDirection: 'column',
 					position: 'left',
 					boxShadow: 0,
+					fontWeight: 'bold',
 				}}
 			>
 				{/* Text content */}
-				<Typography variant="h6">고객센터</Typography>
+				<Typography
+					variant="h5"
+					sx={{ fontWeight: 'bold' }}
+					style={{
+						fontFamily: 'SpoqaHanSansNeo-Medium',
+					}}
+				>
+					고객센터
+				</Typography>
 			</Paper>
 			{/* from here onwards, help centre */}
 			{/* login help */}
@@ -245,8 +331,13 @@ function MyHost() {
 					alignItems: 'center', // Center both horizontally and vertically
 					flexDirection: 'row',
 					position: 'left',
+					boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.2)',
 					boxShadow: 0,
-					borderTop: '1px solid lightgrey',
+
+					transition: 'background-color 0.3s',
+					'&:hover': {
+						backgroundColor: 'lightblue', // 연한 파란색 배경색으로 변경
+					},
 				}}
 			>
 				{/* Emoji */}
@@ -262,8 +353,21 @@ function MyHost() {
 				</div>
 				{/* Text content */}
 				<div>
-					<Typography variant="h6">로그인 설정</Typography>
-					<Typography variant="body2" sx={{ color: 'grey' }}>
+					<Typography
+						variant="h6"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
+						로그인 설정
+					</Typography>
+					<Typography
+						variant="body2"
+						sx={{ color: 'grey' }}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Regular',
+						}}
+					>
 						평일 오전 9시 ~ 오후 6시 운영
 					</Typography>
 				</div>
@@ -272,8 +376,8 @@ function MyHost() {
 			<Paper
 				sx={{
 					paddingLeft: 1.5,
-					paddingTop: 3,
-					paddingBottom: 3,
+					paddingTop: 1.5,
+					paddingBottom: 1.5,
 					paddingRight: 3,
 					marginBottom: 0,
 					width: '98%',
@@ -282,7 +386,11 @@ function MyHost() {
 					flexDirection: 'row',
 					position: 'left',
 					boxShadow: 0,
-					borderTop: '1px solid lightgrey',
+
+					transition: 'background-color 0.3s',
+					'&:hover': {
+						backgroundColor: 'lightblue', // 연한 파란색 배경색으로 변경
+					},
 				}}
 			>
 				{/* Emoji */}
@@ -298,7 +406,14 @@ function MyHost() {
 				</div>
 				{/* Text content */}
 				<div>
-					<Typography variant="h6">자주 묻는 질문</Typography>
+					<Typography
+						variant="h6"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
+						자주 묻는 질문
+					</Typography>
 				</div>
 			</Paper>
 			{/* contact help */}
@@ -312,7 +427,11 @@ function MyHost() {
 					flexDirection: 'row',
 					position: 'left',
 					boxShadow: 0,
-					borderTop: '1px solid lightgrey',
+
+					transition: 'background-color 0.3s',
+					'&:hover': {
+						backgroundColor: 'lightblue', // 연한 파란색 배경색으로 변경
+					},
 				}}
 			>
 				{/* Emoji */}
@@ -328,8 +447,21 @@ function MyHost() {
 				</div>
 				{/* Text content */}
 				<div>
-					<Typography variant="h6">상담원 연결</Typography>
-					<Typography variant="body2" sx={{ color: 'grey' }}>
+					<Typography
+						variant="h6"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
+						상담원 연결
+					</Typography>
+					<Typography
+						variant="body2"
+						sx={{ color: 'grey' }}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Regular',
+						}}
+					>
 						평일 오전 9시 ~ 오후 6시 운영
 					</Typography>
 				</div>
@@ -346,7 +478,11 @@ function MyHost() {
 					flexDirection: 'row',
 					position: 'left',
 					boxShadow: 0,
-					borderTop: '1px solid lightgrey',
+
+					transition: 'background-color 0.3s',
+					'&:hover': {
+						backgroundColor: 'lightblue', // 연한 파란색 배경색으로 변경
+					},
 				}}
 			>
 				{/* Emoji */}
@@ -362,8 +498,21 @@ function MyHost() {
 				</div>
 				{/* Text content */}
 				<div>
-					<Typography variant="h6">챗봇 1:1 질문하기</Typography>
-					<Typography variant="body2" sx={{ color: 'grey' }}>
+					<Typography
+						variant="h6"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
+						챗봇 1:1 질문하기
+					</Typography>
+					<Typography
+						variant="body2"
+						sx={{ color: 'grey' }}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Regular',
+						}}
+					>
 						24시간 운영
 					</Typography>
 				</div>
