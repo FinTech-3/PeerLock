@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import axios from 'axios';
 import {
 	Typography,
 	Button,
@@ -12,19 +13,15 @@ import {
 	TextField,
 	Grid,
 } from '@mui/material';
-import {
-	ArrowBack as ArrowBackIcon,
-	CalendarMonthOutlined as CalendarMonthOutlinedIcon,
-	AccessTimeOutlined as AccessTimeOutlinedIcon,
-	Star as StarIcon,
-} from '@mui/icons-material';
+import { ArrowBack as ArrowBackIcon, Star as StarIcon } from '@mui/icons-material';
 
 const StorageReservationComponent = ({ storage }) => {
 	const location = useLocation();
 	const reservationData = location.state?.reservationData;
 	const [selectedDate, setSelectedDate] = useState(new Date().toISOString().slice(0, 10)); // 현재 날짜로 초기화
 	const [selectedPayment, setSelectedPayment] = useState(null);
-	const [uploadedImages, setUploadedImages] = useState(reservationData?.uploadedImages || []);
+	const [uploadedImages, setUploadedImages] = useState(reservationData?.images || []);
+	const navigate = useNavigate();
 
 	console.log(reservationData); // 전달된 예약 정보 출력
 
@@ -32,6 +29,31 @@ const StorageReservationComponent = ({ storage }) => {
 		const files = Array.from(e.target.files);
 		const fileURLs = files.map(file => URL.createObjectURL(file));
 		setUploadedImages(prevState => [...prevState, ...fileURLs]);
+	};
+
+	const generateReservationJSON = () => {
+		const jsonData = {
+			reservationData: reservationData,
+			paymentMethod: selectedPayment,
+		};
+		console.log(jsonData);
+		return jsonData; // JSON 데이터 반환
+	};
+
+	const handleButtonClick = () => {
+		const reservationData = generateReservationJSON();
+		axios
+			.post(`http://localhost:8080/api/reservation?${reservationData.storageId}`, reservationData)
+			.then(response => {
+				// 서버 응답 처리
+				console.log('서버 응답:', response.data);
+				// 여기에 필요한 추가 작업을 수행할 수 있습니다.
+			})
+			.catch(error => {
+				// 에러 처리
+				console.error('에러 발생:', error);
+			});
+		navigate(`/homeguest`, { state: { reservationData } });
 	};
 
 	return (
@@ -135,8 +157,8 @@ const StorageReservationComponent = ({ storage }) => {
 							물품 사진
 						</Typography>
 						<Box mt={2} display="flex" flexDirection="row" gap={2} overflowx="auto">
-							{uploadedImages.length === 0
-								? reservationData?.uploadedImages.map((image, index) => (
+							{uploadedImages?.length === 0
+								? reservationData?.images.map((image, index) => (
 										<img
 											key={index}
 											src={image}
@@ -168,18 +190,22 @@ const StorageReservationComponent = ({ storage }) => {
 
 				<Divider sx={{ margin: '0px 0px', borderTop: '3px solid lightgray' }} />
 
+				{/* 요금 세부정보 */}
 				<CardContent>
-					<Typography variant="h5" sx={{ paddingBottom: '10px', fontWeight: 'bold' }}>
-						{'요금 세부정보'}
+					<Typography variant="h5" gutterBottom mb={1} fontWeight={'bold'}>
+						요금 세부정보
 					</Typography>
 					<Box display="flex" justifyContent="space-between" alignItems="center">
 						<Typography variant="body1" style={{ color: 'gray' }}>
-							{'₩10,000 X 2달'}
+							{`₩${storage?.storagePrice?.toLocaleString() || 0} X ${
+								reservationData?.totalMonths || 0
+							}달`}
 						</Typography>
 						<Typography variant="body1" style={{ color: 'gray' }}>
-							{'₩20,000'}
+							{`₩${reservationData?.totalStoragePrice?.toLocaleString() || 0}`}
 						</Typography>
 					</Box>
+
 					<Box display="flex" justifyContent="space-between" alignItems="center" mt={1}>
 						<Typography variant="body1" style={{ color: 'gray' }}>
 							{'보험 플랜'}
@@ -187,29 +213,17 @@ const StorageReservationComponent = ({ storage }) => {
 							{'최대 20만원 보장'}
 						</Typography>
 						<Typography variant="body1" style={{ color: 'gray' }}>
-							{'₩5,000'}
+							{`₩${reservationData?.insurancePrice?.toLocaleString() || 0}`}
 						</Typography>
 					</Box>
-					{/* <Typography variant="h5" sx={{ paddingBottom: '10px', fontWeight: 'bold' }}>
-						{'요금 세부정보'}
-					</Typography>
-					<Box display="flex" justifyContent="space-between" alignItems="center">
-						<Typography variant="body1" style={{ color: 'gray' }}>
-							{reservationData?.paymentDetails?.monthlyPayment || '₩10,000 X 2달'}
-						</Typography>
-						<Typography variant="body1" style={{ color: 'gray' }}>
-							{reservationData?.paymentDetails?.totalPayment || '₩20,000'}
-						</Typography>
-					</Box> */}
 					<Divider sx={{ margin: '15px 0px' }} />
 					<Box display="flex" justifyContent="space-between" alignItems="center">
 						<Typography variant="h6">{'총 합계(KRW)'}</Typography>
 						<Typography variant="h6" color={'primary'}>
-							{'₩25,000/월'}
+							{`₩${reservationData?.totalPayment?.toLocaleString() || 0}`}
 						</Typography>
 					</Box>
 				</CardContent>
-
 				<Divider sx={{ margin: '0px 0px', borderTop: '3px solid lightgray' }} />
 
 				<CardContent>
@@ -269,6 +283,7 @@ const StorageReservationComponent = ({ storage }) => {
 						variant="contained"
 						fullWidth
 						component="label"
+						onClick={handleButtonClick}
 						sx={{
 							display: 'flex',
 							alignItems: 'center',

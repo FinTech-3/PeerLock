@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
 	Typography,
 	Button,
@@ -46,6 +47,11 @@ const StorageReservationUploadComponent = ({ storageId }) => {
 	const [selectedPayment, setSelectedPayment] = useState(null);
 	const [uploadedImages, setUploadedImages] = useState([]);
 	const [size, setSize] = useState(''); // 선택된 값의 상태
+	const [itemDescription, setItemDescription] = useState('');
+
+	const location = useLocation();
+	const storageDetails = location.state?.storageDetails;
+	console.log(storageDetails);
 
 	const navigate = useNavigate(); // React Router v6의 useNavigate 훅을 사용
 
@@ -55,27 +61,79 @@ const StorageReservationUploadComponent = ({ storageId }) => {
 
 	const handleButtonClick = () => {
 		const reservationData = generateReservationJSON();
-		// console.log(reservationData);
 		navigate(`/storage/reservation/confirm/${storageId}`, { state: { reservationData } });
+	};
+
+	const uploadToServer = async files => {
+		const formData = new FormData();
+
+		formData.append('storageId', storageId);
+
+		for (let file of files) {
+			formData.append('images', file);
+		}
+
+		try {
+			const response = await axios.post('/api/storage/images', formData, {
+				headers: {
+					'Content-Type': 'multipart/form-data',
+				},
+			});
+
+			console.log('Upload successful:', response.data);
+			setUploadedImages(prevState => [...prevState, ...response.data]);
+		} catch (error) {
+			console.error('Error uploading:', error);
+		}
 	};
 
 	const handleImageChange = e => {
 		const files = Array.from(e.target.files);
-		const fileURLs = files.map(file => URL.createObjectURL(file));
-		setUploadedImages(prevState => [...prevState, ...fileURLs]);
+		// 서버로 이미지 업로드
+		uploadToServer(files);
 	};
 
+	const getMonthsBetweenDates = (startDate, endDate) => {
+		const start = new Date(startDate);
+		const end = new Date(endDate);
+
+		let months = (end.getFullYear() - start.getFullYear()) * 12;
+		months -= start.getMonth();
+		months += end.getMonth();
+
+		return months <= 0 ? 0 : months;
+	};
+
+	// 보험 플랜에 따른 보험료 계산
+	let insurancePrice = 0;
+	if (selectedPayment === 'standard') {
+		insurancePrice = 5000;
+	} else if (selectedPayment === 'premium') {
+		insurancePrice = 50000;
+	}
+
+	// 전체 요금 계산 (보관료 + 보험료)
+	const totalMonths = getMonthsBetweenDates(startDate, endDate) + 1;
+	const totalStoragePrice = storageDetails.storagePrice * totalMonths;
+	const totalPayment = totalStoragePrice + insurancePrice;
+
+	console.log(totalMonths, totalStoragePrice);
+
 	const generateReservationJSON = () => {
+		const userId = localStorage.getItem('userId');
+		const currStorageId = storageId;
 		const jsonData = {
+			userId: userId,
+			storageId: currStorageId,
 			startDate: startDate,
 			endDate: endDate,
 			itemSize: size,
-			uploadedImages: uploadedImages,
+			images: uploadedImages,
 			insurancePlan: selectedPayment,
-			paymentDetails: {
-				monthlyPayment: '₩10,000', // 이 부분은 예시로 넣었습니다.
-				totalPayment: '₩25,000/월', // 이 부분도 예시입니다. 실제 값을 가져오려면 해당 값을 상태로 관리하거나 계산해야 합니다.
-			},
+			insurancePrice: `${insurancePrice}`,
+			totalPayment: `${totalPayment}`,
+			totalStoragePrice: `${totalStoragePrice}`,
+			totalMonths: `${totalMonths}`,
 		};
 
 		return jsonData; // JSON 데이터 반환
@@ -166,14 +224,6 @@ const StorageReservationUploadComponent = ({ storageId }) => {
 							</FormControl>
 						</CardContent>
 
-						{/* <Divider sx={{ margin: '0px 15px' }} /> */}
-						{/* 물품 설명 -> 이거 왜 필요한거임?*/}
-						{/* <CardContent>
-							<Typography variant="h6" gutterBottom mb={1}>
-								보관 물품 설명
-							</Typography>
-						</CardContent> */}
-
 						<Divider sx={{ margin: '0px 15px' }} />
 						{/* 물품 사진 등록 -> 최대 4개의 사진 등록할 수 있게 */}
 						<CardContent>
@@ -263,14 +313,38 @@ const StorageReservationUploadComponent = ({ storageId }) => {
 								</Box>
 							</Box>
 						</CardContent>
+
 						<Divider sx={{ margin: '0px 15px' }} />
-						{/* 보험 플랜 선택 -> 두개의 박스 */}
+						{/* 물품 설명 */}
+						<CardContent>
+							<Box mt={2} mb={2}>
+								<Typography variant="h6" gutterBottom mb={1}>
+									보관 물품 설명
+								</Typography>
+								<Typography variant="body2" gutterBottom mt={0} mb={2} sx={{ color: '#5a5a5a' }}>
+									공간 주인이 물품에 대해 알 수 있도록 간단하게 설명해주세요!
+								</Typography>
+								<TextField
+									variant="outlined"
+									fullWidth
+									multiline
+									rows={4}
+									value={itemDescription}
+									onChange={e => setItemDescription(e.target.value)}
+									placeholder="보관 물품에 대한 설명을 여기에 입력하세요."
+								/>
+							</Box>
+						</CardContent>
+
+						<Divider sx={{ margin: '0px 15px' }} />
 						<CardContent>
 							<Typography variant="h6" gutterBottom mb={1}>
 								보험 플랜 선택
 							</Typography>
 							<Box>
-								<RadioGroup defaultValue="standard">
+								<RadioGroup
+									onChange={e => setSelectedPayment(e.target.value)} // onChange 핸들러 추가
+								>
 									<FormControl
 										sx={{
 											p: 2,
@@ -323,6 +397,7 @@ const StorageReservationUploadComponent = ({ storageId }) => {
 								</RadioGroup>
 							</Box>
 						</CardContent>
+
 						<Divider sx={{ margin: '0px 15px' }} />
 						{/* 요금 세부정보 */}
 						<CardContent>
@@ -331,12 +406,13 @@ const StorageReservationUploadComponent = ({ storageId }) => {
 							</Typography>
 							<Box display="flex" justifyContent="space-between" alignItems="center">
 								<Typography variant="body1" style={{ color: 'gray' }}>
-									{'₩10,000 X 2달'}
+									{`₩${storageDetails.storagePrice.toLocaleString()} X ${totalMonths}달`}
 								</Typography>
 								<Typography variant="body1" style={{ color: 'gray' }}>
-									{'₩20,000'}
+									{`₩${totalStoragePrice.toLocaleString()}`}
 								</Typography>
 							</Box>
+
 							<Box display="flex" justifyContent="space-between" alignItems="center" mt={1}>
 								<Typography variant="body1" style={{ color: 'gray' }}>
 									{'보험 플랜'}
@@ -344,14 +420,14 @@ const StorageReservationUploadComponent = ({ storageId }) => {
 									{'최대 20만원 보장'}
 								</Typography>
 								<Typography variant="body1" style={{ color: 'gray' }}>
-									{'₩5,000'}
+									{`₩${insurancePrice.toLocaleString()}`}
 								</Typography>
 							</Box>
 							<Divider sx={{ margin: '15px 0px' }} />
 							<Box display="flex" justifyContent="space-between" alignItems="center">
 								<Typography variant="h6">{'총 합계(KRW)'}</Typography>
 								<Typography variant="h6" color={'primary'}>
-									{'₩25,000/월'}
+									{`₩${totalPayment.toLocaleString()}`}
 								</Typography>
 							</Box>
 						</CardContent>
