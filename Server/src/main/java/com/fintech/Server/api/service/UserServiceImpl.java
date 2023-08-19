@@ -71,16 +71,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponseDto switchStatus(Long userId) {
         Optional<UserEntity> byId = userRepository.findById(userId);
+
         if (byId.isPresent()) {
             UserEntity user = byId.get();
 
-            if ("HOST".equals(user.getStatus())) {
+            if ("HOST".equals(user.getStatus().name())) {
                 user.setStatus(UserStatus.USER);
-            } else if ("USER".equals(user.getStatus())) {
+            } else if ("USER".equals(user.getStatus().name())) {
                 user.setStatus(UserStatus.HOST);
             }
 
             UserEntity savedUser = userRepository.save(user);
+            logger.debug(String.valueOf(savedUser));
 
             return new UserResponseDto(
                     savedUser.getUserId(),
