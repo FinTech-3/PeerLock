@@ -57,7 +57,7 @@ const ChatHost = () => {
 	];
 	return (
 		<div>
-			<AppHeader title={'chat'} />
+			<AppHeader title={'Chat'} />
 			<ChatList chats={chats} />
 			<FixedBottomNavigationHost />
 		</div>

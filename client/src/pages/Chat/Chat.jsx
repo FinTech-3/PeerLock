@@ -57,7 +57,7 @@ const Chat = () => {
 	];
 	return (
 		<div>
-			<AppHeader title={'chat'} />
+			<AppHeader title={'Chat'} />
 			<ChatList chats={chats} />
 			<FixedBottomNavigation />
 		</div>

@@ -2,30 +2,33 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Typography, TextField, Button, Avatar, Paper } from '@mui/material';
 import { login } from '../../api/login';
-import Home from './HomeHost';
 
 const Login = () => {
-	const [username, setUsername] = useState('');
-	const [password, setPassword] = useState('');
+	const [username, setUsername] = useState('tt@test.com'); // 'yy@test.com' is a host user
+	const [password, setPassword] = useState('1234');
 	const [user, setUser] = useState('');
 
 	const navigate = useNavigate();
 
 	const handleLogin = (username, password) => {
 		const fetch = async () => {
-			const data = await login(username, password);
-			setUser(data);
-			console.log(data);
-			localStorage.setItem('userId', data.userId);
-			localStorage.setItem('userStatus', data.status);
-			if (data.status === 'HOST') {
-				// navigate(`/homehost/${data.userId}`);
-				navigate(`/homehost`);
-			} else if (data.status === 'USER') {
-				navigate(`/homeuser`);
-				// navigate(`/homeuser/${data.userId}`);
-			} else {
-				navigate(`/`);
+			try {
+				const data = await login(username, password);
+				setUser(data);
+				console.log(data);
+				localStorage.setItem('userId', data.userId);
+				localStorage.setItem('userStatus', data.status);
+				if (data.status === 'HOST') {
+					// navigate(`/homehost/${data.userId}`);
+					navigate(`/homehost`);
+				} else if (data.status === 'USER') {
+					navigate(`/homeguest`);
+					// navigate(`/homeuser/${data.userId}`);
+				} else {
+					navigate(`/`);
+				}
+			} catch (e) {
+				alert('아이디 또는 비밀번호가 일치하지 않습니다.');
 			}
 		};
 		fetch();
@@ -112,7 +115,7 @@ const Login = () => {
 						onClick={() => handleLogin(username, password)}
 						// onClick={() => navigate('/HomeHost')}
 					>
-						Login (바로 Storage 감)
+						Login
 					</Button>
 				</Paper>
 				<Paper
