@@ -45,7 +45,9 @@ const StorageDetail = ({ storage }) => {
 	const navigate = useNavigate(); // React Router v6의 useNavigate 훅을 사용
 
 	const handleButtonClick = () => {
-		navigate(`/storage/reservation/upload/${storage.storageId}`); // 해당 경로로 이동
+		navigate(`/storage/reservation/upload/${storage.storageId}`, {
+			state: { storageDetails: storage },
+		});
 	};
 
 	const handleBoxClick = () => {

@@ -9,15 +9,6 @@ const StorageReservationUploadPage = () => {
 	const { storageId } = useParams();
 	const [loading, setLoading] = useState(true);
 
-	// useEffect(() => {
-	// 	const fetch = async () => {
-	// 		const data = await getStorageDetail(storageId);
-	// 		// console.log(data);
-	// 		setStorageDetail(data);
-	// 		setLoading(false);
-	// 	};
-	// 	fetch();
-	// }, []);
 	return (
 		<div>
 			<StorageReservationUploadComponent storageId={storageId} />
