@@ -34,7 +34,13 @@ const MyStoragePage = ({}) => {
 	useEffect(() => {
 		const fetch = async () => {
 			const data = await getMyStorage(userId);
-			setStorageList(data.storages);
+			console.log(data);
+			if (data.storages == null) {
+				setStorageList([]);
+			} else {
+				setStorageList(data.storages);
+			}
+
 			setLoading(false);
 		};
 		fetch();
@@ -58,12 +64,12 @@ const MyStoragePage = ({}) => {
 					<>
 						<div>
 							<Grid container spacing={3} sx={{ padding: '20px', paddingTop: '5px' }}>
-								{storageList.length === 0 ? (
+								{!storageList || storageList?.length === 0 ? (
 									<Grid item xs={12}>
 										<AddStorageCard />
 									</Grid>
 								) : (
-									storageList.map(item => (
+									storageList?.map(item => (
 										<Grid item xs={12} key={item.storageId}>
 											<StorageList storage={item} />
 										</Grid>
@@ -91,7 +97,6 @@ const MyStoragePage = ({}) => {
 				)}
 			</div>
 			<div>
-				{/* 호스트용으로 바꿔주기 */}
 				<FixedBottomNavigationHost />
 			</div>
 		</div>
