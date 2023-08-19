@@ -7,6 +7,7 @@ import FixedBottomNavigationHost from '../../components/FixBottomNavigationHost'
 async function switchView(user_id) {
 	try {
 		// get user_id first
+		const user_id = localStorage.getItem('userId');
 		// Make an API call to get the user's status
 		const response = await fetch(`/api/user/host/${user_id}`);
 		const data = await response.json();
