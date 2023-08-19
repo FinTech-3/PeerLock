@@ -30,6 +30,9 @@ const Home = () => {
 						marginLeft: 5,
 						fontSize: 28,
 					}}
+					style={{
+						fontFamily: 'SpoqaHanSansNeo-Bold',
+					}}
 				>
 					Today
 				</Typography>
@@ -44,6 +47,9 @@ const Home = () => {
 						background: 'white',
 						padding: 0, // Adjust padding to make the button longer
 						minWidth: '7rem', // Set minimum width to make the button longer
+					}}
+					style={{
+						fontFamily: 'SpoqaHanSansNeo-Regular',
 					}}
 				>
 					<Link to="#">전체 알림</Link>
@@ -62,18 +68,30 @@ const Home = () => {
 					}}
 				>
 					{/* replace everything here with info from API */}
-					<Typography variant="body1" sx={{ paddingLeft: 4, paddingTop: 0.3 }}>
+					<Typography
+						variant="body1"
+						sx={{ paddingLeft: 4, paddingTop: 0.3, color: 'blue' }}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Bold',
+						}}
+					>
 						<strong>배승우님의 요청</strong>
 					</Typography>
 					<Typography
 						variant="body2"
-						sx={{ color: 'rgba(0, 0, 0, 0.6)', paddingLeft: 4, paddingTop: 0.3 }}
+						sx={{ color: 'black', paddingLeft: 4, paddingTop: 0.3, color: 'black' }}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
 					>
 						09.17 ~ 11.16 (2M)
 					</Typography>
 					<Typography
 						variant="body2"
-						sx={{ color: 'rgba(0, 0, 0, 0.6)', paddingLeft: 4, paddingTop: 0.3 }}
+						sx={{ color: 'black', paddingLeft: 4, paddingTop: 0.3, color: 'black' }}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
 					>
 						캐리어 (소형)
 					</Typography>
@@ -87,6 +105,7 @@ const Home = () => {
 							height: 75,
 							display: 'flex',
 							borderRadius: 5,
+							fontFamily: 'SpoqaHanSansNeo-Medium',
 						}}
 					/>
 				</div>
@@ -103,18 +122,30 @@ const Home = () => {
 					}}
 				>
 					{/* replace everything here with info from API */}
-					<Typography variant="body1" sx={{ paddingLeft: 4, paddingTop: 0.3 }}>
+					<Typography
+						variant="body1"
+						sx={{ paddingLeft: 4, paddingTop: 0.3, color: 'blue' }}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
 						<strong>규빈님의 요청</strong>
 					</Typography>
 					<Typography
 						variant="body2"
-						sx={{ color: 'rgba(0, 0, 0, 0.6)', paddingLeft: 4, paddingTop: 0.3 }}
+						sx={{ color: 'black', paddingLeft: 4, paddingTop: 0.3, color: 'black' }}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
 					>
 						09.17 ~ 10.16 (1M)
 					</Typography>
 					<Typography
 						variant="body2"
-						sx={{ color: 'rgba(0, 0, 0, 0.6)', paddingLeft: 4, paddingTop: 0.3 }}
+						sx={{ color: 'blue', paddingLeft: 4, paddingTop: 0.3, color: 'black' }}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
 					>
 						캐리어 (중형)
 					</Typography>
@@ -140,7 +171,10 @@ const Home = () => {
 						marginTop: 4,
 						marginLeft: -25,
 						marginBottom: 2,
-						fontSize: 28,
+						fontSize: 27,
+					}}
+					style={{
+						fontFamily: 'SpoqaHanSansNeo-Bold',
 					}}
 				>
 					<strong>예약 관리</strong>
@@ -197,17 +231,32 @@ const Home = () => {
 						color={'blue'}
 						sx={{
 							marginBottom: 2,
+							color: 'blue',
+						}}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
 						}}
 					>
 						캐리어 (소형)
 					</Typography>
-					<Typography variant="body1">배승우</Typography>
+					<Typography
+						variant="body1"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
+						배승우
+					</Typography>
 					<Typography
 						variant="body1"
 						fontSize={15}
-						color={'rgba(0, 0, 0, 0.6)'}
+						color={'black'}
 						sx={{
 							marginBottom: 5,
+							color: 'black',
+						}}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
 						}}
 					>
 						09.17 ~ 11.16 (2M)
@@ -238,10 +287,13 @@ const Home = () => {
 								border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
-								fontSize: 16,
+								fontSize: 20,
 								padding: '6px 12px',
 								minWidth: '48%',
 								background: 'white',
+							}}
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Bold',
 							}}
 						>
 							채팅
@@ -251,10 +303,13 @@ const Home = () => {
 								border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
-								fontSize: 16,
+								fontSize: 20,
 								padding: '6px 12px',
 								minWidth: '48%',
 								background: 'white',
+							}}
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Bold',
 							}}
 						>
 							수락
@@ -282,16 +337,29 @@ const Home = () => {
 						sx={{
 							marginBottom: 2,
 						}}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
 					>
 						캐리어 (소형)
 					</Typography>
-					<Typography variant="body1">배승우</Typography>
+					<Typography
+						variant="body1"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
+						배승우
+					</Typography>
 					<Typography
 						variant="body1"
 						fontSize={15}
-						color={'rgba(0, 0, 0, 0.6)'}
+						color={'black'}
 						sx={{
 							marginBottom: 5,
+						}}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Meidum',
 						}}
 					>
 						09.17 ~ 11.16 (2M)
@@ -322,10 +390,13 @@ const Home = () => {
 								border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
-								fontSize: 16,
+								fontSize: 20,
 								padding: '6px 12px',
 								minWidth: '48%',
 								background: 'white',
+							}}
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Bold',
 							}}
 						>
 							채팅
@@ -335,10 +406,13 @@ const Home = () => {
 								border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
-								fontSize: 16,
+								fontSize: 20,
 								padding: '6px 12px',
 								minWidth: '48%',
 								background: 'white',
+							}}
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Bold',
 							}}
 						>
 							정보 보기
@@ -366,16 +440,29 @@ const Home = () => {
 						sx={{
 							marginBottom: 2,
 						}}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
 					>
 						캐리어 (대형)
 					</Typography>
-					<Typography variant="body1">Graham Roberts</Typography>
+					<Typography
+						variant="body1"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
+						Graham Roberts
+					</Typography>
 					<Typography
 						variant="body1"
 						fontSize={15}
-						color={'rgba(0, 0, 0, 0.6)'}
+						color={'black'}
 						sx={{
 							marginBottom: 5,
+						}}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
 						}}
 					>
 						09.17 ~ 11.16 (2M)
@@ -406,10 +493,13 @@ const Home = () => {
 								border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
-								fontSize: 16,
+								fontSize: 20,
 								padding: '6px 12px',
 								minWidth: '48%',
 								background: 'white',
+							}}
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Bold',
 							}}
 						>
 							채팅
@@ -419,10 +509,13 @@ const Home = () => {
 								border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
-								fontSize: 16,
+								fontSize: 20,
 								padding: '6px 12px',
 								minWidth: '48%',
 								background: 'white',
+							}}
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Bold',
 							}}
 						>
 							정보 보기

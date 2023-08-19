@@ -82,8 +82,21 @@ function MyGuest() {
 					}}
 				>
 					{/* Text content */}
-					<Typography variant="h6">{user_name}</Typography>
-					<Typography variant="body1" color="lightgrey">
+					<Typography
+						variant="h4"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Bold',
+						}}
+					>
+						{user_name}
+					</Typography>
+					<Typography
+						variant="body1"
+						color="grey"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Bold',
+						}}
+					>
 						Level 2
 					</Typography>
 					{/* Replace with real name and level */}
@@ -93,6 +106,9 @@ function MyGuest() {
 					variant="outlined"
 					size="small"
 					sx={{ marginTop: -12, marginLeft: 33 }}
+					style={{
+						fontFamily: 'SpoqaHanSansNeo-Medium',
+					}}
 					onClick={HandleButtonClick} // replace with real user id (TODO)
 				>
 					호스트로 전환 &rarr;{' '}
@@ -113,7 +129,14 @@ function MyGuest() {
 				}}
 			>
 				{/* Text content */}
-				<Typography variant="h6">예악 히스토리</Typography>
+				<Typography
+					variant="h5"
+					style={{
+						fontFamily: 'SpoqaHanSansNeo-Bold',
+					}}
+				>
+					예악 히스토리
+				</Typography>
 			</Paper>
 
 			{/* Rectangular Box */}
@@ -122,7 +145,7 @@ function MyGuest() {
 					padding: 1.5,
 					margin: 'auto',
 					marginTop: 2,
-					border: '1px solid lightgrey',
+					border: '2px solid lightblue',
 					borderRadius: '10px',
 					width: '93%',
 					display: 'flex',
@@ -132,7 +155,14 @@ function MyGuest() {
 				}}
 			>
 				{/* Small Picture */}
-				<Typography variant="h6">이용예정</Typography>
+				<Typography
+					variant="h6"
+					style={{
+						fontFamily: 'SpoqaHanSansNeo-Bold',
+					}}
+				>
+					이용예정
+				</Typography>
 				<div
 					style={{
 						width: '35%',
@@ -154,17 +184,27 @@ function MyGuest() {
 					/>
 				</div>
 				{/* Date, time info,, replace with real date and time */}
-				<Typography variant="body1">
+				<Typography
+					variant="body1"
+					style={{
+						fontFamily: 'SpoqaHanSansNeo-Medium',
+					}}
+				>
 					<strong>보관 시작</strong> | 2023.08.22(화), 오전 08:00
 				</Typography>
-				<Typography variant="body1">
+				<Typography
+					variant="body1"
+					style={{
+						fontFamily: 'SpoqaHanSansNeo-Medium',
+					}}
+				>
 					<strong>보관 만료</strong> | 2023.08.22(화), 오후 12:00
 				</Typography>
 			</Paper>
 			<Paper
 				sx={{
 					padding: 1.5,
-					marginTop: 2,
+					marginTop: 4,
 					width: '98%',
 					display: 'flex',
 					alignItems: 'flex-start',
@@ -174,12 +214,19 @@ function MyGuest() {
 				}}
 			>
 				{/* Text content */}
-				<Typography variant="h6">최근 본 이력</Typography>
+				<Typography
+					variant="h6"
+					style={{
+						fontFamily: 'SpoqaHanSansNeo-Bold',
+					}}
+				>
+					최근 본 이력
+				</Typography>
 			</Paper>
 			<Paper
 				sx={{
 					padding: 1.5,
-					marginTop: 2,
+					marginTop: 4,
 					width: '98%',
 					display: 'flex',
 					alignItems: 'flex-start',
@@ -189,13 +236,20 @@ function MyGuest() {
 				}}
 			>
 				{/* Text content */}
-				<Typography variant="h6">호스트 뷰</Typography>
+				<Typography
+					variant="h6"
+					style={{
+						fontFamily: 'SpoqaHanSansNeo-Bold',
+					}}
+				>
+					호스트 뷰
+				</Typography>
 			</Paper>
 
 			<Paper
 				sx={{
 					paddingLeft: 1.5,
-					paddingTop: 3,
+					paddingTop: 1,
 					paddingBottom: 3,
 					paddingRight: 3,
 					marginBottom: 0,
@@ -205,8 +259,6 @@ function MyGuest() {
 					flexDirection: 'row',
 					position: 'left',
 					boxShadow: 0,
-					borderTop: '1px solid lightgrey',
-					borderBottom: '1px solid lightgrey',
 				}}
 			>
 				{/* Emoji */}
@@ -222,7 +274,14 @@ function MyGuest() {
 				</div>
 				{/* Text content */}
 				<div>
-					<Typography variant="h6">호스트 되기</Typography>
+					<Typography
+						variant="h6"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
+						호스트 되기
+					</Typography>
 				</div>
 			</Paper>
 			<Paper
@@ -238,12 +297,19 @@ function MyGuest() {
 				}}
 			>
 				{/* Text content */}
-				<Typography variant="h6">계정관리</Typography>
+				<Typography
+					variant="h6"
+					style={{
+						fontFamily: 'SpoqaHanSansNeo-Bold',
+					}}
+				>
+					계정관리
+				</Typography>
 			</Paper>
 			<Paper
 				sx={{
 					paddingLeft: 1.5,
-					paddingTop: 3,
+					paddingTop: 1,
 					paddingBottom: 3,
 					paddingRight: 3,
 					marginBottom: 0,
@@ -253,7 +319,6 @@ function MyGuest() {
 					flexDirection: 'row',
 					position: 'left',
 					boxShadow: 0,
-					borderTop: '1px solid lightgrey',
 				}}
 			>
 				{/* Emoji */}
@@ -269,14 +334,21 @@ function MyGuest() {
 				</div>
 				{/* Text content */}
 				<div>
-					<Typography variant="h6">계정정보</Typography>
+					<Typography
+						variant="h6"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
+						계정정보
+					</Typography>
 				</div>
 			</Paper>
 
 			<Paper
 				sx={{
 					paddingLeft: 1.5,
-					paddingTop: 3,
+					paddingTop: 1,
 					paddingBottom: 3,
 					paddingRight: 3,
 					marginBottom: 0,
@@ -286,7 +358,6 @@ function MyGuest() {
 					flexDirection: 'row',
 					position: 'left',
 					boxShadow: 0,
-					borderTop: '1px solid lightgrey',
 				}}
 			>
 				{/* Emoji */}
@@ -302,13 +373,20 @@ function MyGuest() {
 				</div>
 				{/* Text content */}
 				<div>
-					<Typography variant="h6">계좌정보</Typography>
+					<Typography
+						variant="h6"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
+						계좌정보
+					</Typography>
 				</div>
 			</Paper>
 			<Paper
 				sx={{
 					paddingLeft: 1.5,
-					paddingTop: 3,
+					paddingTop: 1,
 					paddingBottom: 3,
 					paddingRight: 3,
 					marginBottom: 0,
@@ -318,8 +396,6 @@ function MyGuest() {
 					flexDirection: 'row',
 					position: 'left',
 					boxShadow: 0,
-					borderTop: '1px solid lightgrey',
-					borderBottom: '1px solid lightgrey',
 				}}
 			>
 				{/* Emoji */}
@@ -335,7 +411,14 @@ function MyGuest() {
 				</div>
 				{/* Text content */}
 				<div>
-					<Typography variant="h6">알림설정</Typography>
+					<Typography
+						variant="h6"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
+						알림설정
+					</Typography>
 				</div>
 			</Paper>
 
@@ -352,7 +435,14 @@ function MyGuest() {
 				}}
 			>
 				{/* Text content */}
-				<Typography variant="h6">고객센터</Typography>
+				<Typography
+					variant="h6"
+					style={{
+						fontFamily: 'SpoqaHanSansNeo-Bold',
+					}}
+				>
+					고객센터
+				</Typography>
 			</Paper>
 			{/* from here onwards, help centre */}
 			{/* login help */}
@@ -366,7 +456,6 @@ function MyGuest() {
 					flexDirection: 'row',
 					position: 'left',
 					boxShadow: 0,
-					borderTop: '1px solid lightgrey',
 				}}
 			>
 				{/* Emoji */}
@@ -382,8 +471,21 @@ function MyGuest() {
 				</div>
 				{/* Text content */}
 				<div>
-					<Typography variant="h6">로그인 설정</Typography>
-					<Typography variant="body2" sx={{ color: 'grey' }}>
+					<Typography
+						variant="h6"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
+						로그인 설정
+					</Typography>
+					<Typography
+						variant="body2"
+						sx={{ color: 'darkgrey' }}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
 						평일 오전 9시 ~ 오후 6시 운영
 					</Typography>
 				</div>
@@ -392,8 +494,8 @@ function MyGuest() {
 			<Paper
 				sx={{
 					paddingLeft: 1.5,
-					paddingTop: 3,
-					paddingBottom: 3,
+					paddingTop: 1,
+					paddingBottom: 2,
 					paddingRight: 3,
 					marginBottom: 0,
 					width: '98%',
@@ -402,7 +504,6 @@ function MyGuest() {
 					flexDirection: 'row',
 					position: 'left',
 					boxShadow: 0,
-					borderTop: '1px solid lightgrey',
 				}}
 			>
 				{/* Emoji */}
@@ -418,13 +519,21 @@ function MyGuest() {
 				</div>
 				{/* Text content */}
 				<div>
-					<Typography variant="h6">자주 묻는 질문</Typography>
+					<Typography
+						variant="h6"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
+						자주 묻는 질문
+					</Typography>
 				</div>
 			</Paper>
 			{/* contact help */}
 			<Paper
 				sx={{
 					padding: 1.5,
+					paddingTop: 1,
 					marginBottom: 0,
 					width: '98%',
 					display: 'flex',
@@ -432,7 +541,6 @@ function MyGuest() {
 					flexDirection: 'row',
 					position: 'left',
 					boxShadow: 0,
-					borderTop: '1px solid lightgrey',
 				}}
 			>
 				{/* Emoji */}
@@ -448,8 +556,21 @@ function MyGuest() {
 				</div>
 				{/* Text content */}
 				<div>
-					<Typography variant="h6">상담원 연결</Typography>
-					<Typography variant="body2" sx={{ color: 'grey' }}>
+					<Typography
+						variant="h6"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
+						상담원 연결
+					</Typography>
+					<Typography
+						variant="body2"
+						sx={{ color: 'darkgrey' }}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
 						평일 오전 9시 ~ 오후 6시 운영
 					</Typography>
 				</div>
@@ -459,6 +580,7 @@ function MyGuest() {
 			<Paper
 				sx={{
 					padding: 1.5,
+					paddingTop: 1,
 					marginBottom: 7.5,
 					width: '98%',
 					display: 'flex',
@@ -466,7 +588,6 @@ function MyGuest() {
 					flexDirection: 'row',
 					position: 'left',
 					boxShadow: 0,
-					borderTop: '1px solid lightgrey',
 				}}
 			>
 				{/* Emoji */}
@@ -482,8 +603,21 @@ function MyGuest() {
 				</div>
 				{/* Text content */}
 				<div>
-					<Typography variant="h6">챗봇 1:1 질문하기</Typography>
-					<Typography variant="body2" sx={{ color: 'grey' }}>
+					<Typography
+						variant="h6"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
+						챗봇 1:1 질문하기
+					</Typography>
+					<Typography
+						variant="body2"
+						sx={{ color: 'darkgrey' }}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
 						24시간 운영
 					</Typography>
 				</div>
