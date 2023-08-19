@@ -1,4 +1,0 @@
-2023-08-19 17:12:31,841 DEBUG com.fintech.Server.api.controller.UserController [http-nio-8080-exec-1] controller : 3
-2023-08-19 17:12:31,842 DEBUG com.fintech.Server.api.service.UserServiceImpl [http-nio-8080-exec-1] service : 3
-2023-08-19 17:12:33,033 DEBUG com.fintech.Server.api.controller.UserController [http-nio-8080-exec-2] controller : 3
-2023-08-19 17:12:33,033 DEBUG com.fintech.Server.api.service.UserServiceImpl [http-nio-8080-exec-2] service : 3
