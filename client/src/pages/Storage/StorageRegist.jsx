@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
 	Typography,
 	Button,
@@ -55,13 +55,16 @@ const StorageRegist = ({}) => {
 
 	const navigate = useNavigate();
 
-	const handlePriceChange = event => {
-		setPrice(event.target.value);
+	useEffect(() => {
 		if (price === 'fixedPrice') {
 			setSelectPrice(fixedPrice);
-		} else {
+		} else if (price === 'smartPrice') {
 			setSelectPrice(smartPrice);
 		}
+	}, [price, fixedPrice, smartPrice]);
+
+	const handlePriceChange = event => {
+		setPrice(event.target.value);
 	};
 	const handleFixedPriceChange = event => {
 		setFixedPrice(event.target.value);
@@ -104,13 +107,13 @@ const StorageRegist = ({}) => {
 		const body = {
 			userId: 2,
 			storageName: storageName,
-			storageAddress: '',
-			storageLatitude: '',
-			storageLongitude: '',
+			storageAddress: '123 Main St, City, Country',
+			storageLatitude: '37.123456',
+			storageLongitude: '127.123456',
 			storageType: selectTypeValue,
-			storageFeature: storageFeature,
+			// storageFeature: storageFeature,
+			storageFeature: '1',
 			storageSize: selectSizeValue,
-			// storageUsage: '',
 			storagePrice: selectPrice,
 			serviceCommission: 10,
 			storageDescription: description,
@@ -119,11 +122,13 @@ const StorageRegist = ({}) => {
 			images: images,
 		};
 		try {
+			console.log(body);
 			const res = await registStorage(body);
 			if (res.status === 200) {
-				navigate(`/mystorage/${res.storageId}`, {
-					state: { prevRouter: `/` },
-				});
+				console.log('등록 성공');
+				// navigate(`/mystorage/${res.storageId}`, {
+				// 	state: { prevRouter: `/` },
+				// });
 			}
 		} catch (error) {
 			alert('다시 시도하세요.');
@@ -357,7 +362,7 @@ const StorageRegist = ({}) => {
 												</Grid>
 												<Grid item>
 													<Typography gutterBottom variant="subtitle1" component="div">
-														1,000원/일
+														{smartPrice}/일
 													</Typography>
 												</Grid>
 											</Grid>
