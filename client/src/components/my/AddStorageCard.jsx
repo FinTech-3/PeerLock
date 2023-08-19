@@ -6,7 +6,7 @@ import { getStorageDetail } from '../../api/getStorageDetail';
 import StorageList from '../storage/StorageList';
 
 const AddStorageCard = () => {
-	const storageId = 20;
+	const storageId = 1;
 	const [storage, setStorage] = useState([]);
 	const [loading, setLoading] = useState(true);
 
