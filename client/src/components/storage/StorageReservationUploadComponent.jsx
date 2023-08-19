@@ -67,6 +67,8 @@ const StorageReservationUploadComponent = ({ storageId }) => {
 	const uploadToServer = async files => {
 		const formData = new FormData();
 
+		formData.append('storageId', storageId);
+
 		for (let file of files) {
 			formData.append('images', file);
 		}
