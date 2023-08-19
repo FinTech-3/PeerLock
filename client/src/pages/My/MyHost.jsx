@@ -11,42 +11,34 @@ import {
 import { useNavigate } from 'react-router-dom';
 import SettingsIcon from '@mui/icons-material/Settings';
 import FixedBottomNavigationHost from '../../components/FixBottomNavigationHost';
-
-async function switchView(user_id) {
-	try {
-		// get user_id first
-		// Make an API call to get the user's status
-		const response = await fetch(`/api/user/host/${user_id}`);
-		const data = await response.json();
-
-		// Check if the user is a host or a guest
-		if (data && data.status === 'GUEST') {
-			return 'MyGuest';
-		} else {
-			return 'MyHost';
-		}
-	} catch (error) {
-		alert('Error fetching user status:', error);
-		throw error;
-	}
-}
+import { changeView } from '../../api/changeView';
 
 function MyHost() {
 	// const classes = useStyles();
 	const navigate = useNavigate();
-	const [user_id, setUser_id] = useState('');
 	// get user_id from api
+	const user_id = localStorage.getItem('userId');
+	const user_status = localStorage.getItem('userStatus').toLowerCase();
+	const user_name = localStorage.getItem('userName');
 
-	const handleButtonClick = async () => {
+	const HandleButtonClick = async () => {
 		try {
-			const view = await switchView(user_id); // Replace with the actual user ID
-
-			if (view === 'MyGuest') {
-				navigate('/MyGuest'); // Replace with the actual guest route
-			}
+			// const view = await SwitchView(user_id, user_status); // Replace with the actual user ID
+			const fetch = async () => {
+				const data = await changeView(user_id, user_status);
+				console.log(data);
+				// Check if the user is a host or a guest
+				if (data && data.status === 'USER') {
+					navigate('/MyGuest');
+					localStorage.setItem('userStatus', 'USER');
+				} else {
+					navigate('/MyHost');
+					localStorage.setItem('userStatus', 'HOST');
+				}
+			};
+			fetch();
 		} catch (error) {
 			alert('Error:', error);
-			// Handle the error accordingly
 		}
 	};
 
@@ -104,7 +96,7 @@ function MyHost() {
 							fontFamily: 'SpoqaHanSansNeo-Bold',
 						}}
 					>
-						배승우
+						{user_name}
 					</Typography>
 					<Typography
 						variant="body1"
@@ -123,10 +115,7 @@ function MyHost() {
 					variant="outlined"
 					size="small"
 					sx={{ marginTop: -12, marginLeft: 33 }}
-					onClick={handleButtonClick} // replace with real user id (TODO)
-					style={{
-						fontFamily: 'SpoqaHanSansNeo-Medium',
-					}}
+					onClick={HandleButtonClick} // replace with real user id (TODO)
 				>
 					게스트로 전환 &rarr;{' '}
 					{/* this is seriously messed up, fix only if needed. formatting is very broken, should work fine for iphone 12 pro */}

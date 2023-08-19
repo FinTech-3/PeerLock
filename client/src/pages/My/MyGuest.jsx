@@ -1,43 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Typography, IconButton, Button, Avatar, Paper } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import SettingsIcon from '@mui/icons-material/Settings';
 import FixedBottomNavigation from '../../components/FixBottomNavigation';
-
-async function switchView(user_id) {
-	// need to get user id first from api
-	try {
-		// Make an API call to get the user's status
-		const response = await fetch(`/api/user/guest/${user_id}`);
-		const data = await response.json();
-
-		// Check if the user is a host or a guest
-		if (data && data.status === 'HOST') {
-			return 'MyHost';
-		} else {
-			return 'MyGuest';
-		}
-	} catch (error) {
-		console.error('Error fetching user status:', error);
-		throw error;
-	}
-}
+import { changeView } from '../../api/changeView';
 
 function MyGuest() {
 	const navigate = useNavigate();
-	const [user_id, setUser_id] = useState('');
 	// get user_id from api
+	const user_id = localStorage.getItem('userId');
+	let user_status = localStorage.getItem('userStatus');
+	user_status = user_status === 'USER' ? 'guest' : user_status;
+	console.log(user_status);
+	const user_name = localStorage.getItem('userName');
 
-	const handleButtonClick = async () => {
+	const HandleButtonClick = async () => {
 		try {
-			const view = await switchView(user_id); // Replace with the actual user ID
-
-			if (view === 'MyHost') {
-				navigate('/MyHost'); // Replace with the actual guest route
-			}
+			// const view = await SwitchView(user_id, user_status); // Replace with the actual user ID
+			const fetch = async () => {
+				const data = await changeView(user_id, user_status);
+				console.log(data);
+				// Check if the user is a host or a guest
+				if (data && data.status === 'HOST') {
+					navigate('/MyHost');
+					localStorage.setItem('userStatus', 'HOST');
+				} else {
+					navigate('/MyGuest');
+					localStorage.setItem('userStatus', 'USER');
+				}
+			};
+			fetch();
 		} catch (error) {
 			alert('Error:', error);
-			// Handle the error accordingly
 		}
 	};
 
@@ -88,7 +82,7 @@ function MyGuest() {
 					}}
 				>
 					{/* Text content */}
-					<Typography variant="h6">배승우</Typography>
+					<Typography variant="h6">{user_name}</Typography>
 					<Typography variant="body1" color="lightgrey">
 						Level 2
 					</Typography>
@@ -99,7 +93,7 @@ function MyGuest() {
 					variant="outlined"
 					size="small"
 					sx={{ marginTop: -12, marginLeft: 33 }}
-					onClick={handleButtonClick} // replace with real user id (TODO)
+					onClick={HandleButtonClick} // replace with real user id (TODO)
 				>
 					호스트로 전환 &rarr;{' '}
 					{/* this is seriously messed up, fix only if needed. formatting is very broken, should work fine for iphone 12 pro */}
