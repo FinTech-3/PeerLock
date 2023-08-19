@@ -2,6 +2,7 @@ import React from 'react';
 import FixedBottomNavigation from '../../components/FixBottomNavigation';
 import ChatList from '../../components/chat/ChatList';
 import AppHeader from '../../components/common/AppHeader';
+import { Typography } from '@mui/material';
 
 const Chat = () => {
 	const chats = [
@@ -53,12 +54,47 @@ const Chat = () => {
 			path: 'http://localhost:3000/chat',
 			chatImage: 'https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/chat6.png',
 		},
-		// ... 기타 채팅 목록 데이터gif
 	];
 	return (
 		<div>
-			<AppHeader title={'Chat'} />
-			<ChatList chats={chats} />
+			<AppHeader
+				title={
+					<Typography
+						variant="h4"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Bold',
+						}}
+					>
+						Chat
+					</Typography>
+				}
+			/>
+			<ChatList
+				chats={chats.map(chat => ({
+					...chat,
+					username: (
+						<Typography
+							variant="body1"
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Bold',
+							}}
+						>
+							{chat.username}
+						</Typography>
+					),
+					lastMessage: (
+						<Typography
+							variant="body2"
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Medium',
+							}}
+						>
+							{chat.lastMessage}
+						</Typography>
+					),
+				}))}
+			/>
+
 			<FixedBottomNavigation />
 		</div>
 	);
