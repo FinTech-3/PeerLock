@@ -142,6 +142,11 @@ public class UserServiceImpl implements UserService {
         dto.setUserPhoneNumber(userEntity.getUserPhoneNumber());
         dto.setStatus(userEntity.getStatus().name());
 
+        // 스토리지가 없으면
+        if (userEntity.getStorages() == null || userEntity.getStorages().isEmpty()) {
+            return dto;
+        }
+
         // storage
         List<StorageListResponseDto> storageDtos = new ArrayList<>();
 
