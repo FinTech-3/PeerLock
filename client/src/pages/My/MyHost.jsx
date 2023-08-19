@@ -233,7 +233,6 @@ function MyHost() {
 						variant="h6"
 						style={{
 							fontFamily: 'SpoqaHanSansNeo-Medium',
-							marginLeft: '8px',
 						}}
 					>
 						계좌정보
