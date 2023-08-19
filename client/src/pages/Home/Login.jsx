@@ -18,6 +18,7 @@ const Login = () => {
 				console.log(data);
 				localStorage.setItem('userId', data.userId);
 				localStorage.setItem('userStatus', data.status);
+				localStorage.setItem('userName', data.userName);
 				if (data.status === 'HOST') {
 					// navigate(`/homehost/${data.userId}`);
 					navigate(`/homehost`);
