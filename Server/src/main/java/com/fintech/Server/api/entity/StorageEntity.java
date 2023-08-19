@@ -35,36 +35,50 @@ public class StorageEntity extends BaseEntity{
     @Column(name = "storage_longitude", length = 100, nullable = false)
     private String storageLongitude;
 
-    @Column(name = "storage_total_capacity", length = 50, nullable = false)
-    private String storageTotalCapacity;
+    @Column(name = "storage_type", length = 50, nullable = false)
+    private String storageType;
 
-    @Column(name = "storage_available_capacity", length = 255)
-    private String storageAvailableCapacity;
+    @Column(name = "storage_feature", length = 50, nullable = false)
+    private String storageFeature;
 
-    @Column(name = "storage_usage", length = 255)
-    private String storageUsage;
+    @Column(name = "storage_size", length = 50, nullable = false)
+    private String storageSize;
 
     @Column(name = "storage_price", nullable = false)
     private Integer storagePrice;
 
-//    @Column(name = "storage_wishes", nullable = false)
-//    private Integer storageWishes;
+    @Column(name = "storage_description", columnDefinition = "TEXT", nullable = false)
+    private String storageDescription;
 
     @Column(name = "service_commission", nullable = false)
     private Integer serviceCommission;
 
-    @Column(name = "storage_description", columnDefinition = "TEXT", nullable = false)
-    private String storageDescription;
-
-    // todo: Date 로 하는게 맞을까?
-    @Column(name = "available_from", nullable = false)
-    private Date availableFrom;
-
-    @Column(name = "available_until", nullable = false)
-    private Date availableUntil;
-
     @Column(name = "return_policy", columnDefinition = "TEXT", nullable = false)
     private String returnPolicy;
+
+    @OneToMany(mappedBy = "storage", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<StorageImageEntity> storageImages;
+
+//    @Column(name = "storage_total_capacity", length = 50, nullable = false)
+//    private String storageTotalCapacity;
+//
+//    @Column(name = "storage_available_capacity", length = 255)
+//    private String storageAvailableCapacity;
+//
+//    @Column(name = "storage_usage", length = 255)
+//    private String storageUsage;
+
+//    @Column(name = "storage_wishes", nullable = false)
+//    private Integer storageWishes;
+
+
+//    // todo: Date 로 하는게 맞을까?
+//    @Column(name = "available_from", nullable = false)
+//    private Date availableFrom;
+//
+//    @Column(name = "available_until", nullable = false)
+//    private Date availableUntil;
+
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", length = 20)
@@ -74,8 +88,6 @@ public class StorageEntity extends BaseEntity{
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity user;
 
-    @OneToMany(mappedBy = "storage", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<StorageImageEntity> storageImages;
 
 //    @Column(name = "storage_types_id", nullable = false)
 //    private Integer storageTypesId;
