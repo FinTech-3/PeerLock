@@ -84,13 +84,25 @@ const StorageRegist = ({}) => {
 		const fileURLs = files.map(file => URL.createObjectURL(file));
 		setUploadedImages(prevState => [...prevState, ...fileURLs]);
 	};
-
+	const images = [
+		{
+			imageName: '효창동 용산구 창고 D03 2nd',
+			imagePath:
+				'https://peerlock-image-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%92%E1%85%AD%E1%84%8E%E1%85%A1%E1%86%BC%E1%84%83%E1%85%A9%E1%86%BC+%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%89%E1%85%A1%E1%86%AB%E1%84%80%E1%85%AE+%E1%84%8E%E1%85%A1%E1%86%BC%E1%84%80%E1%85%A9+D03+2nd.jpg',
+		},
+		{
+			imageName: '상수동마포',
+			imagePath:
+				'https://peerlock-image-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%89%E1%85%A1%E1%86%BC%E1%84%89%E1%85%AE%E1%84%83%E1%85%A9%E1%86%BC+%E1%84%86%E1%85%A1%E1%84%91%E1%85%A9%E1%84%80%E1%85%AE+%E1%84%8B%E1%85%A9%E1%86%BA%E1%84%8C%E1%85%A1%E1%86%BC+D03.webp',
+		},
+	];
 	const onSubmitHandler = async () => {
 		if (uploadedImages.length === 0) {
 			alert('사진을 등록해주세요');
 			return;
 		}
 		const body = {
+			userId: 2,
 			storageName: storageName,
 			storageAddress: '',
 			storageLatitude: '',
@@ -100,19 +112,20 @@ const StorageRegist = ({}) => {
 			storageSize: selectSizeValue,
 			// storageUsage: '',
 			storagePrice: selectPrice,
-			// serviceCommission: '',
+			serviceCommission: 10,
 			storageDescription: description,
-			// photos: uploadedImages,
+			// images: uploadedImages,
+			returnPolicy: 'Items can be returned within 30 days of purchase.',
+			images: images,
 		};
 		try {
-			const ret = await registStorage(body);
-			if (ret.result === '등록 성공') {
-				navigate(`/mystorage/${ret.storageId}`, {
+			const res = await registStorage(body);
+			if (res.status === 200) {
+				navigate(`/mystorage/${res.storageId}`, {
 					state: { prevRouter: `/` },
 				});
 			}
 		} catch (error) {
-			alert(error);
 			alert('다시 시도하세요.');
 		}
 	};

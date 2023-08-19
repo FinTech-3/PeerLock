@@ -142,6 +142,11 @@ public class UserServiceImpl implements UserService {
         dto.setUserPhoneNumber(userEntity.getUserPhoneNumber());
         dto.setStatus(userEntity.getStatus().name());
 
+        // 스토리지가 없으면
+        if (userEntity.getStorages() == null || userEntity.getStorages().isEmpty()) {
+            return dto;
+        }
+
         // storage
         List<StorageListResponseDto> storageDtos = new ArrayList<>();
 
@@ -155,14 +160,14 @@ public class UserServiceImpl implements UserService {
 
             storageDto.setStorageLatitude(storageEntity.getStorageLatitude());
             storageDto.setStorageLongitude(storageEntity.getStorageLongitude());
-            storageDto.setStorageTotalCapacity(storageEntity.getStorageTotalCapacity());
-            storageDto.setStorageAvailableCapacity(storageEntity.getStorageAvailableCapacity());
-            storageDto.setStorageUsage(storageEntity.getStorageUsage());
+//            storageDto.setStorageTotalCapacity(storageEntity.getStorageTotalCapacity());
+//            storageDto.setStorageAvailableCapacity(storageEntity.getStorageAvailableCapacity());
+//            storageDto.setStorageUsage(storageEntity.getStorageUsage());
             storageDto.setStoragePrice(storageEntity.getStoragePrice());
             storageDto.setServiceCommission(storageEntity.getServiceCommission());
             storageDto.setStorageDescription(storageEntity.getStorageDescription());
-            storageDto.setAvailableFrom(storageEntity.getAvailableFrom());
-            storageDto.setAvailableUntil(storageEntity.getAvailableUntil());
+//            storageDto.setAvailableFrom(storageEntity.getAvailableFrom());
+//            storageDto.setAvailableUntil(storageEntity.getAvailableUntil());
             storageDto.setReturnPolicy(storageEntity.getReturnPolicy());
             storageDto.setCreatedAt(storageEntity.getCreatedAt());
             storageDto.setUpdatedAt(storageEntity.getUpdatedAt());
