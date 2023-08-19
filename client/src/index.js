@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import '../src/styles/font.scss';
 // msw
 import { serviceWorker } from './mocks/browser';
 serviceWorker.start({ onUnhandledRequest: 'bypass' });
