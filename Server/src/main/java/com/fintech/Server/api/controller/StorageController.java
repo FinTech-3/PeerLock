@@ -3,6 +3,7 @@ package com.fintech.Server.api.controller;
 import com.fintech.Server.api.dto.StorageListResponseDto;
 import com.fintech.Server.api.dto.StorageRegisterRequestDto;
 import com.fintech.Server.api.entity.StorageEntity;
+import com.fintech.Server.api.service.ImageUploadService;
 import com.fintech.Server.api.service.StorageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -23,10 +27,24 @@ public class StorageController {
     public StorageController(StorageService storageService) {
         this.storageService = storageService;
     }
+    @Autowired
+    private ImageUploadService imageUploadService;
+
+    @PostMapping("/images")
+    public ResponseEntity<List<String>> uploadImages(@RequestParam("images") MultipartFile[] images) {
+        try {
+            List<String> imageUrls = imageUploadService.uploadImagesToNCP(images);
+            return new ResponseEntity<>(imageUrls, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(Collections.emptyList(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
 
     // C : 새로운 창고 등록
     @PostMapping("")
-    public ResponseEntity registerStorage(@RequestBody StorageRegisterRequestDto request) {
+    public ResponseEntity registerStorage(@RequestBody StorageRegisterRequestDto request) throws IOException {
         StorageEntity storageEntity = storageService.registerStorage(request);
         if (storageEntity != null) {
             return ResponseEntity.ok(HttpStatus.CREATED);
@@ -34,6 +52,8 @@ public class StorageController {
             return ResponseEntity.badRequest().body("창고 추가 실패");
         }
     }
+
+
 
     // R : 서비스 내 모든 창고 List 출력
     @GetMapping("")
