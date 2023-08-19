@@ -6,11 +6,13 @@ import { getStorageDetail } from '../../api/getStorageDetail';
 import FixedBottomNavigation from '../../components/FixBottomNavigation';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Box } from '@mui/material';
+import FixedBottomNavigationHost from '../../components/FixBottomNavigationHost';
 
 const StorageDetailPage = () => {
 	const [storageDetail, setStorageDetail] = useState([]);
 	const { storageId } = useParams();
 	const [loading, setLoading] = useState(true);
+	const status = localStorage.getItem('userStatus');
 
 	useEffect(() => {
 		const fetch = async () => {
@@ -32,7 +34,7 @@ const StorageDetailPage = () => {
 					<StorageDetail storage={storageDetail} />
 				)}
 			</div>
-			<FixedBottomNavigation />
+			{status == 'USER' ? <FixedBottomNavigation /> : <FixedBottomNavigationHost />}
 		</div>
 	);
 };
