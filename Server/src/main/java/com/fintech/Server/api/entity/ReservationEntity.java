@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "reservation")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor
 @Data
 @Builder

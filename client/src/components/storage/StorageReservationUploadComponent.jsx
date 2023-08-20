@@ -51,7 +51,7 @@ const StorageReservationUploadComponent = ({ storageId }) => {
 
 	const location = useLocation();
 	const storageDetails = location.state?.storageDetails;
-	console.log(storageDetails);
+	// console.log(storageDetails);
 
 	const navigate = useNavigate(); // React Router v6의 useNavigate 훅을 사용
 
@@ -61,36 +61,59 @@ const StorageReservationUploadComponent = ({ storageId }) => {
 
 	const handleButtonClick = () => {
 		const reservationData = generateReservationJSON();
+		console.log('reservationData ', reservationData);
+		axios
+			.post(`/api/reservation`, reservationData)
+			.then(response => {
+				// 서버 응답 처리
+				console.log('서버 응답:', response.data);
+
+				console.log('등록 성공');
+				const reservationId = response.data.reservationId;
+
+				uploadToServer(uploadedFiles, reservationId);
+
+				console.log('서버 이미지 등록 성공');
+			})
+			.catch(error => {
+				// 에러 처리
+				console.error('에러 발생:', error);
+			});
+
 		navigate(`/storage/reservation/confirm/${storageId}`, { state: { reservationData } });
 	};
 
-	const uploadToServer = async files => {
+	const uploadToServer = async (files, reservationId) => {
 		const formData = new FormData();
 
-		formData.append('storageId', storageId);
+		formData.append('reservationId', reservationId);
 
 		for (let file of files) {
 			formData.append('images', file);
 		}
 
 		try {
-			const response = await axios.post('/api/storage/images', formData, {
+			const response = await axios.post('/api/reservation/images', formData, {
 				headers: {
 					'Content-Type': 'multipart/form-data',
 				},
 			});
 
 			console.log('Upload successful:', response.data);
-			setUploadedImages(prevState => [...prevState, ...response.data]);
+			// setUploadedImages(prevState => [...prevState, ...response.data]);
 		} catch (error) {
 			console.error('Error uploading:', error);
 		}
 	};
 
+	const [uploadedFiles, setUploadedFiles] = useState([]);
+
 	const handleImageChange = e => {
 		const files = Array.from(e.target.files);
-		// 서버로 이미지 업로드
-		uploadToServer(files);
+		setUploadedFiles(files); // 파일들을 상태에 저장합니다.
+
+		const fileURLs = files.map(file => URL.createObjectURL(file));
+		setUploadedImages(prevState => [...prevState, ...fileURLs]);
 	};
 
 	const getMonthsBetweenDates = (startDate, endDate) => {
@@ -117,7 +140,7 @@ const StorageReservationUploadComponent = ({ storageId }) => {
 	const totalStoragePrice = storageDetails.storagePrice * totalMonths;
 	const totalPayment = totalStoragePrice + insurancePrice;
 
-	console.log(totalMonths, totalStoragePrice);
+	// console.log(totalMonths, totalStoragePrice);
 
 	const generateReservationJSON = () => {
 		const userId = localStorage.getItem('userId');
@@ -296,7 +319,7 @@ const StorageReservationUploadComponent = ({ storageId }) => {
 										overflowx="auto" // 슬라이드를 위한 속성
 										whiteSpace="nowrap" // 슬라이드를 위한 속성
 									>
-										{uploadedImages.map((image, index) => (
+										{uploadedImages?.map((image, index) => (
 											<img
 												key={index}
 												src={image}

@@ -33,7 +33,7 @@ const AddressInput = ({ lat, lng }) => {
 					Accept: 'application/json',
 				},
 			});
-			console.log(response);
+			// console.log(response);
 			const result = response.v2,
 				items = result.address;
 			const x = parseFloat(items[0].x);
