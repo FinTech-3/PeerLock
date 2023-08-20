@@ -43,7 +43,7 @@ const StorageReservationComponent = ({ storage }) => {
 	const handleButtonClick = () => {
 		const reservationData = generateReservationJSON();
 		axios
-			.post(`http://localhost:8080/api/reservation?${reservationData.storageId}`, reservationData)
+			.post(`/api/reservation?${reservationData.storageId}`, reservationData)
 			.then(response => {
 				// 서버 응답 처리
 				console.log('서버 응답:', response.data);
