@@ -34,7 +34,7 @@ const StorageDetailPage = () => {
 					<StorageDetail storage={storageDetail} />
 				)}
 			</div>
-			{status == 'USER' ? <FixedBottomNavigation /> : <FixedBottomNavigationHost />}
+			{/* {status === 'USER' ? <FixedBottomNavigation /> : <FixedBottomNavigationHost />} */}
 		</div>
 	);
 };

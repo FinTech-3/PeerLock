@@ -13,7 +13,7 @@ const NaverMapComponent = ({ storageList }) => {
 		const position = new navermaps.LatLng(storage.storageLatitude, storage.storageLongitude);
 
 		const icon = {
-			content: `<div style="padding:5px; background-color:white; border-radius:10px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);">${priceToString(
+			content: `<div style="padding:5px; background-color:white; border-radius:10px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); font-family: SpoqaHanSansNeo-Bold;">${priceToString(
 				storage.storagePrice,
 			)}</div>`,
 			size: new navermaps.Size(200, 50),

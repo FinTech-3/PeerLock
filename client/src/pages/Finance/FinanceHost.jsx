@@ -148,10 +148,10 @@ const FinanceHost = () => {
 						style={{
 							position: 'absolute',
 							bottom: 0,
-							left: selectedTab === 0 ? 0 : '29%',
-							width: selectedTab === 0 ? '31%' : '43%',
+							left: selectedTab === 0 ? 0 : '50%',
+							width: selectedTab === 0 ? '50%' : '50%',
 							height: '3px',
-							backgroundColor: '#00BFFF',
+							backgroundColor: '#D5E7FE',
 							transition: 'left 0.3s',
 						}}
 					/>
@@ -160,11 +160,11 @@ const FinanceHost = () => {
 						style={{
 							cursor: 'pointer',
 							color: selectedTab === 0 ? 'black' : 'grey',
-							fontSize: 24,
-							marginLeft: 30,
+							fontSize: 20,
+							marginLeft: 60,
 							marginBottom: 10,
 							marginRight: 40,
-							fontFamily: 'SpoqaHanSansNeo-Medium',
+							fontFamily: 'SpoqaHanSansNeo-Bold',
 						}}
 					>
 						수익
@@ -174,27 +174,30 @@ const FinanceHost = () => {
 						style={{
 							cursor: 'pointer',
 							color: selectedTab === 1 ? 'black' : 'grey',
+							marginLeft: 90,
 							marginBottom: 10,
-							fontSize: 24,
-							fontFamily: 'SpoqaHanSansNeo-Medium',
+							fontSize: 20,
+							fontFamily: 'SpoqaHanSansNeo-Bold',
 						}}
 					>
-						리뷰 & 별점
+						리뷰
 					</div>
 				</div>
 			</div>
 			{selectedTab === 0 && (
 				<div style={{ marginTop: '20px', width: '100%' }}>
 					<Paper
+						elevation={0}
 						sx={{
 							padding: 1.5,
-							border: '1px solid lightgrey',
+							bgcolor: '#F2F7FF',
+							// border: '1px solid lightgrey',
 							borderRadius: 4,
 							width: '93%',
 							display: 'flex',
 							flexDirection: 'column',
 							position: 'relative',
-							boxShadow: 5,
+							// boxShadow: 5,
 							marginBottom: '20px',
 							marginTop: '30px',
 							marginLeft: '13.5px',
@@ -202,7 +205,12 @@ const FinanceHost = () => {
 					>
 						<Typography
 							variant="h4"
-							style={{ fontSize: 30, color: 'blue', fontFamily: 'SpoqaHanSansNeo-Medium' }}
+							style={{
+								fontSize: 24,
+
+								color: '#005EB4',
+								fontFamily: 'SpoqaHanSansNeo-Bold',
+							}}
 							sx={{ margin: 0.5 }}
 						>
 							<strong>₩{totalEarnings},000</strong>
@@ -309,7 +317,7 @@ const FinanceHost = () => {
 									variant="h6"
 									fontSize={15}
 									minWidth={70}
-									sx={{ color: 'red' }}
+									sx={{ color: 'red', textAlign: 'right' }}
 									style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
 								>
 									36,000원
@@ -389,8 +397,7 @@ const FinanceHost = () => {
 									variant="h6"
 									fontSize={15}
 									minWidth={70}
-									sx={{ color: 'red' }}
-									style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
+									sx={{ color: 'red', textAlign: 'right', fontFamily: 'SpoqaHanSansNeo-Medium' }}
 								>
 									310,000원
 								</Typography>
@@ -468,8 +475,7 @@ const FinanceHost = () => {
 									variant="h6"
 									fontSize={15}
 									minWidth={70}
-									sx={{ color: 'red' }}
-									style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
+									sx={{ color: 'red', textAlign: 'right', fontFamily: 'SpoqaHanSansNeo-Medium' }}
 								>
 									2,000원
 								</Typography>
@@ -501,7 +507,7 @@ const FinanceHost = () => {
 									marginLeft: '45px',
 									marginTop: '-10px',
 									marginBottom: '20px',
-									color: '#3F39E6',
+									color: '#5A95F1',
 									fontWeight: 'bold',
 								}}
 							>
@@ -579,7 +585,7 @@ const FinanceHost = () => {
 								borderRadius: '20px',
 								backgroundColor: 'transparent',
 								color: 'black',
-								border: '2px solid darkgrey',
+								// border: '2px solid darkgrey',
 								marginTop: '10px',
 								marginLeft: '-140px',
 								fontFamily: 'SpoqaHanSansNeo-Medium',
@@ -595,7 +601,7 @@ const FinanceHost = () => {
 								borderRadius: '20px',
 								backgroundColor: 'transparent',
 								color: 'black',
-								border: '2px solid darkgrey',
+								// border: '2px solid darkgrey',
 								marginTop: '10px',
 								marginLeft: '-310px',
 								fontFamily: 'SpoqaHanSansNeo-Medium',
@@ -609,8 +615,13 @@ const FinanceHost = () => {
 						{getPhotoReviews().map((review, index) => (
 							<Paper
 								key={index}
-								elevation={3}
-								style={{ padding: '20px', marginBottom: '20px', borderRadius: 14 }}
+								elevation={0}
+								style={{
+									padding: '20px',
+									marginBottom: '20px',
+									borderRadius: 14,
+									backgroundColor: '#F2F7FF',
+								}}
 							>
 								<div
 									style={{
@@ -640,7 +651,7 @@ const FinanceHost = () => {
 										max={5}
 										precision={0.1}
 										style={{
-											color: '#3F39E6',
+											color: '#5A95F1',
 											marginLeft: '10px',
 											fontSize: '1.7em',
 											fontFamily: 'SpoqaHanSansNeo-Medium',

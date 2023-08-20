@@ -12,7 +12,12 @@ const SearchComponent = () => {
 					placeholder="주소를 입력해주세요"
 					sx={{
 						backgroundColor: 'white',
-						boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
+						'& .MuiOutlinedInput-root': {
+							'& > fieldset': {
+								border: 'none',
+							},
+						},
+						borderRadius: '5px',
 					}}
 					InputProps={{
 						startAdornment: (
