@@ -366,7 +366,7 @@ const Home = () => {
 							marginBottom: 5,
 						}}
 						style={{
-							fontFamily: 'SpoqaHanSansNeo-Meidum',
+							fontFamily: 'SpoqaHanSansNeo-Medium',
 						}}
 					>
 						09.17 ~ 11.16 (2M)

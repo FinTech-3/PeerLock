@@ -43,7 +43,7 @@ function MyGuest() {
 					aria-label="settings"
 					sx={{
 						marginTop: 2,
-						marginLeft: 42,
+						marginLeft: 40,
 						marginBottom: -5,
 					}}
 				>
@@ -95,6 +95,7 @@ function MyGuest() {
 						color="grey"
 						style={{
 							fontFamily: 'SpoqaHanSansNeo-Bold',
+							marginLeft: 6,
 						}}
 					>
 						Level 2
@@ -105,7 +106,7 @@ function MyGuest() {
 				<Button
 					variant="outlined"
 					size="small"
-					sx={{ marginTop: -12, marginLeft: 33 }}
+					sx={{ marginTop: -13, marginLeft: 31 }}
 					style={{
 						fontFamily: 'SpoqaHanSansNeo-Medium',
 					}}
@@ -143,8 +144,8 @@ function MyGuest() {
 			<Paper
 				sx={{
 					padding: 1.5,
-					margin: 'auto',
 					marginTop: 0.5,
+					marginLeft: 0.9,
 					border: '2px solid lightblue',
 					borderRadius: '10px',
 					width: '93%',

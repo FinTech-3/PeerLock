@@ -50,7 +50,7 @@ function MyHost() {
 					aria-label="settings"
 					sx={{
 						marginTop: 2,
-						marginLeft: 42,
+						marginLeft: 40,
 						marginBottom: -5,
 					}}
 				>
@@ -103,7 +103,8 @@ function MyHost() {
 						color={'grey'}
 						sx={{ fontWeight: 'bold' }}
 						style={{
-							fontFamily: 'SpoqaHanSansNeo-Medium',
+							fontFamily: 'SpoqaHanSansNeo-Bold',
+							marginLeft: 6,
 						}}
 					>
 						Level 2
@@ -114,7 +115,7 @@ function MyHost() {
 				<Button
 					variant="outlined"
 					size="small"
-					sx={{ marginTop: -12, marginLeft: 33 }}
+					sx={{ marginTop: -13, marginLeft: 31 }}
 					style={{
 						fontFamily: 'SpoqaHanSansNeo-Medium',
 					}}

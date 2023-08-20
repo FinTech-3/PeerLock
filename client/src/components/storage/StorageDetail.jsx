@@ -200,7 +200,7 @@ const StorageDetail = ({ storage }) => {
 									alignItems: 'center',
 								}}
 							>
-								<b>숙소 위치보기&nbsp;{storage.star || '1.2km'}</b>
+								<b>창고 위치보기&nbsp;{storage.star || '1.2km'}</b>
 								<ArrowForwardIosIcon sx={{ fontSize: '14px' }} />
 							</div>
 						</Typography>
