@@ -30,7 +30,20 @@ public class ReservationEntity extends BaseEntity {
     private String itemSize;
 
     @Column(name = "insurance_plan", nullable = false)
-    private Integer insurancePlan;
+    private String insurancePlan;
+
+    @Column(name = "insurance_price", nullable = false)
+    private Integer insurancePrice;
+
+    @Column(name = "total_payment", nullable = false)
+    private Integer totalPayment;
+    @Column(name = "total_storage_price", nullable = false)
+    private Integer totalStoragePrice;
+    @Column(name = "total_months", nullable = false)
+    private Integer totalMonths;
+
+    @Column(name = "payment_method", nullable = false)
+    private String paymentMethod;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
@@ -39,6 +52,7 @@ public class ReservationEntity extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "storage_id", nullable = false)
     private StorageEntity storage;
+
 
     @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ReservationImageEntity> reservationImages;

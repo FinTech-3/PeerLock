@@ -46,7 +46,7 @@ const StorageList = ({ storage }) => {
 							}}
 						>
 							<Typography variant="h6" sx={{ fontSize: '18px', fontWeight: 'bold' }}>
-								{storage.storageName || 'Item Title'}
+								{storage?.storageName || 'Item Title'}
 							</Typography>
 							<div style={{ display: 'flex', alignItems: 'center' }}>
 								<StarIcon color="primary" />
@@ -54,7 +54,7 @@ const StorageList = ({ storage }) => {
 									variant="h6"
 									sx={{ fontSize: '18px', fontWeight: 'bold', marginLeft: '0px' }}
 								>
-									{storage.star || '4.54(15)'}
+									{storage?.star || '4.54(15)'}
 								</Typography>
 							</div>
 						</div>

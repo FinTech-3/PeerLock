@@ -82,7 +82,6 @@ public class UserServiceImpl implements UserService {
             }
 
             UserEntity savedUser = userRepository.save(user);
-            logger.debug(String.valueOf(savedUser));
 
             return new UserResponseDto(
                     savedUser.getUserId(),
@@ -92,7 +91,6 @@ public class UserServiceImpl implements UserService {
         }
 
         // 해당 userId를 가진 UserEntity가 없을 경우 null 반환
-        logger.debug("UserService SwitchStatus : 유저 없음");
         return null;
     }
 
@@ -100,11 +98,9 @@ public class UserServiceImpl implements UserService {
     // 유저 정보 가져오기
     @Override
     public ResponseEntity<UserInfoResponseDto> getUserDetail(Long userId) {
-        logger.debug("service : " + userId);
         Optional<UserEntity> userOpt = userRepository.findById(userId);
 
         if (!userOpt.isPresent()) {
-            logger.debug(userOpt.toString());
             return ResponseEntity.notFound().build();
         }
 
@@ -162,14 +158,11 @@ public class UserServiceImpl implements UserService {
 
             storageDto.setStorageLatitude(storageEntity.getStorageLatitude());
             storageDto.setStorageLongitude(storageEntity.getStorageLongitude());
-//            storageDto.setStorageTotalCapacity(storageEntity.getStorageTotalCapacity());
-//            storageDto.setStorageAvailableCapacity(storageEntity.getStorageAvailableCapacity());
-//            storageDto.setStorageUsage(storageEntity.getStorageUsage());
+
             storageDto.setStoragePrice(storageEntity.getStoragePrice());
             storageDto.setServiceCommission(storageEntity.getServiceCommission());
             storageDto.setStorageDescription(storageEntity.getStorageDescription());
-//            storageDto.setAvailableFrom(storageEntity.getAvailableFrom());
-//            storageDto.setAvailableUntil(storageEntity.getAvailableUntil());
+
             storageDto.setReturnPolicy(storageEntity.getReturnPolicy());
             storageDto.setCreatedAt(storageEntity.getCreatedAt());
             storageDto.setUpdatedAt(storageEntity.getUpdatedAt());

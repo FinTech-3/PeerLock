@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
 	Typography,
 	Button,
@@ -51,6 +52,7 @@ const StorageRegist = ({}) => {
 		cameraIndoor: false,
 		fireExtinguisher: false,
 	});
+	const [uploadedFiles, setUploadedFiles] = useState([]);
 
 	const storageType = ['방', '창고', '상권', '기타'];
 	const storageSize = ['소형', '중형', '대형'];
@@ -90,28 +92,31 @@ const StorageRegist = ({}) => {
 
 	const handleImageChange = e => {
 		const files = Array.from(e.target.files);
+		setUploadedFiles(files); // 파일들을 상태에 저장합니다.
+
 		const fileURLs = files.map(file => URL.createObjectURL(file));
 		setUploadedImages(prevState => [...prevState, ...fileURLs]);
 	};
-	const images = [
-		{
-			imageName: '효창동 용산구 창고 D03 2nd',
-			imagePath:
-				'https://peerlock-image-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%92%E1%85%AD%E1%84%8E%E1%85%A1%E1%86%BC%E1%84%83%E1%85%A9%E1%86%BC+%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%89%E1%85%A1%E1%86%AB%E1%84%80%E1%85%AE+%E1%84%8E%E1%85%A1%E1%86%BC%E1%84%80%E1%85%A9+D03+2nd.jpg',
-		},
-		{
-			imageName: '상수동마포',
-			imagePath:
-				'https://peerlock-image-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%89%E1%85%A1%E1%86%BC%E1%84%89%E1%85%AE%E1%84%83%E1%85%A9%E1%86%BC+%E1%84%86%E1%85%A1%E1%84%91%E1%85%A9%E1%84%80%E1%85%AE+%E1%84%8B%E1%85%A9%E1%86%BA%E1%84%8C%E1%85%A1%E1%86%BC+D03.webp',
-		},
-	];
+
+	// const images = [
+	// 	{
+	// 		imageName: '효창동 용산구 창고 D03 2nd',
+	// 		imagePath:
+	// 			'https://peerlock-image-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%92%E1%85%AD%E1%84%8E%E1%85%A1%E1%86%BC%E1%84%83%E1%85%A9%E1%86%BC+%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%89%E1%85%A1%E1%86%AB%E1%84%80%E1%85%AE+%E1%84%8E%E1%85%A1%E1%86%BC%E1%84%80%E1%85%A9+D03+2nd.jpg',
+	// 	},
+	// 	{
+	// 		imageName: '상수동마포',
+	// 		imagePath:
+	// 			'https://peerlock-image-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%89%E1%85%A1%E1%86%BC%E1%84%89%E1%85%AE%E1%84%83%E1%85%A9%E1%86%BC+%E1%84%86%E1%85%A1%E1%84%91%E1%85%A9%E1%84%80%E1%85%AE+%E1%84%8B%E1%85%A9%E1%86%BA%E1%84%8C%E1%85%A1%E1%86%BC+D03.webp',
+	// 	},
+	// ];
 	const onSubmitHandler = async () => {
 		if (uploadedImages.length === 0) {
 			alert('사진을 등록해주세요');
 			return;
 		}
 		const body = {
-			userId: 2,
+			userId: localStorage.getItem('userId'),
 			storageName: storageName,
 			storageAddress: '123 Main St, City, Country',
 			storageLatitude: '37.123456',
@@ -125,20 +130,47 @@ const StorageRegist = ({}) => {
 			storageDescription: description,
 			// images: uploadedImages,
 			returnPolicy: 'Items can be returned within 30 days of purchase.',
-			images: images,
+			images: [],
 		};
 		try {
 			const res = await registStorage(body);
 			if (res.status === 200) {
 				console.log('등록 성공');
-				// navigate(`/mystorage/${res.storageId}`, {
-				// 	state: { prevRouter: `/` },
-				// });
+				const storageId = res.data.storageId;
+				uploadToServer(uploadedFiles, storageId);
+				console.log('서버 이미지 등록 성공');
+				navigate(`/mystorage/${storageId}`, {
+					state: { prevRouter: `/` },
+				});
 			}
 		} catch (error) {
 			alert('다시 시도하세요.');
 		}
 	};
+
+	const uploadToServer = async (files, storageId) => {
+		const formData = new FormData();
+
+		formData.append('storageId', storageId);
+
+		for (let file of files) {
+			formData.append('images', file);
+		}
+
+		try {
+			const response = await axios.post('/api/storage/images', formData, {
+				headers: {
+					'Content-Type': 'multipart/form-data',
+				},
+			});
+
+			console.log('Upload successful:', response.data);
+			// setUploadedImages(prevState => [...prevState, ...response.data]);
+		} catch (error) {
+			console.error('Error uploading:', error);
+		}
+	};
+
 	return (
 		<Box style={{ maxHeight: '100vh', overflowY: 'auto', paddingBottom: '60px' }}>
 			<TopNavigationComponent
