@@ -23,6 +23,7 @@ import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import AppHeader from '../../components/common/AppHeader';
 import { getMyStorage } from '../../api/getMyStorage';
 import { useNavigate } from 'react-router-dom';
+import TopNavigationComponent from '../../components/common/TopNavigationComponent';
 
 const MyStoragePage = ({}) => {
 	const [filter, setFilter] = useState('가격순');
@@ -36,7 +37,6 @@ const MyStoragePage = ({}) => {
 	useEffect(() => {
 		const fetch = async () => {
 			const data = await getMyStorage(userId);
-			console.log('suel', data);
 			if (data.storages == null) {
 				setStorageList([]);
 			} else {
@@ -54,19 +54,8 @@ const MyStoragePage = ({}) => {
 
 	return (
 		<div style={{ maxHeight: '100vh', overflowY: 'auto' }}>
-			<AppHeader title={'내 공간'}>
-				<Box mt={3} mb={1} textAlign="center">
-					<Typography
-						variant="h4"
-						style={{
-							fontFamily: 'SpoqaHanSansNeo-Bold',
-						}}
-					>
-						내 공간
-					</Typography>
-				</Box>
-			</AppHeader>
-			<div style={{ paddingBottom: '50px' }}>
+			<TopNavigationComponent centerText="내 공간" />
+			<div style={{ paddingBottom: '50px', paddingTop: '60px' }}>
 				{loading ? (
 					<Box display="flex" justifyContent="center" alignItems="center" minHeight="80vh">
 						<CircularProgress />
@@ -92,12 +81,24 @@ const MyStoragePage = ({}) => {
 							<></>
 						) : (
 							<div>
-								<Box margin={2} mb={3} mt={0} display="flex" justifyContent="flex-end">
+								<Box
+									sx={{
+										display: 'flex',
+										justifyContent: 'flex-end',
+										position: 'fixed',
+										bottom: 50,
+										left: 0,
+										right: 0,
+									}}
+									margin={2}
+									mb={3}
+									mt={0}
+								>
 									<IconButton
 										onClick={handleButtonClick}
 										sx={{
 											backgroundColor: 'primary.light',
-											boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', // 여기에서 그림자의 크기, 방향, 색상 등을 조정하여 원하는 효과를 얻을 수 있습니다.
+											boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)',
 										}}
 									>
 										<AddCircleOutlineOutlinedIcon color="white" fontSize="large" />
