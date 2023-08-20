@@ -63,6 +63,11 @@ public class ReservationServiceImpl implements ReservationService {
                     .endDate(request.getEndDate())
                     .itemSize(request.getItemSize())
                     .insurancePlan(request.getInsurancePlan())
+                    .insurancePrice(request.getInsurancePrice())
+                    .totalMonths(request.getTotalMonths())
+                    .totalStoragePrice(request.getTotalStoragePrice())
+                    .totalPayment(request.getTotalPayment())
+                    .paymentMethod(request.getPaymentMethod())
                     .status(ReservationStatus.AVAILABLE)
                     .build();
 

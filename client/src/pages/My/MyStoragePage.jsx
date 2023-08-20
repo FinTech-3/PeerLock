@@ -22,11 +22,13 @@ import AddStorageCard from '../../components/my/AddStorageCard';
 import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import AppHeader from '../../components/common/AppHeader';
 import { getMyStorage } from '../../api/getMyStorage';
+import { useNavigate } from 'react-router-dom';
 
 const MyStoragePage = ({}) => {
 	const [filter, setFilter] = useState('가격순');
 	const [loading, setLoading] = useState(true);
 	const [storageList, setStorageList] = useState([]);
+	const navigate = useNavigate();
 
 	const userId = localStorage.getItem('userId');
 
@@ -34,7 +36,7 @@ const MyStoragePage = ({}) => {
 	useEffect(() => {
 		const fetch = async () => {
 			const data = await getMyStorage(userId);
-			console.log(data);
+			console.log('suel', data);
 			if (data.storages == null) {
 				setStorageList([]);
 			} else {
@@ -45,6 +47,10 @@ const MyStoragePage = ({}) => {
 		};
 		fetch();
 	}, []);
+
+	const handleButtonClick = () => {
+		navigate(`/mystorage/regist`);
+	};
 
 	return (
 		<div style={{ maxHeight: '100vh', overflowY: 'auto' }}>
@@ -89,6 +95,7 @@ const MyStoragePage = ({}) => {
 							<div>
 								<Box margin={2} mb={3} mt={0} display="flex" justifyContent="flex-end">
 									<IconButton
+										onClick={handleButtonClick}
 										sx={{
 											backgroundColor: 'primary.light',
 											boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', // 여기에서 그림자의 크기, 방향, 색상 등을 조정하여 원하는 효과를 얻을 수 있습니다.

@@ -12,8 +12,6 @@ import java.util.List;
 @Data
 
 public class StorageListResponseDto {
-
-    // private UserResponseDto user;
     private Long userId;
     private Long storageId;
     private String storageName;
@@ -23,14 +21,9 @@ public class StorageListResponseDto {
     private String storageType;
     private String storageSize;
     private String storageFeature;
-//    private String storageTotalCapacity;
-//    private String storageAvailableCapacity;
-//    private String storageUsage;
     private Integer storagePrice;
     private Integer serviceCommission;
     private String storageDescription;
-//    private Date availableFrom;
-//    private Date availableUntil;
     private String returnPolicy;
     private Instant createdAt;
     private Instant updatedAt;
