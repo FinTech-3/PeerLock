@@ -20,7 +20,7 @@ const SquareImage = ({ src, alt }) => {
 const ChatList = ({ chats }) => {
 	return (
 		<List>
-			<Box style={{ paddingBottom: '50px' }}>
+			<Box style={{ paddingBottom: '50px', paddingTop: '60px' }}>
 				{chats.map((chat, index) => (
 					<React.Fragment key={index}>
 						<div style={{ width: '100%', boxSizing: 'border-box' }}>

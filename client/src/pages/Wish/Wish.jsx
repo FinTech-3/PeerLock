@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import FixedBottomNavigation from '../../components/FixBottomNavigation';
 import { getWishList } from '../../api/getWishList';
-import { CircularProgress, Grid, Typography } from '@mui/material';
+import { CircularProgress, Grid } from '@mui/material';
 import WishList from '../../components/wish/WishList';
-import AppHeader from '../../components/common/AppHeader';
-
+import TopNavigationComponent from '../../components/common/TopNavigationComponent';
 const Wish = () => {
 	const [loading, setLoading] = useState(true);
 	const [wishList, setWishList] = useState(true);
@@ -20,20 +19,7 @@ const Wish = () => {
 
 	return (
 		<div>
-			<AppHeader
-				title={
-					<Typography
-						variant="h4"
-						style={{
-							fontFamily: 'SpoqaHanSansNeo-Bold',
-							margin: '3px auto', // Center horizontally
-							textAlign: 'center', // Center vertically
-						}}
-					>
-						찜
-					</Typography>
-				}
-			/>
+			<TopNavigationComponent centerText="찜" />
 			{loading ? (
 				<div
 					style={{
