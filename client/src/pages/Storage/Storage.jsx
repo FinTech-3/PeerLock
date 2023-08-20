@@ -41,7 +41,7 @@ const Storage = ({ modalOpen, handleOpenModal, handleCloseModal, storageList, se
 				</div>
 			) : (
 				<div style={{ maxHeight: '100vh', overflowY: 'auto' }}>
-					<div style={{ paddingBottom: '50px' }}>
+					<div style={{ paddingBottom: '50px', fontFamily: 'SpoqaHanSansNeo-Medium' }}>
 						<Box
 							display="flex"
 							alignItems="center"
@@ -60,30 +60,52 @@ const Storage = ({ modalOpen, handleOpenModal, handleCloseModal, storageList, se
 							alignItems="center"
 							sx={{ paddingTop: '2px', paddingLeft: '20px', paddingRight: '20px' }}
 						>
-							<Typography variant="h6" gutterBottom sx={{ fontSize: '14px', marginBottom: '0' }}>
+							<Typography
+								variant="h6"
+								gutterBottom
+								sx={{ fontSize: '17px', marginBottom: '0' }}
+								style={{ fontFamily: 'SpoqaHanSansNeo-Bold' }}
+							>
 								<Box component="span" fontWeight="bold">
 									{storageList?.length}
 								</Box>
 								개의 검색결과
 							</Typography>
 
-							<FormControl variant="outlined" size="small" sx={{ fontSize: '14px' }}>
+							<FormControl
+								variant="outlined"
+								size="small"
+								sx={{ fontSize: '14px' }}
+								style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
+							>
 								<InputLabel>필터</InputLabel>
 								<Select
 									value={filter}
 									onChange={handleFilterChange}
 									label="필터"
 									sx={{ fontSize: 'inherit' }}
+									style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
 								>
-									<MenuItem value="최신순">최신순</MenuItem>
-									<MenuItem value="인기도순">인기도순</MenuItem>
-									<MenuItem value="가격순">가격순</MenuItem>
+									<MenuItem value="최신순" style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}>
+										최신순
+									</MenuItem>
+									<MenuItem value="인기도순" style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}>
+										인기도순
+									</MenuItem>
+									<MenuItem value="가격순" style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}>
+										가격순
+									</MenuItem>
 								</Select>
 							</FormControl>
 						</Box>
 						<Divider sx={{ margin: '10px 20px' }} />
 
-						<Grid container spacing={3} sx={{ padding: '20px', paddingTop: '5px' }}>
+						<Grid
+							container
+							spacing={3}
+							sx={{ padding: '20px', paddingTop: '5px' }}
+							style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
+						>
 							{storageList.map(item => (
 								<Grid item xs={12} key={item.storageId}>
 									{' '}
