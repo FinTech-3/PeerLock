@@ -34,7 +34,7 @@ const MyStoragePage = ({}) => {
 	useEffect(() => {
 		const fetch = async () => {
 			const data = await getMyStorage(userId);
-			console.log(data);
+			console.log('suel', data);
 			if (data.storages == null) {
 				setStorageList([]);
 			} else {

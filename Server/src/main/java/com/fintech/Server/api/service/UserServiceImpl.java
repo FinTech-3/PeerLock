@@ -162,14 +162,11 @@ public class UserServiceImpl implements UserService {
 
             storageDto.setStorageLatitude(storageEntity.getStorageLatitude());
             storageDto.setStorageLongitude(storageEntity.getStorageLongitude());
-//            storageDto.setStorageTotalCapacity(storageEntity.getStorageTotalCapacity());
-//            storageDto.setStorageAvailableCapacity(storageEntity.getStorageAvailableCapacity());
-//            storageDto.setStorageUsage(storageEntity.getStorageUsage());
+
             storageDto.setStoragePrice(storageEntity.getStoragePrice());
             storageDto.setServiceCommission(storageEntity.getServiceCommission());
             storageDto.setStorageDescription(storageEntity.getStorageDescription());
-//            storageDto.setAvailableFrom(storageEntity.getAvailableFrom());
-//            storageDto.setAvailableUntil(storageEntity.getAvailableUntil());
+
             storageDto.setReturnPolicy(storageEntity.getReturnPolicy());
             storageDto.setCreatedAt(storageEntity.getCreatedAt());
             storageDto.setUpdatedAt(storageEntity.getUpdatedAt());

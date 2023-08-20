@@ -88,8 +88,8 @@ const StorageRegist = ({}) => {
 		const files = Array.from(e.target.files);
 		setUploadedFiles(files); // 파일들을 상태에 저장합니다.
 
-		// const fileURLs = files.map(file => URL.createObjectURL(file));
-		// setUploadedImages(prevState => [...prevState, ...fileURLs]);
+		const fileURLs = files.map(file => URL.createObjectURL(file));
+		setUploadedImages(prevState => [...prevState, ...fileURLs]);
 	};
 
 	// const images = [
@@ -159,7 +159,7 @@ const StorageRegist = ({}) => {
 			});
 
 			console.log('Upload successful:', response.data);
-			setUploadedImages(prevState => [...prevState, ...response.data]);
+			// setUploadedImages(prevState => [...prevState, ...response.data]);
 		} catch (error) {
 			console.error('Error uploading:', error);
 		}

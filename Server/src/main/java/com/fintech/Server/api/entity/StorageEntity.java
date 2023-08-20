@@ -58,27 +58,6 @@ public class StorageEntity extends BaseEntity{
     @OneToMany(mappedBy = "storage", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<StorageImageEntity> storageImages;
 
-//    @Column(name = "storage_total_capacity", length = 50, nullable = false)
-//    private String storageTotalCapacity;
-//
-//    @Column(name = "storage_available_capacity", length = 255)
-//    private String storageAvailableCapacity;
-//
-//    @Column(name = "storage_usage", length = 255)
-//    private String storageUsage;
-
-//    @Column(name = "storage_wishes", nullable = false)
-//    private Integer storageWishes;
-
-
-//    // todo: Date 로 하는게 맞을까?
-//    @Column(name = "available_from", nullable = false)
-//    private Date availableFrom;
-//
-//    @Column(name = "available_until", nullable = false)
-//    private Date availableUntil;
-
-
     @Enumerated(EnumType.STRING)
     @Column(name = "status", length = 20)
     private StorageStatus status; // Available
@@ -87,10 +66,4 @@ public class StorageEntity extends BaseEntity{
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity user;
 
-
-//    @Column(name = "storage_types_id", nullable = false)
-//    private Integer storageTypesId;
-//
-//    @Column(name = "location_id", nullable = false)
-//    private Integer locationId;
 }
