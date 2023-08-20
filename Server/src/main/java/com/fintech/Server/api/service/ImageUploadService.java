@@ -8,8 +8,12 @@ import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.fintech.Server.api.entity.ReservationEntity;
+import com.fintech.Server.api.entity.ReservationImageEntity;
 import com.fintech.Server.api.entity.StorageEntity;
 import com.fintech.Server.api.entity.StorageImageEntity;
+import com.fintech.Server.api.repository.ReservationImageRepository;
+import com.fintech.Server.api.repository.ReservationRepository;
 import com.fintech.Server.api.repository.StorageImageRepository;
 import com.fintech.Server.api.repository.StorageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +37,11 @@ public class ImageUploadService {
     @Autowired
     private StorageImageRepository storageImageRepository;
 
+    @Autowired
+    private ReservationRepository reservationRepository;
+    @Autowired
+    private ReservationImageRepository reservationImageRepository;
+
     @Value("${ncp.accessKey}")
     private String accessKey;
 
@@ -46,26 +55,43 @@ public class ImageUploadService {
     private String bucketName;
 
 
-    public List<String> uploadImagesToNCP(MultipartFile[] images, Long storageId) throws Exception {
+    public List<String> uploadImagesToNCP(MultipartFile[] images, Long id, String div) throws Exception {
         List<String> imageUrls = new ArrayList<>();
 
         Date currentDate = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss"); // 예: 20230819_233509
         String folderName = dateFormat.format(currentDate);
 
-        StorageEntity storageEntity = storageRepository.findById(storageId).orElseThrow(() -> new Exception("Storage not found"));
+        if (div.equals("storage")) {
+            StorageEntity storageEntity = storageRepository.findById(id).orElseThrow(() -> new Exception("Storage not found"));
 
-        for (MultipartFile image : images) {
-            String imageUrl = uploadSingleImageToNCP(image, folderName);
+            for (MultipartFile image : images) {
+                String imageUrl = uploadSingleImageToNCP(image, folderName);
 
-            // StroageImageEntity의 imagePath에 imageUrl 저장하기
-            StorageImageEntity imageEntity = new StorageImageEntity();
-            imageEntity.setImagePath(imageUrl);
-            imageEntity.setStorage(storageEntity);
-            storageImageRepository.save(imageEntity);
+                // StroageImageEntity의 imagePath에 imageUrl 저장하기
+                StorageImageEntity imageEntity = new StorageImageEntity();
+                imageEntity.setImagePath(imageUrl);
+                imageEntity.setStorage(storageEntity);
+                storageImageRepository.save(imageEntity);
 
-            imageUrls.add(imageUrl);
+                imageUrls.add(imageUrl);
+            }
+        } else if (div.equals("reservation")) {
+            ReservationEntity reservationEntity = reservationRepository.findById(id).orElseThrow(() -> new Exception("Reservation not found"));
+
+            for (MultipartFile image : images) {
+                String imageUrl = uploadSingleImageToNCP(image, folderName);
+
+                ReservationImageEntity imageEntity = new ReservationImageEntity();
+                imageEntity.setImagePath(imageUrl);
+                imageEntity.setReservation(reservationEntity);
+                reservationImageRepository.save(imageEntity);
+
+                imageUrls.add(imageUrl);
+            }
         }
+
+
         return imageUrls;
     }
 

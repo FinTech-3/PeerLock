@@ -25,14 +25,14 @@ public class ReservationController {
     @Autowired
     public ReservationController(ReservationService reservationService) { this.reservationService = reservationService;}
 
-
     @Autowired
     private ImageUploadService imageUploadService;
 
     @PostMapping("/images")
-    public ResponseEntity<List<String>> uploadImages(@RequestParam("images") MultipartFile[] images, @RequestParam("storageId") Long storageId) {
+    public ResponseEntity<List<String>> uploadImages(@RequestParam("images") MultipartFile[] images, @RequestParam("reservationId") Long reservationId) {
         try {
-            List<String> imageUrls = imageUploadService.uploadImagesToNCP(images, storageId);
+            String div = "reservation";
+            List<String> imageUrls = imageUploadService.uploadImagesToNCP(images, reservationId, div);
             return new ResponseEntity<>(imageUrls, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(Collections.emptyList(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -45,13 +45,12 @@ public class ReservationController {
     }
 
     @PostMapping("")
-    public ResponseEntity createReservation(@RequestParam Long storageId, @RequestBody ReservationCreateRequestDto request) {
-        request.setStorageId(storageId);
-        ReservationEntity reservationEntity = reservationService.createReservation(request);
+    public ResponseEntity<ReservationListResponseDto> createReservation(@RequestBody ReservationCreateRequestDto request) {
+        ReservationListResponseDto reservationEntity = reservationService.createReservation(request);
         if (reservationEntity != null) {
-            return ResponseEntity.ok(HttpStatus.CREATED);
+            return ResponseEntity.ok(reservationEntity);
         } else {
-            return ResponseEntity.badRequest().body("예약 실패");
+            return ResponseEntity.badRequest().build();
         }
     }
 

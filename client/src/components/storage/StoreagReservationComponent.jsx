@@ -23,7 +23,7 @@ const StorageReservationComponent = ({ storage }) => {
 	const [uploadedImages, setUploadedImages] = useState(reservationData?.images || []);
 	const navigate = useNavigate();
 
-	console.log(reservationData); // 전달된 예약 정보 출력
+	// console.log(reservationData); // 전달된 예약 정보 출력
 
 	const handleImageChange = e => {
 		const files = Array.from(e.target.files);
@@ -36,24 +36,24 @@ const StorageReservationComponent = ({ storage }) => {
 			reservationData: reservationData,
 			paymentMethod: selectedPayment,
 		};
-		console.log(jsonData);
+		// console.log(jsonData);
 		return jsonData; // JSON 데이터 반환
 	};
 
 	const handleButtonClick = () => {
-		const reservationData = generateReservationJSON();
-		axios
-			.post(`/api/reservation?${reservationData.storageId}`, reservationData)
-			.then(response => {
-				// 서버 응답 처리
-				console.log('서버 응답:', response.data);
-				// 여기에 필요한 추가 작업을 수행할 수 있습니다.
-			})
-			.catch(error => {
-				// 에러 처리
-				console.error('에러 발생:', error);
-			});
-		navigate(`/homeguest`, { state: { reservationData } });
+		// const reservationData = generateReservationJSON();
+		// axios
+		// 	.post(`/api/reservation?${reservationData.storageId}`, reservationData)
+		// 	.then(response => {
+		// 		// 서버 응답 처리
+		// 		console.log('서버 응답:', response.data);
+		// 		// 여기에 필요한 추가 작업을 수행할 수 있습니다.
+		// 	})
+		// 	.catch(error => {
+		// 		// 에러 처리
+		// 		console.error('에러 발생:', error);
+		// 	});
+		navigate(`/homeguest`);
 	};
 
 	return (
