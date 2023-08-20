@@ -37,5 +37,12 @@ public class StorageRegisterRequestDto {
         private String imageName;
         private String imagePath;
     }
+//    @Data
+//    public class StorageFeature {
+//        private boolean smokeFree;
+//        private boolean cameraIndoor;
+//        private boolean fireExtinguisher;
+//    }
 
 }
+
