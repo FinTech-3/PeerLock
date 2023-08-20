@@ -153,7 +153,9 @@ const StorageRegist = ({}) => {
 							window.history.back();
 						}}
 					/>
-					<Typography variant="h6">내 공간 등록</Typography>
+					<Typography variant="h5" style={{ fontFamily: 'SpoqaHanSansNeo-Bold' }}>
+						내 공간 등록
+					</Typography>
 				</Box>
 			</Paper>
 
@@ -166,14 +168,19 @@ const StorageRegist = ({}) => {
 			>
 				<CardContent>
 					<Box>
-						<Typography variant="h6" gutterBottom>
+						<Typography variant="h6" gutterBottom style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}>
 							공간 이름
 						</Typography>
 						<TextField fullWidth onChange={handleNameChange} />
 					</Box>
 				</CardContent>
 				<CardContent>
-					<Typography variant="h6" gutterBottom mb={1}>
+					<Typography
+						variant="h6"
+						gutterBottom
+						mb={1}
+						style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
+					>
 						공간 타입
 					</Typography>
 					<SelectComponent
@@ -183,7 +190,12 @@ const StorageRegist = ({}) => {
 					/>
 				</CardContent>
 				<CardContent>
-					<Typography variant="h6" gutterBottom mb={1}>
+					<Typography
+						variant="h6"
+						gutterBottom
+						mb={1}
+						style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
+					>
 						공간 특징
 					</Typography>
 					<div
@@ -241,7 +253,12 @@ const StorageRegist = ({}) => {
 					</div>
 				</CardContent>
 				<CardContent>
-					<Typography variant="h6" gutterBottom mb={1}>
+					<Typography
+						variant="h6"
+						gutterBottom
+						mb={1}
+						style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
+					>
 						공간 위치
 					</Typography>
 					<Button
@@ -252,6 +269,7 @@ const StorageRegist = ({}) => {
 							borderColor: 'lightgray',
 							color: 'gray',
 						}}
+						style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
 						variant="outlined"
 						startIcon={<SearchIcon />}
 					>
@@ -259,6 +277,7 @@ const StorageRegist = ({}) => {
 					</Button>
 					<Button
 						sx={{ width: '100%', height: '50px', marginTop: '10px', backgroundColor: '#8DB4FF' }}
+						style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
 						variant="contained"
 						startIcon={<GpsFixedIcon />}
 					>
@@ -270,7 +289,12 @@ const StorageRegist = ({}) => {
 					/> */}
 				</CardContent>
 				<CardContent>
-					<Typography variant="h6" gutterBottom mb={1}>
+					<Typography
+						variant="h6"
+						gutterBottom
+						mb={1}
+						style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
+					>
 						공간 크기
 					</Typography>
 					<SelectComponent
@@ -280,7 +304,12 @@ const StorageRegist = ({}) => {
 					/>
 				</CardContent>
 				<CardContent>
-					<Typography variant="h6" gutterBottom mb={1}>
+					<Typography
+						variant="h6"
+						gutterBottom
+						mb={1}
+						style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
+					>
 						가격 설정
 					</Typography>
 					<Box>
@@ -311,7 +340,15 @@ const StorageRegist = ({}) => {
 										marginLeft: 3,
 									}}
 								>
-									<FormControlLabel value="fixedPrice" control={<Radio />} label="고정 가격 설정" />
+									<FormControlLabel
+										value="fixedPrice"
+										control={<Radio />}
+										label={
+											<Typography style={{ fontFamily: 'SpoqaHanSansNeo-Bold' }}>
+												고정 가격 설정
+											</Typography>
+										}
+									/>
 								</Box>
 								<Input
 									id="standard-adornment-amount"
@@ -321,6 +358,7 @@ const StorageRegist = ({}) => {
 										marginTop: 1,
 										marginBottom: 1,
 									}}
+									style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
 									onChange={handleFixedPriceChange}
 								/>
 							</Box>
@@ -349,19 +387,33 @@ const StorageRegist = ({}) => {
 									<FormControlLabel
 										value="smartPrice"
 										control={<Radio />}
-										label="스마트 가격 추천"
+										label={
+											<Typography style={{ fontFamily: 'SpoqaHanSansNeo-Bold' }}>
+												스마트 가격 추천
+											</Typography>
+										}
 									/>
 
 									<Box sx={{ width: '100%', paddingRight: '20px' }}>
 										<Box sx={{ my: 1 }}>
 											<Grid container alignItems="center">
 												<Grid item xs>
-													<Typography gutterBottom variant="h6" component="div">
+													<Typography
+														gutterBottom
+														variant="h6"
+														component="div"
+														style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
+													>
 														단기 보관
 													</Typography>
 												</Grid>
 												<Grid item>
-													<Typography gutterBottom variant="subtitle1" component="div">
+													<Typography
+														gutterBottom
+														variant="subtitle1"
+														component="div"
+														style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
+													>
 														{smartPrice}/일
 													</Typography>
 												</Grid>
@@ -369,12 +421,22 @@ const StorageRegist = ({}) => {
 											<Divider />
 											<Grid sx={{ mt: 1 }} container alignItems="center">
 												<Grid item xs>
-													<Typography gutterBottom variant="h6" component="div">
+													<Typography
+														gutterBottom
+														variant="h6"
+														component="div"
+														style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
+													>
 														장기 보관
 													</Typography>
 												</Grid>
 												<Grid item>
-													<Typography gutterBottom variant="subtitle1" component="div">
+													<Typography
+														gutterBottom
+														variant="subtitle1"
+														component="div"
+														style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
+													>
 														20,000원/월
 													</Typography>
 												</Grid>
@@ -388,10 +450,16 @@ const StorageRegist = ({}) => {
 				</CardContent>
 				<CardContent>
 					<Box mt={2} mb={2}>
-						<Typography variant="h6" gutterBottom>
+						<Typography variant="h6" gutterBottom style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}>
 							공간 설명
 						</Typography>
-						<Typography variant="body1" gutterBottom mt={0} sx={{ color: '#5a5a5a' }}>
+						<Typography
+							variant="body1"
+							gutterBottom
+							mt={0}
+							sx={{ color: '#5a5a5a' }}
+							style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
+						>
 							대여자들이 공간에 대해 알기 쉽게 설명해주세요
 						</Typography>
 						<TextField
@@ -401,6 +469,7 @@ const StorageRegist = ({}) => {
 							fullWidth
 							sx={{ width: '100%', marginTop: '10px' }}
 							onChange={handleContentChange}
+							style={{ fontFamily: 'SpoqaHanSansNeo-Bold' }}
 						/>
 					</Box>
 				</CardContent>
@@ -408,10 +477,20 @@ const StorageRegist = ({}) => {
 				<CardContent>
 					<Box mt={2} mb={2}>
 						<Box>
-							<Typography variant="h6" gutterBottom>
+							<Typography
+								variant="h6"
+								gutterBottom
+								style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
+							>
 								공간 사진 등록
 							</Typography>
-							<Typography variant="body1" gutterBottom mt={0} sx={{ color: '#5a5a5a' }}>
+							<Typography
+								variant="body1"
+								gutterBottom
+								mt={0}
+								sx={{ color: '#5a5a5a' }}
+								style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
+							>
 								최대 4개의 사진을 등록해주세요.
 							</Typography>
 							<Box mt={2} mb={2} pl={1}>
@@ -420,6 +499,7 @@ const StorageRegist = ({}) => {
 										<WbSunnyOutlinedIcon
 											color="primary"
 											sx={{ verticalAlign: 'middle', marginRight: '8px' }}
+											style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
 										/>
 										충분한 밝기를 유지해주세요.
 									</Typography>
@@ -429,6 +509,7 @@ const StorageRegist = ({}) => {
 										<CleaningServicesOutlinedIcon
 											color="primary"
 											sx={{ verticalAlign: 'middle', marginRight: '8px' }}
+											style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
 										/>
 										주변 물건들을 정리해주세요.
 									</Typography>
@@ -438,6 +519,7 @@ const StorageRegist = ({}) => {
 										<Inventory2OutlinedIcon
 											color="primary"
 											sx={{ verticalAlign: 'middle', marginRight: '8px' }}
+											style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
 										/>
 										실제로 물건을 보관할 장소를 찍으면 좋아요!
 									</Typography>
@@ -462,6 +544,7 @@ const StorageRegist = ({}) => {
 										backgroundColor: '#1565c0',
 									},
 								}}
+								style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
 							>
 								사진 등록하기
 								<input type="file" hidden multiple onChange={handleImageChange} />
@@ -507,6 +590,7 @@ const StorageRegist = ({}) => {
 			>
 				<Button
 					sx={{ width: '90%', height: '50px', margin: '10px', backgroundColor: '#8DB4FF' }}
+					style={{ fontFamily: 'SpoqaHanSansNeo-Bold', fontSize: '20px' }}
 					variant="contained"
 					onClick={onSubmitHandler}
 				>

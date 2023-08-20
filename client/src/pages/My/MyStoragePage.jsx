@@ -50,7 +50,13 @@ const MyStoragePage = ({}) => {
 		<div style={{ maxHeight: '100vh', overflowY: 'auto' }}>
 			<AppHeader title={'내 공간'}>
 				<Box mt={3} mb={1}>
-					<Typography variant="h5" margin={3} mb={1} mt={4}>
+					<Typography
+						variant="h5"
+						margin={3}
+						mb={1}
+						mt={4}
+						style={{ fontFamily: 'SpoqaHanSansNeo-Bold' }}
+					>
 						내 공간
 					</Typography>
 				</Box>
