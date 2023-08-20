@@ -33,7 +33,7 @@ const Wish = () => {
 				</div>
 			) : (
 				<div style={{ maxHeight: '100vh', overflowY: 'auto' }}>
-					<div style={{ paddingBottom: '130px' }}>
+					<div style={{ paddingBottom: '50px', paddingTop: '50px' }}>
 						<Grid container spacing={3} style={{ padding: '20px' }}>
 							{wishList.map(item => (
 								<Grid item xs={12} key={item.storageId}>

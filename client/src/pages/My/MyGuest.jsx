@@ -1,5 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Typography, IconButton, Button, Avatar, Paper, Box } from '@mui/material';
+import {
+	Typography,
+	IconButton,
+	Button,
+	Avatar,
+	Paper,
+	Box,
+	Card,
+	CardContent,
+	Grid,
+	Divider,
+} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import SettingsIcon from '@mui/icons-material/Settings';
 import FixedBottomNavigation from '../../components/FixBottomNavigation';
@@ -37,188 +48,77 @@ function MyGuest() {
 	};
 
 	return (
-		<div style={{ maxHeight: '100vh', overflowX: 'hidden', overflowY: 'auto', marginLeft: '12px' }}>
+		<div
+			style={{
+				maxHeight: '100vh',
+				overflowX: 'hidden',
+				overflowY: 'auto',
+				backgroundColor: '#f5f5f5',
+			}}
+		>
 			<TopNavigationComponent centerText="내 정보" rightMenu />
 			{/* User Information */}
-			<Box sx={{ paddingTop: '30px' }}>
-				<div
-					sx={{
-						display: 'flex',
-						alignItems: 'center',
-					}}
-				>
-					{/* User Avatar */}
-					<Avatar
-						alt="User PFP"
-						src="https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/profile3.png" // Replace with real image path
-						sx={{
-							marginTop: 5,
-							width: 75,
-							marginLeft: 1.5,
-							height: 75,
-						}}
-					/>
-					<Paper
-						sx={{
-							padding: 1.5,
-							marginTop: -10,
-							marginLeft: 11.5,
-							width: '98%',
-							display: 'flex',
-							alignItems: 'flex-start',
-							flexDirection: 'column',
-							position: 'left',
-							boxShadow: 0,
-						}}
-					>
-						{/* Text content */}
-						<Typography
-							variant="h5"
-							style={{
-								fontFamily: 'SpoqaHanSansNeo-Bold',
-							}}
-						>
-							{user_name}
-						</Typography>
-						<Typography
-							variant="body1"
-							color="grey"
-							style={{
-								fontFamily: 'SpoqaHanSansNeo-Bold',
-								marginLeft: 6,
-							}}
-						>
-							Level 2
-						</Typography>
-						{/* Replace with real name and level */}
-					</Paper>
+			<Box sx={{ paddingTop: '50px' }}>
+				<Card elevation={0}>
+					<CardContent>
+						<Grid container alignItems="center" justifyContent="space-between" spacing={-1}>
+							<Grid item container xs={9} alignItems="center" spacing={2}>
+								{/* User Avatar */}
+								<Grid item>
+									<Avatar
+										alt="User PFP"
+										src="https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/profile3.png"
+										sx={{
+											marginTop: 1,
+											width: 75,
+											marginLeft: 1.5,
+											height: 75,
+										}}
+									/>
+								</Grid>
+								{/* Text content */}
+								<Grid item>
+									<Typography
+										variant="h5"
+										style={{
+											fontFamily: 'SpoqaHanSansNeo-Bold',
+										}}
+									>
+										{user_name}
+									</Typography>
+									<Typography
+										variant="body1"
+										color="grey"
+										style={{
+											fontFamily: 'SpoqaHanSansNeo-Bold',
+											marginLeft: 6,
+										}}
+									>
+										Level 2
+									</Typography>
+								</Grid>
+							</Grid>
+							<Grid item xs={3}>
+								<Button
+									variant="outlined"
+									size="small"
+									sx={{ marginTop: 0, marginLeft: 0, whiteSpace: 'nowrap' }}
+									style={{
+										fontFamily: 'SpoqaHanSansNeo-Medium',
+									}}
+									onClick={HandleButtonClick} // replace with real user id (TODO)
+								>
+									호스트로 전환
+								</Button>
+							</Grid>
+						</Grid>
+					</CardContent>
+				</Card>
 
-					<Button
-						variant="outlined"
-						size="small"
-						sx={{ marginTop: -13, marginLeft: 31 }}
-						style={{
-							fontFamily: 'SpoqaHanSansNeo-Medium',
-						}}
-						onClick={HandleButtonClick} // replace with real user id (TODO)
-					>
-						호스트로 전환
-						{/* this is seriously messed up, fix only if needed. formatting is very broken, should work fine for iphone 12 pro */}
-					</Button>
-				</div>
 				<Paper
 					sx={{
 						padding: 1.5,
-						marginTop: -0.5,
-						marginBottom: -0.5,
-						width: '98%',
-						display: 'flex',
-						alignItems: 'flex-start',
-						flexDirection: 'column',
-						position: 'left',
-						boxShadow: 0,
-					}}
-				>
-					{/* Text content */}
-					<Typography
-						variant="h5"
-						style={{
-							fontFamily: 'SpoqaHanSansNeo-Bold',
-						}}
-					>
-						예약 히스토리
-					</Typography>
-				</Paper>
-
-				{/* Rectangular Box */}
-				<Paper
-					sx={{
-						padding: 1.5,
-						marginTop: 0.5,
-						marginLeft: 0.9,
-						border: '2px solid lightblue',
-						borderRadius: '10px',
-						width: '93%',
-						display: 'flex',
-						alignItems: 'flex-start',
-						flexDirection: 'column',
-						position: 'relative',
-					}}
-				>
-					{/* Small Picture */}
-					<Typography
-						variant="h6"
-						style={{
-							fontFamily: 'SpoqaHanSansNeo-Bold',
-						}}
-					>
-						이용예정
-					</Typography>
-					<div
-						style={{
-							width: '35%',
-							borderRadius: '10%', // Adjust the border radius as needed
-							overflow: 'hidden', // Ensure image stays within rounded corners
-							zIndex: 1,
-							marginBottom: '8px',
-							marginTop: '8px',
-						}}
-					>
-						<img
-							src="https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/room1.jpg" // Replace with real image path
-							alt="Small Picture"
-							style={{
-								width: '100%',
-								height: '100%',
-								objectFit: 'cover',
-							}}
-						/>
-					</div>
-					{/* Date, time info,, replace with real date and time */}
-					<Typography
-						variant="body1"
-						style={{
-							fontFamily: 'SpoqaHanSansNeo-Medium',
-						}}
-					>
-						<strong>보관 시작</strong> | 2023.08.22(화), 오전 08:00
-					</Typography>
-					<Typography
-						variant="body1"
-						style={{
-							fontFamily: 'SpoqaHanSansNeo-Medium',
-						}}
-					>
-						<strong>보관 만료</strong> | 2023.08.22(화), 오후 12:00
-					</Typography>
-				</Paper>
-				<Paper
-					sx={{
-						padding: 1.5,
-						marginTop: 4,
-						width: '98%',
-						display: 'flex',
-						alignItems: 'flex-start',
-						flexDirection: 'column',
-						position: 'left',
-						boxShadow: 0,
-					}}
-				>
-					{/* Text content */}
-					<Typography
-						variant="h6"
-						style={{
-							fontFamily: 'SpoqaHanSansNeo-Bold',
-						}}
-					>
-						최근 본 이력
-					</Typography>
-				</Paper>
-				<Paper
-					sx={{
-						padding: 1.5,
-						marginTop: 4,
-						width: '98%',
+						marginTop: 1,
 						display: 'flex',
 						alignItems: 'flex-start',
 						flexDirection: 'column',
@@ -241,10 +141,8 @@ function MyGuest() {
 					sx={{
 						paddingLeft: 1.5,
 						paddingTop: 1,
-						paddingBottom: 3,
-						paddingRight: 3,
+						paddingBottom: 2,
 						marginBottom: 0,
-						width: '98%',
 						display: 'flex',
 						alignItems: 'center', // Center both horizontally and vertically
 						flexDirection: 'row',
@@ -278,8 +176,7 @@ function MyGuest() {
 				<Paper
 					sx={{
 						padding: 1.5,
-						marginTop: 4,
-						width: '98%',
+						marginTop: 1,
 						display: 'flex',
 						alignItems: 'flex-start',
 						flexDirection: 'column',
@@ -302,9 +199,7 @@ function MyGuest() {
 						paddingLeft: 1.5,
 						paddingTop: 1,
 						paddingBottom: 3,
-						paddingRight: 3,
 						marginBottom: 0,
-						width: '98%',
 						display: 'flex',
 						alignItems: 'center', // Center both horizontally and vertically
 						flexDirection: 'row',
@@ -341,9 +236,7 @@ function MyGuest() {
 						paddingLeft: 1.5,
 						paddingTop: 1,
 						paddingBottom: 3,
-						paddingRight: 3,
 						marginBottom: 0,
-						width: '98%',
 						display: 'flex',
 						alignItems: 'center', // Center both horizontally and vertically
 						flexDirection: 'row',
@@ -379,9 +272,7 @@ function MyGuest() {
 						paddingLeft: 1.5,
 						paddingTop: 1,
 						paddingBottom: 3,
-						paddingRight: 3,
 						marginBottom: 0,
-						width: '98%',
 						display: 'flex',
 						alignItems: 'center', // Center both horizontally and vertically
 						flexDirection: 'row',
@@ -416,8 +307,7 @@ function MyGuest() {
 				<Paper
 					sx={{
 						padding: 1.5,
-						marginTop: 4,
-						width: '98%',
+						marginTop: 1,
 						display: 'flex',
 						alignItems: 'flex-start',
 						flexDirection: 'column',
@@ -441,7 +331,6 @@ function MyGuest() {
 					sx={{
 						padding: 1.5,
 						marginBottom: 0,
-						width: '98%',
 						display: 'flex',
 						alignItems: 'center', // Center both horizontally and vertically
 						flexDirection: 'row',
@@ -489,7 +378,6 @@ function MyGuest() {
 						paddingBottom: 2,
 						paddingRight: 3,
 						marginBottom: 0,
-						width: '98%',
 						display: 'flex',
 						alignItems: 'center', // Center both horizontally and vertically
 						flexDirection: 'row',
@@ -526,7 +414,6 @@ function MyGuest() {
 						padding: 1.5,
 						paddingTop: 1,
 						marginBottom: 0,
-						width: '98%',
 						display: 'flex',
 						alignItems: 'center', // Center both horizontally and vertically
 						flexDirection: 'row',
@@ -572,8 +459,7 @@ function MyGuest() {
 					sx={{
 						padding: 1.5,
 						paddingTop: 1,
-						marginBottom: 7.5,
-						width: '98%',
+						marginBottom: 6.5,
 						display: 'flex',
 						alignItems: 'center', // Center both horizontally and vertically
 						flexDirection: 'row',
