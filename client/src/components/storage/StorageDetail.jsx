@@ -96,7 +96,7 @@ const StorageDetail = ({ storage }) => {
 								>
 									<ArrowBackIcon color="Neutral" />
 								</Box>
-								<Box
+								{/* <Box
 									sx={{
 										position: 'absolute',
 										top: 15,
@@ -139,14 +139,17 @@ const StorageDetail = ({ storage }) => {
 									>
 										<ShareIcon color="Neutral" />
 									</Box>
-								</Box>
+								</Box> */}
 							</Box>
 						))}
 				</Slider>
 
 				<CardContent>
 					<Box display="flex" justifyContent="space-between" alignItems="center">
-						<Typography variant="h6" sx={{ fontSize: '18px', fontWeight: 'bold' }}>
+						<Typography
+							variant="h6"
+							sx={{ fontFamily: 'SpoqaHanSansNeo-Bold', fontWeight: 'bold' }}
+						>
 							{storage.storageName || 'Item Title'}
 						</Typography>
 
@@ -160,7 +163,7 @@ const StorageDetail = ({ storage }) => {
 									justifyContent: 'center',
 									width: '30px',
 									height: '30px',
-									boxShadow: '0px 0px 5px rgba(0, 0, 0, 0.2)',
+									// boxShadow: '0px 0px 5px rgba(0, 0, 0, 0.2)',
 								}}
 								onClick={favoriteClick}
 							>
@@ -180,7 +183,7 @@ const StorageDetail = ({ storage }) => {
 									justifyContent: 'center',
 									width: '30px',
 									height: '30px',
-									boxShadow: '0px 0px 5px rgba(0, 0, 0, 0.2)',
+									// boxShadow: '0px 0px 5px rgba(0, 0, 0, 0.2)',
 								}}
 							>
 								<ShareIcon color="Neutral" />
@@ -191,7 +194,12 @@ const StorageDetail = ({ storage }) => {
 						<LocationOnIcon sx={{ color: 'blue' }} />
 						<Typography
 							variant="h6"
-							sx={{ marginLeft: '0px', color: 'blue', fontSize: '14px' }} // 여기서 marginLeft 값을 조정하여 거리를 조절하세요.
+							sx={{
+								fontFamily: 'SpoqaHanSansNeo-Regular',
+								marginLeft: '0px',
+								color: 'blue',
+								fontSize: '14px',
+							}} // 여기서 marginLeft 값을 조정하여 거리를 조절하세요.
 						>
 							<div
 								style={{
@@ -207,44 +215,13 @@ const StorageDetail = ({ storage }) => {
 					</div>
 					<div style={{ display: 'flex', alignItems: 'center' }}>
 						<StarIcon sx={{ color: '#FFDC3C' }} />
-						<Typography variant="h6" sx={{ fontSize: '14px', marginLeft: '0px' }}>
+						<Typography
+							variant="h6"
+							sx={{ fontFamily: 'SpoqaHanSansNeo-Regular', fontSize: '14px', marginLeft: '0px' }}
+						>
 							{storage.star || '4.54 (후기 15개)'}
 						</Typography>
 					</div>
-				</CardContent>
-
-				<Divider sx={{ margin: '0px 15px' }} />
-
-				<CardContent sx={{ paddingLeft: '15', paddingBottom: '0', paddingTop: '0' }}>
-					<Typography
-						variant="h6"
-						sx={{ marginTop: '8px', paddingLeft: '10px', display: 'flex', gap: '1rem' }}
-					>
-						<Box display="flex" flexDirection="column" alignItems="center">
-							<SmokeFreeOutlinedIcon />
-							<Typography variant="caption">금연</Typography>
-						</Box>
-						<Box display="flex" flexDirection="column" alignItems="center">
-							<FireExtinguisherOutlinedIcon />
-							<Typography variant="caption">소화기</Typography>
-						</Box>
-						<Box display="flex" flexDirection="column" alignItems="center">
-							<VideocamOutlinedIcon />
-							<Typography variant="caption">카메라</Typography>
-						</Box>
-					</Typography>
-				</CardContent>
-
-				<Divider sx={{ margin: '0px 15px' }} />
-
-				<CardContent>
-					<Typography variant="h6">{storage.user?.username}</Typography>
-					<Typography variant="body2" color="textSecondary">
-						{storage.userDescription || '사용자 설명이 없습니다.'}
-					</Typography>
-					<Typography variant="body1" color="textSecondary" sx={{ marginTop: '8px' }}>
-						{storage.storageDescription}
-					</Typography>
 					<Button
 						variant="outlined"
 						fullWidth
@@ -253,9 +230,9 @@ const StorageDetail = ({ storage }) => {
 							display: 'flex',
 							alignItems: 'center',
 							justifyContent: 'center',
+							fontFamily: 'SpoqaHanSansNeo-Bold',
 							color: 'black',
 							borderColor: 'gray',
-							boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.15)',
 							borderRadius: '10px',
 						}}
 					>
@@ -266,18 +243,84 @@ const StorageDetail = ({ storage }) => {
 
 				<Divider sx={{ margin: '0px 15px' }} />
 
+				<CardContent sx={{ paddingLeft: '15', paddingBottom: '0', paddingTop: '0' }}>
+					<Typography
+						variant="h6"
+						sx={{
+							marginTop: '8px',
+							paddingLeft: '10px',
+							display: 'flex',
+							gap: '1rem',
+							fontFamily: 'SpoqaHanSansNeo-Regular',
+						}}
+					>
+						<Box display="flex" flexDirection="column" alignItems="center">
+							<SmokeFreeOutlinedIcon />
+							<Typography variant="caption" sx={{ fontFamily: 'SpoqaHanSansNeo-Regular' }}>
+								금연
+							</Typography>
+						</Box>
+						<Box display="flex" flexDirection="column" alignItems="center">
+							<FireExtinguisherOutlinedIcon />
+							<Typography variant="caption" sx={{ fontFamily: 'SpoqaHanSansNeo-Regular' }}>
+								소화기
+							</Typography>
+						</Box>
+						<Box display="flex" flexDirection="column" alignItems="center">
+							<VideocamOutlinedIcon />
+							<Typography variant="caption" sx={{ fontFamily: 'SpoqaHanSansNeo-Regular' }}>
+								카메라
+							</Typography>
+						</Box>
+					</Typography>
+				</CardContent>
+
+				<Divider sx={{ margin: '0px 15px' }} />
+
 				<CardContent>
-					<Typography variant="h6" sx={{ paddingBottom: '10px' }}>
-						{'접근'}
+					<Typography variant="h6" sx={{ fontFamily: 'SpoqaHanSansNeo-Regular' }}>
+						{storage.user?.username}
+					</Typography>
+					<Typography
+						variant="body2"
+						sx={{
+							fontFamily: 'SpoqaHanSansNeo-Regular',
+							color: 'textSecondary',
+							marginLeft: '10px',
+						}}
+					>
+						{storage.userDescription || '사용자 설명이 없습니다.'}
+					</Typography>
+					<Typography
+						variant="body1"
+						color="textSecondary"
+						sx={{ marginTop: '8px', fontFamily: 'SpoqaHanSansNeo-Regular', marginLeft: '10px' }}
+					>
+						{storage.storageDescription}
+					</Typography>
+				</CardContent>
+
+				<Divider sx={{ margin: '0px 15px' }} />
+
+				<CardContent>
+					<Typography
+						variant="h6"
+						sx={{ fontFamily: 'SpoqaHanSansNeo-Bold', paddingBottom: '10px' }}
+					>
+						접근
 					</Typography>
 					<div
 						style={{
 							display: 'flex',
 							alignItems: 'center',
+							marginLeft: '10px',
 						}}
 					>
 						<CalendarMonthOutlinedIcon />
-						<Typography variant="h6" sx={{ fontSize: '16px', marginLeft: '0px' }}>
+						<Typography
+							variant="h6"
+							sx={{ fontFamily: 'SpoqaHanSansNeo-Regular', fontSize: '16px', marginLeft: '0px' }}
+						>
 							&nbsp;{storage.star || '매주 | 5시 이후'}
 						</Typography>
 					</div>
@@ -285,10 +328,14 @@ const StorageDetail = ({ storage }) => {
 						style={{
 							display: 'flex',
 							alignItems: 'center',
+							marginLeft: '10px',
 						}}
 					>
 						<AccessTimeOutlinedIcon />
-						<Typography variant="h6" sx={{ fontSize: '16px', marginLeft: '0px' }}>
+						<Typography
+							variant="h6"
+							sx={{ fontFamily: 'SpoqaHanSansNeo-Regular', fontSize: '16px', marginLeft: '0px' }}
+						>
 							&nbsp;{storage.star || '방문 전 약속 필수'}
 						</Typography>
 					</div>
@@ -297,28 +344,58 @@ const StorageDetail = ({ storage }) => {
 				<Divider sx={{ margin: '0px 15px' }} />
 
 				<CardContent>
-					<Typography variant="h6" sx={{ paddingBottom: '10px' }}>
-						{'가격'}
+					<Typography
+						variant="h6"
+						sx={{ paddingBottom: '10px', fontFamily: 'SpoqaHanSansNeo-Bold' }}
+					>
+						가격
 					</Typography>
-					<Box display="flex" justifyContent="space-between" alignItems="center">
-						<Typography variant="body1">{'단기 보관'}</Typography>
-						<Typography variant="body1">{'₩10,000/월'}</Typography>
+					<Box
+						sx={{
+							display: 'flex',
+							justifyContent: 'space-between',
+							alignItems: 'center',
+							marginX: '10px',
+						}}
+					>
+						<Typography variant="body1" sx={{ fontFamily: 'SpoqaHanSansNeo-Regular' }}>
+							단기 보관
+						</Typography>
+						<Typography variant="body1" sx={{ fontFamily: 'SpoqaHanSansNeo-Regular' }}>
+							₩10,000/월
+						</Typography>
 					</Box>
-					<Box display="flex" justifyContent="space-between" alignItems="center">
-						<Typography variant="body1">{'장기 보관'}</Typography>
-						<Typography variant="body1">{'₩25,000/월'}</Typography>
+					<Box
+						sx={{
+							display: 'flex',
+							justifyContent: 'space-between',
+							alignItems: 'center',
+							marginX: '10px',
+						}}
+					>
+						<Typography variant="body1" sx={{ fontFamily: 'SpoqaHanSansNeo-Regular' }}>
+							장기 보관
+						</Typography>
+						<Typography variant="body1" sx={{ fontFamily: 'SpoqaHanSansNeo-Regular' }}>
+							₩25,000/월
+						</Typography>
 					</Box>
 				</CardContent>
 
-				<Divider sx={{ margin: '0px 0px' }} />
-
 				<CardActions
-					style={{
+					sx={{
+						position: 'fixed',
+						bottom: 0,
+						left: 0,
+						right: 0,
+						height: '60px',
 						display: 'flex',
 						justifyContent: 'space-between',
 						alignItems: 'center',
-						padding: '20px 12px',
+						padding: '12px',
+						backgroundColor: 'white',
 					}}
+					elevation={0}
 				>
 					{isHost ? (
 						<Button
@@ -329,7 +406,8 @@ const StorageDetail = ({ storage }) => {
 								display: 'flex',
 								alignItems: 'center',
 								justifyContent: 'center',
-								color: 'white', // 텍스트 색상을 하얀색으로 설정
+								color: 'white', //
+								fontFamily: 'SpoqaHanSansNeo-Regular',
 								fontSize: '20px',
 								boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.15)',
 								borderRadius: '10px',
@@ -343,7 +421,10 @@ const StorageDetail = ({ storage }) => {
 						</Button>
 					) : (
 						<>
-							<Typography variant="h6" sx={{ fontSize: '18px', marginBottom: '0' }}>
+							<Typography
+								variant="h6"
+								sx={{ fontSize: '18px', marginBottom: '0', fontFamily: 'SpoqaHanSansNeo-Regular' }}
+							>
 								<b style={{ textDecoration: 'line-through', color: 'gray' }}>₩15,000</b>&nbsp;
 								₩10,000
 								<b style={{ color: 'gray' }}>&nbsp;/월(단기)</b>
@@ -358,7 +439,9 @@ const StorageDetail = ({ storage }) => {
 									alignItems: 'center',
 									justifyContent: 'center',
 									color: 'white', // 텍스트 색상을 하얀색으로 설정
-									fontSize: '20px',
+									fontFamily: 'SpoqaHanSansNeo-Bold',
+									fontSize: '16px',
+									padding: '10px 20px',
 									boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.15)',
 									borderRadius: '10px',
 									backgroundColor: 'primary.light', // 배경색을 primary로 설정

@@ -30,7 +30,7 @@ const Home = () => {
 						flexGrow: 1,
 						marginTop: 7,
 						marginLeft: 5,
-						fontSize: 28,
+						fontSize: 24,
 					}}
 					style={{
 						fontFamily: 'SpoqaHanSansNeo-Bold',
@@ -43,7 +43,7 @@ const Home = () => {
 						border: '2px solid #4D88FF',
 						borderRadius: 2.9,
 						marginLeft: 30.5,
-						marginTop: -7,
+						marginTop: -6,
 						color: 'black',
 						fontSize: 18, // Increase font size
 						background: 'white',
@@ -54,7 +54,15 @@ const Home = () => {
 						fontFamily: 'SpoqaHanSansNeo-Regular',
 					}}
 				>
-					<Link to="#">전체 알림</Link>
+					<Link to="#">
+						<Typography
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Medium',
+							}}
+						>
+							전체 알림
+						</Typography>
+					</Link>
 				</Button>
 
 				<div
@@ -72,8 +80,8 @@ const Home = () => {
 							variant="body2"
 							sx={{ paddingTop: 0.3 }}
 							style={{
-								fontFamily: 'SpoqaHanSansNeo-Medium',
-								color: 'blue',
+								fontFamily: 'SpoqaHanSansNeo-Bold',
+								color: '#005EB4',
 							}}
 						>
 							<strong>상수동, 마포구 옷장</strong>
@@ -141,8 +149,8 @@ const Home = () => {
 							variant="body2"
 							sx={{ paddingTop: 0.3 }}
 							style={{
-								fontFamily: 'SpoqaHanSansNeo-Medium',
-								color: 'blue',
+								fontFamily: 'SpoqaHanSansNeo-Bold',
+								color: '#005EB4',
 							}}
 						>
 							<strong>상수동, 마포구 옷장</strong>
@@ -201,9 +209,9 @@ const Home = () => {
 					sx={{
 						flexGrow: 1,
 						marginTop: 4,
-						marginLeft: -25,
+						marginLeft: -27,
 						marginBottom: 2,
-						fontSize: 28,
+						fontSize: 24,
 					}}
 					style={{
 						fontFamily: 'SpoqaHanSansNeo-Bold',
@@ -226,6 +234,7 @@ const Home = () => {
 						<Button
 							key={button.id}
 							sx={{
+								fontFamily: 'SpoqaHanSansNeo-Medium',
 								border: activeButton === button.id ? '2px solid #4D88FF' : '2px solid #BFBFBF',
 								borderRadius: 5,
 								color: 'black',
@@ -246,6 +255,7 @@ const Home = () => {
 			</div>
 			{activeButton === 0 && (
 				<Paper
+					elevation={0}
 					style={{
 						backgroundColor: '#F2F7FF',
 						alignItems: 'center',
@@ -260,7 +270,7 @@ const Home = () => {
 					{/* Content for the 보관중 button, replace with real data */}
 					<Typography
 						variant="body1"
-						color={'blue'}
+						color="#005EB4"
 						sx={{
 							marginBottom: 0,
 						}}
@@ -281,7 +291,7 @@ const Home = () => {
 					<Typography
 						variant="body1"
 						fontSize={15}
-						color={'rgba(0, 0, 0, 0.6)'}
+						color="rgba(0, 0, 0, 0.6)"
 						sx={{
 							marginBottom: 5,
 						}}
@@ -315,10 +325,10 @@ const Home = () => {
 					>
 						<Button
 							sx={{
-								border: '2px solid #ABABAB',
+								// border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
-								fontSize: 20,
+								fontSize: 16,
 								padding: '6px 12px',
 								minWidth: '48%',
 								background: 'white',
@@ -331,10 +341,10 @@ const Home = () => {
 						</Button>
 						<Button
 							sx={{
-								border: '2px solid #ABABAB',
+								// border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
-								fontSize: 20,
+								fontSize: 16,
 								padding: '6px 12px',
 								minWidth: '48%',
 								background: 'white',
@@ -351,6 +361,7 @@ const Home = () => {
 
 			{activeButton === 1 && (
 				<Paper
+					elevation={0}
 					style={{
 						backgroundColor: '#F2F7FF',
 						alignItems: 'center',
@@ -365,7 +376,7 @@ const Home = () => {
 					{/* Content for the 보관중 button, replace with real data */}
 					<Typography
 						variant="body1"
-						color={'blue'}
+						color="#005EB4"
 						sx={{
 							marginBottom: 0,
 						}}
@@ -386,7 +397,7 @@ const Home = () => {
 					<Typography
 						variant="body1"
 						fontSize={15}
-						color={'rgba(0, 0, 0, 0.6)'}
+						color="rgba(0, 0, 0, 0.6)"
 						sx={{
 							marginBottom: 0,
 						}}
@@ -399,7 +410,7 @@ const Home = () => {
 					<Typography
 						variant="body1"
 						fontSize={15}
-						color={'red'}
+						color="red"
 						sx={{
 							marginBottom: 5,
 						}}
@@ -433,10 +444,10 @@ const Home = () => {
 					>
 						<Button
 							sx={{
-								border: '2px solid #ABABAB',
+								// border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
-								fontSize: 20,
+								fontSize: 16,
 								padding: '6px 12px',
 								minWidth: '48%',
 								background: 'white',
@@ -449,10 +460,10 @@ const Home = () => {
 						</Button>
 						<Button
 							sx={{
-								border: '2px solid #ABABAB',
+								// border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
-								fontSize: 18,
+								fontSize: 16,
 								padding: '6px 12px',
 								minWidth: '48%',
 								background: 'white',
@@ -468,6 +479,7 @@ const Home = () => {
 			)}
 			{activeButton === 2 && (
 				<Paper
+					elevation={0}
 					style={{
 						backgroundColor: '#F2F7FF',
 						alignItems: 'center',
@@ -482,7 +494,7 @@ const Home = () => {
 					{/* Content for the 보관중 button, replace with real data */}
 					<Typography
 						variant="body1"
-						color={'blue'}
+						color="#005EB4"
 						sx={{
 							marginBottom: 0,
 						}}
@@ -503,7 +515,7 @@ const Home = () => {
 					<Typography
 						variant="body1"
 						fontSize={15}
-						color={'rgba(0, 0, 0, 0.6)'}
+						color="rgba(0, 0, 0, 0.6)"
 						sx={{
 							marginBottom: 0,
 						}}
@@ -516,7 +528,7 @@ const Home = () => {
 					<Typography
 						variant="body1"
 						fontSize={15}
-						color={'red'}
+						color="red"
 						sx={{
 							marginBottom: 5,
 						}}
@@ -550,10 +562,10 @@ const Home = () => {
 					>
 						<Button
 							sx={{
-								border: '2px solid #ABABAB',
+								// border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
-								fontSize: 20,
+								fontSize: 16,
 								padding: '6px 12px',
 								minWidth: '48%',
 								background: 'white',
@@ -566,10 +578,10 @@ const Home = () => {
 						</Button>
 						<Button
 							sx={{
-								border: '2px solid #ABABAB',
+								// border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
-								fontSize: 20,
+								fontSize: 16,
 								padding: '6px 12px',
 								minWidth: '48%',
 								background: 'white',

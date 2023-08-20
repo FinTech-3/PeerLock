@@ -220,6 +220,7 @@ const Home = () => {
 			</div>
 			{activeButton === 0 && (
 				<Paper
+					elevation={0}
 					style={{
 						backgroundColor: '#F2F7FF',
 						alignItems: 'center',
@@ -234,7 +235,7 @@ const Home = () => {
 					{/* Content for the 보관중 button, replace with real data */}
 					<Typography
 						variant="body1"
-						color={'blue'}
+						color="blue"
 						sx={{
 							marginBottom: 1,
 							color: 'blue',
@@ -256,7 +257,7 @@ const Home = () => {
 					<Typography
 						variant="body1"
 						fontSize={15}
-						color={'black'}
+						color="black"
 						sx={{
 							marginBottom: 5,
 							color: 'black',
@@ -291,7 +292,7 @@ const Home = () => {
 					>
 						<Button
 							sx={{
-								border: '2px solid #ABABAB',
+								// border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
 								fontSize: 20,
@@ -307,7 +308,7 @@ const Home = () => {
 						</Button>
 						<Button
 							sx={{
-								border: '2px solid #ABABAB',
+								// border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
 								fontSize: 20,
@@ -326,6 +327,7 @@ const Home = () => {
 			)}
 			{activeButton === 1 && (
 				<Paper
+					elevation={0}
 					style={{
 						backgroundColor: '#F2F7FF',
 						alignItems: 'center',
@@ -340,7 +342,7 @@ const Home = () => {
 					{/* Content for the 보관중 button, replace with real data */}
 					<Typography
 						variant="body1"
-						color={'blue'}
+						color="blue"
 						sx={{
 							marginBottom: 1,
 						}}
@@ -361,7 +363,7 @@ const Home = () => {
 					<Typography
 						variant="body1"
 						fontSize={15}
-						color={'black'}
+						color="black"
 						sx={{
 							marginBottom: 5,
 						}}
@@ -395,7 +397,7 @@ const Home = () => {
 					>
 						<Button
 							sx={{
-								border: '2px solid #ABABAB',
+								// border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
 								fontSize: 20,
@@ -411,7 +413,7 @@ const Home = () => {
 						</Button>
 						<Button
 							sx={{
-								border: '2px solid #ABABAB',
+								// border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
 								fontSize: 20,
@@ -430,6 +432,7 @@ const Home = () => {
 			)}
 			{activeButton === 2 && (
 				<Paper
+					elevation={0}
 					style={{
 						backgroundColor: '#F2F7FF',
 						alignItems: 'center',
@@ -444,7 +447,7 @@ const Home = () => {
 					{/* Content for the 보관중 button, replace with real data */}
 					<Typography
 						variant="body1"
-						color={'blue'}
+						color="blue"
 						sx={{
 							marginBottom: 1,
 						}}
@@ -465,7 +468,7 @@ const Home = () => {
 					<Typography
 						variant="body1"
 						fontSize={14}
-						color={'black'}
+						color="black"
 						sx={{
 							marginBottom: 5,
 						}}
@@ -499,7 +502,7 @@ const Home = () => {
 					>
 						<Button
 							sx={{
-								border: '2px solid #ABABAB',
+								// border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
 								fontSize: 20,
@@ -515,7 +518,7 @@ const Home = () => {
 						</Button>
 						<Button
 							sx={{
-								border: '2px solid #ABABAB',
+								// border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
 								fontSize: 20,
