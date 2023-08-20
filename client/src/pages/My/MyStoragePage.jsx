@@ -15,12 +15,8 @@ import {
 } from '@mui/material';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import CircularProgress from '@mui/material/CircularProgress';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import FixedBottomNavigationHost from '../../components/FixBottomNavigationHost';
 import AddStorageCard from '../../components/my/AddStorageCard';
-import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
-import AppHeader from '../../components/common/AppHeader';
 import { getMyStorage } from '../../api/getMyStorage';
 import { useNavigate } from 'react-router-dom';
 import TopNavigationComponent from '../../components/common/TopNavigationComponent';
