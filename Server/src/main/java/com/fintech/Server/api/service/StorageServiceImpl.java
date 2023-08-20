@@ -68,14 +68,9 @@ public class StorageServiceImpl implements StorageService {
                     .storageType(request.getStorageType())
                     .storageSize(request.getStorageSize())
                     .storageFeature(request.getStorageFeature())
-//                    .storageTotalCapacity(request.getStorageTotalCapacity())
-//                    .storageAvailableCapacity(request.getStorageAvailableCapacity())
-//                    .storageUsage(request.getStorageUsage())
                     .storagePrice(request.getStoragePrice())
                     .serviceCommission(request.getServiceCommission())
                     .storageDescription(request.getStorageDescription())
-//                    .availableFrom(request.getAvailableFrom())
-//                    .availableUntil(request.getAvailableUntil())
                     .returnPolicy(request.getReturnPolicy())
                     .status(StorageStatus.AVAILABLE)
                     .build();
@@ -83,8 +78,6 @@ public class StorageServiceImpl implements StorageService {
 
             StorageListResponseDto responseDto = new StorageListResponseDto();
             responseDto.setStorageId(savedStorage.getStorageId());
-
-
 
             // 여러 이미지 저장
             List<StorageRegisterRequestDto.ImageInfo> imageInfos = request.getImages();
@@ -97,7 +90,6 @@ public class StorageServiceImpl implements StorageService {
                         .build();
                 storageImageRepository.save(storageImageEntity);
             }
-
 
 //            return savedStorage;
             return responseDto;
