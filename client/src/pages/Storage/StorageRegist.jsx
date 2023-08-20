@@ -30,10 +30,12 @@ import {
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
 import CleaningServicesOutlinedIcon from '@mui/icons-material/CleaningServicesOutlined';
 import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 import SelectComponent from '../../components/common/SelectComponent';
 import { useNavigate } from 'react-router-dom';
 import { registStorage } from '../../api/registStorage';
+import TopNavigationComponent from '../../components/common/TopNavigationComponent';
 
 const StorageRegist = ({}) => {
 	const [selectTypeValue, setSelectTypeValue] = useState('');
@@ -56,6 +58,10 @@ const StorageRegist = ({}) => {
 	const storageSize = ['소형', '중형', '대형'];
 
 	const navigate = useNavigate();
+
+	const handleBackBtn = event => {
+		window.history.back();
+	};
 
 	useEffect(() => {
 		if (price === 'fixedPrice') {
@@ -167,33 +173,16 @@ const StorageRegist = ({}) => {
 
 	return (
 		<Box style={{ maxHeight: '100vh', overflowY: 'auto', paddingBottom: '60px' }}>
-			<Paper
-				sx={{
-					position: 'fixed',
-					top: 0,
-					left: 0,
-					right: 0,
-					backgroundColor: 'white',
-					zIndex: 1000,
-				}}
-			>
-				<Box display="flex" alignItems="center" height="60px">
-					<Button
-						startIcon={<ArrowBackIcon />}
-						onClick={() => {
-							window.history.back();
-						}}
-					/>
-					<Typography variant="h5" style={{ fontFamily: 'SpoqaHanSansNeo-Bold' }}>
-						내 공간 등록
-					</Typography>
-				</Box>
-			</Paper>
-
+			<TopNavigationComponent
+				backClick
+				centerText="내 공간 등록"
+				onBackClick={handleBackBtn}
+				// rightMenu
+			/>
 			<Card
 				style={{
 					width: '100%',
-					paddingTop: '70px',
+					paddingTop: '60px',
 				}}
 				elevation={0}
 			>

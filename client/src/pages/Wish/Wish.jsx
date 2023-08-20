@@ -51,9 +51,6 @@ const Wish = () => {
 						<Grid container spacing={3} style={{ padding: '20px' }}>
 							{wishList.map(item => (
 								<Grid item xs={12} key={item.storageId}>
-									<Typography variant="h6" style={{ fontFamily: 'SpoqaHanSansNeo-Bold' }}>
-										{item.storageName}
-									</Typography>
 									<WishList storage={item} />
 								</Grid>
 							))}
