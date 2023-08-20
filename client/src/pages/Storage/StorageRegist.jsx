@@ -36,6 +36,7 @@ import SelectComponent from '../../components/common/SelectComponent';
 import { useNavigate } from 'react-router-dom';
 import { registStorage } from '../../api/registStorage';
 import TopNavigationComponent from '../../components/common/TopNavigationComponent';
+import { grey } from '@mui/material/colors';
 
 const StorageRegist = ({}) => {
 	const [selectTypeValue, setSelectTypeValue] = useState('');
@@ -46,6 +47,7 @@ const StorageRegist = ({}) => {
 	const [smartPrice, setSmartPrice] = useState(1000);
 	const [selectPrice, setSelectPrice] = useState(null);
 	const [description, setDescription] = useState('');
+	const [location, setLocation] = useState(false);
 	const [storageName, setStorageName] = useState('');
 	const [storageFeature, setStorageFeature] = useState({
 		smokeFree: false,
@@ -88,6 +90,10 @@ const StorageRegist = ({}) => {
 			...prevFeature,
 			[feature]: !prevFeature[feature],
 		}));
+	};
+
+	const handleLocationClick = () => {
+		setLocation(!location);
 	};
 
 	const handleImageChange = e => {
@@ -300,13 +306,54 @@ const StorageRegist = ({}) => {
 						style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
 						variant="contained"
 						startIcon={<GpsFixedIcon />}
+						onClick={() => handleLocationClick()}
 					>
 						현재 위치 사용
 					</Button>
-					{/* <TextField
-						style={{ width: '100%', marginTop: '10px' }}
-						placeholder="상세 주소를 입력하세요"
-					/> */}
+					{location && (
+						<div
+							sx={{
+								width: '100%',
+								border: '5px solid lightgray',
+							}}
+						>
+							<div>
+								<Typography
+									variant="h6"
+									gutterBottom
+									mb={1}
+									style={{ fontFamily: 'SpoqaHanSansNeo-Bold', marginTop: '15px' }}
+								>
+									경기도 용인시 수지구 성복2로10
+								</Typography>
+								<Typography
+									variant="h6"
+									gutterBottom
+									fontSize={14}
+									mb={1}
+									style={{ fontFamily: 'SpoqaHanSansNeo-Medium', marginTop: '-10px' }}
+								>
+									<span
+										style={{
+											backgroundColor: '#D9D9D9',
+											padding: '2px 10px',
+											marginRight: '8px',
+											borderRadius: '10px',
+											fontSize: '12px',
+										}}
+									>
+										도로명
+									</span>
+									경기도 용인시 수지구 성복2로10
+								</Typography>
+							</div>
+
+							<TextField
+								style={{ width: '100%', marginTop: '10px' }}
+								placeholder="상세 주소를 입력하세요"
+							/>
+						</div>
+					)}
 				</CardContent>
 				<CardContent>
 					<Typography
