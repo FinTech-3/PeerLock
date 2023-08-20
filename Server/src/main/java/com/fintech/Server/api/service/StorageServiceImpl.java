@@ -37,7 +37,23 @@ public class StorageServiceImpl implements StorageService {
 
 
     @Override
-    public StorageEntity registerStorage(StorageRegisterRequestDto request) {
+    public Long makeTempStorage(Long userId) {
+        Optional<UserEntity> user = userRepository.findById(userId);
+        // todo: user.Status = HOST 일 때 수행하도록
+        if (user.get().getStatus().name().equals("HOST")) {
+            // 등록 창고 저장
+            StorageEntity storageEntity = StorageEntity.builder()
+                    .user(user.get())
+                    .build();
+            StorageEntity savedStorage = storageRepository.save(storageEntity);
+
+            return savedStorage.getStorageId();
+        }
+        return null;
+    }
+
+    @Override
+    public StorageListResponseDto registerStorage(StorageRegisterRequestDto request) {
         Optional<UserEntity> user = userRepository.findById(request.getUserId());
         // todo: user.Status = HOST 일 때 수행하도록
         if (user.get().getStatus().name().equals("HOST")) {
@@ -51,6 +67,7 @@ public class StorageServiceImpl implements StorageService {
                     .storageLongitude(request.getStorageLongitude())
                     .storageType(request.getStorageType())
                     .storageSize(request.getStorageSize())
+                    .storageFeature(request.getStorageFeature())
 //                    .storageTotalCapacity(request.getStorageTotalCapacity())
 //                    .storageAvailableCapacity(request.getStorageAvailableCapacity())
 //                    .storageUsage(request.getStorageUsage())
@@ -63,6 +80,11 @@ public class StorageServiceImpl implements StorageService {
                     .status(StorageStatus.AVAILABLE)
                     .build();
             StorageEntity savedStorage = storageRepository.save(storageEntity);
+
+            StorageListResponseDto responseDto = new StorageListResponseDto();
+            responseDto.setStorageId(savedStorage.getStorageId());
+
+
 
             // 여러 이미지 저장
             List<StorageRegisterRequestDto.ImageInfo> imageInfos = request.getImages();
@@ -77,7 +99,8 @@ public class StorageServiceImpl implements StorageService {
             }
 
 
-            return savedStorage;
+//            return savedStorage;
+            return responseDto;
         } else {
             return null;
         }

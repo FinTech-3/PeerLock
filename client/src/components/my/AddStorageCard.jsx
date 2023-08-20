@@ -19,6 +19,12 @@ const AddStorageCard = () => {
 		fetch();
 	}, []);
 
+	const tempStorageHandler = () => {
+		// try {
+		// 	axios.post()
+		// }
+	};
+
 	return (
 		<div>
 			<Card
@@ -48,6 +54,7 @@ const AddStorageCard = () => {
 							variant="contained" // "outlined"를 "contained"로 변경하여 버튼에 배경색을 추가합니다.
 							fullWidth
 							component="label"
+							onClick={tempStorageHandler}
 							sx={{
 								display: 'flex',
 								alignItems: 'center',

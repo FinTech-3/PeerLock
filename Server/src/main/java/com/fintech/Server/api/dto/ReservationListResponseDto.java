@@ -13,7 +13,12 @@ public class ReservationListResponseDto {
     private Date startDate;
     private Date endDate;
     private String itemSize;
-    private Integer insurancePlan;
+    private String insurancePlan;
+    private Integer insurancePrice;
+    private Integer totalPayment;
+    private Integer totalStoragePrice;
+    private Integer totalMonths;
+    private String paymentMethod;
     private Long userId;
     private Long storageId;
     private String status;
