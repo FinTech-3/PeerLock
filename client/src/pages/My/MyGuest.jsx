@@ -38,7 +38,7 @@ function MyGuest() {
 
 	return (
 		<div style={{ maxHeight: '100vh', overflowX: 'hidden', overflowY: 'auto', marginLeft: '12px' }}>
-			<TopNavigationComponent centerText="마이" rightMenu />
+			<TopNavigationComponent centerText="내 정보" rightMenu />
 			{/* User Information */}
 			<Box sx={{ paddingTop: '30px' }}>
 				<div
