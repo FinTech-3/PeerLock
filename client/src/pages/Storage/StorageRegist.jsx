@@ -145,7 +145,7 @@ const StorageRegist = ({}) => {
 				const storageId = res.data.storageId;
 				uploadToServer(uploadedFiles, storageId);
 				console.log('서버 이미지 등록 성공');
-				navigate(`/mystorage/${storageId}`, {
+				navigate(`/mystorage`, {
 					state: { prevRouter: `/` },
 				});
 			}
