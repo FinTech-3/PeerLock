@@ -53,7 +53,7 @@ const StorageDetail = ({ storage }) => {
 
 	const handleBoxClick = () => {
 		const userStatus = localStorage.getItem('userStatus');
-		userStatus == 'HOST' ? navigate('/mystorage') : navigate('/map'); // /host 경로로 이동
+		userStatus === 'HOST' ? navigate('/map') : navigate('/mystorage'); // /host 경로로 이동
 	};
 
 	useEffect(() => {
