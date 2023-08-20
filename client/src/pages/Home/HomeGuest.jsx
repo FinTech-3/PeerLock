@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { Typography, Button, Avatar, Paper } from '@mui/material';
 import FixedBottomNavigation from '../../components/FixBottomNavigation';
 import { Link } from 'react-router-dom';
+import { getReservationDetails } from '../../api/getReservationDetails';
+// dummy data
 
 // this page will be the guest info page C-01
 

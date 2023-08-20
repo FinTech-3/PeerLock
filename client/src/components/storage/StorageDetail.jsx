@@ -45,13 +45,15 @@ const StorageDetail = ({ storage }) => {
 	const navigate = useNavigate(); // React Router v6의 useNavigate 훅을 사용
 
 	const handleButtonClick = () => {
+		// bug fix
 		navigate(`/storage/reservation/upload/${storage.storageId}`, {
 			state: { storageDetails: storage },
 		});
 	};
 
 	const handleBoxClick = () => {
-		navigate('/map'); // /map 경로로 이동
+		const userStatus = localStorage.getItem('userStatus');
+		userStatus == 'HOST' ? navigate('/mystorage') : navigate('/map'); // /host 경로로 이동
 	};
 
 	useEffect(() => {
