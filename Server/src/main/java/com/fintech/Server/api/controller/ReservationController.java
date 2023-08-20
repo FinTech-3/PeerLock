@@ -32,7 +32,6 @@ public class ReservationController {
     @PostMapping("/images")
     public ResponseEntity<List<String>> uploadImages(@RequestParam("images") MultipartFile[] images, @RequestParam("storageId") Long storageId) {
         try {
-            logger.debug(String.valueOf(storageId));
             List<String> imageUrls = imageUploadService.uploadImagesToNCP(images, storageId);
             return new ResponseEntity<>(imageUrls, HttpStatus.OK);
         } catch (Exception e) {
