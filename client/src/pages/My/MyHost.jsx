@@ -37,7 +37,6 @@ function MyHost() {
 	return (
 		<div style={{ overflowX: 'hidden', overflowY: 'auto', marginLeft: '12px' }}>
 			<TopNavigationComponent centerText="마이" rightMenu />
-
 			{/* User Information */}
 			<Box sx={{ paddingTop: '30px' }}>
 				<div>
