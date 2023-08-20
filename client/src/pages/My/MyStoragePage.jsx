@@ -1,18 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getStorageList } from '../../api/getStorageList';
 import StorageList from '../../components/storage/StorageList';
-import {
-	Grid,
-	Typography,
-	Box,
-	Select,
-	MenuItem,
-	FormControl,
-	InputLabel,
-	Divider,
-	Button,
-	IconButton,
-} from '@mui/material';
+import { Grid, Box, IconButton } from '@mui/material';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import CircularProgress from '@mui/material/CircularProgress';
 import FixedBottomNavigationHost from '../../components/FixBottomNavigationHost';
@@ -22,7 +10,6 @@ import { useNavigate } from 'react-router-dom';
 import TopNavigationComponent from '../../components/common/TopNavigationComponent';
 
 const MyStoragePage = ({}) => {
-	const [filter, setFilter] = useState('가격순');
 	const [loading, setLoading] = useState(true);
 	const [storageList, setStorageList] = useState([]);
 	const navigate = useNavigate();
@@ -74,7 +61,7 @@ const MyStoragePage = ({}) => {
 							</Grid>
 						</div>
 						{storageList.length === 0 ? (
-							<></>
+							<div />
 						) : (
 							<div>
 								<Box
