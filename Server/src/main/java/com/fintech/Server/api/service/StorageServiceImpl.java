@@ -51,7 +51,6 @@ public class StorageServiceImpl implements StorageService {
                     .storageLongitude(request.getStorageLongitude())
                     .storageType(request.getStorageType())
                     .storageSize(request.getStorageSize())
-                    .storageFeature(request.getStorageFeature())
 //                    .storageTotalCapacity(request.getStorageTotalCapacity())
 //                    .storageAvailableCapacity(request.getStorageAvailableCapacity())
 //                    .storageUsage(request.getStorageUsage())
