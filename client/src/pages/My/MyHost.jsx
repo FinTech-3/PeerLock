@@ -43,7 +43,7 @@ function MyHost() {
 	};
 
 	return (
-		<div style={{ overflowX: 'hidden', overflowY: 'auto' }}>
+		<div style={{ overflowX: 'hidden', overflowY: 'auto', marginLeft: '12px' }}>
 			<div>
 				{/* Settings Icon */}
 				<IconButton
@@ -115,9 +115,12 @@ function MyHost() {
 					variant="outlined"
 					size="small"
 					sx={{ marginTop: -12, marginLeft: 33 }}
+					style={{
+						fontFamily: 'SpoqaHanSansNeo-Medium',
+					}}
 					onClick={HandleButtonClick} // replace with real user id (TODO)
 				>
-					게스트로 전환 &rarr;{' '}
+					게스트로 전환
 					{/* this is seriously messed up, fix only if needed. formatting is very broken, should work fine for iphone 12 pro */}
 				</Button>
 			</div>

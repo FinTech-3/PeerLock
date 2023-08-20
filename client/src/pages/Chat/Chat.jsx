@@ -63,9 +63,12 @@ const Chat = () => {
 						variant="h4"
 						style={{
 							fontFamily: 'SpoqaHanSansNeo-Bold',
+							marginLeft: '3px',
+							margin: '3px auto', // Center horizontally
+							textAlign: 'center', // Center vertically
 						}}
 					>
-						Chat
+						채팅
 					</Typography>
 				}
 			/>

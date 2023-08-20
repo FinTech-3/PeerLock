@@ -52,7 +52,7 @@ const WishList = ({ storage }) => {
 								<b style={{ textDecoration: 'line-through', color: 'gray' }}>₩{dummyPrice}</b>
 								&nbsp;
 								{'₩' + price || '₩ 10,000'}
-								<b style={{ color: 'gray' }}>&nbsp;/월(단기)</b>
+								<b style={{ color: 'gray', fontFamily: 'SpoqaHanSansNeo-Bold' }}>&nbsp;/월(단기)</b>
 							</Typography>
 							<div style={{ display: 'flex', alignItems: 'center' }}>
 								<LocationOnOutlinedIcon sx={{ color: 'gray' }} />

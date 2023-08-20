@@ -130,6 +130,8 @@ const FinanceHost = () => {
 					marginLeft: 3,
 					fontSize: 28,
 					fontFamily: 'SpoqaHanSansNeo-Bold',
+					margin: '3px auto', // Center horizontally
+					textAlign: 'center', // Center vertically
 				}}
 			>
 				통계
@@ -288,21 +290,25 @@ const FinanceHost = () => {
 								>
 									배승우님
 								</Typography>
-								<Typography variant="body2" sx={{ color: 'grey' }}>
+								<Typography
+									variant="body2"
+									sx={{ color: 'grey' }}
+									style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
+								>
 									23.08.15
 								</Typography>
 							</div>
 							<div style={{ marginLeft: 21 }}>
 								<Typography
 									variant="h6"
-									fontSize={15}
-									style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
+									fontSize={13}
+									style={{ fontFamily: 'SpoqaHanSansNeo-Medium', color: 'blue' }}
 								>
 									사이즈 (소형)
 								</Typography>
 								<Typography
 									variant="body2"
-									fontSize={15}
+									fontSize={13}
 									align="right"
 									style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
 								>
@@ -312,7 +318,7 @@ const FinanceHost = () => {
 							<div style={{ marginLeft: 21 }}>
 								<Typography
 									variant="h6"
-									fontSize={15}
+									fontSize={13}
 									minWidth={70}
 									sx={{ color: 'red' }}
 									style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
@@ -359,7 +365,7 @@ const FinanceHost = () => {
 							<div style={{ marginLeft: 21 }}>
 								<Typography
 									variant="h6"
-									fontSize={15}
+									fontSize={13}
 									style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
 								>
 									양종옥님
@@ -375,14 +381,14 @@ const FinanceHost = () => {
 							<div style={{ marginLeft: 21 }}>
 								<Typography
 									variant="h6"
-									fontSize={15}
-									style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
+									fontSize={13}
+									style={{ fontFamily: 'SpoqaHanSansNeo-Medium', color: 'blue' }}
 								>
 									사이즈 (대형)
 								</Typography>
 								<Typography
 									variant="body2"
-									fontSize={15}
+									fontSize={13}
 									align="right"
 									style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
 								>
@@ -392,7 +398,7 @@ const FinanceHost = () => {
 							<div style={{ marginLeft: 21 }}>
 								<Typography
 									variant="h6"
-									fontSize={15}
+									fontSize={13}
 									minWidth={70}
 									sx={{ color: 'red' }}
 									style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
@@ -454,14 +460,14 @@ const FinanceHost = () => {
 							<div style={{ marginLeft: 21 }}>
 								<Typography
 									variant="h6"
-									fontSize={15}
-									style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
+									fontSize={13}
+									style={{ fontFamily: 'SpoqaHanSansNeo-Medium', color: 'blue' }}
 								>
 									사이즈 (소형)
 								</Typography>
 								<Typography
 									variant="body2"
-									fontSize={15}
+									fontSize={13}
 									align="right"
 									style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
 								>
@@ -471,7 +477,7 @@ const FinanceHost = () => {
 							<div style={{ marginLeft: 21 }}>
 								<Typography
 									variant="h6"
-									fontSize={15}
+									fontSize={13}
 									minWidth={70}
 									sx={{ color: 'red' }}
 									style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}

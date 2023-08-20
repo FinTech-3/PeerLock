@@ -260,7 +260,7 @@ const Home = () => {
 						variant="body1"
 						color={'blue'}
 						sx={{
-							marginBottom: 2,
+							marginBottom: 0,
 						}}
 						style={{
 							fontFamily: 'SpoqaHanSansNeo-Medium',
@@ -268,7 +268,14 @@ const Home = () => {
 					>
 						캐리어 (대형)
 					</Typography>
-					<Typography variant="body1">Graham Roberts</Typography>
+					<Typography
+						variant="body1"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
+						Graham Roberts
+					</Typography>
 					<Typography
 						variant="body1"
 						fontSize={15}
@@ -287,7 +294,8 @@ const Home = () => {
 						src="https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/profile2.png"
 						sx={{
 							width: 100,
-							marginTop: -17,
+							marginTop: -14,
+							marginBottom: 3.7,
 							marginLeft: 22.5,
 							height: 100,
 							display: 'flex',
@@ -330,7 +338,7 @@ const Home = () => {
 								background: 'white',
 							}}
 							style={{
-								fontFamily: 'SpoqaHanSansNeo-Medium',
+								fontFamily: 'SpoqaHanSansNeo-Bold',
 							}}
 						>
 							정보 보기
@@ -378,7 +386,7 @@ const Home = () => {
 						fontSize={15}
 						color={'rgba(0, 0, 0, 0.6)'}
 						sx={{
-							marginBottom: 2,
+							marginBottom: 0,
 						}}
 						style={{
 							fontFamily: 'SpoqaHanSansNeo-Medium',
@@ -404,7 +412,8 @@ const Home = () => {
 						src="https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/profile3.png" // Replace with real image path
 						sx={{
 							width: 100,
-							marginTop: -18.5,
+							marginTop: -17,
+							marginBottom: 3.7,
 							marginLeft: 22.5,
 							height: 100,
 							display: 'flex',
@@ -487,14 +496,14 @@ const Home = () => {
 							fontFamily: 'SpoqaHanSansNeo-Medium',
 						}}
 					>
-						배승우
+						규빈
 					</Typography>
 					<Typography
 						variant="body1"
 						fontSize={15}
 						color={'rgba(0, 0, 0, 0.6)'}
 						sx={{
-							marginBottom: 2,
+							marginBottom: 0,
 						}}
 						style={{
 							fontFamily: 'SpoqaHanSansNeo-Medium',
@@ -520,7 +529,8 @@ const Home = () => {
 						src="https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/profile1.png" // Replace with real image path
 						sx={{
 							width: 100,
-							marginTop: -18.5,
+							marginTop: -17,
+							marginBottom: 3.7,
 							marginLeft: 22.5,
 							height: 100,
 							display: 'flex',

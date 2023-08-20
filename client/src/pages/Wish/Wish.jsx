@@ -26,9 +26,11 @@ const Wish = () => {
 						variant="h4"
 						style={{
 							fontFamily: 'SpoqaHanSansNeo-Bold',
+							margin: '3px auto', // Center horizontally
+							textAlign: 'center', // Center vertically
 						}}
 					>
-						Wish List
+						찜
 					</Typography>
 				}
 			/>
