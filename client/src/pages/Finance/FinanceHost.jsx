@@ -4,6 +4,7 @@ import { Typography, Paper, Avatar, Button, Rating } from '@mui/material';
 import LinearProgress from '@mui/material/LinearProgress';
 import Chart from 'chart.js/auto'; // do not erase!! 지우지 말아주세요!! 지우면 안됩니다!!
 import { Bar } from 'react-chartjs-2';
+import TopNavigationComponent from '../../components/common/TopNavigationComponent';
 
 const boldFontStyle = {
 	fontFamily: 'SpoqaHanSansNeo-Bold',
@@ -122,20 +123,7 @@ const FinanceHost = () => {
 				alignItems: 'center', // Center content horizontally
 			}}
 		>
-			<Typography
-				variant="h5"
-				sx={{
-					flexGrow: 1,
-					marginTop: 3,
-					marginLeft: 3,
-					fontSize: 28,
-					fontFamily: 'SpoqaHanSansNeo-Bold',
-					margin: '3px auto', // Center horizontally
-					textAlign: 'center', // Center vertically
-				}}
-			>
-				통계
-			</Typography>
+			<TopNavigationComponent centerText="통계" />
 			<div
 				style={{
 					display: 'flex',
@@ -144,6 +132,7 @@ const FinanceHost = () => {
 					borderBottom: '1px solid lightgrey',
 					width: '85%',
 					margin: '0 25px',
+					paddingTop: '60px',
 				}}
 			>
 				<div
@@ -281,7 +270,7 @@ const FinanceHost = () => {
 									justifyContent: 'center',
 									marginLeft: -6,
 								}}
-							></Avatar>
+							/>
 							<div style={{ marginLeft: 21 }}>
 								<Typography
 									variant="h6"
@@ -361,7 +350,7 @@ const FinanceHost = () => {
 									justifyContent: 'center',
 									marginLeft: -6,
 								}}
-							></Avatar>
+							/>
 							<div style={{ marginLeft: 21 }}>
 								<Typography
 									variant="h6"
@@ -440,7 +429,7 @@ const FinanceHost = () => {
 									justifyContent: 'center',
 									marginLeft: -6,
 								}}
-							></Avatar>
+							/>
 							<div style={{ marginLeft: 21 }}>
 								<Typography
 									variant="h6"
@@ -497,7 +486,7 @@ const FinanceHost = () => {
 						style={{
 							padding: '10px',
 						}}
-					></div>
+					/>
 					<div
 						style={{
 							display: 'flex',

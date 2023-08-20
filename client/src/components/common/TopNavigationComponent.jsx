@@ -37,10 +37,7 @@ const TopNavigationComponent = ({ centerText, backClick, onBackClick, rightMenu 
 						<Typography
 							variant="h6"
 							noWrap
-							component="a"
-							href="/"
 							sx={{
-								mr: 1,
 								display: { xs: 'flex', md: 'none' },
 								flexGrow: 1,
 								fontFamily: 'SpoqaHanSansNeo-Bold',

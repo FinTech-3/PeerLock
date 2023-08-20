@@ -3,6 +3,7 @@ import FixedBottomNavigationHost from '../../components/FixBottomNavigationHost'
 import ChatList from '../../components/chat/ChatList';
 import AppHeader from '../../components/common/AppHeader';
 import { Typography } from '@mui/material';
+import TopNavigationComponent from '../../components/common/TopNavigationComponent';
 
 const ChatHost = () => {
 	const chats = [
@@ -58,21 +59,7 @@ const ChatHost = () => {
 	];
 	return (
 		<div>
-			<AppHeader
-				title={
-					<Typography
-						variant="h4"
-						style={{
-							fontFamily: 'SpoqaHanSansNeo-Bold',
-							marginLeft: '3px',
-							margin: '3px auto', // Center horizontally
-							textAlign: 'center', // Center vertically
-						}}
-					>
-						채팅
-					</Typography>
-				}
-			/>
+			<TopNavigationComponent centerText="채팅" />
 			<ChatList
 				chats={chats.map(chat => ({
 					...chat,

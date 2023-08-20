@@ -40,6 +40,7 @@ import {
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
 import CleaningServicesOutlinedIcon from '@mui/icons-material/CleaningServicesOutlined';
 import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
+import TopNavigationComponent from '../common/TopNavigationComponent';
 
 const StorageReservationUploadComponent = ({ storageId }) => {
 	const [startDate, setStartDate] = useState(new Date().toISOString().split('T')[0]);
@@ -139,28 +140,22 @@ const StorageReservationUploadComponent = ({ storageId }) => {
 		return jsonData; // JSON 데이터 반환
 	};
 
+	const handleBackBtn = event => {
+		window.history.back();
+	};
+
 	return (
 		<div>
 			<div>
 				<Box style={{ maxHeight: '100vh', overflowY: 'auto', paddingBottom: '70px' }}>
-					<Box display="flex" alignItems="center" p={1}>
-						<Button
-							startIcon={<ArrowBackIcon />}
-							onClick={() => {
-								window.history.back();
-							}}
-						>
-							뒤로가기
-						</Button>
-					</Box>
-					<Divider sx={{ margin: '0px 0px', borderTop: '1px solid lightgray' }} />
-					<Card elevation={0} sx={{ width: '100%' }}>
+					<TopNavigationComponent centerText="예약" backClick onBackClick={handleBackBtn} />
+					<Card elevation={0} sx={{ width: '100%', paddingTop: '30px' }}>
 						{/* 기간 설정 -> 날짜 */}
 						<CardContent>
 							{/* 예약 날짜 선택 */}
 							<Box mt={2}>
 								<Typography variant="h5" sx={{ paddingBottom: '10px', fontWeight: 'bold' }}>
-									{'예약 정보 입력'}
+									예약 정보 입력
 								</Typography>
 								<Typography variant="h6" gutterBottom mb={2}>
 									예약 기간 설정
@@ -415,9 +410,9 @@ const StorageReservationUploadComponent = ({ storageId }) => {
 
 							<Box display="flex" justifyContent="space-between" alignItems="center" mt={1}>
 								<Typography variant="body1" style={{ color: 'gray' }}>
-									{'보험 플랜'}
+									보험 플랜
 									<br />
-									{'최대 20만원 보장'}
+									최대 20만원 보장
 								</Typography>
 								<Typography variant="body1" style={{ color: 'gray' }}>
 									{`₩${insurancePrice.toLocaleString()}`}
@@ -425,8 +420,8 @@ const StorageReservationUploadComponent = ({ storageId }) => {
 							</Box>
 							<Divider sx={{ margin: '15px 0px' }} />
 							<Box display="flex" justifyContent="space-between" alignItems="center">
-								<Typography variant="h6">{'총 합계(KRW)'}</Typography>
-								<Typography variant="h6" color={'primary'}>
+								<Typography variant="h6">총 합계(KRW)</Typography>
+								<Typography variant="h6" color="primary">
 									{`₩${totalPayment.toLocaleString()}`}
 								</Typography>
 							</Box>
