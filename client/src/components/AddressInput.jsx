@@ -55,8 +55,11 @@ const AddressInput = ({ lat, lng }) => {
 		>
 			<InputBase
 				sx={{ ml: 2, flex: 1 }}
+				style={{
+					fontFamily: 'SpoqaHanSansNeo-Medium',
+				}}
 				placeholder="주소를 입력해주세요"
-				inputProps={{ style: { margin: '0', padding: '0' } }}
+				inputProps={{ style: { margin: '0', padding: '0', fontFamily: 'SpoqaHanSansNeo-Medium' } }}
 				onChange={handleChange}
 			/>
 			<IconButton

@@ -52,14 +52,7 @@ const ReviewPage = () => {
 					backgroundColor: '#f0f0f0',
 					padding: '10px',
 				}}
-			>
-				<Typography
-					variant="h5"
-					style={{ color: '#333', fontWeight: 'bold', display: 'flex', alignItems: 'center' }}
-				>
-					<span style={{ fontSize: '24px', marginRight: '8px' }}>{'<'}</span> 상수동, 마포구의 창고
-				</Typography>
-			</div>
+			></div>
 			<div style={{ display: 'flex', justifyContent: 'space-between', margin: '20px 0' }}>
 				<div style={{ flex: 1 }}>
 					<Typography

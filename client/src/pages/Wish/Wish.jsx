@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import FixedBottomNavigation from '../../components/FixBottomNavigation';
 import { getWishList } from '../../api/getWishList';
-import { CircularProgress, Grid } from '@mui/material';
+import { CircularProgress, Grid, Typography } from '@mui/material';
 import WishList from '../../components/wish/WishList';
 import AppHeader from '../../components/common/AppHeader';
 
@@ -20,7 +20,18 @@ const Wish = () => {
 
 	return (
 		<div>
-			<AppHeader title="Wish List" />
+			<AppHeader
+				title={
+					<Typography
+						variant="h4"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Bold',
+						}}
+					>
+						Wish List
+					</Typography>
+				}
+			/>
 			{loading ? (
 				<div
 					style={{
@@ -38,6 +49,9 @@ const Wish = () => {
 						<Grid container spacing={3} style={{ padding: '20px' }}>
 							{wishList.map(item => (
 								<Grid item xs={12} key={item.storageId}>
+									<Typography variant="h6" style={{ fontFamily: 'SpoqaHanSansNeo-Bold' }}>
+										{item.storageName}
+									</Typography>
 									<WishList storage={item} />
 								</Grid>
 							))}

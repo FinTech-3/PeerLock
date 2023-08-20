@@ -30,6 +30,9 @@ const Home = () => {
 						marginLeft: 5,
 						fontSize: 28,
 					}}
+					style={{
+						fontFamily: 'SpoqaHanSansNeo-Bold',
+					}}
 				>
 					Today
 				</Typography>
@@ -44,6 +47,9 @@ const Home = () => {
 						background: 'white',
 						padding: 0, // Adjust padding to make the button longer
 						minWidth: '7rem', // Set minimum width to make the button longer
+					}}
+					style={{
+						fontFamily: 'SpoqaHanSansNeo-Regular',
 					}}
 				>
 					<Link to="#">전체 알림</Link>
@@ -60,16 +66,41 @@ const Home = () => {
 					}}
 				>
 					<div style={{ flex: 1, paddingLeft: 30 }}>
-						<Typography variant="body2" sx={{ paddingTop: 0.3 }}>
+						<Typography
+							variant="body2"
+							sx={{ paddingTop: 0.3 }}
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Medium',
+								color: 'blue',
+							}}
+						>
 							<strong>상수동, 마포구 옷장</strong>
 						</Typography>
-						<Typography variant="body2" sx={{ color: 'rgba(0, 0, 0, 0.6)', paddingTop: 0.3 }}>
+						<Typography
+							variant="body2"
+							sx={{ color: 'rgba(0, 0, 0, 0.6)', paddingTop: 0.3 }}
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Medium',
+							}}
+						>
 							09.17 ~ 11.16 (2M)
 						</Typography>
-						<Typography variant="body2" sx={{ color: 'rgba(0, 0, 0, 0.6)', paddingTop: 0.3 }}>
+						<Typography
+							variant="body2"
+							sx={{ color: 'rgba(0, 0, 0, 0.6)', paddingTop: 0.3 }}
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Medium',
+							}}
+						>
 							캐리어 (소형)
 						</Typography>
-						<Typography variant="body2" sx={{ color: 'red', paddingTop: 0.7 }}>
+						<Typography
+							variant="body2"
+							sx={{ color: 'red', paddingTop: 0.7 }}
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Medium',
+							}}
+						>
 							승인완료
 						</Typography>
 					</div>
@@ -83,7 +114,7 @@ const Home = () => {
 					>
 						<Avatar
 							alt="User PFP"
-							src="/grahamroberts.jpeg" // Replace with real image path
+							src="https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/profile3.png" // Replace with real image path
 							sx={{
 								width: 75,
 								height: 75,
@@ -104,16 +135,41 @@ const Home = () => {
 					}}
 				>
 					<div style={{ flex: 1, paddingLeft: 30 }}>
-						<Typography variant="body2" sx={{ paddingTop: 0.3 }}>
+						<Typography
+							variant="body2"
+							sx={{ paddingTop: 0.3 }}
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Medium',
+								color: 'blue',
+							}}
+						>
 							<strong>상수동, 마포구 옷장</strong>
 						</Typography>
-						<Typography variant="body2" sx={{ color: 'rgba(0, 0, 0, 0.6)', paddingTop: 0.3 }}>
+						<Typography
+							variant="body2"
+							sx={{ color: 'rgba(0, 0, 0, 0.6)', paddingTop: 0.3 }}
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Medium',
+							}}
+						>
 							09.17 ~ 11.16 (2M)
 						</Typography>
-						<Typography variant="body2" sx={{ color: 'rgba(0, 0, 0, 0.6)', paddingTop: 0.3 }}>
+						<Typography
+							variant="body2"
+							sx={{ color: 'rgba(0, 0, 0, 0.6)', paddingTop: 0.3 }}
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Medium',
+							}}
+						>
 							캐리어 (소형)
 						</Typography>
-						<Typography variant="body2" sx={{ color: 'red', paddingTop: 0.7 }}>
+						<Typography
+							variant="body2"
+							sx={{ color: 'red', paddingTop: 0.7 }}
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Medium',
+							}}
+						>
 							승인완료
 						</Typography>
 					</div>
@@ -127,7 +183,7 @@ const Home = () => {
 					>
 						<Avatar
 							alt="User PFP"
-							src="/grahamroberts.jpeg" // Replace with real image path
+							src="https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/profile1.png" // Replace with real image path
 							sx={{
 								width: 75,
 								height: 75,
@@ -146,6 +202,9 @@ const Home = () => {
 						marginLeft: -25,
 						marginBottom: 2,
 						fontSize: 28,
+					}}
+					style={{
+						fontFamily: 'SpoqaHanSansNeo-Bold',
 					}}
 				>
 					<strong>예약 관리</strong>
@@ -203,6 +262,9 @@ const Home = () => {
 						sx={{
 							marginBottom: 2,
 						}}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
 					>
 						캐리어 (대형)
 					</Typography>
@@ -214,12 +276,15 @@ const Home = () => {
 						sx={{
 							marginBottom: 5,
 						}}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
 					>
 						09.17 ~ 11.16 (2M)
 					</Typography>
 					<Avatar
 						alt="User PFP"
-						src="/grahamroberts.jpeg" // Replace with real image path
+						src="https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/profile2.png"
 						sx={{
 							width: 100,
 							marginTop: -17,
@@ -243,10 +308,13 @@ const Home = () => {
 								border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
-								fontSize: 16,
+								fontSize: 20,
 								padding: '6px 12px',
 								minWidth: '48%',
 								background: 'white',
+							}}
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Bold',
 							}}
 						>
 							채팅
@@ -256,10 +324,13 @@ const Home = () => {
 								border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
-								fontSize: 16,
+								fontSize: 20,
 								padding: '6px 12px',
 								minWidth: '48%',
 								background: 'white',
+							}}
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Medium',
 							}}
 						>
 							정보 보기
@@ -288,16 +359,29 @@ const Home = () => {
 						sx={{
 							marginBottom: 0,
 						}}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
 					>
 						캐리어 (소형)
 					</Typography>
-					<Typography variant="body1">배승우</Typography>
+					<Typography
+						variant="body1"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
+						배승우
+					</Typography>
 					<Typography
 						variant="body1"
 						fontSize={15}
 						color={'rgba(0, 0, 0, 0.6)'}
 						sx={{
 							marginBottom: 2,
+						}}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
 						}}
 					>
 						09.17 ~ 11.16 (2M)
@@ -309,12 +393,15 @@ const Home = () => {
 						sx={{
 							marginBottom: 5,
 						}}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
 					>
 						1달 후 만료
 					</Typography>
 					<Avatar
 						alt="User PFP"
-						src="/grahamroberts.jpeg" // Replace with real image path
+						src="https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/profile3.png" // Replace with real image path
 						sx={{
 							width: 100,
 							marginTop: -18.5,
@@ -338,10 +425,13 @@ const Home = () => {
 								border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
-								fontSize: 16,
+								fontSize: 20,
 								padding: '6px 12px',
 								minWidth: '48%',
 								background: 'white',
+							}}
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Bold',
 							}}
 						>
 							채팅
@@ -351,10 +441,13 @@ const Home = () => {
 								border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
-								fontSize: 16,
+								fontSize: 18,
 								padding: '6px 12px',
 								minWidth: '48%',
 								background: 'white',
+							}}
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Bold',
 							}}
 						>
 							물품 사용 요청
@@ -382,16 +475,29 @@ const Home = () => {
 						sx={{
 							marginBottom: 0,
 						}}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
 					>
 						캐리어 (소형)
 					</Typography>
-					<Typography variant="body1">배승우</Typography>
+					<Typography
+						variant="body1"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
+					>
+						배승우
+					</Typography>
 					<Typography
 						variant="body1"
 						fontSize={15}
 						color={'rgba(0, 0, 0, 0.6)'}
 						sx={{
 							marginBottom: 2,
+						}}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
 						}}
 					>
 						09.17 ~ 11.16 (2M)
@@ -403,12 +509,15 @@ const Home = () => {
 						sx={{
 							marginBottom: 5,
 						}}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
 					>
-						1달 후 만료
+						3일 후 만료
 					</Typography>
 					<Avatar
 						alt="User PFP"
-						src="/grahamroberts.jpeg" // Replace with real image path
+						src="https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/profile1.png" // Replace with real image path
 						sx={{
 							width: 100,
 							marginTop: -18.5,
@@ -432,10 +541,13 @@ const Home = () => {
 								border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
-								fontSize: 16,
+								fontSize: 20,
 								padding: '6px 12px',
 								minWidth: '48%',
 								background: 'white',
+							}}
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Bold',
 							}}
 						>
 							채팅
@@ -445,10 +557,13 @@ const Home = () => {
 								border: '2px solid #ABABAB',
 								borderRadius: 5,
 								color: 'black',
-								fontSize: 16,
+								fontSize: 20,
 								padding: '6px 12px',
 								minWidth: '48%',
 								background: 'white',
+							}}
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Bold',
 							}}
 						>
 							연장 요청
