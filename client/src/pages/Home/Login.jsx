@@ -65,7 +65,13 @@ const Login = () => {
 						backgroundColor: 'transparent', // Override white background
 					}}
 				>
-					<Typography variant="h3" fontWeight="bold">
+					<Typography
+						variant="h3"
+						fontWeight="bold"
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Bold',
+						}}
+					>
 						<strong>PeerLock</strong>
 					</Typography>
 				</Paper>
@@ -112,6 +118,9 @@ const Login = () => {
 								backgroundColor: '#A9A9A9', // Set the same color as default
 							},
 						}}
+						style={{
+							fontFamily: 'SpoqaHanSansNeo-Medium',
+						}}
 						fullWidth
 						onClick={() => handleLogin(username, password)}
 						// onClick={() => navigate('/HomeHost')}
@@ -129,14 +138,28 @@ const Login = () => {
 						backgroundColor: 'transparent', // Override white background
 					}}
 				>
-					<Typography variant="body1" color={'black'} sx={{ marginLeft: 1.5 }}>
-						<a href="#" style={{ textDecoration: 'none', color: 'black' }}>
+					<Typography variant="body1" color={'black'} sx={{ marginLeft: 2 }}>
+						<a
+							href="#"
+							style={{
+								textDecoration: 'none',
+								color: 'black',
+								fontFamily: 'SpoqaHanSansNeo-Medium',
+							}}
+						>
 							회원가입
 						</a>{' '}
 						{/* Replace with real link */}
 					</Typography>
-					<Typography variant="body1" color={'black'} sx={{ marginLeft: 16.5 }}>
-						<a href="#" style={{ textDecoration: 'none', color: 'black' }}>
+					<Typography variant="body1" color={'black'} sx={{ marginLeft: 14 }}>
+						<a
+							href="#"
+							style={{
+								textDecoration: 'none',
+								color: 'black',
+								fontFamily: 'SpoqaHanSansNeo-Medium',
+							}}
+						>
 							아이디 / 비밀번호 찾기
 						</a>{' '}
 						{/* Replace with real link */}
@@ -168,7 +191,14 @@ const Login = () => {
 							backgroundColor: 'transparent', // Override white background
 						}}
 					>
-						<Typography variant="h6" fontSize={15} textAlign={'center'}>
+						<Typography
+							variant="h6"
+							fontSize={15}
+							textAlign={'center'}
+							style={{
+								fontFamily: 'SpoqaHanSansNeo-Medium',
+							}}
+						>
 							<strong>간편 로그인</strong>
 						</Typography>
 					</Paper>

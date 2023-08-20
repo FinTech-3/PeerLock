@@ -72,7 +72,7 @@ const Home = () => {
 						variant="body1"
 						sx={{ paddingLeft: 4, paddingTop: 0.3, color: 'blue' }}
 						style={{
-							fontFamily: 'SpoqaHanSansNeo-Bold',
+							fontFamily: 'SpoqaHanSansNeo-Medium',
 						}}
 					>
 						<strong>배승우님의 요청</strong>
@@ -88,7 +88,13 @@ const Home = () => {
 					</Typography>
 					<Typography
 						variant="body2"
-						sx={{ color: 'black', paddingLeft: 4, paddingTop: 0.3, color: 'black' }}
+						sx={{
+							color: 'black',
+							paddingLeft: 4,
+							paddingTop: 0.3,
+							color: 'black',
+							marginBottom: 0,
+						}}
 						style={{
 							fontFamily: 'SpoqaHanSansNeo-Medium',
 						}}
@@ -230,7 +236,7 @@ const Home = () => {
 						variant="body1"
 						color={'blue'}
 						sx={{
-							marginBottom: 2,
+							marginBottom: 1,
 							color: 'blue',
 						}}
 						style={{
@@ -265,12 +271,13 @@ const Home = () => {
 						alt="User PFP"
 						src="https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/profile3.png" // Replace with real image path
 						sx={{
-							width: 100,
-							marginTop: -17,
-							marginLeft: 22.5,
-							height: 100,
+							width: 87,
+							marginTop: -15.6,
+							marginLeft: 23,
+							height: 87,
 							display: 'flex',
 							borderRadius: 5,
+							fontFamily: 'SpoqaHanSansNeo-Medium',
 						}}
 					/>
 
@@ -335,7 +342,7 @@ const Home = () => {
 						variant="body1"
 						color={'blue'}
 						sx={{
-							marginBottom: 2,
+							marginBottom: 1,
 						}}
 						style={{
 							fontFamily: 'SpoqaHanSansNeo-Medium',
@@ -349,7 +356,7 @@ const Home = () => {
 							fontFamily: 'SpoqaHanSansNeo-Medium',
 						}}
 					>
-						배승우
+						김수연
 					</Typography>
 					<Typography
 						variant="body1"
@@ -368,12 +375,13 @@ const Home = () => {
 						alt="User PFP"
 						src="https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/profile1.png" // Replace with real image path
 						sx={{
-							width: 100,
-							marginTop: -17,
-							marginLeft: 22.5,
-							height: 100,
+							width: 87,
+							marginTop: -15.6,
+							marginLeft: 23,
+							height: 87,
 							display: 'flex',
 							borderRadius: 5,
+							fontFamily: 'SpoqaHanSansNeo-Medium',
 						}}
 					/>
 
@@ -438,7 +446,7 @@ const Home = () => {
 						variant="body1"
 						color={'blue'}
 						sx={{
-							marginBottom: 2,
+							marginBottom: 1,
 						}}
 						style={{
 							fontFamily: 'SpoqaHanSansNeo-Medium',
@@ -456,7 +464,7 @@ const Home = () => {
 					</Typography>
 					<Typography
 						variant="body1"
-						fontSize={15}
+						fontSize={14}
 						color={'black'}
 						sx={{
 							marginBottom: 5,
@@ -471,12 +479,13 @@ const Home = () => {
 						alt="User PFP"
 						src="https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/profile4.png" // Replace with real image path
 						sx={{
-							width: 100,
-							marginTop: -17,
-							marginLeft: 22.5,
-							height: 100,
+							width: 87,
+							marginTop: -15.6,
+							marginLeft: 23,
+							height: 87,
 							display: 'flex',
 							borderRadius: 5,
+							fontFamily: 'SpoqaHanSansNeo-Medium',
 						}}
 					/>
 

@@ -36,7 +36,7 @@ function MyGuest() {
 	};
 
 	return (
-		<div style={{ maxHeight: '100vh', overflowX: 'hidden', overflowY: 'auto' }}>
+		<div style={{ maxHeight: '100vh', overflowX: 'hidden', overflowY: 'auto', marginLeft: '12px' }}>
 			<div>
 				{/* Settings Icon */}
 				<IconButton
@@ -111,7 +111,7 @@ function MyGuest() {
 					}}
 					onClick={HandleButtonClick} // replace with real user id (TODO)
 				>
-					호스트로 전환 &rarr;{' '}
+					호스트로 전환
 					{/* this is seriously messed up, fix only if needed. formatting is very broken, should work fine for iphone 12 pro */}
 				</Button>
 			</div>
@@ -135,7 +135,7 @@ function MyGuest() {
 						fontFamily: 'SpoqaHanSansNeo-Bold',
 					}}
 				>
-					예악 히스토리
+					예약 히스토리
 				</Typography>
 			</Paper>
 
@@ -144,7 +144,7 @@ function MyGuest() {
 				sx={{
 					padding: 1.5,
 					margin: 'auto',
-					marginTop: 2,
+					marginTop: 0.5,
 					border: '2px solid lightblue',
 					borderRadius: '10px',
 					width: '93%',
