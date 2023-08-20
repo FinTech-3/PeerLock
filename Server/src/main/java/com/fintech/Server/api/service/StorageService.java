@@ -8,8 +8,9 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface StorageService {
+    Long makeTempStorage(Long userId);
     // C : 새로운 창고 등록
-    StorageEntity registerStorage(StorageRegisterRequestDto request);
+    StorageListResponseDto registerStorage(StorageRegisterRequestDto request);
 
     // R : 서비스 내 모든 창고 List 출력
     List<StorageListResponseDto> getAllStorages();

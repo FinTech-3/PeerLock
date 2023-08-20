@@ -27,13 +27,14 @@ public class StorageController {
     public StorageController(StorageService storageService) {
         this.storageService = storageService;
     }
+
     @Autowired
     private ImageUploadService imageUploadService;
 
     @PostMapping("/images")
     public ResponseEntity<List<String>> uploadImages(@RequestParam("images") MultipartFile[] images, @RequestParam("storageId") Long storageId) {
         try {
-            logger.debug(String.valueOf(storageId));
+
             List<String> imageUrls = imageUploadService.uploadImagesToNCP(images, storageId);
             return new ResponseEntity<>(imageUrls, HttpStatus.OK);
         } catch (Exception e) {
@@ -41,19 +42,19 @@ public class StorageController {
         }
     }
 
-
-
     // C : 새로운 창고 등록
     @PostMapping("")
-    public ResponseEntity registerStorage(@RequestBody StorageRegisterRequestDto request) throws IOException {
-        StorageEntity storageEntity = storageService.registerStorage(request);
-        if (storageEntity != null) {
-            return ResponseEntity.ok(HttpStatus.CREATED);
+    public ResponseEntity<StorageListResponseDto> registerStorage(@RequestBody StorageRegisterRequestDto request) throws IOException {
+
+        StorageListResponseDto dto = storageService.registerStorage(request);
+        if (dto != null) {
+
+//            return ResponseEntity.ok(HttpStatus.CREATED);
+            return ResponseEntity.ok(dto);
         } else {
-            return ResponseEntity.badRequest().body("창고 추가 실패");
+            return ResponseEntity.badRequest().build();
         }
     }
-
 
 
     // R : 서비스 내 모든 창고 List 출력
@@ -68,6 +69,7 @@ public class StorageController {
     public ResponseEntity<StorageListResponseDto> storageDetail(@PathVariable("storageId") Long storageId) {
         return storageService.getStorageDetail(storageId);
     }
+
     // U : 창고 정보 수정
     // D : 창고 삭제
     @DeleteMapping("/{storageId}")

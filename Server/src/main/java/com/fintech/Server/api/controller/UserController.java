@@ -44,7 +44,6 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<UserResponseDto> register(@RequestBody UserRegistrationDto request) {
         UserResponseDto userResponseDto = userService.register(request);
-        logger.debug("controller " + userResponseDto);
         return ResponseEntity.ok(userResponseDto);
     }
 
@@ -75,7 +74,6 @@ public class UserController {
     //  -> UserServiceImpl에서 getUserDetail()을 @override -> UserRepository에서 userDetail()
     @GetMapping("/{userId}")
     public ResponseEntity<UserInfoResponseDto> userDetail(@PathVariable("userId") Long userId) {
-        logger.debug("controller : " + userId);
         return userService.getUserDetail(userId);
     }
 
