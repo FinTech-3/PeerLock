@@ -2,7 +2,7 @@
     {
         "reservationId": 1,
         "userId": 3,
-        "storageId": 4,
+        "storageId": 9,
         "startDate": "2023-07-15T08:30:00.000Z",
         "endDate": "2023-08-15T08:30:00.000Z",
         "itemSize": "중형",
@@ -16,14 +16,14 @@
         "images": [
             {
                 "imageName": "image1.jpg",
-                "imagePath": "path/to/image1.jpg"
+                "imagePath": "https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/bag1.jpeg"
             }
         ]
     },
     {
         "reservationId": 2,
         "userId": 1,
-        "storageId": 6,
+        "storageId": 10,
         "startDate": "2023-06-10T12:45:00.000Z",
         "endDate": "2023-08-10T12:45:00.000Z",
         "itemSize": "대형",
@@ -37,14 +37,14 @@
         "images": [
             {
                 "imageName": "image2.jpg",
-                "imagePath": "path/to/image2.jpg"
+                "imagePath": "https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/bag2.jpeg"
             }
         ]
     },
     {
         "reservationId": 3,
         "userId": 5,
-        "storageId": 2,
+        "storageId": 7,
         "startDate": "2023-09-20T15:20:00.000Z",
         "endDate": "2023-10-20T15:20:00.000Z",
         "itemSize": "소형",
@@ -58,14 +58,14 @@
         "images": [
             {
                 "imageName": "image3.jpg",
-                "imagePath": "path/to/image3.jpg"
+                "imagePath": "https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/bag3.jpeg"
             }
         ]
     },
     {
         "reservationId": 4,
         "userId": 2,
-        "storageId": 5,
+        "storageId": 9,
         "startDate": "2023-10-05T18:10:00.000Z",
         "endDate": "2023-12-05T18:10:00.000Z",
         "itemSize": "중형",
@@ -79,14 +79,14 @@
         "images": [
             {
                 "imageName": "image4.jpg",
-                "imagePath": "path/to/image4.jpg"
+                "imagePath": "https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/bag4.webp"
             }
         ]
     },
     {
         "reservationId": 5,
         "userId": 4,
-        "storageId": 1,
+        "storageId": 5,
         "startDate": "2023-08-08T21:05:00.000Z",
         "endDate": "2023-09-08T21:05:00.000Z",
         "itemSize": "대형",
@@ -100,14 +100,14 @@
         "images": [
             {
                 "imageName": "image5.jpg",
-                "imagePath": "path/to/image5.jpg"
+                "imagePath": "https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/bigbag1.jpeg"
             }
         ]
     },
     {
         "reservationId": 6,
         "userId": 5,
-        "storageId": 7,
+        "storageId": 3,
         "startDate": "2023-11-15T09:30:00.000Z",
         "endDate": "2023-12-15T09:30:00.000Z",
         "itemSize": "소형",
@@ -121,14 +121,14 @@
         "images": [
             {
                 "imageName": "image6.jpg",
-                "imagePath": "path/to/image6.jpg"
+                "imagePath": "https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/bigbag2.webp"
             }
         ]
     },
     {
         "reservationId": 7,
         "userId": 1,
-        "storageId": 3,
+        "storageId": 5,
         "startDate": "2023-07-01T14:15:00.000Z",
         "endDate": "2023-08-01T14:15:00.000Z",
         "itemSize": "중형",
@@ -142,7 +142,70 @@
         "images": [
             {
                 "imageName": "image7.jpg",
-                "imagePath": "path/to/image7.jpg"
+                "imagePath": "https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/suitcase7.webp"
+            }
+        ]
+    },
+    {
+        "reservationId": 8,
+        "userId": 1,
+        "storageId": 6,
+        "startDate": "2023-07-01T14:15:00.000Z",
+        "endDate": "2023-08-01T14:15:00.000Z",
+        "itemSize": "중형",
+        "paymentMethod": "네이버페이",
+        "totalMonths": 9,
+        "totalStoragePrice": 36000,
+        "insurancePlan": "프리미엄",
+        "insurancePrice": 50000,
+        "totalPayment": 810000,
+        "status": "string",
+        "images": [
+            {
+                "imageName": "image7.jpg",
+                "imagePath": "hhttps://kr.object.ncloudstorage.com/peerlock-image-storage/storage/suitcase1.jpg"
+            }
+        ]
+    },
+    {
+        "reservationId": 9,
+        "userId": 3,
+        "storageId": 1,
+        "startDate": "2023-07-01T14:15:00.000Z",
+        "endDate": "2023-08-01T14:15:00.000Z",
+        "itemSize": "중형",
+        "paymentMethod": "네이버페이",
+        "totalMonths": 9,
+        "totalStoragePrice": 36000,
+        "insurancePlan": "프리미엄",
+        "insurancePrice": 50000,
+        "totalPayment": 810000,
+        "status": "string",
+        "images": [
+            {
+                "imageName": "image7.jpg",
+                "imagePath": "https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/suitcase4.jpeg"
+            }
+        ]
+    },
+    {
+        "reservationId": 10,
+        "userId": 2,
+        "storageId": 10,
+        "startDate": "2023-07-01T14:15:00.000Z",
+        "endDate": "2023-08-01T14:15:00.000Z",
+        "itemSize": "중형",
+        "paymentMethod": "네이버페이",
+        "totalMonths": 9,
+        "totalStoragePrice": 36000,
+        "insurancePlan": "프리미엄",
+        "insurancePrice": 50000,
+        "totalPayment": 810000,
+        "status": "string",
+        "images": [
+            {
+                "imageName": "image7.jpg",
+                "imagePath": "https://kr.object.ncloudstorage.com/peerlock-image-storage/storage/suitcase3.webp"
             }
         ]
     }
