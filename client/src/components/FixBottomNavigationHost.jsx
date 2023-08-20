@@ -48,32 +48,38 @@ export default function FixedBottomNavigationHost() {
 					<BottomNavigationAction
 						component={Link}
 						to="/HomeHost"
-						label="Home"
+						label={<span style={{ fontFamily: 'SpoqaHanSansNeo-Bold' }}>홈</span>}
 						icon={<HomeOutlinedIcon />}
 					/>
 					<BottomNavigationAction
 						component={Link}
-						label="Storage"
+						label={<span style={{ fontFamily: 'SpoqaHanSansNeo-Bold' }}>창고</span>}
 						to="/mystorage"
 						icon={<WidgetsIcon />}
 					/>
 					<BottomNavigationAction
 						component={Link}
 						to="/finance"
-						label="Finance"
+						label={<span style={{ fontFamily: 'SpoqaHanSansNeo-Bold' }}>통계</span>}
 						icon={<LeaderboardIcon />}
+						sx={{
+							fontFamily: 'SpoqaHanSansNeo-Bold',
+						}}
 					/>
 					<BottomNavigationAction
 						component={Link}
 						to="/ChatHost"
-						label="Chat"
+						label={<span style={{ fontFamily: 'SpoqaHanSansNeo-Bold' }}>채팅</span>}
 						icon={<ChatBubbleOutlineOutlinedIcon />}
 					/>
 					<BottomNavigationAction
 						component={Link}
 						to="/MyHost"
-						label="Profile"
+						label={<span style={{ fontFamily: 'SpoqaHanSansNeo-Bold' }}>프로필</span>}
 						icon={<PersonOutlineOutlinedIcon />}
+						sx={{
+							fontFamily: 'SpoqaHanSansNeo-Bold',
+						}}
 					/>
 				</BottomNavigation>
 			</Paper>
