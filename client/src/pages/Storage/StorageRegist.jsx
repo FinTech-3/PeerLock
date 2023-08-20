@@ -110,7 +110,7 @@ const StorageRegist = ({}) => {
 			return;
 		}
 		const body = {
-			userId: 2,
+			userId: localStorage.getItem('userId'),
 			storageName: storageName,
 			storageAddress: '123 Main St, City, Country',
 			storageLatitude: '37.123456',
@@ -130,12 +130,12 @@ const StorageRegist = ({}) => {
 			const res = await registStorage(body);
 			if (res.status === 200) {
 				console.log('등록 성공');
-				// navigate(`/mystorage/${res.storageId}`, {
-				// 	state: { prevRouter: `/` },
-				// });
 				const storageId = res.data.storageId;
 				uploadToServer(uploadedFiles, storageId);
 				console.log('서버 이미지 등록 성공');
+				navigate(`/mystorage/${storageId}`, {
+					state: { prevRouter: `/` },
+				});
 			}
 		} catch (error) {
 			alert('다시 시도하세요.');

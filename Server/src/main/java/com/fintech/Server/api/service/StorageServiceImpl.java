@@ -79,8 +79,6 @@ public class StorageServiceImpl implements StorageService {
             StorageListResponseDto responseDto = new StorageListResponseDto();
             responseDto.setStorageId(savedStorage.getStorageId());
 
-
-
             // 여러 이미지 저장
             List<StorageRegisterRequestDto.ImageInfo> imageInfos = request.getImages();
 
@@ -92,7 +90,7 @@ public class StorageServiceImpl implements StorageService {
                         .build();
                 storageImageRepository.save(storageImageEntity);
             }
-            
+
 //            return savedStorage;
             return responseDto;
         } else {
