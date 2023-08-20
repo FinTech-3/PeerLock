@@ -48,32 +48,39 @@ export default function FixedBottomNavigation() {
 					<BottomNavigationAction
 						component={Link}
 						to="/HomeGuest"
-						label="Home"
+						label={<span style={{ fontFamily: 'SpoqaHanSansNeo-Bold' }}>홈</span>}
 						icon={<HomeOutlinedIcon />}
+						sx={{
+							fontFamily: 'SpoqaHanSansNeo-Bold',
+						}}
 					/>
-					<BottomNavigationAction
-						component={Link}
-						label="Wish"
-						to="/wish"
-						icon={<FavoriteIcon />}
-					/>
+					<BottomNavigationAction component={Link} label="찜" to="/wish" icon={<FavoriteIcon />} />
 					<BottomNavigationAction
 						component={Link}
 						to="/map"
-						label="Map"
+						label={<span style={{ fontFamily: 'SpoqaHanSansNeo-Bold' }}>지도</span>}
 						icon={<MapOutlinedIcon />}
+						sx={{
+							fontFamily: 'SpoqaHanSansNeo-Bold',
+						}}
 					/>
 					<BottomNavigationAction
 						component={Link}
 						to="/chat"
-						label="Chat"
+						label={<span style={{ fontFamily: 'SpoqaHanSansNeo-Bold' }}>채팅</span>}
 						icon={<ChatBubbleOutlineOutlinedIcon />}
+						sx={{
+							fontFamily: 'SpoqaHanSansNeo-Bold',
+						}}
 					/>
 					<BottomNavigationAction
 						component={Link}
 						to="/MyGuest"
-						label="Profile"
+						label={<span style={{ fontFamily: 'SpoqaHanSansNeo-Bold' }}>프로필</span>}
 						icon={<PersonOutlineOutlinedIcon />}
+						sx={{
+							fontFamily: 'SpoqaHanSansNeo-Bold',
+						}}
 					/>
 				</BottomNavigation>
 			</Paper>
