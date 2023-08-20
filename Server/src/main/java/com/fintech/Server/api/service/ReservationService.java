@@ -12,7 +12,7 @@ import java.util.List;
 public interface ReservationService {
 
     // 예약 등록
-    ReservationEntity createReservation(ReservationCreateRequestDto request);
+    ReservationListResponseDto createReservation(ReservationCreateRequestDto request);
 
     // 예약 List 조회
     List<ReservationListResponseDto> getAllReservations();

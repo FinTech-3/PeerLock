@@ -79,17 +79,17 @@ public class StorageServiceImpl implements StorageService {
             StorageListResponseDto responseDto = new StorageListResponseDto();
             responseDto.setStorageId(savedStorage.getStorageId());
 
-            // 여러 이미지 저장
-            List<StorageRegisterRequestDto.ImageInfo> imageInfos = request.getImages();
-
-            for (StorageRegisterRequestDto.ImageInfo imageInfo : imageInfos) {
-                StorageImageEntity storageImageEntity = StorageImageEntity.builder()
-                        .storage(savedStorage) // 연관 관계 설정
-                        .imageName(imageInfo.getImageName())
-                        .imagePath(imageInfo.getImagePath())
-                        .build();
-                storageImageRepository.save(storageImageEntity);
-            }
+//            // 여러 이미지 저장
+//            List<StorageRegisterRequestDto.ImageInfo> imageInfos = request.getImages();
+//
+//            for (StorageRegisterRequestDto.ImageInfo imageInfo : imageInfos) {
+//                StorageImageEntity storageImageEntity = StorageImageEntity.builder()
+//                        .storage(savedStorage) // 연관 관계 설정
+//                        .imageName(imageInfo.getImageName())
+//                        .imagePath(imageInfo.getImagePath())
+//                        .build();
+//                storageImageRepository.save(storageImageEntity);
+//            }
 
 //            return savedStorage;
             return responseDto;

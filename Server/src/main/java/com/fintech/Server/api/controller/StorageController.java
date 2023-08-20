@@ -34,8 +34,8 @@ public class StorageController {
     @PostMapping("/images")
     public ResponseEntity<List<String>> uploadImages(@RequestParam("images") MultipartFile[] images, @RequestParam("storageId") Long storageId) {
         try {
-
-            List<String> imageUrls = imageUploadService.uploadImagesToNCP(images, storageId);
+            String div = "storage";
+            List<String> imageUrls = imageUploadService.uploadImagesToNCP(images, storageId, div);
             return new ResponseEntity<>(imageUrls, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(Collections.emptyList(), HttpStatus.INTERNAL_SERVER_ERROR);

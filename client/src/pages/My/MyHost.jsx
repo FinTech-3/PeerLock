@@ -80,6 +80,7 @@ function MyHost() {
 							sx={{ fontWeight: 'bold' }}
 							style={{
 								fontFamily: 'SpoqaHanSansNeo-Medium',
+								marginLeft: 6,
 							}}
 						>
 							Level 2
@@ -90,7 +91,7 @@ function MyHost() {
 					<Button
 						variant="outlined"
 						size="small"
-						sx={{ marginTop: -12, marginLeft: 33 }}
+						sx={{ marginTop: -13, marginLeft: 31 }}
 						style={{
 							fontFamily: 'SpoqaHanSansNeo-Medium',
 						}}

@@ -43,7 +43,7 @@ public class ReservationServiceImpl implements ReservationService {
         this.storageRepository = storageRepository;
     }
     @Override
-    public ReservationEntity createReservation(ReservationCreateRequestDto request) {
+    public ReservationListResponseDto createReservation(ReservationCreateRequestDto request) {
         Optional<UserEntity> user = userRepository.findById(request.getUserId());
         if (user.isPresent() && user.get().getStatus().name().equals("USER")) {
             Long storageId = request.getStorageId(); // request에서 storageId 가져오기
@@ -67,23 +67,27 @@ public class ReservationServiceImpl implements ReservationService {
                     .totalMonths(request.getTotalMonths())
                     .totalStoragePrice(request.getTotalStoragePrice())
                     .totalPayment(request.getTotalPayment())
-                    .paymentMethod(request.getPaymentMethod())
+                    .paymentMethod("not yet")
                     .status(ReservationStatus.AVAILABLE)
                     .build();
 
             ReservationEntity savedReservation = reservationRepository.save(reservationEntity);
 
-            // 여러 이미지 저장
-            List<ReservationCreateRequestDto.ImageInfo> imageInfos = request.getReservationImages();
-            for (ReservationCreateRequestDto.ImageInfo imageInfo : imageInfos) {
-                ReservationImageEntity reservationImageEntity = ReservationImageEntity.builder()
-                        .reservation(savedReservation)
-                        .imageName(imageInfo.getImageName())
-                        .imagePath(imageInfo.getImagePath())
-                        .build();
-                reservationImageRepository.save(reservationImageEntity);
-            }
-            return savedReservation;
+            ReservationListResponseDto responseDto = new ReservationListResponseDto();
+            responseDto.setReservationId(savedReservation.getReservationId());
+
+//            // 여러 이미지 저장
+//            List<ReservationCreateRequestDto.ImageInfo> imageInfos = request.getReservationImages();
+//            for (ReservationCreateRequestDto.ImageInfo imageInfo : imageInfos) {
+//                ReservationImageEntity reservationImageEntity = ReservationImageEntity.builder()
+//                        .reservation(savedReservation)
+//                        .imageName(imageInfo.getImageName())
+//                        .imagePath(imageInfo.getImagePath())
+//                        .build();
+//                reservationImageRepository.save(reservationImageEntity);
+//            }
+//            return savedReservation;
+            return responseDto;
         } else {
             // 사용자 상태가 "USER"가 아닌 경우에 대한 처리 (예외 던지기 등)
             return null; // 필요한 경우 적절한 예외를 던지거나 처리 로직 추가

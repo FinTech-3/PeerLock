@@ -307,7 +307,7 @@ const FinanceHost = () => {
 							<div style={{ marginLeft: 21 }}>
 								<Typography
 									variant="h6"
-									fontSize={13}
+									fontSize={15}
 									minWidth={70}
 									sx={{ color: 'red' }}
 									style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
@@ -354,7 +354,7 @@ const FinanceHost = () => {
 							<div style={{ marginLeft: 21 }}>
 								<Typography
 									variant="h6"
-									fontSize={13}
+									fontSize={15}
 									style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
 								>
 									양종옥님
@@ -387,7 +387,7 @@ const FinanceHost = () => {
 							<div style={{ marginLeft: 21 }}>
 								<Typography
 									variant="h6"
-									fontSize={13}
+									fontSize={15}
 									minWidth={70}
 									sx={{ color: 'red' }}
 									style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
@@ -466,7 +466,7 @@ const FinanceHost = () => {
 							<div style={{ marginLeft: 21 }}>
 								<Typography
 									variant="h6"
-									fontSize={13}
+									fontSize={15}
 									minWidth={70}
 									sx={{ color: 'red' }}
 									style={{ fontFamily: 'SpoqaHanSansNeo-Medium' }}
