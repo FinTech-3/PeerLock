@@ -1,28 +1,78 @@
-# PeerLock
+# 꽃처럼 찬란하게 피어라, 피어락
+
+## 프로젝트 소개
+
+####  개발 기간
+
+-   2023.08.07 ~ 2023.08.20 (2주)
+
+<br>
+
+#### 기획 배경
+
+1인 가구의 증가, 주거 면적의 감소로 인해 공간 부족 문제가 발생하고 있는 추세입니다. 이러한 도심 공간 부족 문제를 경제적으로 해결할 수 있는 방법에 대해 고민했습니다. 문제 해결 방법으로 도심 속 잉여 공간을 찾고 저렴하게 거래할 수 있도록 개인과 개인을 연결해주자는 아이디어를 도출하여 기획하게 되었습니다.
+
+<br>
+
+#### 서비스 소개
+
+짐을 보관하고 싶은 유저와 공간을 대여해주고자 하는 호스트를 연결해주는 개인과 개인 간 공간 대여 연결 서비스입니다.
+
 A P2P service alternative to traaditional storage facilities.
 
-## Important
-This application does not represent a finalised version for deployment; it is a frontend-focused alpha version of the application that demonstrates core services and features. As such, some features will not function as intended.
+<br>
 
-## Installation
-This application mockup currently has to be built by the user. There is no built version available. \n
-The application is written in Java, JavaScript, and SQL.
+#### 기술 스택
 
-Be sure to have the following installed before continuing: \n
-1. Java (11, 2.7.14), Spring Boot (Gradle build) and its dependencies (Data JDBC, JPA, Spring Web, Lombok, aws-java-sdk-s3).
-2. ReactJS
-3. MySQL
+<div align=left>
+  <table>
+    <tr>
+        <td><b>Back-end</td>
+        <td>
+          <img src="https://img.shields.io/badge/Java-11-007396?style=flat&logo=Java&logoColor=white"/>
+          <img src="https://img.shields.io/badge/Spring Boot-2.7.14-6DB33F?style=flat-square&logo=Spring Boot&logoColor=white"/>
+          <img src="https://img.shields.io/badge/JPA Hibernate-5.6.3.Final-59666C?style=flat-square&logo=Hibernate&logoColor=white"/>
+          <img src="https://img.shields.io/badge/Gradle-7.4.1-02303A?style=flat-square&logo=Gradle&logoColor=white"/>
+          <img src="https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=Gradle&logoColor=white"/>
+        </td>
+    </tr>
+    <tr> 
+      <td><b>Front-end</td>
+      <td>
+      <img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat-square&logo=javascript&logoColor=white"> 
+      <img src="https://img.shields.io/badge/React-18.2.0-61DAFB?style=flat-square&logo=React&logoColor=white"/>
+      <img src="https://img.shields.io/badge/Axios-1.1.3-764ABC?style=flat-square&logo=Axios&logoColor=white"/>
+      <img src="https://img.shields.io/badge/html5-E34F26?style=flat-square&logo=html5&logoColor=white"> 
+      <img src="https://img.shields.io/badge/css-1572B6?style=flat-square&logo=css3&logoColor=white"> 
+      <img src="https://img.shields.io/badge/materialUI-007FFF?style=flat-square&logo=mui&logoColor=white"> 
+  <br>
+  </td>
+<tr>
+<td><b>Tools</td>
+  <td>
+  <img src="https://img.shields.io/badge/github-181717?style=flat-square&logo=github&logoColor=white"/>
+	<img src="https://img.shields.io/badge/Notion-333333?style=flat-square&logo=Notion&logoColor=white"/>
+  </td>
+ <tr>
+<td><b>UI/UX</td>
+  <td>
+    <img src="https://img.shields.io/badge/figma-F24E1E?style=flat-square&logo=Figma&logoColor=white"/>
+    <br>
+  </td>
+</table>
+</div>
 
-Once all files are cloned, run ServerApplication.java to launch the backend server. Navigate to ~/client and run /n
+<br>
 
-<pre>
-npm i
-</pre> 
-and then
-<pre>
-npm start
-</pre>
-to launch the application itself. Set the view to 'iPhone 12 Pro' for the best viewing experience.
+### 프로젝트 구성
+#### ERD
+![peerlock_erd](docs/peerlock_erd.png)
+
+<br>
+
+## 프로젝트 구조
+
+### Frontend (React)
 
 ```
 client
@@ -140,3 +190,63 @@ client
          └─ SpoqaHanSansNeo-Regular.ttf
 
 ```
+
+### Backend (Spring Boot)
+
+
+
+## 와이어프레임
+
+![wireframe_host](docs/wireframe_host.png)
+
+![wireframe_guest](docs/wireframe_guest.png)
+
+![wireframe_approve](docs/wireframe_approve.png)
+
+![wireframe_finance](docs/wireframe_finance.png)
+
+<br>
+
+## 협업 환경
+
+### Git
+Git을 통한 협업 방식은 커밋 컨벤션을 기반으로 Git Flow를 진행했습니다. 
+- master: 서비스가 출시될 수 있는 브랜치로, master 브랜치에 올라온 기능들은 에러 없이 작동하는 상태입니다.
+- develop: 다음 서비스 출시를 위해 실제 개발이 이루어지는 브랜치입니다.
+- 기능 단위 branch: 기능 단위 개발을 위한 브랜치로, develop에서 분기하여 개발이 끝나면 develop 브랜치로 병합됩니다.
+
+### Notion
+회의록, 스크럼 회의, 발표 정리, 문서 정리, 기획서 등 자료들을 Notion을 통해 작성 및 관리하였습니다.
+
+- `회의록`: 매일 회의한 내용을 회의록으로 기록하였습니다.
+- `컨벤션`: 프로젝트의 모든 컨벤션들을 문서화하여 모두가 공유 가능하도록 하였습니다. 기록 및 정리한 컨벤션들에는 Git 컨벤션, FE 컨벤션, BE 컨벤션이 있습니다.
+- `프로젝트 문서 관리`: 요구사항 정의서, 기능명세서, 일정관리 등 공유 문서 관리를 노션에 기록하여 모두가 동일한 목표를 가지고 개발 할 수 있도록 하였습니다.
+
+<br>
+
+## 팀원
+### 피어락 팀 소개
+<table>
+<thead>
+<tr>
+<th>양종욱/팀장</th>
+<th>윤주혜/팀원</th>
+<th>김가연/팀원</th>
+<th>이원준/팀원</th>
+<th>배승우/팀원</th>
+<th>차규빈/팀원</th>
+</tr>
+</thead>
+<tbody>
+<td>Backend,Frontend</td>
+<td>Backend,Frontend</td>
+<td>Frontend</td>
+<td>Frontend</td>
+<td>기획</td>
+<td>기획</td>
+</tr>
+</tbody>
+</table>
+
+<br>
+
