@@ -324,7 +324,7 @@ Git을 통한 협업 방식은 커밋 컨벤션을 기반으로 Git Flow를 진�
 <tbody>
 <td>Backend,Frontend</td>
 <td>Backend,Frontend</td>
-<td>Frontend</td>
+<td>Backend,Frontend</td>
 <td>Frontend</td>
 <td>기획</td>
 <td>기획</td>
