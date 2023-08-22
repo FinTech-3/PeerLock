@@ -53,7 +53,7 @@ const StorageDetail = ({ storage }) => {
 
 	const handleBoxClick = () => {
 		const userStatus = localStorage.getItem('userStatus');
-		userStatus === 'HOST' ? navigate('/map') : navigate('/mystorage'); // /host 경로로 이동
+		userStatus === 'HOST' ? navigate('/mystorage') : navigate('/map'); // /host 경로로 이동
 	};
 
 	useEffect(() => {
@@ -167,11 +167,7 @@ const StorageDetail = ({ storage }) => {
 								}}
 								onClick={favoriteClick}
 							>
-								{isFavorited ? (
-									<FavoriteIcon color="primary" />
-								) : (
-									<FavoriteBorderOutlinedIcon color="Neutral" />
-								)}
+								{isFavorited ? <FavoriteIcon color="primary" /> : <FavoriteIcon color="primary" />}
 							</Box>
 
 							<Box
